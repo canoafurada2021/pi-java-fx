@@ -9,6 +9,23 @@ public class Veiculo {
 	private Double precoPorDia;
 	private String marca;
 	private String modelo;
+	private Categoria idCategoria;
+	private Fornecedores idFornecedores;
+	
+	
+	
+	public Categoria getIdCategoria() {
+		return idCategoria;
+	}
+	public void setIdCategoria(Categoria idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+	public Fornecedores getIdFornecedores() {
+		return idFornecedores;
+	}
+	public void setIdFornecedores(Fornecedores idFornecedores) {
+		this.idFornecedores = idFornecedores;
+	}
 	public Double getPrecoPorDia() {
 		return precoPorDia;
 	}
