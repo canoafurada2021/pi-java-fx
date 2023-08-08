@@ -1,6 +1,6 @@
 package modelo;
 
-enum EnumPagamento {
+public enum EnumPagamento {
 CARTAO, DINHEIRO, CHEQUE
 	
 }

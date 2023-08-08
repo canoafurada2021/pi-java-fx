@@ -6,6 +6,11 @@ CREATE DATABASE IF NOT EXISTS get_that_auto;
 USE get_that_auto;
 
 
+CREATE TABLE IF NOT EXISTS `roles`(
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` ENUM('MASTER', 'FUNCIONARIO', 'CLIENTE') NOT NULL,
+  PRIMARY KEY (`id`)
+);
 -- -----------------------------------------------------
 -- Table .`login`
 -- -----------------------------------------------------
@@ -13,11 +18,11 @@ CREATE TABLE IF NOT EXISTS `login` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `cpf` VARCHAR(45) NOT NULL, 
   `senha` VARCHAR(255) NOT NULL, 
-  `tipo_usuario` ENUM('vendedor', 'master') NOT NULL, 
+  `role_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `unique_usuario` (`cpf`)
+  UNIQUE KEY `unique_usuario` (`cpf`),
+  FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
 );
-
 
 -- -----------------------------------------------------
 -- Table .`empresa`
@@ -28,8 +33,12 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `telefone` VARCHAR(20) NOT NULL,
   `cnpj` VARCHAR(18) NOT NULL,
   `nomefantasia` VARCHAR(100) NOT NULL,
+  `role_id` INT NOT NULL,
   `porteEmpresa` ENUM('pequena', 'média', 'grande') NOT NULL,
-  PRIMARY KEY (`idempresa`)
+  
+  PRIMARY KEY (`idempresa`),
+    FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) -- Adicione a relação com a tabela roleUsuario
+
 );
 
 
@@ -43,8 +52,11 @@ CREATE TABLE IF NOT EXISTS `vendedores` (
   `salario` DOUBLE NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `sobrenome` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idvendedores`)
+  `role_id` INT NOT NULL, -- Adicione uma coluna para a chave estrangeira role_id
+  PRIMARY KEY (`idvendedores`),
+  FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) -- Adicione a relação com a tabela roleUsuario
 );
+
 
 -- -----------------------------------------------------
 -- Table .`enderecos`
@@ -68,10 +80,11 @@ CREATE TABLE IF NOT EXISTS `locador` (
   `nome` VARCHAR(45) NOT NULL,
   `sobrenome` VARCHAR(45) NOT NULL,
   `enderecos_id` INT NOT NULL,
+  `role_id` INT NOT NULL, -- Adicione uma coluna para a chave estrangeira role_id
   PRIMARY KEY (`pessoas_cpf`),
-  FOREIGN KEY (`enderecos_id`) REFERENCES `enderecos` (`id`)
+  FOREIGN KEY (`enderecos_id`) REFERENCES `enderecos` (`id`),
+  FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) -- Adicione a relação com a tabela roleUsuario
 );
-
 -- -----------------------------------------------------
 -- Table .`vendaRegistros`
 -- -----------------------------------------------------
@@ -112,6 +125,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   PRIMARY KEY (`idcategorias`)
 );
 
+
 -- -----------------------------------------------------
 -- Table .`produtos`
 -- -----------------------------------------------------
@@ -137,12 +151,18 @@ CREATE TABLE IF NOT EXISTS `veiculo`(
 );
 
 
+insert into roles( nome) values('MASTER' );
+insert into roles( nome) values('FUNCIONARIO' );
+insert into roles( nome) values('CLIENTE' );
+
+
+SELECT * FROM roles;
 -- INSERTSSSSSSSSSSSSS -----------------------------------------------------------------------------------------
 -- -------------------------------
 
 -- INSERT TESSTE DE EMPRESA PRE CADASTRADA ------------------------------------------------------
 -- -------------------------------------------------------------------------------------------------
-insert into empresa (razaosocial, telefone, cnpj, nomefantasia, porteEmpresa) values ('O objetivo da empresa é deixar as pessoas felizes andando de gol', '+55 47 992178827', '12.345.678/0001-99', 'Pope Francis Master', 'grande');
+insert into empresa (razaosocial, telefone, cnpj, nomefantasia, porteEmpresa, role_id) values ('O objetivo da empresa é deixar as pessoas felizes andando de gol', '+55 47 992178827', '12.345.678/0001-99', 'Pope Francis Master', 'grande', 1);
 -- ------------------------------------------------------------------------------------------------------
 
 -- inserts ENDERECOS
@@ -162,17 +182,16 @@ insert into fornecedores (cnpj,  enderecos_id, nome, telefone) values (82, 1, 'J
 insert into fornecedores (cnpj,  enderecos_id, nome, telefone) values (83, 2, 'Bruno',  25152528); 
 
 -- inserts VENDEDORES
-insert into vendedores (idVendedores, salario, nome, sobrenome) values (1, 2574.89, 'Garreth', 'Espinoy'  );
-insert into vendedores (idVendedores, salario, nome, sobrenome) values (2, 1883.12, 'Jess', 'McMichan' );
-insert into vendedores (idVendedores, salario, nome, sobrenome  ) values (3,1883.16,'José','carols');
-insert into vendedores (idVendedores, salario, nome, sobrenome ) values (4, 1844.79, 'Brigg', 'McNeill');
-insert into vendedores (idVendedores, salario, nome, sobrenome) values (7, 1386.02, 'Sol', 'Winspur');
-insert into vendedores (idVendedores, salario, nome, sobrenome ) values (8, 2896.38, 'Caressa', 'Clair');
+INSERT INTO vendedores (idvendedores, salario, nome, sobrenome, role_id) VALUES (1, 2574.89, 'Patricia', 'Cordeiro', 2);
+insert into vendedores (idVendedores, salario, nome, sobrenome,  role_id) values (2, 1883.12, 'Emily', 'Joanna Alves',2 );
+insert into vendedores (idVendedores, salario, nome, sobrenome ,  role_id ) values (3,1883.16,'Andrieli','Mendes', 2);
+insert into vendedores (idVendedores, salario, nome, sobrenome,  role_id) values (4, 1844.79, 'Emily', 'Neves', 2);
+
 
 -- inserts LOCADOR
-insert into locador (pessoas_cpf, telContato, nome,  sobrenome, enderecos_id) values ('212213454', '47988', 'Joanna', 'oldey',  1);
-insert into locador (pessoas_cpf,telContato, nome, sobrenome, enderecos_id) values ('768541784', '4798688', 'Miguela', 'Gettens', 3);
-insert into locador (pessoas_cpf,telContato, nome, sobrenome, enderecos_id) values ('103966036', '47984273', 'Olivia', 'Benedito', 2);
+insert into locador (pessoas_cpf, telContato, nome,  sobrenome, enderecos_id, role_id) values ('212213454', '47988', 'Joanna', 'oldey',  1, 3);
+insert into locador (pessoas_cpf,telContato, nome, sobrenome, enderecos_id, role_id) values ('768541784', '4798688', 'Miguela', 'Gettens', 3, 3);
+insert into locador (pessoas_cpf,telContato, nome, sobrenome, enderecos_id, role_id) values ('103966036', '47984273', 'Olivia', 'Benedito', 2, 3);
 
 -- inserts PRODUTOS
 -- TESTE DE PRODUTO PRE CADASTRADO -------------------------------------------------
@@ -184,7 +203,7 @@ insert into aluguelRegistros (idvenda, formaPagamento, dataInicio, quantDias, va
 
 -- inserts LOGIN
 -- TESTE DE POPE FRANCIS MASTER E 1 VENDEDOR PRE CADASTRADOS -------------------------------------------------
-insert into login (id, cpf, senha, tipo_usuario) values (1, '13093824923', '24102005', 'master'), (2, '04807428985', '19101984', 'vendedor');
+insert into login (id, cpf, senha,  role_id) values (1, '13093824923', '24102005', 1), (2, '04807428985', '19101984',2 );
 
 
 -- --- CRIAR INSERTS PARA CRIACAO DE VEICULO NO SISTEMA 

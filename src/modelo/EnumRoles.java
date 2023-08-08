@@ -1,5 +1,5 @@
 package modelo;
 
-enum EnumRoles {
+public enum EnumRoles {
 	MASTER, FUNCIONARIO, CLIENTE
 }

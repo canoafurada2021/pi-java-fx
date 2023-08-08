@@ -2,13 +2,13 @@ package controle;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import modelo.Endereco;
 
 public class EnderecoDAO {
-	public boolean inserir (Endereco e)
-	{
+	public boolean inserir (Endereco e){
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 		
@@ -33,4 +33,36 @@ public class EnderecoDAO {
 		return true;
 		
 	}
+
+    public Endereco getEndereco(int enderecoId) {
+        Conexao c = Conexao.getInstancia();
+        Connection con = c.conectar();
+        
+        String query = "SELECT * FROM enderecos WHERE id = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, enderecoId);
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Endereco endereco = new Endereco();
+                endereco.setId(rs.getInt("id"));
+                endereco.setRua(rs.getString("rua"));
+                endereco.setBairro(rs.getString("bairro"));
+                endereco.setCidade(rs.getString("cidade"));
+                endereco.setEstado(rs.getString("estado"));
+                endereco.setCep(rs.getLong("cep"));
+                
+                return endereco;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            c.fecharConexao();
+        }
+        
+        return null; // Retorna null se não encontrar o endereço
+    }
+
 }
