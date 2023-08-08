@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TestController">
    <children>
       <SplitPane dividerPositions="0.18283828382838282" layoutX="1.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1517.0">
         <items>
@@ -73,7 +73,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: WHITE;" text="Funcionários" textAlignment="JUSTIFY" textFill="WHITE" GridPane.rowIndex="6">
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Funcionários" textAlignment="JUSTIFY" textFill="WHITE" GridPane.rowIndex="6">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -85,7 +85,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Usuários" textFill="WHITE" GridPane.rowIndex="7">
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Usuários" textFill="WHITE" GridPane.rowIndex="7">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -97,7 +97,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Fornecedores" textFill="WHITE" GridPane.rowIndex="8">
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Fornecedores" textFill="WHITE" GridPane.rowIndex="8">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -109,7 +109,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Configurações" textFill="WHITE" GridPane.rowIndex="9">
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Configurações" textFill="WHITE" GridPane.rowIndex="9">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -139,7 +139,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="111.0" prefWidth="279.0" style="-fx-background-color: 001C52;" text="Sair" textFill="WHITE">
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="111.0" prefWidth="279.0" style="-fx-background-color: #001C52;" text="Sair" textFill="WHITE">
                            <font>
                               <Font size="29.0" />
                            </font>
@@ -204,7 +204,8 @@
                         </Label>
                      </children>
                   </Pane>
-               </children></AnchorPane>
+               </children>
+            </AnchorPane>
         </items>
       </SplitPane>
    </children>
