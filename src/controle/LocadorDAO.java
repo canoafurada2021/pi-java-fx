@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import modelo.Endereco;
+import modelo.Locador;
 
 
 
@@ -12,29 +13,36 @@ import modelo.Endereco;
 
 public class LocadorDAO {
 
-	  public boolean inserirLocador(int cpf, int telContato, String nome, String sobrenome, int enderecoId) {
+	  public boolean inserir(Locador l) {
 
 	        Conexao c = Conexao.getInstancia();
 	        Connection con = c.conectar();
 
-	        EnderecoDAO enderecoDAO = new EnderecoDAO();
-	        Endereco endereco = enderecoDAO.getEndereco(enderecoId);
-
-	        if (endereco == null) {
-	            // Lidar com a falha ao obter o endereço
-	            return false;
-	        }
+	        
+	        String queryPessoa = "INSERT INTO pessoas (cpf, nome, sobrenome) VALUES (?, ?, ?)";
 
 	        String query = "INSERT INTO locador (pessoas_cpf, telContato, nome, sobrenome, enderecos_id) VALUES (?, ?, ?, ?, ?)";
 
 	        try {
+	        	
+	        	
+	        	// insert primeiro de pessoa na tabela pessoa
+	        	   PreparedStatement psPessoa = con.prepareStatement(queryPessoa);
+	               psPessoa.setFloat(1, l.getCpf());
+	               psPessoa.setString(2, l.getNome());
+	               psPessoa.setString(3, l.getSobrenome());
+	               psPessoa.executeUpdate();
+	        	
+	        	
 	            PreparedStatement ps = con.prepareStatement(query);
-	            ps.setInt(1, cpf);
-	            ps.setInt(2, telContato);
-	            ps.setString(3, nome);
-	            ps.setString(4, sobrenome);
-	            ps.setInt(5, endereco.getId()); // Usar o ID do endereço obtido
+	           
+	            ps.setFloat(1, l.getCpf());
+	            ps.setLong(2, l.getTelContato());
+	            ps.setString(3, l.getNome());
+	            ps.setString(4, l.getSobrenome());
 
+	            
+	 
 	            ps.executeUpdate();
 
 	            c.fecharConexao();

@@ -2,12 +2,14 @@ package modelo;
 
 import java.util.Date;
 
-public class Locador {
+public class Locador extends Pessoa{
 	private Long telContato;
 	private String paisResidencia;
 	private Long chn;
 	private Date validadeCarteira;
 	private Long numIdentificacaoCarteira;
+	
+	
 	public Long getTelContato() {
 		return telContato;
 	}
