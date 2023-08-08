@@ -6,12 +6,59 @@ public class Veiculo {
 	private int idVeiculo;
 	private String nome;
 	private String descricao;
-	private Double precoUnitario;
+	private Double precoPorDia;
 	private String marca;
 	private String modelo;
+	public Double getPrecoPorDia() {
+		return precoPorDia;
+	}
+	public void setPrecoPorDia(Double precoPorDia) {
+		this.precoPorDia = precoPorDia;
+	}
+	public int getQuantAssento() {
+		return quantAssento;
+	}
+	public void setQuantAssento(int quantAssento) {
+		this.quantAssento = quantAssento;
+	}
+	public int getQuantPortas() {
+		return quantPortas;
+	}
+	public void setQuantPortas(int quantPortas) {
+		this.quantPortas = quantPortas;
+	}
+	public int getEspacoPortaMalas() {
+		return espacoPortaMalas;
+	}
+	public void setEspacoPortaMalas(int espacoPortaMalas) {
+		this.espacoPortaMalas = espacoPortaMalas;
+	}
+	public int getNotaAvaliacao() {
+		return notaAvaliacao;
+	}
+	public void setNotaAvaliacao(int notaAvaliacao) {
+		this.notaAvaliacao = notaAvaliacao;
+	}
+	public String getImgBase64() {
+		return imgBase64;
+	}
+	public void setImgBase64(String imgBase64) {
+		this.imgBase64 = imgBase64;
+	}
+	public int getUnidadeEmEstoque() {
+		return unidadeEmEstoque;
+	}
+	public void setUnidadeEmEstoque(int unidadeEmEstoque) {
+		this.unidadeEmEstoque = unidadeEmEstoque;
+	}
 	private Date anoFabricacao;
 	private String tipoCombustivel;
-	
+	private int quantAssento;
+	private int quantPortas;
+	private int espacoPortaMalas;
+	private int notaAvaliacao;
+private String imgBase64;
+private int unidadeEmEstoque;
 	
 	public int getIdVeiculo() {
 		return idVeiculo;
@@ -32,10 +79,10 @@ public class Veiculo {
 		this.descricao = descricao;
 	}
 	public Double getPrecoUnitario() {
-		return precoUnitario;
+		return precoPorDia;
 	}
-	public void setPrecoUnitario(Double precoUnitario) {
-		this.precoUnitario = precoUnitario;
+	public void setPrecoUnitario(Double precoPorDia) {
+		this.precoPorDia = precoPorDia;
 	}
 	public String getMarca() {
 		return marca;
