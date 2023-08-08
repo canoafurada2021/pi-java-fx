@@ -3,7 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import controle.VendedorDAO;
+import controle.VendedoresDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
