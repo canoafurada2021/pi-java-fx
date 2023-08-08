@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import controle.VendedorDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import modelo.Vendedores;
 
 public class TestController implements Initializable{
 	
@@ -42,6 +44,24 @@ public class TestController implements Initializable{
 
 	    @FXML
 	   private void cadastrarFuncionario(ActionEvent event) {
+
+	    	
+	    	// !----VALIDAR SE O MÉTODO DE INSERT VAI FUNCIONAR OU NAO- --!
+	    	
+	    	
+//	    	String nome = txtNomeF.getText();
+//Double salario = Double.valueOf(txtCpf.getText());
+//Vendedores v = new Vendedores();
+//
+//v.setNome(nome);
+//v.setSalario(salario);
+//
+//VendedorDAO dao = new VendedorDAO();
+//	    	dao.inserir(v);
+//	    	
+//	    	txtNomeF.setText(null);
+//txtCpf.setText(null);
+
 	    	System.out.println("você clicou ...");
 	    	lblNome.setText("ola mundo "+ txtNomeF.getText());
 	    }
