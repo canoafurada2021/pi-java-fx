@@ -2,7 +2,8 @@ package modelo;
 
 public class Categoria {
 	private int idCategoria;
-	private String nome;
+	private String nome; //ta errado no banco 
+	
 	public int getIdCategoria() {
 		return idCategoria;
 	}
