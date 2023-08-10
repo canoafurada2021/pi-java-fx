@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ButtonBar layoutX="191.0" layoutY="116.0" prefHeight="40.0" prefWidth="200.0" />
+      <FlowPane layoutX="72.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="287.0" fitWidth="568.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../visao/fotoPi.jpg" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </FlowPane>
+      <Label layoutX="258.0" layoutY="36.0" text="DEU CERTO!!!!!!" />
+   </children>
+</AnchorPane>
