@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.18283828382838282" layoutX="1.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1517.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1016.0" prefWidth="283.0" style="-fx-background-color: #001C52;">
+               <children>
+                  <GridPane layoutX="-3.0" prefHeight="574.0" prefWidth="276.0">
+                    <columnConstraints>
+                      <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Dashboard" textFill="WHITE" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@Default=Dashboard.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Produtos" textFill="WHITE" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@Default=Product.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Locação" textFill="WHITE" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@Default=Rent.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: WHITE;" text="Funcionários" textAlignment="JUSTIFY" textFill="WHITE" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@Default=Funcionários.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Usuários" textFill="WHITE" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@Default=Usuários.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Fornecedores" textFill="WHITE" GridPane.rowIndex="8">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@Default=Fornecedores.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Configurações" textFill="WHITE" GridPane.rowIndex="9">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@Default=Configurações.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <GridPane prefHeight="67.0" prefWidth="276.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="10.0" layoutY="850.0" prefHeight="111.0" prefWidth="248.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="111.0" prefWidth="279.0" style="-fx-background-color: 001C52;" text="Sair" textFill="WHITE">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="44.0" fitWidth="44.0">
+                                 <image>
+                                    <Image url="@SignOut.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
+               <children>
+                  <Pane layoutX="270.0" layoutY="300.0" prefHeight="460.0" prefWidth="726.0" style="-fx-background-color: #F9FAFF;">
+                     <children>
+                        <Label layoutX="30.0" layoutY="30.0" text="Nome do Funcionário">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="60.0" layoutY="60.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label layoutX="30.0" layoutY="110.0" text="E-mail">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="60.0" layoutY="140.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label layoutX="32.0" layoutY="190.0" text="CPF">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="60.0" layoutY="220.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label layoutX="30.0" layoutY="270.0" text="Senha">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="252.0" layoutY="370.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9;" text="Cadastrar" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <PasswordField layoutX="60.0" layoutY="300.0" prefHeight="38.0" prefWidth="618.0" style="-fx-border-color: #AEB2BF;" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="270.0" layoutY="120.0" prefHeight="178.0" prefWidth="726.0">
+                     <children>
+                        <Label alignment="BOTTOM_CENTER" layoutX="2.0" prefHeight="150.0" prefWidth="727.0" text="CADASTRO">
+                           <font>
+                              <Font size="60.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="-12.0" layoutY="136.0" prefHeight="26.0" prefWidth="730.0" text="Olá, insira as informações para cadastrar um funcionário:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
