@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.18283828382838282" layoutX="1.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1517.0">
         <items>
@@ -157,59 +156,77 @@
             </AnchorPane>
           <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
                <children>
-                  <Pane layoutX="270.0" layoutY="244.0" prefHeight="642.0" prefWidth="726.0" style="-fx-background-color: #F9FAFF;">
+                  <Pane layoutX="270.0" layoutY="104.0" prefHeight="896.0" prefWidth="726.0" style="-fx-background-color: #F9FAFF;">
                      <children>
-                        <Label layoutX="30.0" layoutY="30.0" text="Nome do Veículo">
+                        <Label fx:id="lblIdVeiculo" layoutX="30.0" layoutY="20.0" text="ID do Veículo">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="60.0" layoutY="70.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label layoutX="30.0" layoutY="115.0" text="Descrição">
+                        <TextField fx:id="txtIdVeiculo" layoutX="60.0" layoutY="50.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblQuantAssentos" layoutX="30.0" layoutY="95.0" text="Quantidade de Assentos">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="60.0" layoutY="150.0" prefHeight="68.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label layoutX="30.0" layoutY="230.0" text="Preço">
+                        <Label fx:id="lblTipoCambio" layoutX="30.0" layoutY="165.0" text="Tipo de Cambio">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="60.0" layoutY="265.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label layoutX="30.0" layoutY="310.0" text="Marca">
+                        <TextField fx:id="txtTipoCambio" layoutX="60.0" layoutY="195.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label layoutX="30.0" layoutY="235.0" text="Quantidade de Portas">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Button layoutX="250.0" layoutY="580.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9;" text="Cadastrar" textFill="WHITE">
+                        <Button layoutX="250.0" layoutY="760.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9;" text="Cadastrar" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
+                        <TextField layoutX="60.0" layoutY="265.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label layoutX="30.0" layoutY="305.0" text="Espaço Porta Mala">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="30.0" layoutY="380.0" text="Marca">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="60.0" layoutY="410.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtQuantAssentos" layoutX="60.0" layoutY="125.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
                         <TextField layoutX="60.0" layoutY="340.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label layoutX="30.0" layoutY="390.0" text="Data de Fabricação">
+                        <Label layoutX="30.0" layoutY="450.0" text="Nome">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <DatePicker layoutX="60.0" layoutY="425.0" prefHeight="44.0" prefWidth="342.0" />
-                        <Label layoutX="30.0" layoutY="480.0" text="Combustível">
+                        <TextField layoutX="60.0" layoutY="540.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label layoutX="30.0" layoutY="590.0" text="Cor">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="60.0" layoutY="520.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField layoutX="60.0" layoutY="615.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label layoutX="30.0" layoutY="660.0" text="Ano">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="60.0" layoutY="690.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
                      </children>
                   </Pane>
-                  <Pane layoutX="270.0" layoutY="10.0" prefHeight="220.0" prefWidth="726.0">
+                  <Pane layoutX="270.0" prefHeight="126.0" prefWidth="726.0">
                      <children>
-                        <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="50.0" prefHeight="150.0" prefWidth="727.0" text="CADASTRO">
+                        <Label alignment="BOTTOM_CENTER" prefHeight="70.0" prefWidth="727.0" text="CADASTRO">
                            <font>
                               <Font size="60.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="-12.0" layoutY="190.0" prefHeight="26.0" prefWidth="730.0" text="Olá insira as informações para cadastrar um veículo:">
+                        <Label alignment="CENTER" layoutX="-12.0" layoutY="70.0" prefHeight="26.0" prefWidth="730.0" text="Olá insira as informações para cadastrar um veículo:">
                            <font>
                               <Font size="20.0" />
                            </font>
