@@ -13,42 +13,73 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import modelo.Vendedores;
 
-public class TestController implements Initializable{
-	
-	 @FXML
-	    private Button btnCadastro;
+public class TestController implements Initializable {
 
-	    @FXML
-	    private TextField txtCpf;
+	@FXML
+	private Button btnCadastro;
 
-	    @FXML
-	    private TextField txtEmailF;
+	@FXML
+	private Button btnConfiguracoes;
 
-	    @FXML
-	    private TextField txtNomeF;
+	@FXML
+	private Button btnDashboard;
 
-	    @FXML
-	    private PasswordField txtSenhaF;
-	    @FXML
-	    private Label lblCpf;
+	@FXML
+	private Button btnFornecedores;
 
-	    @FXML
-	    private Label lblEmail;
+	@FXML
+	private Button btnFuncionarios;
 
-	    @FXML
-	    private Label lblNome;
+	@FXML
+	private Button btnLocacao;
 
-	    @FXML
-	    private Label lblSenha;
+	@FXML
+	private Button btnProdutos;
 
+	@FXML
+	private Button btnSair;
 
-	    @FXML
-	   private void cadastrarFuncionario(ActionEvent event) {
+	@FXML
+	private Button btnUsuarios;
 
-	    	
-	    	// !----VALIDAR SE O MÉTODO DE INSERT VAI FUNCIONAR OU NAO- --!
-	    	
-	    	
+	@FXML
+	private Label lblIdVendedor;
+
+	@FXML
+	private Label lblNome;
+
+	@FXML
+	private Label lblSalario;
+
+	@FXML
+	private Label lblSobrenome;
+
+	@FXML
+	private TextField txtNome;
+	@FXML
+	private TextField txtSalario;
+
+	@FXML
+	private TextField txtIdVendedor;
+
+	@FXML
+	private TextField txtSobrenome;
+
+	@FXML
+	private void cadastrarFuncionario(ActionEvent event) {
+
+		int idV = Integer.valueOf(txtIdVendedor.getText());
+		Double salario = Double.valueOf(txtSalario.getText());
+		String nome = txtNome.getText();
+		String sobrenome = txtSobrenome.getText();
+
+		txtIdVendedor.setText(null);
+		txtSalario.setText(null);
+		txtNome.setText(null);
+		txtSobrenome.setText(null);
+
+		// !----VALIDAR SE O MÉTODO DE INSERT VAI FUNCIONAR OU NAO- --!
+
 //	    	String nome = txtNomeF.getText();
 //Double salario = Double.valueOf(txtCpf.getText());
 //Vendedores v = new Vendedores();
@@ -62,14 +93,12 @@ public class TestController implements Initializable{
 //	    	txtNomeF.setText(null);
 //txtCpf.setText(null);
 
-	    	System.out.println("você clicou ...");
-	    	lblNome.setText("ola mundo "+ txtNomeF.getText());
-	    }
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }

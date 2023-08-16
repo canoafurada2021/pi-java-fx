@@ -169,13 +169,13 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtEmailF" layoutX="60.0" layoutY="140.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtSalario" layoutX="60.0" layoutY="140.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
                         <Label fx:id="lblNome" layoutX="32.0" layoutY="190.0" text="Nome">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtCpf" layoutX="60.0" layoutY="220.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtNome" layoutX="60.0" layoutY="220.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
                         <Label fx:id="lblSobrenome" layoutX="30.0" layoutY="270.0" text="Sobrenome">
                            <font>
                               <Font size="20.0" />
