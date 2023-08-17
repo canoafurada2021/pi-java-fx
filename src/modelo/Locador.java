@@ -3,18 +3,26 @@ package modelo;
 import java.util.Date;
 
 public class Locador extends Pessoa{
-	private Long telContato;
+	private Pessoa pessoas_cpf;
+	private Long tel_contato;
 	private String paisResidencia;
 	private Long chn;
 	private Date validadeCarteira;
 	private Long numIdentificacaoCarteira;
 	
 	
-	public Long getTelContato() {
-		return telContato;
+
+	public Pessoa getPessoas_cpf() {
+		return pessoas_cpf;
 	}
-	public void setTelContato(Long telContato) {
-		this.telContato = telContato;
+	public void setPessoas_cpf(Pessoa pessoas_cpf) {
+		this.pessoas_cpf = pessoas_cpf;
+	}
+	public Long getTel_contato() {
+		return tel_contato;
+	}
+	public void setTel_contato(Long tel_contato) {
+		this.tel_contato = tel_contato;
 	}
 	public String getPaisResidencia() {
 		return paisResidencia;
