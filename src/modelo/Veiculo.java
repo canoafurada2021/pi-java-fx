@@ -3,103 +3,49 @@ package modelo;
 import java.util.Date;
 
 public class Veiculo {
-	private int idVeiculo;
-	private String nome;
-	private String descricao;
-	private Double precoPorDia;
+	private int id_veiculo;
+	private int quant_assento;
+	private String tipo_cambio;
+	private int quant_portas;
+	private int espaco_porta_malas;
 	private String marca;
-	private String modelo;
+	private String nome;
+	private String cor;
+	private int nota_avaliacao;
+	private Double preco_por_dia;
+	private String img_Base64;
+	private int unidade_em_estoque;
 	private Categoria idCategoria;
-	private Fornecedores idFornecedores;
-	
-	
-	
-	public Categoria getIdCategoria() {
-		return idCategoria;
+	private Fornecedores cnpj;
+	public int getId_veiculo() {
+		return id_veiculo;
 	}
-	public void setIdCategoria(Categoria idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setId_veiculo(int id_veiculo) {
+		this.id_veiculo = id_veiculo;
 	}
-	public Fornecedores getIdFornecedores() {
-		return idFornecedores;
+	public int getQuant_assento() {
+		return quant_assento;
 	}
-	public void setIdFornecedores(Fornecedores idFornecedores) {
-		this.idFornecedores = idFornecedores;
+	public void setQuant_assento(int quant_assento) {
+		this.quant_assento = quant_assento;
 	}
-	public Double getPrecoPorDia() {
-		return precoPorDia;
+	public String getTipo_cambio() {
+		return tipo_cambio;
 	}
-	public void setPrecoPorDia(Double precoPorDia) {
-		this.precoPorDia = precoPorDia;
+	public void setTipo_cambio(String tipo_cambio) {
+		this.tipo_cambio = tipo_cambio;
 	}
-	public int getQuantAssento() {
-		return quantAssento;
+	public int getQuant_portas() {
+		return quant_portas;
 	}
-	public void setQuantAssento(int quantAssento) {
-		this.quantAssento = quantAssento;
+	public void setQuant_portas(int quant_portas) {
+		this.quant_portas = quant_portas;
 	}
-	public int getQuantPortas() {
-		return quantPortas;
+	public int getEspaco_porta_malas() {
+		return espaco_porta_malas;
 	}
-	public void setQuantPortas(int quantPortas) {
-		this.quantPortas = quantPortas;
-	}
-	public int getEspacoPortaMalas() {
-		return espacoPortaMalas;
-	}
-	public void setEspacoPortaMalas(int espacoPortaMalas) {
-		this.espacoPortaMalas = espacoPortaMalas;
-	}
-	public int getNotaAvaliacao() {
-		return notaAvaliacao;
-	}
-	public void setNotaAvaliacao(int notaAvaliacao) {
-		this.notaAvaliacao = notaAvaliacao;
-	}
-	public String getImgBase64() {
-		return imgBase64;
-	}
-	public void setImgBase64(String imgBase64) {
-		this.imgBase64 = imgBase64;
-	}
-	public int getUnidadeEmEstoque() {
-		return unidadeEmEstoque;
-	}
-	public void setUnidadeEmEstoque(int unidadeEmEstoque) {
-		this.unidadeEmEstoque = unidadeEmEstoque;
-	}
-	private Date anoFabricacao;
-	private String tipoCombustivel;
-	private int quantAssento;
-	private int quantPortas;
-	private int espacoPortaMalas;
-	private int notaAvaliacao;
-private String imgBase64;
-private int unidadeEmEstoque;
-	
-	public int getIdVeiculo() {
-		return idVeiculo;
-	}
-	public void setIdVeiculo(int idVeiculo) {
-		this.idVeiculo = idVeiculo;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public Double getPrecoUnitario() {
-		return precoPorDia;
-	}
-	public void setPrecoUnitario(Double precoPorDia) {
-		this.precoPorDia = precoPorDia;
+	public void setEspaco_porta_malas(int espaco_porta_malas) {
+		this.espaco_porta_malas = espaco_porta_malas;
 	}
 	public String getMarca() {
 		return marca;
@@ -107,43 +53,53 @@ private int unidadeEmEstoque;
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	public String getModelo() {
-		return modelo;
+	public String getNome() {
+		return nome;
 	}
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	public Date getAnoFabricacao() {
-		return anoFabricacao;
+	public String getCor() {
+		return cor;
 	}
-	public void setAnoFabricacao(Date anoFabricacao) {
-		this.anoFabricacao = anoFabricacao;
+	public void setCor(String cor) {
+		this.cor = cor;
 	}
-	public String getTipoCombustivel() {
-		return tipoCombustivel;
+	public int getNota_avaliacao() {
+		return nota_avaliacao;
 	}
-	public void setTipoCombustivel(String tipoCombustivel) {
-		this.tipoCombustivel = tipoCombustivel;
+	public void setNota_avaliacao(int nota_avaliacao) {
+		this.nota_avaliacao = nota_avaliacao;
 	}
-	public int getQuantEmEstoque() {
-		return quantEmEstoque;
+	public Double getPreco_por_dia() {
+		return preco_por_dia;
 	}
-	public void setQuantEmEstoque(int quantEmEstoque) {
-		this.quantEmEstoque = quantEmEstoque;
+	public void setPreco_por_dia(Double preco_por_dia) {
+		this.preco_por_dia = preco_por_dia;
 	}
-	public Date getDataUltimaAlteracao() {
-		return dataUltimaAlteracao;
+	public String getImg_Base64() {
+		return img_Base64;
 	}
-	public void setDataUltimaAlteracao(Date dataUltimaAlteracao) {
-		this.dataUltimaAlteracao = dataUltimaAlteracao;
+	public void setImg_Base64(String img_Base64) {
+		this.img_Base64 = img_Base64;
 	}
-	public String getImagemBase64() {
-		return imagemBase64;
+	public int getUnidade_em_estoque() {
+		return unidade_em_estoque;
 	}
-	public void setImagemBase64(String imagemBase64) {
-		this.imagemBase64 = imagemBase64;
+	public void setUnidade_em_estoque(int unidade_em_estoque) {
+		this.unidade_em_estoque = unidade_em_estoque;
 	}
-	private int quantEmEstoque;
-	private Date dataUltimaAlteracao;
-	private String imagemBase64;
+	public Categoria getIdCategoria() {
+		return idCategoria;
+	}
+	public void setIdCategoria(Categoria idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+	public Fornecedores getCnpj() {
+		return cnpj;
+	}
+	public void setCnpj(Fornecedores cnpj) {
+		this.cnpj = cnpj;
+	}
+	
 }
