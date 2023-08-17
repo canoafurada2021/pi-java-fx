@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.ExpansionPanel?>
+<?import com.gluonhq.charm.glisten.control.ExpansionPanelContainer?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="320.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <padding>
+      <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+   </padding>
+   <children>
+      <Pane layoutX="10.0" layoutY="14.0" prefHeight="114.0" prefWidth="302.0">
+         <children>
+            <ImageView fitHeight="114.0" fitWidth="301.0">
+               <image>
+                  <Image url="@../Downloads/FotoDoCarro.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="11.0" layoutY="135.0" prefHeight="146.0" prefWidth="144.0">
+         <children>
+            <Pane fx:id="panelNameVehicle" layoutX="-3.0" prefHeight="48.0" prefWidth="148.0" style="-fx-background-color: white;">
+               <children>
+                  <Label fx:id="lblNome" layoutX="3.0" text="Nome">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtNome" layoutX="2.0" layoutY="18.0" prefHeight="24.0" prefWidth="145.0">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+            <Pane fx:id="panelFabricadoVehicle" layoutX="-2.0" layoutY="48.0" prefHeight="48.0" prefWidth="139.0" style="-fx-background-color: white;">
+               <children>
+                  <Label fx:id="lblFabricado" layoutX="3.0" text="Fabricado">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="txtDatePicker" layoutX="2.0" layoutY="20.0" prefHeight="25.0" prefWidth="135.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="panelNameVehicle1" layoutX="-1.0" layoutY="99.0" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: white;">
+               <children>
+                  <Label fx:id="lblMarca" layoutX="2.0" text="Marca">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtMarca" layoutX="2.0" layoutY="20.0" prefHeight="24.0" prefWidth="134.0">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane layoutX="170.0" layoutY="136.0" prefHeight="150.0" prefWidth="145.0">
+         <children>
+            <Pane fx:id="panelNameVehicle1" layoutX="3.0" prefHeight="47.0" prefWidth="139.0" style="-fx-background-color: white;">
+               <children>
+                  <Label fx:id="lblNome1" layoutX="1.0" text="ID Produto">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtNome1" layoutX="1.0" layoutY="18.0" prefHeight="24.0" prefWidth="133.0">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+            <Pane fx:id="panelFabricadoVehicle1" layoutX="3.0" layoutY="48.0" prefHeight="48.0" prefWidth="137.0" style="-fx-background-color: white;">
+               <children>
+                  <Label fx:id="lblFabricado1" layoutX="3.0" text="Preço">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="txtDatePicker1" layoutX="2.0" layoutY="19.0" prefHeight="25.0" prefWidth="133.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="panelNameVehicle11" layoutX="6.0" layoutY="99.0" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: white;">
+               <children>
+                  <Label fx:id="lblMarca1" layoutX="-1.0" text="Combustível">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtMarca1" layoutX="-1.0" layoutY="19.0" prefHeight="24.0" prefWidth="133.0">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <ExpansionPanelContainer>
+          <items>
+              <ExpansionPanel />
+              <ExpansionPanel />
+          </items>
+      </ExpansionPanelContainer>
+      <Pane fx:id="panelNameVehicle2" layoutX="14.0" layoutY="291.0" prefHeight="110.0" prefWidth="294.0" style="-fx-background-color: white;">
+         <children>
+            <TextField fx:id="txtNome2" alignment="TOP_LEFT" layoutX="-2.0" layoutY="21.0" prefHeight="87.0" prefWidth="297.0" text="Descrição do produto cadastrado no sistema.">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblNome2" layoutX="-1.0" text="Descrição">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
