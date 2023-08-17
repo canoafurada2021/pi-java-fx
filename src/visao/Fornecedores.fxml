@@ -157,7 +157,7 @@
             </AnchorPane>
           <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
                <children>
-                  <Pane fx:id="panelConfiguracoes" layoutX="17.0" layoutY="79.0" prefHeight="921.0" prefWidth="1202.0" style="-fx-background-color: white;">
+                  <Pane fx:id="panelFornecedores" layoutX="17.0" layoutY="79.0" prefHeight="921.0" prefWidth="1202.0" style="-fx-background-color: white;">
                      <children>
                         <Label fx:id="lblFornecedores" layoutX="10.0" layoutY="12.0" prefHeight="45.0" prefWidth="312.0" text="Fornecedores">
                            <font>
@@ -166,17 +166,17 @@
                         </Label>
                         <TableView fx:id="tableFornecedores" layoutX="10.0" layoutY="62.0" prefHeight="851.0" prefWidth="1184.0">
                           <columns>
-                            <TableColumn prefWidth="148.0" style="-fx-background-color: #0348ce;" text="CNPJ" />
-                            <TableColumn prefWidth="226.0" style="-fx-background-color: #0348ce;" text="Nome" />
-                              <TableColumn prefWidth="155.66668701171875" style="-fx-background-color: #0348ce;" text="Telefone" />
-                              <TableColumn prefWidth="268.3333740234375" style="-fx-background-color: #0348ce;" text="Endereço" />
-                              <TableColumn prefWidth="225.6666259765625" style="-fx-background-color: #0348ce;" text="Atividade" />
-                              <TableColumn prefWidth="168.0" style="-fx-background-color: #0348ce;" text="Ações" />
+                            <TableColumn fx:id="columnCnpj" prefWidth="148.0" style="-fx-background-color: #0348ce;" text="CNPJ" />
+                            <TableColumn fx:id="columnNome" prefWidth="226.0" style="-fx-background-color: #0348ce;" text="Nome" />
+                              <TableColumn fx:id="columnTelefone" prefWidth="155.66668701171875" style="-fx-background-color: #0348ce;" text="Telefone" />
+                              <TableColumn fx:id="columnEndereco" prefWidth="268.3333740234375" style="-fx-background-color: #0348ce;" text="Endereço" />
+                              <TableColumn fx:id="columnAtividade" prefWidth="225.6666259765625" style="-fx-background-color: #0348ce;" text="Atividade" />
+                              <TableColumn fx:id="columnAcoes" prefWidth="168.0" style="-fx-background-color: #0348ce;" text="Ações" />
                           </columns>
                         </TableView>
                      </children>
                   </Pane>
-                  <Button fx:id="bntSalvar" layoutX="1057.0" layoutY="24.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce;" text="Salvar" textFill="WHITE">
+                  <Button fx:id="bntCadastrar" layoutX="1057.0" layoutY="24.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce;" text="Cadastrar" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
