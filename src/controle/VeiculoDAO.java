@@ -14,29 +14,32 @@ public class VeiculoDAO {
 
 		Connection con = c.conectar();
 		String query = "INSERT INTO veiculo "
-				+ "(idVeiculo, nome, descricao, precoUnitario, marca, modelo, anoFabricacao, tipoCombustivel, quantEmEstoque, dataUltimaAlteracao, imagemBase64, categorias_idcategorias, fornecedores_cnpj)"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "(id_veiculo, quant_assento, tipo_cambio, quant_portas, espaco_porta_malas, marca, nome, cor, nota_avaliação, preco_por_dia, img_Base64, unidade_em_estoque, "
+				+ "idCategoria, cnpj)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 
-			ps.setInt(1, v.getIdVeiculo());
-			ps.setString(2, v.getNome());
-			ps.setString(3, v.getDescricao());
-			ps.setDouble(4, v.getPrecoUnitario());
-			ps.setString(5, v.getMarca());
-			ps.setString(6, v.getModelo());
-			ps.setDate(7, new java.sql.Date(v.getAnoFabricacao().getTime()));
-			ps.setString(8, v.getTipoCombustivel());
-			ps.setInt(9, v.getQuantEmEstoque());
-			ps.setDate(10, new java.sql.Date(v.getDataUltimaAlteracao().getTime()));
-			ps.setString(11, v.getImagemBase64());
+			ps.setInt(1, v.getId_veiculo());
+			ps.setInt(3, v.getQuant_assento());
+			ps.setString(4, v.getTipo_cambio());
+			ps.setInt(5, v.getQuant_portas());
+			ps.setInt(6, v.getEspaco_porta_malas());
+			ps.setString(7, v.getMarca());
+			ps.setString(8, v.getNome());
+			ps.setString(9, v.getCor());
+			ps.setInt(10, v.getNota_avaliacao());
+			ps.setDouble(11, v.getPreco_por_dia());
+			ps.setString(12, v.getImg_Base64());
+//			ps.setInt(13, v.getIdCategoria());
+//			ps.setInt(14, v.getCnpj());
 
 			// CHAVES ESTRANGEIRAS
-			ps.setInt(12, v.getIdCategoria().getIdCategoria()); // Preenche a chave estrangeira sendo a chave primaria
+			ps.setInt(13, v.getIdCategoria().getIdCategoria()); // Preenche a chave estrangeira sendo a chave primaria
 																// da tabela o ID
 
-			ps.setInt(13, v.getIdFornecedores().getCnpj()); // Preenche a chave estrangeira sendo a chave primaria da
+			ps.setInt(14, v.getCnpj().getCnpj()); // Preenche a chave estrangeira sendo a chave primaria da
 															// tabela o cnpj
             ps.executeUpdate();
 

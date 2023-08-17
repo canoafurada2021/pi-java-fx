@@ -32,7 +32,7 @@ public class VendedoresDAO {
 	            EnumRoles cargo = EnumRoles.valueOf(cargoString);
 	            
 	            Vendedores v = new Vendedores();
-	            v.setIdVendedores(idVendedor);
+	            v.setId_vendedor(idVendedor);;
 	            v.setNome(nome);
 	            v.setSalario(salario);
 	            v.setCargo(cargo);
@@ -57,7 +57,7 @@ public class VendedoresDAO {
 
 		String query = 
 				"INSERT INTO vendedores "
-				+ "(idvendedores,"
+				+ "(id_vendedor,"
 				+ " salario, "
 				+ "nome,"
 				+ " cargo)"
@@ -67,7 +67,7 @@ public class VendedoresDAO {
 		 try {
 	            PreparedStatement ps = con.prepareStatement(query);
 
-	            ps.setInt(1, v.getIdVendedores());
+	            ps.setInt(1, v.getId_vendedor());
 	            ps.setDouble(2, v.getSalario());
 	            ps.setString(3, v.getNome());
 

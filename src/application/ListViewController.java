@@ -19,54 +19,49 @@ import controle.CategoriaDAO;
 
 public class ListViewController implements Initializable {
 
-    @FXML
-    private TableView<Categoria> tabela;
+	@FXML
+	private TableView<Categoria> tabela;
 
-    @FXML
-    private TableColumn<Categoria, String> colunaNome;
+	@FXML
+	private TableColumn<Categoria, String> colunaNome;
 
-    @FXML
-    private TableColumn<Categoria, Integer> colunaId;
+	@FXML
+	private TableColumn<Categoria, Integer> colunaId;
 
-    private ObservableList<Categoria> obsCategoria;
-    
+	private ObservableList<Categoria> obsCategoria;
+
 //    
 //    List<Categoria> categorias = new ArrayList<>(
 //            Arrays.asList(new Categoria(1, "coisinha"), new Categoria(2, "coisona")));
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        colunaId.setText("Id");
-        colunaId.setCellValueFactory(new PropertyValueFactory<>("idCategoria"));
-        
-        colunaNome.setText("Nome da Categoria");
-        colunaNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria()));
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		colunaId.setText("Id");
+		colunaId.setCellValueFactory(new PropertyValueFactory<>("idCategoria"));
 
-        
-        // método para tirar a coluna extra vazia criada como padrão no table column
-        tabela.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        carregarCategorias();
-        System.out.println("teste funcionadeus ");
-    }
+		colunaNome.setText("Nome da Categoria");
+		colunaNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria()));
 
-    public void carregarCategorias() {
-  
-    	
-    	CategoriaDAO dao = new CategoriaDAO();
-    	
-    	
-    	  ArrayList<Categoria> vendedores =     	dao.listar();
-          
-          obsCategoria = FXCollections.observableArrayList(vendedores);
+		// método para tirar a coluna extra vazia criada como padrão no table column
+		tabela.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+		carregarCategorias();
+		System.out.println("teste funcionadeus ");
+	}
 
-          tabela.setItems(obsCategoria);
-     
+	public void carregarCategorias() {
 
-          List<Categoria> categoriasFetched = dao.listar();
-          obsCategoria = FXCollections.observableArrayList(categoriasFetched);
+		CategoriaDAO dao = new CategoriaDAO();
 
-          tabela.setItems(obsCategoria);
-        tabela.setItems(obsCategoria);
-    }
+		ArrayList<Categoria> categoriass = dao.listar();
+
+		obsCategoria = FXCollections.observableArrayList(categoriass);
+
+		tabela.setItems(obsCategoria);
+
+		List<Categoria> categoriasFetched = dao.listar();
+		obsCategoria = FXCollections.observableArrayList(categoriasFetched);
+
+		tabela.setItems(obsCategoria);
+		tabela.setItems(obsCategoria);
+	}
 }
-
