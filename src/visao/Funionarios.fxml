@@ -164,12 +164,12 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tableFornecedores" layoutX="10.0" layoutY="62.0" prefHeight="851.0" prefWidth="1184.0">
+                        <TableView fx:id="tableFornecedores" layoutX="4.0" layoutY="42.0" prefHeight="851.0" prefWidth="1184.0">
                           <columns>
-                            <TableColumn fx:id="columnIdVendedor" prefWidth="139.99996948242188" style="-fx-background-color: #0348ce;" text="ID Vendedor" />
-                            <TableColumn fx:id="columnNome" prefWidth="350.0" style="-fx-background-color: #0348ce;" text="Nom" />
-                              <TableColumn fx:id="columnSalario" prefWidth="350.0" style="-fx-background-color: #0348ce;" text="Salário" />
-                              <TableColumn fx:id="columnCargo" prefWidth="350.0" style="-fx-background-color: #0348ce;" text="Cargo" />
+                            <TableColumn fx:id="columnIdVendedor" prefWidth="130.0" style="-fx-background-color: #0348ce;" text="ID Vendedor" />
+                            <TableColumn fx:id="columnNome" prefWidth="450.0" style="-fx-background-color: #0348ce;" text="Nome" />
+                              <TableColumn fx:id="columnSalario" prefWidth="200.0" style="-fx-background-color: #0348ce;" text="Salário" />
+                              <TableColumn fx:id="columnCargo" prefWidth="450.0" style="-fx-background-color: #0348ce;" text="Cargo" />
                           </columns>
                         </TableView>
                      </children>
