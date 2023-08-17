@@ -39,12 +39,12 @@ CREATE TABLE IF NOT EXISTS `empresa` (
 -- -----------------------------------------------------
 -- Table .`vendedores`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `vendedores` (
-  `id_vendedores` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `vendedor` (
+  `id_vendedor` INT NOT NULL,
   `salario` DOUBLE NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `cargo` ENUM('MASTER', 'FUNCIONARIO', 'CLIENTE') NOT NULL, -- Coluna para o cargo diretamente
-  PRIMARY KEY (`id_vendedores`)
+  PRIMARY KEY (`id_vendedor`)
 );
 
 
@@ -68,6 +68,8 @@ CREATE TABLE IF NOT EXISTS `locador` (
   `pessoas_cpf` INT NOT NULL,
   `tel_contato` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
+  `sobrenome` VARCHAR(45) NOT NULL,
+  `cpf` INT NOT NULL,
   `enderecos_id` INT NOT NULL,
   `cargo` ENUM('MASTER', 'FUNCIONARIO', 'CLIENTE') NOT NULL, -- Coluna para o cargo diretamente
   PRIMARY KEY (`pessoas_cpf`),
@@ -82,14 +84,14 @@ CREATE TABLE IF NOT EXISTS `aluguelRegistros` (
   `data_inicio` DATETIME NOT NULL,
   `quant_dias` INT NOT NULL,
   `valor` DOUBLE NOT NULL,
-  `vendedores_id_vendedores` INT NOT NULL,
+  `vendedor_id_vendedor` INT NOT NULL,
   `locador_pessoas_cpf` INT NOT NULL,
   PRIMARY KEY (
     `id_venda`,
-    `vendedores_id_vendedores`,
+    `vendedor_id_vendedor`,
     `locador_pessoas_cpf`
   ),
-  FOREIGN KEY (`vendedores_id_vendedores`) REFERENCES `vendedores` (`id_vendedores`),
+  FOREIGN KEY (`vendedor_id_vendedor`) REFERENCES `vendedor` (`id_vendedor`),
   FOREIGN KEY (`locador_pessoas_cpf`) REFERENCES `locador` (`pessoas_cpf`)
 );
 
@@ -101,16 +103,17 @@ CREATE TABLE IF NOT EXISTS `fornecedores` (
   `enderecos_id` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `telefone` INT NOT NULL,
+  `pecaFonecida` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`cnpj`),
   FOREIGN KEY (`enderecos_id`) REFERENCES `enderecos` (`id`)
 );
 -- -----------------------------------------------------
 -- Table .`categorias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `categorias` (
-  `id_categorias` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `categoria` (
+  `id_categoria` INT NOT NULL,
   `categoria` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_categorias`)
+  PRIMARY KEY (`id_categoria`)
 );
 
 
@@ -131,10 +134,10 @@ CREATE TABLE IF NOT EXISTS `veiculo`(
   `preco_por_dia` INT NOT NULL,
   `img_Base64` VARCHAR(555) NOT NULL DEFAULT "",
   `unidade_em_estoque` INT NOT NULL,
-  `categorias_id_categorias` INT NOT NULL,
+  `categoria_id_categoria` INT NOT NULL,
   `fornecedores_cnpj` INT NOT NULL,
   PRIMARY KEY (`id_veiculo`, `fornecedores_cnpj`),
-  FOREIGN KEY (`categorias_id_categorias`) REFERENCES `categorias` (`id_categorias`),
+  FOREIGN KEY (`categoria_id_categoria`) REFERENCES `categoria` (`id_categoria`),
   FOREIGN KEY (`fornecedores_cnpj`) REFERENCES `fornecedores` (`cnpj`)
 );
 
@@ -151,9 +154,10 @@ insert into enderecos (cep, id, rua, bairro, cidade, estado) values ('95590', '2
 insert into enderecos (cep, id, rua, bairro, cidade, estado) values ('9899', '3', 'Apt 1550', 'Apt 1844', 'Suite 82', 'Suite 87');
 
 
-INSERT INTO vendedores (id_vendedores, salario, nome,  cargo) VALUES (1, 2574.89, 'Patricia Cordeiro', 'FUNCIONARIO');
+INSERT INTO vendedor (id_vendedor, salario, nome,  cargo) VALUES (1, 2574.89, 'Patricia Cordeiro', 'FUNCIONARIO');
 
-insert into locador (pessoas_cpf, tel_contato, nome, enderecos_id, cargo) values ('212213454', '47988', 'Emily Joanna',  1, "CLIENTE");
+
+insert into locador (pessoas_cpf, tel_contato, nome, sobrenome, cpf, enderecos_id, cargo) values ('212213454', '47988', 'Emily Joanna',"Alves", 123456, 1, "CLIENTE");
 
 
 
@@ -161,30 +165,25 @@ insert into locador (pessoas_cpf, tel_contato, nome, enderecos_id, cargo) values
 -- inserts ENDERECOS
 
 -- inserts CATEGORIAS
-insert into categorias (id_categorias, categoria) values ('1', 'felis');
-insert into categorias (id_categorias, categoria) values ('2', 'justo');
-insert into categorias (id_categorias, categoria) values ('23', 'in lectus');
-insert into categorias (id_categorias, categoria) values ('24', 'sapien');
-insert into categorias (id_categorias, categoria) values ('25', 'semper');
+insert into categoria (id_categoria, categoria) values ('1', 'felis');
+insert into categoria (id_categoria, categoria) values ('2', 'justo');
+insert into categoria (id_categoria, categoria) values ('23', 'in lectus');
+insert into categoria (id_categoria, categoria) values ('24', 'sapien');
+insert into categoria (id_categoria, categoria) values ('25', 'semper');
 
 -- inserts FORNECEDORES
 insert into fornecedores (cnpj,  enderecos_id, nome, telefone) values (82, 1, 'João',  34244624); 
 insert into fornecedores (cnpj,  enderecos_id, nome, telefone) values (83, 2, 'Bruno',  25152528); 
 
--- inserts VENDEDORES
--- insert into vendedores (idVendedores, salario, nome, sobrenome) values (2, 1883.12, 'Emily', 'Joanna Alves','FUNCIONARIO' );
--- insert into vendedores (idVendedores, salario, nome, sobrenome  ) values (3,1883.16,'Andrieli','Mendes', 'FUNCIONARIO');
--- insert into vendedores (idVendedores, salario, nome, sobrenome) values (4, 1844.79, 'Emily', 'Neves', 'FUNCIONARIO');
 
--- inserts LOCADOR
 
 -- inserts PRODUTOS
 -- TESTE DE PRODUTO PRE CADASTRADO -------------------------------------------------
-insert into veiculo (id_veiculo, quant_assento, tipo_cambio, quant_portas, espaco_porta_malas, marca, nome, cor, ano, nota_avaliacao, preco_por_dia, img_base64, unidade_em_estoque, categorias_id_categorias, fornecedores_cnpj) values (1, 5, 'Automático', 4, '4', 'Volkswagem', 'Gol', 'Vermelho', '2018', 5.0, 300, 'https://quatrorodas.abril.com.br/wp-content/uploads/2021/02/volkswagen_gol_5-door_25.jpeg?quality=70&strip=info', 5, 23, 82);
+insert into veiculo (id_veiculo, quant_assento, tipo_cambio, quant_portas, espaco_porta_malas, marca, nome, cor, ano, nota_avaliacao, preco_por_dia, img_base64, unidade_em_estoque, categoria_id_categoria, fornecedores_cnpj) values (1, 5, 'Automático', 4, '4', 'Volkswagem', 'Gol', 'Vermelho', '2018', 5.0, 300, 'https://quatrorodas.abril.com.br/wp-content/uploads/2021/02/volkswagen_gol_5-door_25.jpeg?quality=70&strip=info', 5, 23, 82);
 
 -- inserts ALUGUELREGISTROS
 -- TESTE DE LOCAÇÃO PRE CADASTRADA -------------------------------------------------
-insert into aluguelRegistros (id_venda, forma_pagamento, data_inicio, quant_dias, valor, vendedores_id_vendedores, locador_pessoas_cpf) values (12, 'Cartão de Crédito em 5 vezes', '2005-10-24', 3, 300, 1, 212213454);
+insert into aluguelRegistros (id_venda, forma_pagamento, data_inicio, quant_dias, valor, vendedor_id_vendedor, locador_pessoas_cpf) values (12, 'Cartão de Crédito em 5 vezes', '2005-10-24', 3, 300, 1, 212213454);
 
 -- inserts LOGIN
 -- TESTE DE POPE FRANCIS MASTER E 1 VENDEDOR PRE CADASTRADOS -------------------------------------------------
@@ -193,8 +192,9 @@ insert into login (id, cpf, senha) values (1, '13093824923', '24102005' ), (2, '
 -- --- CRIAR INSERTS PARA CRIACAO DE VEICULO NO SISTEMA 
 
 SELECT * FROM login;
+SELECT * FROM categoria;
 SELECT * FROM aluguelRegistros;
-SELECT * FROM vendedores;
+SELECT * FROM vendedor;
 SELECT * FROM fornecedores;
 SELECT * FROM enderecos;
 SELECT * FROM empresa;
