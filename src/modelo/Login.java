@@ -1,7 +1,14 @@
 package modelo;
 
 public class Login {
-	  private String cpf;
+	private int id;
+	  public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	private String cpf;
 	    private String senha;
 	    private EnumRoles tipoUsuario;
 	    

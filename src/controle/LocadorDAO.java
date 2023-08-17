@@ -21,7 +21,7 @@ public class LocadorDAO {
 	        
 	        String queryPessoa = "INSERT INTO pessoas (cpf, nome, sobrenome) VALUES (?, ?, ?)";
 
-	        String query = "INSERT INTO locador (pessoas_cpf, telContato, nome, sobrenome, enderecos_id) VALUES (?, ?, ?, ?, ?)";
+	        String query = "INSERT INTO locador (pessoas_cpf, tel_contato, nome, sobrenome, enderecos_id) VALUES (?, ?, ?, ?, ?)";
 
 	        try {
 	        	
@@ -37,7 +37,7 @@ public class LocadorDAO {
 	            PreparedStatement ps = con.prepareStatement(query);
 	           
 	            ps.setFloat(1, l.getCpf());
-	            ps.setLong(2, l.getTelContato());
+	            ps.setLong(2, l.getTel_contato());
 	            ps.setString(3, l.getNome());
 	            ps.setString(4, l.getSobrenome());
 
