@@ -35,7 +35,7 @@ public class CategoriaDAO {
 	     
 	            
 	            Categoria cat = new Categoria();
-	            cat.setNome(nome);
+	            cat.setCategoria(nome);
 	            cat.setIdCategoria(idCategoria);
 	
 	            
@@ -62,12 +62,12 @@ public class CategoriaDAO {
 	//ABRE conexao com banco
 	Connection con = a.conectar();
 	
-	String query = "INSERT INTO categorias(idcategorias, categoria) VALUES(?, ?); ";
+	String query = "INSERT INTO categoria(id_categorias, categoria) VALUES(?, ?); ";
 	
 	try {
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.setString(1, Integer.toString(c.getIdCategoria()));
-		ps.setString(2, c.getNome());
+		ps.setString(2, c.getCategoria());
 		
 		//consolida a execução do comando no banco
 		ps.executeUpdate();

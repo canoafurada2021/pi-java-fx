@@ -29,9 +29,6 @@ public class ListViewController implements Initializable {
     private TableColumn<Categoria, Integer> colunaId;
 
     private ObservableList<Categoria> obsCategoria;
-
-    
-    
     
 //    
 //    List<Categoria> categorias = new ArrayList<>(
@@ -43,7 +40,7 @@ public class ListViewController implements Initializable {
         colunaId.setCellValueFactory(new PropertyValueFactory<>("idCategoria"));
         
         colunaNome.setText("Nome da Categoria");
-        colunaNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+        colunaNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria()));
 
         
         // método para tirar a coluna extra vazia criada como padrão no table column

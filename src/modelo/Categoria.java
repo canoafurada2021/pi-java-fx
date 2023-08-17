@@ -2,7 +2,7 @@ package modelo;
 
 public class Categoria {
 	private int idCategoria;
-	private String nome; //ta errado no banco 
+	private String categoria; //ta errado no banco 
 	
 
 	public int getIdCategoria() {
@@ -11,10 +11,11 @@ public class Categoria {
 	public void setIdCategoria(int idCategoria) {
 		this.idCategoria = idCategoria;
 	}
-	public String getNome() {
-		return nome;
+	public String getCategoria() {
+		return categoria;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
+	
 }
