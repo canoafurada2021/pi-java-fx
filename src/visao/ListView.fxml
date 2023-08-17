@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.control.TableColumn?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ListViewController">
    <children>
-      <ListView fx:id="lvCategorias" layoutX="21.0" layoutY="10.0" prefHeight="362.0" prefWidth="248.0" />
+      <TableView fx:id="tabela" layoutX="280.0" layoutY="10.0" prefHeight="362.0" prefWidth="310.0">
+         <columns>
+            <TableColumn fx:id="colunaNome" prefWidth="150.0"/>
+            <TableColumn fx:id="colunaId" prefWidth="80.0" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

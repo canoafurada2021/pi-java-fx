@@ -5,5 +5,6 @@ module MavanJFxProject {
 	
 	opens application to javafx.graphics, javafx.fxml;
 	
+    opens modelo to javafx.base;
 
 }
