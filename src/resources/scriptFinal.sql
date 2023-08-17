@@ -103,7 +103,6 @@ CREATE TABLE IF NOT EXISTS `fornecedores` (
   `enderecos_id` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `telefone` INT NOT NULL,
-  `pecaFonecida` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`cnpj`),
   FOREIGN KEY (`enderecos_id`) REFERENCES `enderecos` (`id`)
 );
