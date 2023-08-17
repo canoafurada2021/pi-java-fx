@@ -5,8 +5,10 @@ public class Empresa {
 	private String razaoSocial;
 	private Long telefone;
 	private Double cnpj;
-	private String nomeFantasia;
-	private String porteEmpresa;
+	private String nome_fantasia;
+	private String porte_empresa;
+	private EnumRoles cargo;
+	
 	public int getIdEmpresa() {
 		return idEmpresa;
 	}
@@ -31,16 +33,23 @@ public class Empresa {
 	public void setCnpj(Double cnpj) {
 		this.cnpj = cnpj;
 	}
-	public String getNomeFantasia() {
-		return nomeFantasia;
+	public String getNome_fantasia() {
+		return nome_fantasia;
 	}
-	public void setNomeFantasia(String nomeFantasia) {
-		this.nomeFantasia = nomeFantasia;
+	public void setNome_fantasia(String nome_fantasia) {
+		this.nome_fantasia = nome_fantasia;
 	}
-	public String getPorteEmpresa() {
-		return porteEmpresa;
+	public String getPorte_empresa() {
+		return porte_empresa;
 	}
-	public void setPorteEmpresa(String porteEmpresa) {
-		this.porteEmpresa = porteEmpresa;
-	} 
+	public void setPorte_empresa(String porte_empresa) {
+		this.porte_empresa = porte_empresa;
+	}
+	public EnumRoles getCargo() {
+		return cargo;
+	}
+	public void setCargo(EnumRoles cargo) {
+		this.cargo = cargo;
+	}
+
 }

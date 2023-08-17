@@ -1,7 +1,7 @@
 package modelo;
 
 public class Vendedores {
-	 private int idVendedores;
+	 private int id_vendedor;
 	 private Double salario;
 	 private String nome;
 	    private EnumRoles cargo; // Use o enum para o cargo
@@ -12,12 +12,13 @@ public class Vendedores {
 		public void setCargo(EnumRoles cargo) {
 			this.cargo = cargo;
 		}
-	public int getIdVendedores() {
-		return idVendedores;
-	}
-	public void setIdVendedores(int idVendedores) {
-		this.idVendedores = idVendedores;
-	}
+	
+	public int getId_vendedor() {
+			return id_vendedor;
+		}
+		public void setId_vendedor(int id_vendedor) {
+			this.id_vendedor = id_vendedor;
+		}
 	public Double getSalario() {
 		return salario;
 	}
