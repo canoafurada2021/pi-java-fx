@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerTableViewFuncionarios">
    <children>
       <SplitPane fx:id="SlipPaneConfigurações" dividerPositions="0.18283828382838282" layoutX="1.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1517.0">
         <items>
@@ -164,12 +164,12 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tableFornecedores" layoutX="4.0" layoutY="42.0" prefHeight="851.0" prefWidth="1184.0">
+                        <TableView fx:id="tableFuncionario" layoutX="14.0" layoutY="57.0" prefHeight="851.0" prefWidth="1184.0">
                           <columns>
-                            <TableColumn fx:id="columnIdVendedor" prefWidth="130.0" style="-fx-background-color: #0348ce;" text="ID Vendedor" />
-                            <TableColumn fx:id="columnNome" prefWidth="450.0" style="-fx-background-color: #0348ce;" text="Nome" />
-                              <TableColumn fx:id="columnSalario" prefWidth="200.0" style="-fx-background-color: #0348ce;" text="Salário" />
-                              <TableColumn fx:id="columnCargo" prefWidth="450.0" style="-fx-background-color: #0348ce;" text="Cargo" />
+                            <TableColumn fx:id="columnIdVendedor" prefWidth="130.0" text="ID Vendedor" />
+                            <TableColumn fx:id="columnNome" prefWidth="450.0" text="Nome" />
+                              <TableColumn fx:id="columnSalario" prefWidth="200.0" text="Salário" />
+                              <TableColumn fx:id="columnCargo" prefWidth="450.0" text="Cargo" />
                           </columns>
                         </TableView>
                      </children>

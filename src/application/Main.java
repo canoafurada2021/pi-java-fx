@@ -9,10 +9,10 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/ListView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Funionarios.fxml"));
         Parent root = loader.load();
 
-		ListViewController controller = loader.getController(); // Obtém uma referência ao controlador
+        ControllerTableViewFuncionarios controller = loader.getController(); // Obtém uma referência ao controlador
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
