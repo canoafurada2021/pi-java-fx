@@ -2,11 +2,57 @@ package controle;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modelo.Categoria;
+import modelo.EnumRoles;
+import modelo.Vendedores;
 
 public class CategoriaDAO {
+	
+	
+	
+	public ArrayList<Categoria> listar() {
+		
+	    Conexao c = Conexao.getInstancia();
+	    Connection con = c.conectar();
+	    
+	    ArrayList<Categoria> categorias = new ArrayList<>();
+
+	    
+	    String query = "SELECT * FROM categoria";
+	    
+	    try {
+	        PreparedStatement ps = con.prepareStatement(query);
+	        ResultSet rs = ps.executeQuery();
+	        
+	        while (rs.next()) {
+	            int idCategoria = rs.getInt("id_categoria");
+	            String nome = rs.getString("categoria");
+	            
+	     
+	            
+	            Categoria cat = new Categoria();
+	            cat.setNome(nome);
+	            cat.setIdCategoria(idCategoria);
+	
+	            
+	            categorias.add(cat);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        c.fecharConexao();
+	    }
+	    
+	    return categorias;
+	    
+	    
+	}
+	
+	
 	
 	public boolean inserir(Categoria c) {
 

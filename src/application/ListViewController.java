@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import modelo.Categoria;
+import controle.CategoriaDAO;
 
 public class ListViewController implements Initializable {
 
@@ -32,9 +33,9 @@ public class ListViewController implements Initializable {
     
     
     
-    
-    List<Categoria> categorias = new ArrayList<>(
-            Arrays.asList(new Categoria(1, "coisinha"), new Categoria(2, "coisona")));
+//    
+//    List<Categoria> categorias = new ArrayList<>(
+//            Arrays.asList(new Categoria(1, "coisinha"), new Categoria(2, "coisona")));
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,14 +53,22 @@ public class ListViewController implements Initializable {
     }
 
     public void carregarCategorias() {
-        Categoria c1 = new Categoria(1, "Comidas");
-        Categoria c2 = new Categoria(2, "Bebidas");
+  
+    	
+    	CategoriaDAO dao = new CategoriaDAO();
+    	
+    	
+    	  ArrayList<Categoria> vendedores =     	dao.listar();
+          
+          obsCategoria = FXCollections.observableArrayList(vendedores);
 
-        categorias.add(c1);
-        categorias.add(c2);
+          tabela.setItems(obsCategoria);
+     
 
-        obsCategoria = FXCollections.observableArrayList(categorias);
+          List<Categoria> categoriasFetched = dao.listar();
+          obsCategoria = FXCollections.observableArrayList(categoriasFetched);
 
+          tabela.setItems(obsCategoria);
         tabela.setItems(obsCategoria);
     }
 }
