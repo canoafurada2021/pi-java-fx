@@ -29,15 +29,15 @@
                         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="73.4" minHeight="10.0" prefHeight="73.4" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="47.79996337890623" minHeight="10.0" prefHeight="41.39999999999998" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="bntDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Dashboard" textFill="WHITE" GridPane.rowIndex="3">
+                        <Button fx:id="bntDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: #FFFFFF;" text="Dashboard" textFill="WHITE" GridPane.rowIndex="3">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -49,7 +49,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnProdutos" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Produtos" textFill="WHITE" GridPane.rowIndex="4">
+                        <Button fx:id="btnProdutos" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: #FFFFFF;" text="Produtos" textFill="WHITE" GridPane.rowIndex="4">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -61,7 +61,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnLocacao" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Locação" textFill="WHITE" GridPane.rowIndex="5">
+                        <Button fx:id="btnLocacao" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: #FFFFFF;" text="Locação" textFill="WHITE" GridPane.rowIndex="5">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -73,7 +73,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnFuncionarios" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: WHITE;" text="Funcionários" textAlignment="JUSTIFY" textFill="WHITE" GridPane.rowIndex="6">
+                        <Button fx:id="btnFuncionarios" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: #FFFFFF;" text="Funcionários" textAlignment="JUSTIFY" textFill="WHITE" GridPane.rowIndex="6">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -85,7 +85,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnUsuarios" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Usuários" textFill="WHITE" GridPane.rowIndex="7">
+                        <Button fx:id="btnUsuarios" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: #FFFFFF;" text="Usuários" textFill="WHITE" GridPane.rowIndex="7">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -97,7 +97,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnFornecedores" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Fornecedores" textFill="WHITE" GridPane.rowIndex="8">
+                        <Button fx:id="btnFornecedores" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: #FFFFFF;" text="Fornecedores" textFill="WHITE" GridPane.rowIndex="8">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -109,7 +109,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Configurações" textFill="WHITE" GridPane.rowIndex="9">
+                        <Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: #FFFFFF;" text="Configurações" textFill="WHITE" GridPane.rowIndex="9">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -139,7 +139,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnSair" alignment="CENTER" mnemonicParsing="false" onAction="#sair" prefHeight="111.0" prefWidth="279.0" style="-fx-background-color: 001C52;" text="Sair" textFill="WHITE">
+                        <Button fx:id="btnSair" alignment="CENTER" mnemonicParsing="false" onAction="#sair" prefHeight="111.0" prefWidth="279.0" style="-fx-background-color: #001C52;" text="Sair" textFill="WHITE">
                            <font>
                               <Font size="29.0" />
                            </font>

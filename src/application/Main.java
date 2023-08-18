@@ -11,7 +11,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Funionarios.fxml"));
         Parent root = loader.load();
+		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
+        
         ControllerTableViewFuncionarios controller = loader.getController(); // Obtém uma referência ao controlador
 
         Scene scene = new Scene(root);

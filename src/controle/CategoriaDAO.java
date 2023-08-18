@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import modelo.Categoria;
 import modelo.EnumRoles;
-import modelo.Vendedores;
+import modelo.Vendedor;
 
 public class CategoriaDAO {
 	

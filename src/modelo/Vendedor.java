@@ -1,6 +1,6 @@
 package modelo;
 
-public class Vendedores {
+public class Vendedor {
 	 private int id_vendedor;
 	 private Double salario;
 	 private String nome;
