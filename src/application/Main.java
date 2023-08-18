@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Funionarios.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Funcionarios.fxml"));
         Parent root = loader.load();
 		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 

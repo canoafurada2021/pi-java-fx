@@ -1,113 +1,72 @@
 package application;
 
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import controle.VendedorDAO;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.Pane;
 import modelo.Vendedor;
 
-public class ControllerTableViewFuncionarios implements Initializable{
+public class ControllerTableViewFuncionarios implements Initializable {
 
 	@FXML
-    private SplitPane SlipPaneConfigurações;
+	private TableView<Vendedor> tableFuncionario;
 
-    @FXML
-    private Button bntDashboard;
+	@FXML
+	private TableColumn<Vendedor, String> columnCargo;
 
-    @FXML
-    private Button bntSalvar;
+	@FXML
+	private TableColumn<Vendedor, Integer> columnIdVendedor;
 
-    @FXML
-    private Button btnConfiguracoes;
+	@FXML
+	private TableColumn<Vendedor, String> columnNome;
 
-    @FXML
-    private Button btnFornecedores;
+	@FXML
+	private TableColumn<Vendedor, Double> columnSalario;
 
-    @FXML
-    private Button btnFuncionarios;
+	private ObservableList<Vendedor> obsVendedores;
 
-    @FXML
-    private Button btnLocacao;
+	@FXML
+	private void sair(ActionEvent event) {
+		// Implemente a lógica para sair aqui
+		System.out.println("Botão de sair pressionado");
+	}
 
-    @FXML
-    private Button btnProdutos;
+	@FXML
+	private void salvarDados(ActionEvent event) {
+		System.out.println("AAAAAAAAAAAAAAAA");
+	}
 
-    @FXML
-    private Button btnSair;
+	// Formata a cédula do salário para o padrão PT-BR (R$ 0000,000)
+	NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
-    @FXML
-    private Button btnUsuarios;
-
-    @FXML
-    private Label lblFornecedores;
-
-    @FXML
-    private Pane panelConfiguracoes;
-
-    @FXML
-    private TableView<Vendedor> tableFuncionario;
-
-    @FXML
-    private TableColumn<Vendedor, String > columnCargo;
-
-    @FXML
-    private TableColumn<Vendedor, Integer> columnIdVendedor;
-
-    @FXML
-    private TableColumn<Vendedor, String> columnNome;
-
-    @FXML
-    private TableColumn<Vendedor, Double> columnSalario;
-    
-    private ObservableList<Vendedor> obsVendedores;
-    
-    
-    
-  
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		columnIdVendedor
+				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId_vendedor()));
+		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+		columnCargo
+				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCargo().toString()));
+
 		carregarVendedores();
-		System.out.println("teste deys funca");
-
 	}
-	
-	
-	
-	  @FXML
-	    void sair(ActionEvent event) {
 
-	    }
+	public void carregarVendedores() {
+		VendedorDAO dao = new VendedorDAO();
+		ArrayList<Vendedor> vendedores = dao.listar();
 
-	    @FXML
-	    void salvarDados(ActionEvent event) {
-	    	
-	    }
-	    public void carregarVendedores() {
-	    	
-	    	VendedorDAO dao = new VendedorDAO();
-	    	ArrayList<Vendedor> vendedores = dao.listar();
-	    	
-	    	obsVendedores = FXCollections.observableArrayList(vendedores);
-	    	
-	    	tableFuncionario.setItems(obsVendedores);
-	    	
-	    	List<Vendedor>vendedoresFetched = dao.listar();
-	    	obsVendedores = FXCollections.observableArrayList(vendedoresFetched);;
-	    	
-	    	tableFuncionario.setItems(obsVendedores);
-	    }
-
+		obsVendedores = FXCollections.observableArrayList(vendedores);
+		tableFuncionario.setItems(obsVendedores);
+	}
 }

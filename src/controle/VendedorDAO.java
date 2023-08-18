@@ -18,6 +18,7 @@ public class VendedorDAO {
 	    ArrayList<Vendedor> vendedores = new ArrayList<>();
 	    
 	    String query = "SELECT * FROM vendedor";
+	    
 	    try {
 	        PreparedStatement ps = con.prepareStatement(query);
 	        ResultSet rs = ps.executeQuery();
@@ -38,6 +39,9 @@ public class VendedorDAO {
 	            v.setCargo(cargo);
 	            
 	            vendedores.add(v);
+	            
+	            System.out.println("vendedores do banco");
+	            System.out.println(vendedores);
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
