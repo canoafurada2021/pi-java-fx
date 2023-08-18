@@ -81,8 +81,15 @@ public class ControllerTableViewFuncionarios implements Initializable {
                 if (value == null) {
                     return "";
                 }
+                
                 return currencyFormat.format(value);
             }
+
+			@Override
+			public Double fromString(String string) {
+				// TODO Auto-generated method stub
+				return null;
+			}
 
         };
 
