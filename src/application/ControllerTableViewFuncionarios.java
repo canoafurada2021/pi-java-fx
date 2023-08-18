@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import controle.VendedoresDAO;
+import controle.VendedorDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +17,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
-import modelo.Vendedores;
+import modelo.Vendedor;
 
 public class ControllerTableViewFuncionarios implements Initializable{
 
@@ -58,28 +58,30 @@ public class ControllerTableViewFuncionarios implements Initializable{
     private Pane panelConfiguracoes;
 
     @FXML
-    private TableView<Vendedores> tableFuncionario;
+    private TableView<Vendedor> tableFuncionario;
 
     @FXML
-    private TableColumn<Vendedores, String > columnCargo;
+    private TableColumn<Vendedor, String > columnCargo;
 
     @FXML
-    private TableColumn<Vendedores, Integer> columnIdVendedor;
+    private TableColumn<Vendedor, Integer> columnIdVendedor;
 
     @FXML
-    private TableColumn<Vendedores, String> columnNome;
+    private TableColumn<Vendedor, String> columnNome;
 
     @FXML
-    private TableColumn<Vendedores, Double> columnSalario;
+    private TableColumn<Vendedor, Double> columnSalario;
     
-    private ObservableList<Vendedores> obsVendedores;
+    private ObservableList<Vendedor> obsVendedores;
     
     
     
   
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		carregarVendedores();
+		System.out.println("teste deys funca");
+
 	}
 	
 	
@@ -91,17 +93,20 @@ public class ControllerTableViewFuncionarios implements Initializable{
 
 	    @FXML
 	    void salvarDados(ActionEvent event) {
-	    	VendedoresDAO dao = new VendedoresDAO();
-	    	ArrayList<Vendedores> vendedores = dao.listar();
+	    	
+	    }
+	    public void carregarVendedores() {
+	    	
+	    	VendedorDAO dao = new VendedorDAO();
+	    	ArrayList<Vendedor> vendedores = dao.listar();
 	    	
 	    	obsVendedores = FXCollections.observableArrayList(vendedores);
 	    	
 	    	tableFuncionario.setItems(obsVendedores);
 	    	
-	    	List<Vendedores>vendedoresFetched = dao.listar();
+	    	List<Vendedor>vendedoresFetched = dao.listar();
 	    	obsVendedores = FXCollections.observableArrayList(vendedoresFetched);;
 	    	
-	    	tableFuncionario.setItems(obsVendedores);
 	    	tableFuncionario.setItems(obsVendedores);
 	    }
 

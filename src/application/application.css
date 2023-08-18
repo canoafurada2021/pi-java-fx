@@ -1,1 +1,31 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/* Estilo para o botão Funcionários */
+.button#btnFuncionarios {
+    -fx-background-color: #001C52; /* Cor de fundo azul */
+    -fx-text-fill: #FFFFFF; /* Cor do texto branco */
+}
+
+/* Estilo para o botão Usuários */
+.button#btnUsuarios {
+    -fx-background-color: #001C52; /* Cor de fundo verde */
+    -fx-text-fill: #FFFFFF; /* Cor do texto branco */
+}
+
+/* Estilo para o botão Fornecedores */
+.button#btnFornecedores {
+    -fx-background-color: #001C52; /* Cor de fundo laranja */
+    -fx-text-fill: #FFFFFF; /* Cor do texto branco */
+}
+
+/* Estilo para o botão Configurações */
+.button#btnConfiguracoes {
+    -fx-background-color: #001C52; /* Cor de fundo vermelha */
+    -fx-text-fill: #FFFFFF; /* Cor do texto branco */
+}
+
+/* Estilo para o botão Sair */
+.button#btnSair {
+    -fx-background-color: #001C52; /* Cor de fundo cinza escuro */
+    -fx-text-fill: #FFFFFF; /* Cor do texto branco */
+}
+
+/* Adicione estilos semelhantes para outros botões, se necessário */

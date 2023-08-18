@@ -154,6 +154,7 @@ insert into enderecos (cep, id, rua, bairro, cidade, estado) values ('9899', '3'
 
 
 INSERT INTO vendedor (id_vendedor, salario, nome,  cargo) VALUES (1, 2574.89, 'Patricia Cordeiro', 'FUNCIONARIO');
+INSERT INTO vendedor (id_vendedor, salario, nome,  cargo) VALUES (3, 3452.90, 'Andrieli Mendes', 'FUNCIONARIO');
 
 
 insert into locador (pessoas_cpf, tel_contato, nome, sobrenome, cpf, enderecos_id, cargo) values ('212213454', '47988', 'Emily Joanna',"Alves", 123456, 1, "CLIENTE");

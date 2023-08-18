@@ -7,23 +7,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.EnumRoles;
-import modelo.Vendedores;
+import modelo.Vendedor;
 
-public class VendedoresDAO {
+public class VendedorDAO {
 
-	public ArrayList<Vendedores> listar() {
+	public ArrayList<Vendedor> listar() {
 	    Conexao c = Conexao.getInstancia();
 	    Connection con = c.conectar();
 	    
-	    ArrayList<Vendedores> vendedores = new ArrayList<>();
+	    ArrayList<Vendedor> vendedores = new ArrayList<>();
 	    
-	    String query = "SELECT * FROM vendedores";
+	    String query = "SELECT * FROM vendedor";
 	    try {
 	        PreparedStatement ps = con.prepareStatement(query);
 	        ResultSet rs = ps.executeQuery();
 	        
 	        while (rs.next()) {
-	            int idVendedor = rs.getInt("idvendedores");
+	            int idVendedor = rs.getInt("id_vendedor");
 	            String nome = rs.getString("nome");
 	            double salario = rs.getDouble("salario");
 	            
@@ -31,7 +31,7 @@ public class VendedoresDAO {
 	            String cargoString = rs.getString("cargo");
 	            EnumRoles cargo = EnumRoles.valueOf(cargoString);
 	            
-	            Vendedores v = new Vendedores();
+	            Vendedor v = new Vendedor();
 	            v.setId_vendedor(idVendedor);;
 	            v.setNome(nome);
 	            v.setSalario(salario);
@@ -49,14 +49,14 @@ public class VendedoresDAO {
 	}
 
 	
-	public boolean inserir(Vendedores v) {
+	public boolean inserir(Vendedor v) {
 
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
 
 		String query = 
-				"INSERT INTO vendedores "
+				"INSERT INTO vendedor "
 				+ "(id_vendedor,"
 				+ " salario, "
 				+ "nome,"

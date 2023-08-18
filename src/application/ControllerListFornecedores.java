@@ -12,7 +12,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
-import modelo.Vendedores;
+import modelo.Vendedor;
 
 public class ControllerListFornecedores implements Initializable{
 
