@@ -107,6 +107,7 @@ CREATE TABLE IF NOT EXISTS `fornecedores` (
   `enderecos_id` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `telefone` INT NOT NULL,
+  `atividades` VARCHAR(90) NOT NULL,
   PRIMARY KEY (`cnpj`),
   FOREIGN KEY (`enderecos_id`) REFERENCES `enderecos` (`id`)
 );
@@ -175,8 +176,8 @@ insert into categoria (id_categoria, categoria) values ('24', 'sapien');
 insert into categoria (id_categoria, categoria) values ('25', 'semper');
 
 -- inserts FORNECEDORES
-insert into fornecedores (cnpj,  enderecos_id, nome, telefone) values (82, 1, 'João',  34244624); 
-insert into fornecedores (cnpj,  enderecos_id, nome, telefone) values (83, 2, 'Bruno',  25152528); 
+insert into fornecedores (cnpj,  enderecos_id, nome, atividades, telefone) values (82, 1, 'João', 'Honda FIT', 34244624); 
+insert into fornecedores (cnpj,  enderecos_id, nome, atividades, telefone) values (83, 2, 'Bruno','Sportage',  25152528); 
 
 
 

@@ -1,8 +1,14 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import controle.FornecedorDAO;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +19,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import modelo.Categoria;
+import modelo.Fornecedores;
 import modelo.Vendedor;
 
 public class ControllerListFornecedores implements Initializable{
@@ -48,30 +56,35 @@ public class ControllerListFornecedores implements Initializable{
     private Label lblFornecedores;
     
     @FXML
-    private TableView<?> tableFornecedores;
+    private TableView<Fornecedores> tableFornecedores;
     
     @FXML
-    private TableColumn<?, ?> columnCnpj;
+    private TableColumn<Fornecedores, Integer > columnCnpj;
     
     @FXML
-    private TableColumn<?, ?> columnNome;
+    private TableColumn<Fornecedores, String> columnNome;
     
     @FXML
-    private TableColumn<?, ?> columnTelefone;
+    private TableColumn<Fornecedores, Integer> columnTelefone;
     
     @FXML
-    private TableColumn<?, ?> columnEndereco;
+    private TableColumn<Fornecedores, String> columnEndereco;
     
-    @FXML
-    private TableColumn<?, ?> columnAtividade;
+   @FXML
+    private TableColumn<Fornecedores, String> columnAtividade;
+//    
+//    @FXML
+//    private TableColumn<?, ?> columnAcoes;
     
-    @FXML
-    private TableColumn<?, ?> columnAcoes;
+    
+	private ObservableList<Fornecedores> obsFornecedores;
+
     
     @FXML
     private Button bntCadastrar;
 
     // Add event handler methods here
+    
     
     @FXML
     public void sair(ActionEvent event) {
@@ -81,15 +94,37 @@ public class ControllerListFornecedores implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
+		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+		columnTelefone.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTelefone()));
+		columnAtividade.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAtividades()));
 		
+		columnEndereco.setCellValueFactory(cellData -> {
+		        Fornecedores fornecedor = cellData.getValue();
+		        String rua = "";
+		        if (fornecedor.getEnderecoId() != null) {
+		            rua = fornecedor.getEnderecoId().getRua();
+		        }
+		        return new SimpleStringProperty(rua);
+		    });
 		
+		carregarFornecedores();
 	}
 	
 	
 	@FXML
 	public void salvarDados(ActionEvent event) {
 	    // Lógica para salvar os dados
+	}
+	
+	
+	public void carregarFornecedores() {
+		FornecedorDAO dao = new FornecedorDAO();
+		
+		ArrayList<Fornecedores> fornecedores = dao.listar();
+		
+		obsFornecedores = FXCollections.observableArrayList(fornecedores);
+		tableFornecedores.setItems(obsFornecedores);
 	}
 
 }

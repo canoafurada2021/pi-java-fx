@@ -18,9 +18,9 @@
    <children>
       <SplitPane fx:id="SlipPaneConfigurações" dividerPositions="0.18283828382838282" layoutX="1.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1517.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1016.0" prefWidth="283.0" style="-fx-background-color: #001C52;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="808.0" prefWidth="174.0" style="-fx-background-color: #001C52;">
                <children>
-                  <GridPane layoutX="-3.0" prefHeight="574.0" prefWidth="276.0">
+                  <GridPane layoutX="98.0" layoutY="-13.0" prefHeight="633.0" prefWidth="176.0">
                     <columnConstraints>
                       <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -37,30 +37,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="bntDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Dashboard" textFill="WHITE" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="imgDashboard" fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/Default=Dashboard.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnProdutos" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Produtos" textFill="WHITE" GridPane.rowIndex="4">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="imgProdutos" fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/Default=Product.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                         <Button fx:id="btnLocacao" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Locação" textFill="WHITE" GridPane.rowIndex="5">
                            <font>
                               <Font size="20.0" />
@@ -109,7 +85,27 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Configurações" textFill="WHITE" GridPane.rowIndex="9">
+                        <GridPane prefHeight="67.0" prefWidth="276.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                        <Button fx:id="bntDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="51.0" prefWidth="480.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Dashboard" textFill="WHITE" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fx:id="imgDashboard" fitHeight="35.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/Default=Dashboard.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="51.0" prefWidth="264.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Configurações" textFill="WHITE" GridPane.rowIndex="9">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -121,14 +117,18 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <GridPane prefHeight="67.0" prefWidth="276.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
+                        <Button fx:id="btnProdutos" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="51.0" prefWidth="217.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Produtos" textFill="WHITE" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fx:id="imgProdutos" fitHeight="35.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/Default=Product.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </GridPane>
                   <GridPane layoutX="10.0" layoutY="850.0" prefHeight="111.0" prefWidth="248.0">
@@ -138,21 +138,19 @@
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
-                     <children>
-                        <Button fx:id="btnSair" alignment="CENTER" mnemonicParsing="false" onAction="#sair" prefHeight="111.0" prefWidth="279.0" style="-fx-background-color: 001C52;" text="Sair" textFill="WHITE">
-                           <font>
-                              <Font size="29.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="imgSair" fitHeight="44.0" fitWidth="44.0">
-                                 <image>
-                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/SignOut.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
                   </GridPane>
+                  <Button fx:id="btnSair" alignment="CENTER" layoutX="-5.0" layoutY="660.0" mnemonicParsing="false" onAction="#sair" prefHeight="111.0" prefWidth="279.0" style="-fx-background-color: 001C52;" text="Sair" textFill="WHITE">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="imgSair" fitHeight="44.0" fitWidth="44.0">
+                           <image>
+                              <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/SignOut.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
           <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
@@ -166,12 +164,12 @@
                         </Label>
                         <TableView fx:id="tableFornecedores" layoutX="10.0" layoutY="62.0" prefHeight="851.0" prefWidth="1184.0">
                           <columns>
-                            <TableColumn fx:id="columnCnpj" prefWidth="148.0" style="-fx-background-color: #0348ce;" text="CNPJ" />
-                            <TableColumn fx:id="columnNome" prefWidth="226.0" style="-fx-background-color: #0348ce;" text="Nome" />
-                              <TableColumn fx:id="columnTelefone" prefWidth="155.66668701171875" style="-fx-background-color: #0348ce;" text="Telefone" />
-                              <TableColumn fx:id="columnEndereco" prefWidth="268.3333740234375" style="-fx-background-color: #0348ce;" text="Endereço" />
-                              <TableColumn fx:id="columnAtividade" prefWidth="225.6666259765625" style="-fx-background-color: #0348ce;" text="Atividade" />
-                              <TableColumn fx:id="columnAcoes" prefWidth="168.0" style="-fx-background-color: #0348ce;" text="Ações" />
+                            <TableColumn fx:id="columnCnpj" prefWidth="148.0"  text="CNPJ" />
+                            <TableColumn fx:id="columnNome" prefWidth="226.0"  text="Nome" />
+                              <TableColumn fx:id="columnTelefone" prefWidth="155.66668701171875" text="Telefone" />
+                              <TableColumn fx:id="columnEndereco" prefWidth="268.3333740234375"  text="Endereço" />
+                              <TableColumn fx:id="columnAtividade" prefWidth="225.6666259765625" text="Atividade" />
+                              <TableColumn fx:id="columnAcoes" prefWidth="168.0" text="Ações" />
                           </columns>
                         </TableView>
                      </children>

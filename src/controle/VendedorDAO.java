@@ -40,8 +40,6 @@ public class VendedorDAO {
 	            
 	            vendedores.add(v);
 	            
-	            System.out.println("vendedores do banco");
-	            System.out.println(vendedores);
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();

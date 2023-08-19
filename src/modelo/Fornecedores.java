@@ -6,8 +6,19 @@ private int cnpj;
 private Endereco enderecoId;
 private String nome;
 private int telefone;
+private String atividades;
+
+
+
+
 public int getCnpj() {
 	return cnpj;
+}
+public String getAtividades() {
+	return atividades;
+}
+public void setAtividades(String atividades) {
+	this.atividades = atividades;
 }
 public void setCnpj(int cnpj) {
 	this.cnpj = cnpj;
