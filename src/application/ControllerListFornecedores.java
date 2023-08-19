@@ -15,10 +15,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Callback;
 import modelo.Categoria;
 import modelo.Fornecedores;
 import modelo.Vendedor;
@@ -65,7 +67,7 @@ public class ControllerListFornecedores implements Initializable{
     private TableColumn<Fornecedores, String> columnNome;
     
     @FXML
-    private TableColumn<Fornecedores, Integer> columnTelefone;
+    private TableColumn<Fornecedores, Long> columnTelefone;
     
     @FXML
     private TableColumn<Fornecedores, String> columnEndereco;
@@ -96,8 +98,13 @@ public class ControllerListFornecedores implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
-		columnTelefone.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTelefone()));
 		columnAtividade.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAtividades()));
+		
+		
+		// pega o valor do endereço com base no id de endereço existente no back-end e exibe somente a rua.
+		// caso seja necessário mais informações a respeito do endereço, seguir o exemplo existente
+		// e ajustar. Por exemplo para o dado CEP do endereço cadastrado no id 1: 'cep = fornecedor.getEnderecoId.getCep()'
+		// para exibir tudo relacionado ao endereco, adicionar mais colunas específicas para a entidade 'Endereco nessa tabela
 		
 		columnEndereco.setCellValueFactory(cellData -> {
 		        Fornecedores fornecedor = cellData.getValue();
@@ -107,6 +114,46 @@ public class ControllerListFornecedores implements Initializable{
 		        }
 		        return new SimpleStringProperty(rua);
 		    });
+		
+		
+		
+	    // Configuração da coluna de telefone com formatação
+		  // Configuração da coluna de telefone com formatação
+	    columnTelefone.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTelefone()));
+	   
+	    
+	    
+	    
+columnTelefone.setCellFactory(tc -> new TableCell<Fornecedores, Long>(){
+	
+	//máscara responsável pela formatação de número de telefone com base no modelo (99) 99999-9999
+    @Override
+    protected void updateItem(Long telefone, boolean empty) {
+    	
+        super.updateItem(telefone, empty);
+        
+        //caso o numero venha vazio a mascara não será aplicada
+        if (telefone == null || empty) {
+            setText(null);
+            // faz a formatação com base na quantidade de caracteres dentro do atributo 'Telefone'da classe 'Fornecedores'
+            //padrão de número de telefone com 11 dígitos no modelo Brasileiro (padrões do tipo EUA não irão funcionar)
+        } else {
+            String telefoneStr = String.valueOf(telefone);
+            if (telefoneStr.length() == 10) {
+                setText("(" + telefoneStr.substring(0, 2) + ") " +
+                        telefoneStr.substring(2, 6) + "-" +
+                        telefoneStr.substring(6));
+            } else if (telefoneStr.length() == 11) {
+                setText("(" + telefoneStr.substring(0, 2) + ") " +
+                        telefoneStr.substring(2, 7) + "-" +
+                        telefoneStr.substring(7));
+            } else {
+                setText(telefoneStr);
+            }
+        }
+    }
+});
+		
 		
 		carregarFornecedores();
 	}
@@ -125,6 +172,23 @@ public class ControllerListFornecedores implements Initializable{
 		
 		obsFornecedores = FXCollections.observableArrayList(fornecedores);
 		tableFornecedores.setItems(obsFornecedores);
+	}
+	
+	
+	
+	
+	public class TelefoneFormatter {
+	    public static String formatTelefoneBrasil(int telefone) {
+	        String telefoneStr = String.valueOf(telefone);
+	        if (telefoneStr.length() == 10) { // (XX) XXXX-XXXX
+	            return "(" + telefoneStr.substring(0, 2) + ") " + 
+	                   telefoneStr.substring(2, 6) + "-" + telefoneStr.substring(6);
+	        } else if (telefoneStr.length() == 11) { // (XX) XXXXX-XXXX
+	            return "(" + telefoneStr.substring(0, 2) + ") " + 
+	                   telefoneStr.substring(2, 7) + "-" + telefoneStr.substring(7);
+	        }
+	        return telefoneStr; // Retornar sem formatação se não corresponder a nenhum padrão
+	    }
 	}
 
 }

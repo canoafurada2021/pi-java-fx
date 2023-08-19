@@ -5,7 +5,7 @@ private int cnpj;
 
 private Endereco enderecoId;
 private String nome;
-private int telefone;
+private Long telefone;
 private String atividades;
 
 
@@ -35,10 +35,10 @@ public String getNome() {
 public void setNome(String nome) {
 	this.nome = nome;
 }
-public int getTelefone() {
+public long getTelefone() {
 	return telefone;
 }
-public void setTelefone(int telefone) {
+public void setTelefone(long telefone) {
 	this.telefone = telefone;
 }
 }

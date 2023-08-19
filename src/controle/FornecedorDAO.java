@@ -33,7 +33,7 @@ public class FornecedorDAO {
 	    		
 	    	int cnpj = rs.getInt("cnpj");
 	    	String nome = rs.getString("nome");
-	    	int telefone = rs.getInt("telefone");
+	    	Long telefone = rs.getLong("telefone");
 	    	String atividades = rs.getString("atividades");
 	    	
 	    	Fornecedores f = new Fornecedores();
@@ -89,7 +89,7 @@ public class FornecedorDAO {
 			ps.setString(3, f.getNome());
 			ps.setString(4, f.getAtividades());
 
-			ps.setInt(5, f.getTelefone());
+			ps.setLong(5, f.getTelefone());
 
 			// Consolidar a execução do comando no banco
 			ps.executeUpdate();
