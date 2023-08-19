@@ -66,15 +66,19 @@ CREATE TABLE IF NOT EXISTS `enderecos` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `locador` (
   `pessoas_cpf` INT NOT NULL,
-  `tel_contato` INT NOT NULL,
+  `tel_contato` LONG NOT NULL,
+  `pais_residencia` VARCHAR(45) NOT NULL,
+  `cnh` LONG NOT NULL,
+  `validade_carteira` DATE NOT NULL,
+  `num_identificacao_carteira` LONG NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `sobrenome` VARCHAR(45) NOT NULL,
-  `cpf` INT NOT NULL,
-  `enderecos_id` INT NOT NULL,
   `cargo` ENUM('MASTER', 'FUNCIONARIO', 'CLIENTE') NOT NULL, -- Coluna para o cargo diretamente
-  PRIMARY KEY (`pessoas_cpf`),
-  FOREIGN KEY (`enderecos_id`) REFERENCES `enderecos` (`id`)
+  PRIMARY KEY (`pessoas_cpf`)
 );
+
+insert into locador (pessoas_cpf, tel_contato, pais_residencia,cnh,validade_carteira,  num_identificacao_carteira, nome, sobrenome, cargo) values ('212213454', 47988989,'BRASIL', 89111042,'2023-08-20', 012344,'Emily Joanna',"Alves",   "CLIENTE");
+
 -- -----------------------------------------------------
 -- Table .`vendaRegistros`
 -- -----------------------------------------------------
@@ -157,7 +161,6 @@ INSERT INTO vendedor (id_vendedor, salario, nome,  cargo) VALUES (1, 2574.89, 'P
 INSERT INTO vendedor (id_vendedor, salario, nome,  cargo) VALUES (3, 3452.90, 'Andrieli Mendes', 'FUNCIONARIO');
 
 
-insert into locador (pessoas_cpf, tel_contato, nome, sobrenome, cpf, enderecos_id, cargo) values ('212213454', '47988', 'Emily Joanna',"Alves", 123456, 1, "CLIENTE");
 
 
 
@@ -198,6 +201,7 @@ SELECT * FROM vendedor;
 SELECT * FROM fornecedores;
 SELECT * FROM enderecos;
 SELECT * FROM empresa;
+SELECT * FROM locador;
 -- SELECTSSSSSSSSSSSSSSSSSS -----------------------------------------------------------------------------------------
 -- -------------------------------
 

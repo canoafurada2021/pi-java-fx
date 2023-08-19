@@ -12,10 +12,12 @@ public class AluguelRegistro {
 	private Double valor;
 	private int vendedor_id_vendedor;
 	private int locador_pessoas_cpf;
-	
 	private ArrayList<Veiculo> carrinho = new ArrayList<>();
 	private Locador idLocador;
 	private EnumPagamento formaPagamento;
+	
+	
+	
 	public int getIdVenda() {
 		return idVenda;
 	}
