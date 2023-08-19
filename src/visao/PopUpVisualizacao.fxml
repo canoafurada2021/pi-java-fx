@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.ExpansionPanel?>
-<?import com.gluonhq.charm.glisten.control.ExpansionPanelContainer?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -12,122 +12,122 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="320.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="Panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="328.0" style="-fx-background-color: white; -fx-border-radius: 16;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <padding>
       <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
    </padding>
    <children>
-      <Pane layoutX="10.0" layoutY="14.0" prefHeight="114.0" prefWidth="302.0">
+      <Pane fx:id="panelFotoVeiculo" layoutX="10.0" layoutY="14.0" prefHeight="114.0" prefWidth="305.0">
          <children>
-            <ImageView fitHeight="114.0" fitWidth="301.0">
+            <ImageView fitHeight="114.0" fitWidth="306.0">
                <image>
-                  <Image url="@../Downloads/FotoDoCarro.png" />
+                  <Image url="@FotoVehicle.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="11.0" layoutY="135.0" prefHeight="146.0" prefWidth="144.0">
+      <Pane fx:id="panelDireito" layoutX="12.0" layoutY="135.0" prefHeight="146.0" prefWidth="147.0">
          <children>
-            <Pane fx:id="panelNameVehicle" layoutX="-3.0" prefHeight="48.0" prefWidth="148.0" style="-fx-background-color: white;">
+            <Pane fx:id="panelNameVehicle" layoutX="-1.0" layoutY="-2.0" prefHeight="45.0" prefWidth="147.0" style="-fx-background-color: white;">
                <children>
-                  <Label fx:id="lblNome" layoutX="3.0" text="Nome">
+                  <Label fx:id="lblNome" layoutX="2.0" style="-fx-font-family: Inter;" text="Nome">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtNome" layoutX="2.0" layoutY="18.0" prefHeight="24.0" prefWidth="145.0">
+                  <TextField fx:id="txtNome" layoutX="2.0" layoutY="18.0" prefHeight="16.0" prefWidth="145.0" style="-fx-border-color: #B9BDCA; -fx-background-color: white; -fx-border-radius: 2;" text="WRANGLER RUBICON 4X4">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </TextField>
                </children>
             </Pane>
-            <Pane fx:id="panelFabricadoVehicle" layoutX="-2.0" layoutY="48.0" prefHeight="48.0" prefWidth="139.0" style="-fx-background-color: white;">
+            <Pane fx:id="panelFabricadoVehicle" layoutX="-2.0" layoutY="46.0" prefHeight="45.0" prefWidth="147.0" style="-fx-background-color: white;">
                <children>
-                  <Label fx:id="lblFabricado" layoutX="3.0" text="Fabricado">
+                  <Label fx:id="lblFabricado" layoutX="3.0" layoutY="-1.0" style="-fx-font-family: Inter;" text="Fabricado">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="txtDatePicker" layoutX="2.0" layoutY="20.0" prefHeight="25.0" prefWidth="135.0" />
+                  <DatePicker fx:id="txtDatePicker" layoutX="3.0" layoutY="20.0" prefHeight="16.0" prefWidth="145.0" promptText="2023-08-16" style="-fx-border-color: #B9BDCA; -fx-background-color: white; -fx-border-radius: 2;" />
                </children>
             </Pane>
-            <Pane fx:id="panelNameVehicle1" layoutX="-1.0" layoutY="99.0" prefHeight="44.0" prefWidth="136.0" style="-fx-background-color: white;">
+            <Pane fx:id="panelMarcaVehicle" layoutX="-1.0" layoutY="99.0" prefHeight="45.0" prefWidth="147.0" style="-fx-background-color: white;">
                <children>
-                  <Label fx:id="lblMarca" layoutX="2.0" text="Marca">
+                  <Label fx:id="lblMarca" layoutX="2.0" style="-fx-font-family: Inter;" text="Marca">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtMarca" layoutX="2.0" layoutY="20.0" prefHeight="24.0" prefWidth="134.0">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </TextField>
+                  <ChoiceBox fx:id="checkBoxMarca" layoutX="2.0" layoutY="19.0" prefHeight="16.0" prefWidth="145.0" style="-fx-border-color: #B9BDCA; -fx-background-color: white; -fx-border-radius: 2;" />
                </children>
             </Pane>
          </children>
       </Pane>
-      <Pane layoutX="170.0" layoutY="136.0" prefHeight="150.0" prefWidth="145.0">
+      <Pane fx:id="PanelEsquerdo" layoutX="168.0" layoutY="136.0" prefHeight="145.0" prefWidth="147.0">
          <children>
-            <Pane fx:id="panelNameVehicle1" layoutX="3.0" prefHeight="47.0" prefWidth="139.0" style="-fx-background-color: white;">
+            <Pane fx:id="panelIdProduto" layoutY="-4.0" prefHeight="45.0" prefWidth="147.0" style="-fx-background-color: white;">
                <children>
-                  <Label fx:id="lblNome1" layoutX="1.0" text="ID Produto">
+                  <Label fx:id="lblIdProduto" layoutX="2.0" layoutY="1.0" style="-fx-font-family: Inter;" text="ID Produto">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtNome1" layoutX="1.0" layoutY="18.0" prefHeight="24.0" prefWidth="133.0">
+                  <TextField fx:id="txtIdProduto" layoutX="1.0" layoutY="19.0" prefHeight="16.0" prefWidth="145.0" style="-fx-border-color: #B9BDCA; -fx-background-color: white; -fx-border-radius: 2;" text="13142553454">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </TextField>
                </children>
             </Pane>
-            <Pane fx:id="panelFabricadoVehicle1" layoutX="3.0" layoutY="48.0" prefHeight="48.0" prefWidth="137.0" style="-fx-background-color: white;">
+            <Pane fx:id="panelPreco" layoutY="44.0" prefHeight="45.0" prefWidth="147.0" style="-fx-background-color: white;">
                <children>
-                  <Label fx:id="lblFabricado1" layoutX="3.0" text="Preço">
+                  <Label fx:id="lblPreco" layoutX="1.0" style="-fx-font-family: Inter;" text="Preço">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="txtDatePicker1" layoutX="2.0" layoutY="19.0" prefHeight="25.0" prefWidth="133.0" />
-               </children>
-            </Pane>
-            <Pane fx:id="panelNameVehicle11" layoutX="6.0" layoutY="99.0" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: white;">
-               <children>
-                  <Label fx:id="lblMarca1" layoutX="-1.0" text="Combustível">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtMarca1" layoutX="-1.0" layoutY="19.0" prefHeight="24.0" prefWidth="133.0">
+                  <TextField fx:id="txtPreco" layoutX="1.0" layoutY="21.0" prefHeight="16.0" prefWidth="145.0" style="-fx-border-color: #B9BDCA; -fx-background-color: white; -fx-border-radius: 2;" text="R$ 481.834,00">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </TextField>
+               </children>
+            </Pane>
+            <Pane fx:id="panelCombustivel" layoutX="1.0" layoutY="97.0" prefHeight="45.0" prefWidth="147.0" style="-fx-background-color: white;">
+               <children>
+                  <Label fx:id="lblCombustivel" layoutX="-1.0" layoutY="1.0" style="-fx-font-family: Inter;" text="Combustível">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="checkBoxMarca1" layoutY="20.0" prefHeight="16.0" prefWidth="145.0" style="-fx-border-color: #B9BDCA; -fx-background-color: white; -fx-border-radius: 2;" />
                </children>
             </Pane>
          </children>
       </Pane>
-      <ExpansionPanelContainer>
-          <items>
-              <ExpansionPanel />
-              <ExpansionPanel />
-          </items>
-      </ExpansionPanelContainer>
-      <Pane fx:id="panelNameVehicle2" layoutX="14.0" layoutY="291.0" prefHeight="110.0" prefWidth="294.0" style="-fx-background-color: white;">
+      <Pane fx:id="panelDescricao" layoutX="14.0" layoutY="290.0" prefHeight="102.0" prefWidth="294.0" style="-fx-background-color: white;">
          <children>
-            <TextField fx:id="txtNome2" alignment="TOP_LEFT" layoutX="-2.0" layoutY="21.0" prefHeight="87.0" prefWidth="297.0" text="Descrição do produto cadastrado no sistema.">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </TextField>
-            <Label fx:id="lblNome2" layoutX="-1.0" text="Descrição">
+            <Label fx:id="lblDescricao" layoutX="-1.0" text="Descrição">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <TextField fx:id="txtDescricao" alignment="TOP_LEFT" layoutY="20.0" prefHeight="80.0" prefWidth="295.0" style="-fx-border-style: #B9BDCA; -fx-background-radius: 2;" text="Aviso de colisão frontal com frenagem de emergência (AEB)Comutação automática dos faróisMonitoramento de pontos cegosPiloto automático adaptativo com controle de velocidade (ACC)TrailCam - Câmera Frontal Off-RoadAdaptive Cruise Control W/StopAnti-Spin Diferential Rear AxleAuto High Beam HeadlampBody Color Fende FlaresBody Color Hard TopComfort And Conveniance GroupFull Speed Fwd Collision Warning PlusLed Lighting GroupMopar All-Weather Floor MatsOff Road Front CameraOverland GroupSecurity AlarmTechnology GroupUconnect Nav 8.4&quot;Airbags frontais e lateraisAlarme de segurançaAlternador de 220 AMPApoios de cabeça no banco traseiroApple Carplay e Android AutoAr condicionado com controle de temperatura automáticoBanco do motorista com regulagem de alturaBanco traseiro rebatívelBancos dianteiros com bolsa porta-objetos no encostoBancos dianteiros reclináveisBancos revestidos em couroBarra de segurança anticapotamentoBarras estabilizadoras dianteira e traseiraCâmbio automático de 8 velocidadesCâmera de réCentral Multimídia Uconnect de 8,4&quot;Chave com telecomandoCinto traseiro de 3 pontosCintos de segurança com ajuste de alturaCobertura de pneu sobressalente de capa rígida e na cor do veículoCobertura do teto em material rígido e na cor do veículoColuna de direção ajustável em altura e profundidadeComandos de áudio no volanteComputador de Bordo (distância, consumo médio, consumo instantâneo, autonomia, velocidade média e tempo de percurso)Controle de Estabilidade (ESC)Controle de TraçãoCrawl Ratio de 77:1Detector de tráfego cruzadoDiferencial dianteiro e traseiro convencionalDireção Eletro-HidráulicaEixos Dana® 44 dianteiro e traseiroEmbalagem para armazenamento do teto removívelERM (Controle de oscilação da carroceria)ERM (Sistema Eletrônico Anticapotamento)Estepe full sizeFaróis Full LED com assinatura em LEDFreedom Top® - Teto removível na cor da carroceriaFreios a disco nas 4 rodas com ABSGanchos de reboque off-roadGanchos para amarração de cargaHDC - Hill Descent ControlHSA (Hill Start Assist)IsofixKeyless Enter 'N GoLanternas traseiras com iluminação a ledLuz de rodagem diurna (DRL) em LEDOff-road Pages na central multimídiaOpen Air Experience (Teto e portas removíveis, e para-brisa rebaixável)Para-brisa degradêPara-brisa rebatívelParasóis móveis com espelho e luz de cortesiaPiloto automáticoPorta luvas com chavePorta USB tipo A+CPortas RemovíveisProtetor da caixa de transferênciaProtetores de cárter, transmissão e tanqueQuadro de instrumentos de alta resolução TFT de 7&quot; personalizávelRemote start (partida remota)Retrovisor interno eletrocrômicoRetrovisores externos elétricos e removíveisRock Rails (Trilhos de aço sob a carroceria)Rodas de alumínio de 18''Sensor de estacionamento traseiroSistema de detecção de ocupantesSistema de escoamento de água para lavagem internaSistema de monitoramento da pressão dos pneusSistema de navegação GPSSistema de som premium Alpine com nove alto falantes e subwooferTapetes de borracha &quot;All-Weather&quot; by MoparTomada auxiliar de 12V no consoleTomada auxiliar traseira de 12VTomada auxiliar 230VTração 4x4 Select-Trac Active On-Demand®Trail Rated BadgeVolante e alavanca de câmbio revestido em couro">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+      <Pane fx:id="panelButtons" layoutX="13.0" layoutY="400.0" prefHeight="36.0" prefWidth="298.0">
+         <children>
+            <Button layoutX="4.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="142.0" style="-fx-border-color: #D70034; -fx-border-radius: 3; -fx-background-color: white;" text="Excluir Alterações" textAlignment="CENTER" textFill="#d70034" />
+            <Button layoutX="153.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="142.0" style="-fx-background-color: #0348CE;" text="Editar Produto" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
