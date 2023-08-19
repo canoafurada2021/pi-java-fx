@@ -41,6 +41,7 @@ public class FornecedorDAO {
 
 			while (rs.next()) {
 
+				
 				int cnpj = rs.getInt("cnpj");
 				String nome = rs.getString("nome");
 				Long telefone = rs.getLong("telefone");
