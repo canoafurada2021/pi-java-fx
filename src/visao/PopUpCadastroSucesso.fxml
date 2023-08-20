@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="panelCadastroSucesso" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="386.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="PanelMensagemCadastroSucesso" layoutY="51.0" prefHeight="60.0" prefWidth="386.0">
+         <children>
+            <Label fx:id="lblSucesso" layoutX="142.0" layoutY="24.0" prefHeight="30.0" prefWidth="97.0" text="SUCESSO!" textFill="#00ad30" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblMensagem" alignment="CENTER" layoutX="106.0" layoutY="1.0" prefHeight="30.0" prefWidth="170.0" text="Cadastro realizado com" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgCircleCheck" fitHeight="54.0" fitWidth="54.0" layoutX="164.0" layoutY="6.0">
+         <image>
+            <Image url="@../../../ÍCONES%20USADOS/CheckCircle.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
