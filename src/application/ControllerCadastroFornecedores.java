@@ -1,6 +1,6 @@
 package application;
 
-
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -20,89 +20,91 @@ import utilities.CnpjFormatter;
 
 public class ControllerCadastroFornecedores implements Initializable {
 
-    @FXML
-    private Button btnDashboard;
+	@FXML
+	private Button btnDashboard;
 
-    @FXML
-    private Button btnProdutos;
+	@FXML
+	private Button btnProdutos;
 
-    @FXML
-    private Button btnLocacao;
+	@FXML
+	private Button btnLocacao;
 
-    @FXML
-    private Button btnFuncionarios;
+	@FXML
+	private Button btnFuncionarios;
 
-    @FXML
-    private Button btnUsuarios;
+	@FXML
+	private Button btnUsuarios;
 
-    @FXML
-    private Button btnFornecedores;
+	@FXML
+	private Button btnFornecedores;
 
-    @FXML
-    private Button btnConfiguracoes;
+	@FXML
+	private Button btnConfiguracoes;
 
-    @FXML
-    private Button btnSair;
+	@FXML
+	private Button btnSair;
 
-    @FXML
-    private Label lblCNPJ;
+	@FXML
+	private Label lblCNPJ;
 
-    @FXML
-    private TextField txtCNPJ;
+	@FXML
+	private TextField txtCNPJ;
 
-    @FXML
-    private Label lblIdEndereco;
+	@FXML
+	private Label lblIdEndereco;
 
-    @FXML
-    private TextField txtIdEndereco;
+	@FXML
+	private TextField txtIdEndereco;
 
-    
-    @FXML
-    private ComboBox<String> comboEnderecoIds;
-    
-    @FXML
-    private Label lblNome;
+	@FXML
+	private ComboBox<String> comboEnderecoIds;
 
-    @FXML
-    private TextField txtNome;
+	@FXML
+	private Label lblNome;
 
-    @FXML
-    private Label lblTelefone;
+	@FXML
+	private TextField txtNome;
 
-    @FXML
-    private TextField txtTelefone;
+	@FXML
+	private Label lblTelefone;
 
-    @FXML
-    private Label lblAtividades;
+	@FXML
+	private TextField txtTelefone;
 
-    @FXML
-    private TextField txtAtividades;
+	@FXML
+	private Label lblAtividades;
 
-    @FXML
-    private Button btnCadastrar;
+	@FXML
+	private TextField txtAtividades;
 
-    // Aqui você pode adicionar métodos e lógica para lidar com as ações dos botões e interações com os campos de texto.
+	@FXML
+	private Button btnCadastrar;
 
-    // Exemplo de método para manipular o clique do botão "Cadastrar"
+
+	private EnderecoDAO dao = new EnderecoDAO();
+	private ArrayList<Endereco> enderecos = dao.listar();
+
+	// Aqui você pode adicionar métodos e lógica para lidar com as ações dos botões
+	// e interações com os campos de texto.
+
+	// Exemplo de método para manipular o clique do botão "Cadastrar"
+
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+
+		txtCNPJ.textProperty().addListener((ChangeListener<? super String>) new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
+				txtCNPJ.setText(CnpjFormatter.formatCnpj(newValue));
+			}
+
+		});
+
+		preencherComboBox();
+	}
+
+	private void preencherComboBox() {
+    	
    
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    	
-        txtCNPJ.textProperty().addListener((ChangeListener<? super String>) new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
-                txtCNPJ.setText(CnpjFormatter.formatCnpj(newValue));
-            }
-
-        });    	
-    	
-    	preencherComboBox();
-    }
-    
-    
-    private void preencherComboBox() {
-    	EnderecoDAO dao = new EnderecoDAO();
-        ArrayList<Endereco> enderecos = dao.listar();
 
         System.out.println("enderecos"+ enderecos);
         
@@ -113,42 +115,58 @@ public class ControllerCadastroFornecedores implements Initializable {
       
         
     }
-    
+
+
+	
     @FXML
-    private void handleCadastrarButton() {
-    	
-    	  String nome = txtNome.getText();
-    	  Long telefone = Long.parseLong(txtTelefone.getText());
-    	  String atividaes = txtAtividades.getText();
-    	  
-    	  
-    	   String cnpjFormatted = txtCNPJ.getText().replaceAll("\\D", "");
-    	    int cnpj = Integer.parseInt(cnpjFormatted);
-          
-    	    
-    	    String selectedEnderecoInfo = comboEnderecoIds.getValue();
-          int enderecoId = Integer.parseInt(selectedEnderecoInfo.split(" - ")[0]);
-          
-          
-          Fornecedores f = new Fornecedores();
-         
-          
-          
-          f.setNome(nome);
-          f.setTelefone(telefone);
-          //f.setEnderecoId(enderecoId);
-          f.setCnpj(cnpj);
-          f.setAtividades(atividaes);
-          
+    void cadastrarFornecedor(ActionEvent event) {
+
     }
 
-
-
-    
-    
-    
-    
-    
-
+	
+	
+//	@FXML
+//	private void handleCadastrarButton(ActionEvent event) {
+//
+//		System.out.println("AAAAAAAAA");
+//		
+//		String nome = txtNome.getText();
+//		Long telefone = Long.parseLong(txtTelefone.getText());
+//		String atividaes = txtAtividades.getText();
+//
+//		String cnpjFormatted = txtCNPJ.getText().replaceAll("\\D", "");
+//		int cnpj = Integer.parseInt(cnpjFormatted);
+//
+//		//endereco selecionado 
+//		String selectedEnderecoInfo = comboEnderecoIds.getValue();
+//		
+//		
+//		
+//		System.out.println("enderço selecionado"+ selectedEnderecoInfo);
+//		
+//		
+//		int enderecoId = Integer.parseInt(selectedEnderecoInfo.split(" - ")[0]);
+//
+//		
+//		
+//		
+//		
+//		
+//		Fornecedores f = new Fornecedores();
+//
+//		f.setNome(nome);
+//		f.setTelefone(telefone);
+//		// f.setEnderecoId(enderecoId);
+//		f.setCnpj(cnpj);
+//		f.setAtividades(atividaes);
+//		
+//		
+//		System.out.println("Cadastro de fornecedor:");
+//	    System.out.println("Nome: " + f.getNome());
+//	    System.out.println("Telefone: " + f.getTelefone());
+//	    System.out.println("CNPJ: " + f.getCnpj());
+//	    System.out.println("Atividades: " + f.getAtividades());
+//
+//	}
 
 }

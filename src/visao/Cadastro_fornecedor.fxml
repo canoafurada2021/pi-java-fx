@@ -188,7 +188,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnCadastrar" layoutX="243.0" layoutY="394.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9;" text="Cadastrar" textFill="WHITE">
+                        <Button fx:id="btnCadastrar" layoutX="243.0" layoutY="394.0" mnemonicParsing="false" onAction="#cadastrarFornecedor" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9;" text="Cadastrar" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
