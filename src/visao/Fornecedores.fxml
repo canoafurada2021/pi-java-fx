@@ -5,182 +5,179 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerListFornecedores">
    <children>
-      <SplitPane fx:id="SlipPaneConfigurações" dividerPositions="0.18283828382838282" layoutX="1.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1517.0">
+      <SplitPane fx:id="SlipPaneConfigurações" layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="808.0" prefWidth="174.0" style="-fx-background-color: #001C52;">
+          <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="1343.0" style="-fx-background-color: #AEB2BF;">
                <children>
-                  <GridPane layoutX="98.0" layoutY="-13.0" prefHeight="633.0" prefWidth="176.0">
-                    <columnConstraints>
-                      <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="btnLocacao" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Locação" textFill="WHITE" GridPane.rowIndex="5">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="imgLocacao" fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/Default=Rent.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnFuncionarios" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: WHITE;" text="Funcionários" textAlignment="JUSTIFY" textFill="WHITE" GridPane.rowIndex="6">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="imgFuncionarios" fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/Default=Funcionários.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnUsuarios" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Usuários" textFill="WHITE" GridPane.rowIndex="7">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="imgUsuarios" fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/Default=Usuários.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnFornecedores" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Fornecedores" textFill="WHITE" GridPane.rowIndex="8">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="imgFornecedores" fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/Default=Fornecedores.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <GridPane prefHeight="67.0" prefWidth="276.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
-                        <Button fx:id="bntDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="51.0" prefWidth="480.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Dashboard" textFill="WHITE" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="imgDashboard" fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/Default=Dashboard.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="51.0" prefWidth="264.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Configurações" textFill="WHITE" GridPane.rowIndex="9">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="imgConfiguracoes" fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/Default=Configurações.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnProdutos" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="51.0" prefWidth="217.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Produtos" textFill="WHITE" GridPane.rowIndex="4">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="imgProdutos" fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/Default=Product.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </GridPane>
-                  <GridPane layoutX="10.0" layoutY="850.0" prefHeight="111.0" prefWidth="248.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
-                  <Button fx:id="btnSair" alignment="CENTER" layoutX="-5.0" layoutY="660.0" mnemonicParsing="false" onAction="#sair" prefHeight="111.0" prefWidth="279.0" style="-fx-background-color: 001C52;" text="Sair" textFill="WHITE">
-                     <font>
-                        <Font size="29.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fx:id="imgSair" fitHeight="44.0" fitWidth="44.0">
-                           <image>
-                              <Image url="@../gitpi/pi-java-fx/src/gitpi/pi-java-fx/src/visao/SignOut.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </AnchorPane>
-          <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
-               <children>
-                  <Pane fx:id="panelFornecedores" layoutX="17.0" layoutY="79.0" prefHeight="921.0" prefWidth="1202.0" style="-fx-background-color: white;">
+                  <Pane fx:id="panelFornecedores" layoutX="17.0" layoutY="79.0" prefHeight="900.0" prefWidth="1185.0" style="-fx-background-color: white;">
                      <children>
                         <Label fx:id="lblFornecedores" layoutX="10.0" layoutY="12.0" prefHeight="45.0" prefWidth="312.0" text="Fornecedores">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tableFornecedores" layoutX="10.0" layoutY="62.0" prefHeight="851.0" prefWidth="1184.0">
+                        <TableView fx:id="tableFornecedores" layoutX="14.0" layoutY="57.0" prefHeight="800.0" prefWidth="1160.0">
                           <columns>
-                            <TableColumn fx:id="columnCnpj" prefWidth="148.0"  text="CNPJ" />
-                            <TableColumn fx:id="columnNome" prefWidth="226.0"  text="Nome" />
+                            <TableColumn fx:id="columnCnpj" prefWidth="148.0" text="CNPJ" />
+                            <TableColumn fx:id="columnNome" prefWidth="226.0" text="Nome" />
                               <TableColumn fx:id="columnTelefone" prefWidth="155.66668701171875" text="Telefone" />
-                              <TableColumn fx:id="columnEndereco" prefWidth="268.3333740234375"  text="Endereço" />
+                              <TableColumn fx:id="columnEndereco" prefWidth="268.3333740234375" text="Endereço" />
                               <TableColumn fx:id="columnAtividade" prefWidth="225.6666259765625" text="Atividade" />
-                              <TableColumn fx:id="columnAcoes" prefWidth="168.0" text="Ações" />
+                              <TableColumn fx:id="columnAcoes" prefWidth="140.0" text="Ações" />
                           </columns>
                         </TableView>
                      </children>
                   </Pane>
-                  <Button fx:id="bntCadastrar" layoutX="1057.0" layoutY="24.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce;" text="Cadastrar" textFill="WHITE">
+                  <Button fx:id="bntCadastrar" layoutX="1050.0" layoutY="24.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce;" text="Cadastrar" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
+                  <TextField fx:id="txtPesquisa" layoutX="16.0" layoutY="24.0" prefHeight="44.0" prefWidth="1022.0" text="Pesquisar">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="btnPesquisar" layoutX="960.0" layoutY="26.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: white;">
+                     <graphic>
+                        <ImageView fx:id="btnPesquisa">
+                           <image>
+                              <Image url="@../../../../../../../Downloads/MagnifyingGlass.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children></AnchorPane>
         </items>
       </SplitPane>
+      <VBox prefHeight="1018.0" prefWidth="310.0" style="-fx-background-color: #001C52;">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="310.0">
+               <children>
+                  <ImageView fx:id="imgLogo" fitHeight="70.0" fitWidth="220.0" layoutX="40.0" layoutY="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Dashboard" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultDashboard" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Dashboard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnProdutos" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Produtos" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultProdutos" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Product.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnLocacao" alignment="TOP_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Locação" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultLocacao" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Rent.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnFuncionarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Funcionários" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultFuncionarios" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Funcionarios.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnUsuarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Usuários" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultUsuarios" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Usuarios.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnFornecedores" alignment="TOP_LEFT" layoutX="10.0" layoutY="330.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Fornecedores" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultFornecedores" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Fornecedores.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" layoutY="420.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Configurações" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultConfiguracoes" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Configurações.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="326.0" prefWidth="310.0">
+               <children>
+                  <Button fx:id="btnSair" layoutY="200.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52;" text="Sair" textFill="WHITE">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="imgSair" fitHeight="50.0" fitWidth="50.0">
+                           <image>
+                              <Image url="@../../../../../../../Downloads/Telas/icones/SignOut.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

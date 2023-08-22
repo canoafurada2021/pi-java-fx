@@ -1,169 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerCadastroProduto">
    <children>
-      <SplitPane dividerPositions="0.18283828382838282" layoutX="1.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1517.0">
+      <SplitPane layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1016.0" prefWidth="283.0" style="-fx-background-color: #001C52;">
-               <children>
-                  <GridPane layoutX="-3.0" prefHeight="574.0" prefWidth="276.0">
-                    <columnConstraints>
-                      <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Dashboard" textFill="WHITE" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@Default=Dashboard.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnProdutos" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Produtos" textFill="WHITE" GridPane.rowIndex="4">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@Default=Product.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnLocacao" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Locação" textFill="WHITE" GridPane.rowIndex="5">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@Default=Rent.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnFuncionarios" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: WHITE;" text="Funcionários" textAlignment="JUSTIFY" textFill="WHITE" GridPane.rowIndex="6">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@Default=Funcionários.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnUsuarios" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Usuários" textFill="WHITE" GridPane.rowIndex="7">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@Default=Usuários.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnFornecedores" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Fornecedores" textFill="WHITE" GridPane.rowIndex="8">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@Default=Fornecedores.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: 001C52; -fx-border-color: white;" text="Configurações" textFill="WHITE" GridPane.rowIndex="9">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="35.0">
-                                 <image>
-                                    <Image url="@Default=Configurações.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <GridPane prefHeight="67.0" prefWidth="276.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
-                     </children>
-                  </GridPane>
-                  <GridPane layoutX="10.0" layoutY="850.0" prefHeight="111.0" prefWidth="248.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="btnSair" alignment="CENTER" mnemonicParsing="false" prefHeight="111.0" prefWidth="279.0" style="-fx-background-color: 001C52;" text="Sair" textFill="WHITE">
-                           <font>
-                              <Font size="29.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="44.0" fitWidth="44.0">
-                                 <image>
-                                    <Image url="@SignOut.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </GridPane>
-               </children>
-            </AnchorPane>
           <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
                <children>
-                  <Pane layoutX="70.0" layoutY="180.0" prefHeight="726.0" prefWidth="1092.0" style="-fx-background-color: #F9FAFF;">
+                  <Pane layoutX="100.0" layoutY="180.0" prefHeight="726.0" prefWidth="1038.0" style="-fx-background-color: #F9FAFF;">
                      <children>
                         <Label fx:id="lblIdVeiculo" layoutX="30.0" layoutY="20.0" text="ID do Veículo">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtIdVeiculo" layoutX="60.0" layoutY="50.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
                         <Label fx:id="lblQuantAssentos" layoutX="30.0" layoutY="110.0" text="Quantidade de Assentos">
                            <font>
                               <Font size="20.0" />
@@ -174,18 +35,18 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtTipoCambio" layoutX="60.0" layoutY="225.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtTipoCambio" layoutX="30.0" layoutY="225.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
                         <Label fx:id="lblQuantPortas" layoutX="30.0" layoutY="280.0" text="Quantidade de Portas">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnCadastrarVeiculo" layoutX="450.0" layoutY="650.0" mnemonicParsing="false" onAction="#cadastrarVeiculo" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9;" text="Cadastrar" textFill="WHITE">
+                        <Button fx:id="btnCadastrarVeiculo" layoutX="400.0" layoutY="650.0" mnemonicParsing="false" onAction="#cadastrarVeiculo" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9;" text="Cadastrar" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="txtQuantPortas" layoutX="60.0" layoutY="310.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtQuantPortas" layoutX="30.0" layoutY="310.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
                         <Label fx:id="lblEspacoPortaMalas" layoutX="30.0" layoutY="355.0" text="Espaço Porta Malas">
                            <font>
                               <Font size="20.0" />
@@ -196,57 +57,58 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtMarca" layoutX="60.0" layoutY="470.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <TextField fx:id="txtQuantAssentos" layoutX="60.0" layoutY="140.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <TextField fx:id="txtEspacoPortaMalas" layoutX="60.0" layoutY="390.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtMarca" layoutX="30.0" layoutY="470.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtQuantAssentos" layoutX="30.0" layoutY="140.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtEspacoPortaMalas" layoutX="30.0" layoutY="390.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
                         <Label fx:id="lblNome" layoutX="30.0" layoutY="525.0" text="Nome">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtNome" layoutX="60.0" layoutY="560.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <TextField fx:id="txtCor" layoutX="600.0" layoutY="50.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblCor" layoutX="570.0" layoutY="20.0" text="Cor">
+                        <TextField fx:id="txtNome" layoutX="30.0" layoutY="560.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtCor" layoutX="550.0" layoutY="50.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblCor" layoutX="550.0" layoutY="20.0" text="Cor">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblAno" layoutX="570.0" layoutY="110.0" text="Ano">
+                        <Label fx:id="lblAno" layoutX="550.0" layoutY="110.0" text="Ano">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtAno" layoutX="600.0" layoutY="140.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblNotaAvaliacao" layoutX="570.0" layoutY="195.0" text="Nota de Avaliação">
+                        <TextField fx:id="txtAno" layoutX="550.0" layoutY="140.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblNotaAvaliacao" layoutX="550.0" layoutY="195.0" text="Nota de Avaliação">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtNotaAvaliacao" layoutX="600.0" layoutY="225.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <TextField fx:id="txtPrecoPorDia" layoutX="600.0" layoutY="310.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblPrecoPorDia" layoutX="570.0" layoutY="280.0" text="Preço por Dia">
+                        <TextField fx:id="txtNotaAvaliacao" layoutX="550.0" layoutY="225.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtPrecoPorDia" layoutX="550.0" layoutY="310.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblPrecoPorDia" layoutX="550.0" layoutY="280.0" text="Preço por Dia">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtUnidadeEmEstoque" layoutX="600.0" layoutY="390.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblUnidadeEmEstoque" layoutX="570.0" layoutY="355.0" text="Unidade em Estoque">
+                        <TextField fx:id="txtUnidadeEmEstoque" layoutX="550.0" layoutY="390.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblUnidadeEmEstoque" layoutX="550.0" layoutY="355.0" text="Unidade em Estoque">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtCategorias" layoutX="600.0" layoutY="470.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblCategoria" layoutX="570.0" layoutY="440.0" text="Categorias">
+                        <TextField fx:id="txtCategorias" layoutX="550.0" layoutY="470.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblCategoria" layoutX="550.0" layoutY="440.0" text="Categorias">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtCBPJFornecedor" layoutX="600.0" layoutY="560.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblCNPJFornecedor" layoutX="570.0" layoutY="525.0" text="CNPJ do Fornecedor">
+                        <TextField fx:id="txtCBPJFornecedor" layoutX="550.0" layoutY="560.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblCNPJFornecedor" layoutX="550.0" layoutY="525.0" text="CNPJ do Fornecedor">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
+                        <ComboBox fx:id="comboIdVeiculo" layoutX="30.0" layoutY="50.0" prefHeight="40.0" prefWidth="450.0" />
                      </children>
                   </Pane>
                   <Pane layoutX="270.0" layoutY="70.0" prefHeight="126.0" prefWidth="726.0">
@@ -266,5 +128,124 @@
                </children></AnchorPane>
         </items>
       </SplitPane>
+      <VBox prefHeight="1018.0" prefWidth="310.0" style="-fx-background-color: #001C52;">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="310.0">
+               <children>
+                  <ImageView fx:id="imgLogo" fitHeight="70.0" fitWidth="220.0" layoutX="40.0" layoutY="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Dashboard" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultDashboard" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Dashboard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnProdutos" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Produtos" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultProdutos" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Product.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnLocacao" alignment="TOP_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Locação" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultLocacao" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Rent.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnFuncionarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Funcionários" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultFuncionarios" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Funcionarios.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnUsuarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Usuários" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultUsuarios" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Usuarios.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnFornecedores" alignment="TOP_LEFT" layoutX="10.0" layoutY="330.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Fornecedores" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultFornecedores" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Fornecedores.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+            <Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" layoutY="420.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Configurações" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultConfiguracoes" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Configurações.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="326.0" prefWidth="310.0">
+               <children>
+                  <Button fx:id="btnSair" layoutY="200.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52;" text="Sair" textFill="WHITE">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fx:id="imgSair" fitHeight="50.0" fitWidth="50.0">
+                           <image>
+                              <Image url="@../../../../../../../Downloads/Telas/icones/SignOut.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
