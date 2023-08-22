@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="panelCadastroErro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="302.0" style="-fx-background-radius: 70; -fx-border-radius: 70;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="panelCadastroErro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="PanelMensagemCadastroErro" layoutY="54.0" prefHeight="60.0" prefWidth="386.0">
+      <Pane fx:id="PanelMensagemCadastroErro" layoutY="54.0" prefHeight="60.0" prefWidth="302.0">
          <children>
             <Label fx:id="lblErro" layoutX="52.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" text="TODOS OS CAMPOS!" textFill="#d70034" wrapText="true">
                <font>
@@ -23,12 +23,12 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="108.0" layoutY="110.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #D70034;" text="OK" textFill="WHITE">
+      <Button fx:id="btnOk" layoutX="108.0" layoutY="110.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #D70034;" text="OK" textFill="WHITE">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="128.0" layoutY="14.0">
+      <ImageView fx:id="imgErro" fitHeight="40.0" fitWidth="40.0" layoutX="128.0" layoutY="14.0">
          <image>
             <Image url="@../imgs/IconsErro.png" />
          </image>
