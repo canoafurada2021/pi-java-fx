@@ -25,7 +25,7 @@
       </Pane>
       <ImageView fx:id="imgCircleCheck" fitHeight="54.0" fitWidth="54.0" layoutX="164.0" layoutY="6.0">
          <image>
-            <Image url="@../../../ÍCONES%20USADOS/CheckCircle.png" />
+            <Image url="@../imgs/IconsSucesso.png" />
          </image>
       </ImageView>
    </children>

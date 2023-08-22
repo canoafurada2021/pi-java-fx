@@ -24,7 +24,7 @@
       </Pane>
       <ImageView fx:id="imgCircleAlert" fitHeight="54.0" fitWidth="54.0" layoutX="166.0" layoutY="6.0">
          <image>
-            <Image url="@../../../ÍCONES%20USADOS/CircleAlert.png" />
+            <Image url="@../imgs/IconsErro.png" />
          </image>
       </ImageView>
    </children>

@@ -56,7 +56,7 @@
                      <graphic>
                         <ImageView fx:id="btnPesquisa">
                            <image>
-                              <Image url="@../../../../../../../Downloads/MagnifyingGlass.png" />
+                              <Image url="@../imgs/Default_pesquisar.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -70,7 +70,7 @@
                <children>
                   <ImageView fx:id="imgLogo" fitHeight="70.0" fitWidth="220.0" layoutX="40.0" layoutY="50.0">
                      <image>
-                        <Image url="@../../../../../../../Downloads/Telas/icones/logo.png" />
+                        <Image url="@../imgs/logo.png" />
                      </image>
                   </ImageView>
                </children>
@@ -82,7 +82,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultDashboard" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Dashboard.png" />
+                        <Image url="@../imgs/Default_Dashboard.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -95,7 +95,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultProdutos" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Product.png" />
+                        <Image url="@../imgs/Default_Product.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -108,7 +108,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultLocacao" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Rent.png" />
+                        <Image url="@../imgs/Default_Rent.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -121,7 +121,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultFuncionarios" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Funcionarios.png" />
+                        <Image url="@../imgs/Default_Funcionarios.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -134,7 +134,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultUsuarios" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Usuarios.png" />
+                        <Image url="@../imgs/Default_Usuarios.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -147,7 +147,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultFornecedores" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Fornecedores.png" />
+                        <Image url="@../imgs/Default_Fornecedores.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -160,7 +160,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultConfiguracoes" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../../../../../../../Downloads/Telas/icones/Default_Configurações.png" />
+                        <Image url="@../imgs/Default_Configuracoes.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -174,7 +174,7 @@
                      <graphic>
                         <ImageView fx:id="imgSair" fitHeight="50.0" fitWidth="50.0">
                            <image>
-                              <Image url="@../../../../../../../Downloads/Telas/icones/SignOut.png" />
+                              <Image url="@../imgs/SignOut.png" />
                            </image>
                         </ImageView>
                      </graphic>

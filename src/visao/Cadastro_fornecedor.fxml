@@ -124,7 +124,7 @@
 							fitWidth="220.0" layoutX="40.0" layoutY="50.0">
 							<image>
 								<Image
-									url="@../../../../../../../Downloads/Telas/icones/logo.png" />
+									url="@../imgs/logo.png" />
 							</image>
 						</ImageView>
 					</children>
@@ -141,7 +141,7 @@
 							fitWidth="50.0">
 							<image>
 								<Image
-									url="@../../../../../../../Downloads/Telas/icones/Default_Dashboard.png" />
+									url="@../imgs/Default_Dashboard.png" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -160,7 +160,7 @@
 							fitWidth="50.0">
 							<image>
 								<Image
-									url="@../../../../../../../Downloads/Telas/icones/Default_Product.png" />
+									url="@../imgs/Default_Product.png" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -179,7 +179,7 @@
 							fitWidth="50.0">
 							<image>
 								<Image
-									url="@../../../../../../../Downloads/Telas/icones/Default_Rent.png" />
+									url="@../imgs/Default_Rent.png" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -198,7 +198,7 @@
 							fitHeight="50.0" fitWidth="50.0">
 							<image>
 								<Image
-									url="@../../../../../../../Downloads/Telas/icones/Default_Funcionarios.png" />
+									url="@../imgs/Default_Funcionarios.png" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -217,7 +217,7 @@
 							fitWidth="50.0">
 							<image>
 								<Image
-									url="@../../../../../../../Downloads/Telas/icones/Default_Usuarios.png" />
+									url="@../imgs/Default_Usuarios.png" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -236,7 +236,7 @@
 							fitHeight="50.0" fitWidth="50.0">
 							<image>
 								<Image
-									url="@../../../../../../../Downloads/Telas/icones/Default_Fornecedores.png" />
+									url="@../imgs/Default_Fornecedores.png" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -255,7 +255,7 @@
 							fitHeight="50.0" fitWidth="50.0">
 							<image>
 								<Image
-									url="@../../../../../../../Downloads/Telas/icones/Default_Configurações.png" />
+									url="@../imgs/Default_Configurações.png" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -274,7 +274,7 @@
 									fitWidth="50.0">
 									<image>
 										<Image
-											url="@../../../../../../../Downloads/Telas/icones/SignOut.png" />
+											url="@../imgs/SignOut.png" />
 									</image>
 								</ImageView>
 							</graphic>

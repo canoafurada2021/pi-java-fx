@@ -30,7 +30,7 @@
       </Button>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="128.0" layoutY="14.0">
          <image>
-            <Image url="@../../../../../../../Downloads/IconsCardápioAdm.png" />
+            <Image url="@../imgs/IconsErro.png" />
          </image>
       </ImageView>
    </children>
