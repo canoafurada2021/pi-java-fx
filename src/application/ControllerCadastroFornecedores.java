@@ -189,7 +189,7 @@ public class ControllerCadastroFornecedores implements Initializable {
 
 		        Stage popupStage = new Stage();
 		        popupStage.initModality(Modality.APPLICATION_MODAL);
-		        popupStage.setTitle("Success Popup");
+		        popupStage.setTitle("Error Popup");
 
 		        Scene popupScene = new Scene(popupRoot);
 		        popupStage.setScene(popupScene);
