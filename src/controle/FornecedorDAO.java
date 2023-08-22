@@ -41,7 +41,7 @@ public class FornecedorDAO {
 
 			while (rs.next()) {
 
-				int cnpj = rs.getInt("cnpj");
+				Long cnpj = rs.getLong("cnpj");
 				String nome = rs.getString("nome");
 				Long telefone = rs.getLong("telefone");
 				String atividades = rs.getString("atividades");
@@ -83,7 +83,7 @@ public class FornecedorDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 
-			ps.setInt(1, f.getCnpj());
+			ps.setLong(1, f.getCnpj());
 			ps.setInt(2, f.getEnderecoId().getId());
 			ps.setString(3, f.getNome());
 			ps.setString(4, f.getAtividades());

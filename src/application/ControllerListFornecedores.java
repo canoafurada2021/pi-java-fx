@@ -61,7 +61,7 @@ public class ControllerListFornecedores implements Initializable{
     private TableView<Fornecedores> tableFornecedores;
     
     @FXML
-    private TableColumn<Fornecedores, Integer > columnCnpj;
+    private TableColumn<Fornecedores, Long > columnCnpj;
     
     @FXML
     private TableColumn<Fornecedores, String> columnNome;
