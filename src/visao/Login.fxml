@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerLogin">
    <children>
       <SplitPane fx:id="splitPaneLogin" layoutX="1.0" layoutY="-1.0" prefHeight="1016.0" prefWidth="1516.0">
         <items>
-          <AnchorPane fx:id="panelLogin" layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" style="-fx-background-color: #AEB2BF;">
+          <AnchorPane fx:id="panelLogin" layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" style="-fx-background-color: white;">
                <children>
-                  <Pane fx:id="panelLoginDados" layoutX="924.0" layoutY="350.0" prefHeight="442.0" prefWidth="546.0" style="-fx-background-color: white;">
+                  <Pane fx:id="panelLoginDados" layoutX="924.0" layoutY="350.0" prefHeight="442.0" prefWidth="546.0" style="-fx-background-color: #AEB2BF;">
                      <children>
                         <Button fx:id="btnLogin" layoutX="62.0" layoutY="327.0" mnemonicParsing="false" onAction="#login" prefHeight="55.0" prefWidth="432.0" style="-fx-background-color: #0348ce;" text="Login" textFill="WHITE">
                            <font>
@@ -40,7 +40,7 @@
                   </Pane>
                   <ImageView fx:id="imgLogin" fitHeight="1022.0" fitWidth="933.0" layoutX="-60.0" layoutY="-4.0">
                      <image>
-                        <Image url="@Login.png" />
+                        <Image url="@../imgs/logoNova.png" />
                      </image>
                   </ImageView>
                   <Pane fx:id="panelLogin2" layoutX="921.0" layoutY="203.0" prefHeight="113.0" prefWidth="550.0">

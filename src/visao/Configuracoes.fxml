@@ -86,7 +86,7 @@
                <children>
                   <ImageView fx:id="imgLogo" fitHeight="70.0" fitWidth="220.0" layoutX="40.0" layoutY="50.0">
                      <image>
-                        <Image url="@../../../../../../../Downloads/Telas/icones/logo.png" />
+                        <Image url="@../imgs/ImagemLogo.png" />
                      </image>
                   </ImageView>
                </children>
