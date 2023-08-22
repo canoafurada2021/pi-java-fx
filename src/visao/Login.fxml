@@ -15,18 +15,18 @@
    <children>
       <SplitPane fx:id="splitPaneLogin" layoutX="1.0" layoutY="-1.0" prefHeight="1016.0" prefWidth="1516.0">
         <items>
-          <AnchorPane fx:id="panelLogin" layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" style="-fx-background-color: white;">
+          <AnchorPane fx:id="panelLogin" layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" style="-fx-background-color: #001C52;">
                <children>
-                  <Pane fx:id="panelLoginDados" layoutX="924.0" layoutY="350.0" prefHeight="442.0" prefWidth="546.0" style="-fx-background-color: #AEB2BF;">
+                  <Pane fx:id="panelLoginDados" layoutX="924.0" layoutY="350.0" prefHeight="442.0" prefWidth="546.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                      <children>
-                        <Button fx:id="btnLogin" layoutX="62.0" layoutY="327.0" mnemonicParsing="false" onAction="#login" prefHeight="55.0" prefWidth="432.0" style="-fx-background-color: #0348ce;" text="Login" textFill="WHITE">
+                        <Button fx:id="btnLogin" layoutX="135.0" layoutY="327.0" mnemonicParsing="false" onAction="#login" prefHeight="55.0" prefWidth="276.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Login" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
                         <Label fx:id="lblCpf" layoutX="58.0" layoutY="43.0" prefHeight="47.0" prefWidth="180.0" text="CPF/CNPJ">
                            <font>
-                              <Font size="22.0" />
+                              <Font name="System Bold" size="22.0" />
                            </font>
                         </Label>
                         <Label fx:id="lblSenha" layoutX="60.0" layoutY="184.0" text="Senha">
@@ -45,12 +45,12 @@
                   </ImageView>
                   <Pane fx:id="panelLogin2" layoutX="921.0" layoutY="203.0" prefHeight="113.0" prefWidth="550.0">
                      <children>
-                        <Label fx:id="lblLogin" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="-3.0" prefHeight="75.0" prefWidth="558.0" text="LOGIN" textAlignment="CENTER">
+                        <Label fx:id="lblLogin" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="-3.0" prefHeight="75.0" prefWidth="558.0" text="LOGIN" textAlignment="CENTER" textFill="#fcfcfc">
                            <font>
                               <Font name="System Bold" size="50.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblLogin2" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="77.0" prefHeight="32.0" prefWidth="556.0" text="Olá, insira as suas informações para acessar o sistema:">
+                        <Label fx:id="lblLogin2" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="77.0" prefHeight="32.0" prefWidth="556.0" text="Olá, insira as suas informações para acessar o sistema:" textFill="WHITE">
                            <font>
                               <Font size="22.0" />
                            </font>
