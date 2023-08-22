@@ -141,7 +141,7 @@ public class ControllerCadastroFornecedores implements Initializable {
 			
 			
 		} else {
-			System.out.println("Deu pau");
+			ExibirPopUpErro();
 		}
 
 	}
@@ -181,7 +181,38 @@ public class ControllerCadastroFornecedores implements Initializable {
 		    }
 		}
 	
-	
+	private void ExibirPopUpErro() {
+		
+		   try {
+		        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroErro.fxml"));
+		        Parent popupRoot = fxmlLoader.load();
+
+		        Stage popupStage = new Stage();
+		        popupStage.initModality(Modality.APPLICATION_MODAL);
+		        popupStage.setTitle("Success Popup");
+
+		        Scene popupScene = new Scene(popupRoot);
+		        popupStage.setScene(popupScene);
+		        popupStage.show();
+
+		        // Define the duration for displaying the popup (in milliseconds)
+		        int popupDuration = 3000; // Change this value as needed
+
+		        // Create a Timeline to close the popup after the specified duration
+		        Timeline timeline = new Timeline(
+		            new KeyFrame(
+		                Duration.millis(popupDuration),
+		                event -> {
+		                    popupStage.close();
+		                }
+		            )
+		        );
+		        timeline.setCycleCount(1);
+		        timeline.play();
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+		}
 
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
