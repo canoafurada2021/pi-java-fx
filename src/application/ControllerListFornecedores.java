@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -11,7 +12,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -20,6 +24,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import modelo.Categoria;
 import modelo.Fornecedores;
@@ -160,7 +165,31 @@ columnTelefone.setCellFactory(tc -> new TableCell<Fornecedores, Long>(){
 	
 	
 	@FXML
-	public void salvarDados(ActionEvent event) {
+	public void abrirTelaCadastroFornecedores(ActionEvent event) {
+		try{
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_fornecedor.fxml"));
+		Parent root = loader.load();
+		
+		
+		
+        ControllerCadastroFornecedores controllerNovaTela = loader.getController();
+
+		
+		Scene scene = new Scene(root);
+		Stage stage = new Stage();
+		
+		
+		
+		
+		
+		
+		stage.setScene(scene);
+		stage.show();
+		
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+		
 	    // Lógica para salvar os dados
 	}
 	
