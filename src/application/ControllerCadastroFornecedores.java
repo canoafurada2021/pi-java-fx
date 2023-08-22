@@ -1,20 +1,30 @@
 package application;
 
+import java.awt.Font;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import controle.EnderecoDAO;
 import controle.FornecedorDAO;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import modelo.Endereco;
 import modelo.Fornecedores;
 import utilities.CnpjFormatter;
@@ -85,6 +95,9 @@ public class ControllerCadastroFornecedores implements Initializable {
 
 	private ArrayList<Endereco> enderecos = dao.listar();
 
+	
+	
+	
 	@FXML
 	void cadastrarFornecedor(ActionEvent event) {
 
@@ -114,25 +127,70 @@ public class ControllerCadastroFornecedores implements Initializable {
 		f.setCnpj(cnpj);
 		f.setAtividades(atividaes);
 
-		System.out.println("Cadastro de fornecedor:");
-		System.out.println("Nome: " + f.getNome());
-		System.out.println("Telefone: " + f.getTelefone());
-		System.out.println("CNPJ: " + f.getCnpj());
-		System.out.println("Atividades: " + f.getAtividades());
-		System.out.println("Endereço selecionado" + f.getEnderecoId());
 
-		daoFornecedor.inserir(f);
+		//daoFornecedor.inserir(f);
+		
+		
+		boolean insercaoSucesso = daoFornecedor.inserir(f);
+
 		limpaCampos();
+		
+		
+		if(insercaoSucesso == true) {
+			ExibirPopUpSucesso();
+			
+			
+		} else {
+			System.out.println("Deu pau");
+		}
 
 	}
 
-	// Aqui você pode adicionar métodos e lógica para lidar com as ações dos botões
-	// e interações com os campos de texto.
 
-	// Exemplo de método para manipular o clique do botão "Cadastrar"
+	
+	private void ExibirPopUpSucesso() {
+		
+		   try {
+		        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroSucesso.fxml"));
+		        Parent popupRoot = fxmlLoader.load();
+
+		        Stage popupStage = new Stage();
+		        popupStage.initModality(Modality.APPLICATION_MODAL);
+		        popupStage.setTitle("Success Popup");
+
+		        Scene popupScene = new Scene(popupRoot);
+		        popupStage.setScene(popupScene);
+		        popupStage.show();
+
+		        // Define the duration for displaying the popup (in milliseconds)
+		        int popupDuration = 3000; // Change this value as needed
+
+		        // Create a Timeline to close the popup after the specified duration
+		        Timeline timeline = new Timeline(
+		            new KeyFrame(
+		                Duration.millis(popupDuration),
+		                event -> {
+		                    popupStage.close();
+		                }
+		            )
+		        );
+		        timeline.setCycleCount(1);
+		        timeline.play();
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+		}
+	
+	
 
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
+		
+		
+      //  Font fontAwesome = Font.loadFont(getClass().getResourceAsStream("/fonts/fontawesome-webfont.ttf"), 14);
+
+		
+		
 		  txtCNPJ.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
 		        if (newValue != null && !newValue.isEmpty()) {
 		            txtCNPJ.setText(CnpjFormatter.formatCnpj(newValue));

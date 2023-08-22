@@ -22,13 +22,17 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import modelo.Categoria;
 import modelo.Fornecedores;
 import modelo.Vendedor;
+import javafx.scene.image.Image;
+
 
 public class ControllerListFornecedores implements Initializable{
 
@@ -79,9 +83,9 @@ public class ControllerListFornecedores implements Initializable{
     
    @FXML
     private TableColumn<Fornecedores, String> columnAtividade;
-//    
-//    @FXML
-//    private TableColumn<?, ?> columnAcoes;
+
+    @FXML
+  private TableColumn<Fornecedores, String> columnAcoes;
     
     
 	private ObservableList<Fornecedores> obsFornecedores;
@@ -101,10 +105,71 @@ public class ControllerListFornecedores implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		tableFornecedores.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+		
 		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnAtividade.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAtividades()));
 		
+		
+		columnAcoes.setCellFactory(new Callback<TableColumn<Fornecedores, String>, TableCell<Fornecedores, String>>() {
+		    @Override
+		    public TableCell<Fornecedores, String> call(TableColumn<Fornecedores, String> param) {
+		        return new TableCell<Fornecedores, String>() {
+		            private final Button viewButton = new Button();
+		            private final Button editButton = new Button();
+		            private final HBox buttonContainer = new HBox(viewButton, editButton);
+
+		            {
+		                buttonContainer.setSpacing(10); // Set the spacing between buttons
+
+		                ImageView viewImage = new ImageView(new Image(getClass().getResourceAsStream("/imgs/editar.png")));
+		                viewImage.setFitHeight(16);
+		                viewImage.setFitWidth(16);
+		                viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
+
+		                viewButton.setGraphic(viewImage);
+		                viewButton.setOnAction(event -> {
+		                    Fornecedores fornecedor = getTableView().getItems().get(getIndex());
+		                    
+		                    System.out.println("botao de edição clicado");
+		                    // Lógica para ação de visualização
+		                });
+
+		                
+		                ImageView editImage = new ImageView(new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
+		                editImage.setFitHeight(16);
+		                editImage.setFitWidth(16);
+		                editButton.setGraphic(editImage);
+		                editButton.setStyle("-fx-background-color: red;");
+		                editButton.setOnAction(event -> {
+		                    Fornecedores fornecedor = getTableView().getItems().get(getIndex());
+		                    System.out.println("botao de delete clicado");
+
+		                    // Lógica para ação de edição
+		                });
+		            }
+
+		            @Override
+		            protected void updateItem(String item, boolean empty) {
+		                super.updateItem(item, empty);
+
+		                if (empty) {
+		                    setGraphic(null);
+		                } else {
+		                    setGraphic(buttonContainer);
+		                }
+		            }
+		        };
+		    }
+		});
+
+		
+		
+		
+
 		
 		// pega o valor do endereço com base no id de endereço existente no back-end e exibe somente a rua.
 		// caso seja necessário mais informações a respeito do endereço, seguir o exemplo existente

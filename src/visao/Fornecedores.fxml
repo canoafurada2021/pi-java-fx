@@ -28,14 +28,14 @@
                         </Label>
                         <TableView fx:id="tableFornecedores" layoutX="14.0" layoutY="57.0" prefHeight="864.0" prefWidth="1160.0">
                           <columns>
+                         
                             <TableColumn fx:id="columnCnpj" prefWidth="148.0" text="CNPJ" />
                             <TableColumn fx:id="columnNome" prefWidth="226.0" text="Nome" />
                               <TableColumn fx:id="columnTelefone" prefWidth="155.66668701171875" text="Telefone" />
                               <TableColumn fx:id="columnEndereco" prefWidth="268.3333740234375" text="Endereço" />
                               <TableColumn fx:id="columnAtividade" prefWidth="225.6666259765625" text="Atividade" />
-                              <TableColumn fx:id="columnVisualizar" prefWidth="45.0" />
-                              <TableColumn fx:id="columnEditar" prefWidth="45.0" />
-                              <TableColumn fx:id="columnExcluir" prefWidth="45.0" />
+                              <TableColumn fx:id="columnAcoes" prefWidth="100.0" text="Ações" />
+
                           </columns>
                         </TableView>
                      </children>
