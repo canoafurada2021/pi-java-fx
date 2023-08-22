@@ -21,26 +21,28 @@
                <children>
                   <Pane fx:id="panelFornecedores" layoutX="17.0" layoutY="79.0" prefHeight="928.0" prefWidth="1185.0" style="-fx-background-color: white;">
                      <children>
-                        <Label fx:id="lblFornecedores" layoutX="10.0" layoutY="12.0" prefHeight="45.0" prefWidth="312.0" text="Fornecedores">
+                        <Label fx:id="lblFornecedores" layoutX="10.0" layoutY="12.0" prefHeight="45.0" prefWidth="312.0" text="Locações">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
                         <TableView fx:id="tableFornecedores" layoutX="14.0" layoutY="57.0" prefHeight="864.0" prefWidth="1160.0">
                           <columns>
-                            <TableColumn fx:id="columnCnpj" prefWidth="148.0" text="CNPJ" />
-                            <TableColumn fx:id="columnNome" prefWidth="226.0" text="Nome" />
-                              <TableColumn fx:id="columnTelefone" prefWidth="155.66668701171875" text="Telefone" />
-                              <TableColumn fx:id="columnEndereco" prefWidth="268.3333740234375" text="Endereço" />
-                              <TableColumn fx:id="columnAtividade" prefWidth="225.6666259765625" text="Atividade" />
-                              <TableColumn fx:id="columnVisualizar" prefWidth="45.0" />
-                              <TableColumn fx:id="columnEditar" prefWidth="45.0" />
-                              <TableColumn fx:id="columnExcluir" prefWidth="45.0" />
+                            <TableColumn fx:id="columnId" prefWidth="72.0" text="ID" />
+                            <TableColumn fx:id="columnFormaPag" prefWidth="149.0" text="Forma de pagamento" />
+                              <TableColumn fx:id="columnDataInicio" prefWidth="120.0" text="Data de início" />
+                              <TableColumn fx:id="columnQuantDias" prefWidth="101.0" text="Número de dias" />
+                              <TableColumn fx:id="columnValor" prefWidth="132.0" text="Valor" />
+                              <TableColumn fx:id="columnIdVendedor" prefWidth="222.0" text="Vendedor" />
+                              <TableColumn fx:id="columnLocador" prefWidth="220.0" text="Cliente" />
+                              <TableColumn fx:id="columnViualizar" minWidth="0.0" prefWidth="49.0" />
+                              <TableColumn fx:id="columnEditar" prefWidth="47.0" />
+                              <TableColumn fx:id="columnExcluir" prefWidth="47.0" />
                           </columns>
                         </TableView>
                      </children>
                   </Pane>
-                  <Button fx:id="bntCadastrar" layoutX="1050.0" layoutY="24.0" mnemonicParsing="false" onAction="#abrirTelaCadastroFornecedores" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce;" text="Cadastrar" textFill="WHITE">
+                  <Button fx:id="bntCadastrar" layoutX="1050.0" layoutY="24.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce;" text="Cadastrar" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
