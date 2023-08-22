@@ -1,13 +1,14 @@
 package application;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import controle.EnderecoDAO;
+import controle.FornecedorDAO;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -80,9 +81,50 @@ public class ControllerCadastroFornecedores implements Initializable {
 	@FXML
 	private Button btnCadastrar;
 
-
 	private EnderecoDAO dao = new EnderecoDAO();
+
 	private ArrayList<Endereco> enderecos = dao.listar();
+
+	@FXML
+	void cadastrarFornecedor(ActionEvent event) {
+
+		FornecedorDAO daoFornecedor = new FornecedorDAO();
+
+		String nome = txtNome.getText();
+		Long telefone = Long.parseLong(txtTelefone.getText());
+		String atividaes = txtAtividades.getText();
+
+		String cnpjFormatted = txtCNPJ.getText().replaceAll("\\D", "");
+		Long cnpj = Long.parseLong(cnpjFormatted);
+
+		// endereco selecionado
+		String selectedEnderecoInfo = comboEnderecoIds.getValue();
+
+		System.out.println("enderço selecionado" + selectedEnderecoInfo);
+
+		int enderecoId = Integer.parseInt(selectedEnderecoInfo.split(" - ")[0]);
+
+		Endereco enderecoSelecionado = encontrarEnderecoPorId(enderecoId);
+
+		Fornecedores f = new Fornecedores();
+
+		f.setNome(nome);
+		f.setTelefone(telefone);
+		f.setEnderecoId(enderecoSelecionado);
+		f.setCnpj(cnpj);
+		f.setAtividades(atividaes);
+
+		System.out.println("Cadastro de fornecedor:");
+		System.out.println("Nome: " + f.getNome());
+		System.out.println("Telefone: " + f.getTelefone());
+		System.out.println("CNPJ: " + f.getCnpj());
+		System.out.println("Atividades: " + f.getAtividades());
+		System.out.println("Endereço selecionado" + f.getEnderecoId());
+
+		daoFornecedor.inserir(f);
+		limpaCampos();
+
+	}
 
 	// Aqui você pode adicionar métodos e lógica para lidar com as ações dos botões
 	// e interações com os campos de texto.
@@ -91,82 +133,44 @@ public class ControllerCadastroFornecedores implements Initializable {
 
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
-		txtCNPJ.textProperty().addListener((ChangeListener<? super String>) new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
-				txtCNPJ.setText(CnpjFormatter.formatCnpj(newValue));
-			}
-
-		});
+		  txtCNPJ.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
+		        if (newValue != null && !newValue.isEmpty()) {
+		            txtCNPJ.setText(CnpjFormatter.formatCnpj(newValue));
+		        }
+		    });
+		
+	
 
 		preencherComboBox();
 	}
 
 	private void preencherComboBox() {
-    	
-   
 
-        System.out.println("enderecos"+ enderecos);
-        
-        for (Endereco endereco : enderecos) {
-            String enderecoInfo = endereco.getId() + " - " + endereco.getRua();
-            comboEnderecoIds.getItems().add(enderecoInfo);
-        }
-      
-        
-    }
+		System.out.println("enderecos" + enderecos);
 
+		for (Endereco endereco : enderecos) {
+			String enderecoInfo = endereco.getId() + " - " + endereco.getRua();
+			comboEnderecoIds.getItems().add(enderecoInfo);
+		}
 
-	
-    @FXML
-    void cadastrarFornecedor(ActionEvent event) {
+	}
 
-    }
+	private void limpaCampos() {
 
-	
-	
-//	@FXML
-//	private void handleCadastrarButton(ActionEvent event) {
-//
-//		System.out.println("AAAAAAAAA");
-//		
-//		String nome = txtNome.getText();
-//		Long telefone = Long.parseLong(txtTelefone.getText());
-//		String atividaes = txtAtividades.getText();
-//
-//		String cnpjFormatted = txtCNPJ.getText().replaceAll("\\D", "");
-//		int cnpj = Integer.parseInt(cnpjFormatted);
-//
-//		//endereco selecionado 
-//		String selectedEnderecoInfo = comboEnderecoIds.getValue();
-//		
-//		
-//		
-//		System.out.println("enderço selecionado"+ selectedEnderecoInfo);
-//		
-//		
-//		int enderecoId = Integer.parseInt(selectedEnderecoInfo.split(" - ")[0]);
-//
-//		
-//		
-//		
-//		
-//		
-//		Fornecedores f = new Fornecedores();
-//
-//		f.setNome(nome);
-//		f.setTelefone(telefone);
-//		// f.setEnderecoId(enderecoId);
-//		f.setCnpj(cnpj);
-//		f.setAtividades(atividaes);
-//		
-//		
-//		System.out.println("Cadastro de fornecedor:");
-//	    System.out.println("Nome: " + f.getNome());
-//	    System.out.println("Telefone: " + f.getTelefone());
-//	    System.out.println("CNPJ: " + f.getCnpj());
-//	    System.out.println("Atividades: " + f.getAtividades());
-//
-//	}
+		txtNome.setText(null);
+		txtTelefone.setText(null);
+		txtAtividades.setText(null);
+		txtCNPJ.setText(null);
+
+	}
+
+	private Endereco encontrarEnderecoPorId(int enderecoId) {
+		for (Endereco endereco : enderecos) {
+			if (endereco.getId() == enderecoId) {
+				return endereco;
+			}
+		}
+		return null; // Retorna null se não encontrar o endereço
+	}
 
 }

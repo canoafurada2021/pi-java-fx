@@ -39,7 +39,7 @@ public class VeiculoDAO {
 			ps.setInt(13, v.getIdCategoria().getIdCategoria()); // Preenche a chave estrangeira sendo a chave primaria
 																// da tabela o ID
 
-			ps.setInt(14, v.getCnpj().getCnpj()); // Preenche a chave estrangeira sendo a chave primaria da
+			ps.setLong(14, v.getCnpj().getCnpj()); // Preenche a chave estrangeira sendo a chave primaria da
 															// tabela o cnpj
             ps.executeUpdate();
 

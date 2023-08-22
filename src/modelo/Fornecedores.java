@@ -1,14 +1,14 @@
 package modelo;
 
 public class Fornecedores {
-	private int cnpj;
+	private Long cnpj;
 
 	private Endereco enderecoId;
 	private String nome;
 	private Long telefone;
 	private String atividades;
 
-	public int getCnpj() {
+	public Long getCnpj() {
 		return cnpj;
 	}
 
@@ -20,7 +20,7 @@ public class Fornecedores {
 		this.atividades = atividades;
 	}
 
-	public void setCnpj(int cnpj) {
+	public void setCnpj(Long cnpj) {
 		this.cnpj = cnpj;
 	}
 
