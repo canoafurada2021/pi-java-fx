@@ -11,15 +11,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerLogin">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" style="-fx-background-color: #001C52;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerLogin">
    <children>
-      <SplitPane fx:id="splitPaneLogin" layoutX="1.0" layoutY="-1.0" prefHeight="1016.0" prefWidth="1516.0">
+      <SplitPane fx:id="splitPaneLogin" layoutX="1.0" layoutY="-1.0" prefHeight="1016.0" prefWidth="1516.0" style="-fx-background-color: #001C52;">
         <items>
-          <AnchorPane fx:id="panelLogin" layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" style="-fx-background-color: #001C52;">
+          <AnchorPane fx:id="panelLogin" layoutX="1.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1019.0" prefWidth="1531.0" style="-fx-background-color: #001C52;">
                <children>
-                  <Pane fx:id="panelLoginDados" layoutX="924.0" layoutY="350.0" prefHeight="442.0" prefWidth="546.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                  <Pane fx:id="panelLoginDados" layoutX="76.0" layoutY="397.0" prefHeight="442.0" prefWidth="526.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                      <children>
-                        <Button fx:id="btnLogin" layoutX="135.0" layoutY="327.0" mnemonicParsing="false" onAction="#login" prefHeight="55.0" prefWidth="276.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Login" textFill="WHITE">
+                        <Button fx:id="btnLogin" layoutX="117.0" layoutY="327.0" mnemonicParsing="false" onAction="#login" prefHeight="55.0" prefWidth="276.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Login" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -31,32 +31,34 @@
                         </Label>
                         <Label fx:id="lblSenha" layoutX="60.0" layoutY="184.0" text="Senha">
                            <font>
-                              <Font size="22.0" />
+                              <Font name="System Bold" size="22.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="txtSenha" layoutX="73.0" layoutY="227.0" prefHeight="45.0" prefWidth="421.0" />
-                        <TextField fx:id="txtCpf" layoutX="73.0" layoutY="99.0" prefHeight="45.0" prefWidth="421.0" />
+                        <PasswordField fx:id="txtSenha" layoutX="73.0" layoutY="227.0" prefHeight="45.0" prefWidth="405.0" />
+                        <TextField fx:id="txtCpf" layoutX="73.0" layoutY="99.0" prefHeight="45.0" prefWidth="405.0" />
                      </children>
                   </Pane>
-                  <ImageView fx:id="imgLogin" fitHeight="1022.0" fitWidth="933.0" layoutX="-60.0" layoutY="-4.0">
+                  <Pane fx:id="panelLogin2" layoutX="921.0" layoutY="203.0" prefHeight="113.0" prefWidth="550.0" />
+                  <Label fx:id="lblLogin" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="272.0" prefHeight="75.0" prefWidth="558.0" text="LOGIN" textAlignment="CENTER" textFill="#fcfcfc">
+                     <font>
+                        <Font name="System Bold" size="50.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblLogin2" alignment="CENTER" contentDisplay="CENTER" layoutX="96.0" layoutY="339.0" prefHeight="32.0" prefWidth="488.0" text="Olá, insira as informações para acessar o sistema:" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="1020.0" fitWidth="867.0" layoutX="679.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../imgs/logoNova.png" />
+                        <Image url="@../imgs/imagem_Login.png" />
                      </image>
                   </ImageView>
-                  <Pane fx:id="panelLogin2" layoutX="921.0" layoutY="203.0" prefHeight="113.0" prefWidth="550.0">
-                     <children>
-                        <Label fx:id="lblLogin" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="-3.0" prefHeight="75.0" prefWidth="558.0" text="LOGIN" textAlignment="CENTER" textFill="#fcfcfc">
-                           <font>
-                              <Font name="System Bold" size="50.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblLogin2" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="77.0" prefHeight="32.0" prefWidth="556.0" text="Olá, insira as suas informações para acessar o sistema:" textFill="WHITE">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
+                  <ImageView fitHeight="70.0" fitWidth="212.0" layoutX="28.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/logo.png" />
+                     </image>
+                  </ImageView>
                </children></AnchorPane>
         </items>
       </SplitPane>
