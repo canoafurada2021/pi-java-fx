@@ -29,7 +29,7 @@
             <Image url="@../imgs/IconsSucesso.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnOk" layoutX="105.0" layoutY="110.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #00AD30;" text="OK" textFill="WHITE">
+      <Button fx:id="btnOk" layoutX="105.0" layoutY="110.0" mnemonicParsing="false" onAction="#abreListagem" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #00AD30;" text="OK" textFill="WHITE">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
