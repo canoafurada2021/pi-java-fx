@@ -158,7 +158,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultConfiguracoes" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../imgs/Default_Configuracoes.png" />
+                        <Image url="@../imgs/Default_Configurações.png" />
                      </image>
                   </ImageView>
                </graphic>
