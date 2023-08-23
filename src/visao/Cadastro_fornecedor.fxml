@@ -93,7 +93,7 @@
 						</ImageView>
 					</children>
 				</Pane>
-				<Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Dashboard" textFill="WHITE">
+				<Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#abrirDashboard" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Dashboard" textFill="WHITE">
 					<font>
 						<Font size="20.0" />
 					</font>
@@ -132,7 +132,7 @@
 					</graphic>
 				</Button>
 				<Pane prefHeight="8.0" prefWidth="310.0" />
-				<Button fx:id="btnFuncionarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Funcionários" textFill="WHITE">
+				<Button fx:id="btnFuncionarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" onAction="#abrirListaFuncionarios" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Funcionários" textFill="WHITE">
 					<font>
 						<Font size="20.0" />
 					</font>
@@ -158,7 +158,7 @@
 					</graphic>
 				</Button>
 				<Pane prefHeight="8.0" prefWidth="310.0" />
-				<Button fx:id="btnFornecedores" alignment="TOP_LEFT" layoutX="10.0" layoutY="330.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Fornecedores" textFill="WHITE">
+				<Button fx:id="btnFornecedores" alignment="TOP_LEFT" layoutX="10.0" layoutY="330.0" mnemonicParsing="false" onAction="#abrirListaFornecedores" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Fornecedores" textFill="WHITE">
 					<font>
 						<Font size="20.0" />
 					</font>
