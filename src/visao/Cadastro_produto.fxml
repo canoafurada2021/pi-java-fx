@@ -9,8 +9,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerCadastroProduto">
@@ -145,7 +145,15 @@
                   <Font size="20.0" />
                </font>
                <graphic>
-                  <Circle fx:id="circlePerfil" fill="DODGERBLUE" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
+                  <StackPane fx:id="profileImageStackPane" prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="imgPerfil" fitHeight="62.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Downloads/IMG-1120.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
