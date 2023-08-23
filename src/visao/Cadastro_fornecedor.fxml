@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -84,16 +85,47 @@
 		</SplitPane>
 		<VBox prefHeight="1018.0" prefWidth="310.0" style="-fx-background-color: #001C52;">
 			<children>
-				<Pane prefHeight="200.0" prefWidth="310.0">
+				<Pane prefHeight="235.0" prefWidth="310.0">
 					<children>
 						<ImageView fx:id="imgLogo" fitHeight="70.0" fitWidth="220.0" layoutX="40.0" layoutY="50.0">
 							<image>
 								<Image url="@../imgs/logo.png" />
 							</image>
 						</ImageView>
+                  <Button fx:id="btnPerfil" alignment="TOP_LEFT" layoutY="150.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-radius: 10;" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <graphic>
+                        <StackPane fx:id="StackPanePerfil" prefHeight="80.0" prefWidth="282.0">
+                           <children>
+                              <ImageView fx:id="imgFotoPerfil" fitHeight="50.0" fitWidth="50.0" StackPane.alignment="TOP_LEFT">
+                                 <image>
+                                    <Image url="@../imgs/FotoPerfilRedonda.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="lblNomeVendedor" alignment="TOP_CENTER" prefHeight="48.0" prefWidth="158.0" text="Patricia Cordeiro" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblFuncao" alignment="BOTTOM_LEFT" prefHeight="40.0" prefWidth="157.0" text="Vendedor(a)" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </graphic>
+                  </Button>
 					</children>
 				</Pane>
+<<<<<<< Updated upstream
 				<Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#abrirDashboard" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Dashboard" textFill="WHITE">
+=======
+            <Pane prefHeight="8.0" prefWidth="310.0" />
+				<Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Dashboard" textFill="WHITE">
+>>>>>>> Stashed changes
 					<font>
 						<Font size="20.0" />
 					</font>
@@ -183,9 +215,9 @@
 						</ImageView>
 					</graphic>
 				</Button>
-				<Pane prefHeight="326.0" prefWidth="310.0">
+				<Pane prefHeight="274.0" prefWidth="310.0">
 					<children>
-						<Button fx:id="btnSair" layoutY="200.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52;" text="Sair" textFill="WHITE">
+						<Button fx:id="btnSair" layoutY="150.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52;" text="Sair" textFill="WHITE">
 							<font>
 								<Font size="30.0" />
 							</font>
