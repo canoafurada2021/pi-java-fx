@@ -38,25 +38,27 @@ public class ControllerPopUpSucesso implements Initializable {
 	    @FXML
 	    private AnchorPane panelEdicaoSucesso;
 
-	    @FXML
-	    void abreListagem(ActionEvent event) {
-	    	
-	    	try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
-				Parent root = loader.load();
-
-				ControllerListFornecedores controllerNovaTela = loader.getController();
-
-				Scene scene = new Scene(root);
-				Stage stage = new Stage();
-
-				stage.setScene(scene);
-				stage.show();
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	    }
+	    //nao vai 
+//	    @FXML
+//	    void abreListagem(ActionEvent event) {
+//	    	
+//	    	try {
+//	    		System.out.println("chama q ela vem");
+//				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
+//				Parent root = loader.load();
+//
+//				ControllerListFornecedores controllerNovaTela = loader.getController();
+//
+//				Scene scene = new Scene(root);
+//				Stage stage = new Stage();
+//
+//				stage.setScene(scene);
+//				stage.show();
+//
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//	    }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
