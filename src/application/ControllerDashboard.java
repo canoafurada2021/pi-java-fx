@@ -1,12 +1,17 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -16,6 +21,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class ControllerDashboard  implements Initializable{
 
@@ -84,7 +90,24 @@ public class ControllerDashboard  implements Initializable{
     private ImageView imgDefaultConfiguracoes;
 
 
-  
+    @FXML
+    void abrirListFornecedores(ActionEvent event) {
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
+			Parent root = loader.load();
+
+			ControllerListFornecedores controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
     @FXML
     private void handleDashboardButton() {
         // Lógica para quando o botão Dashboard for clicado

@@ -259,5 +259,23 @@ public class ControllerListFornecedores implements Initializable {
 			return telefoneStr; // Retornar sem formatação se não corresponder a nenhum padrão
 		}
 	}
+	 @FXML
+	    void abrirDashboard(ActionEvent event) {
+		   try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
+				Parent root = loader.load();
+
+				ControllerDashboard controllerNovaTela = loader.getController();
+
+				Scene scene = new Scene(root);
+				Stage stage = new Stage();
+
+				stage.setScene(scene);
+				stage.show();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
 
 }
