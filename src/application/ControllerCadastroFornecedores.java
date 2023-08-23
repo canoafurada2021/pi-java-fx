@@ -244,5 +244,61 @@ public class ControllerCadastroFornecedores implements Initializable {
 		}
 		return null; // Retorna null se não encontrar o endereço
 	}
+	   @FXML
+	    void abrirDashboard(ActionEvent event) {
+		   try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
+				Parent root = loader.load();
+
+				ControllerDashboard controllerNovaTela = loader.getController();
+
+				Scene scene = new Scene(root);
+				Stage stage = new Stage();
+
+				stage.setScene(scene);
+				stage.show();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
+
+	    @FXML
+	    void abrirListaFornecedores(ActionEvent event) {
+	    	try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
+				Parent root = loader.load();
+
+				ControllerListFornecedores controllerNovaTela = loader.getController();
+
+				Scene scene = new Scene(root);
+				Stage stage = new Stage();
+
+				stage.setScene(scene);
+				stage.show();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
+	    //falta listagem de func entao coloquei p abri o login q ta bonito
+	    @FXML
+	    void abrirListaFuncionarios(ActionEvent event) {
+	    	try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+				Parent root = loader.load();
+
+				ControllerLogin controllerNovaTela = loader.getController();
+
+				Scene scene = new Scene(root);
+				Stage stage = new Stage();
+
+				stage.setScene(scene);
+				stage.show();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
 
 }
