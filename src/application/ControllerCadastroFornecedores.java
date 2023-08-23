@@ -95,15 +95,13 @@ public class ControllerCadastroFornecedores implements Initializable {
 
 	private ArrayList<Endereco> enderecos = dao.listar();
 
-	
-	
-	
 	@FXML
 	void cadastrarFornecedor(ActionEvent event) {
 
 		FornecedorDAO daoFornecedor = new FornecedorDAO();
 
 		String nome = txtNome.getText();
+
 		Long telefone = Long.parseLong(txtTelefone.getText());
 		String atividaes = txtAtividades.getText();
 
@@ -124,111 +122,96 @@ public class ControllerCadastroFornecedores implements Initializable {
 		f.setNome(nome);
 		f.setTelefone(telefone);
 		f.setEnderecoId(enderecoSelecionado);
-		f.setCnpj(cnpj);
 		f.setAtividades(atividaes);
+		f.setCnpj(cnpj);
 
+		try {
 
-		//daoFornecedor.inserir(f);
-		
-		
-		boolean insercaoSucesso = daoFornecedor.inserir(f);
+			boolean insercaoSucesso = daoFornecedor.inserir(f);
 
-		limpaCampos();
-		
-		
-		if(insercaoSucesso == true) {
+			limpaCampos();
+
+			if (insercaoSucesso) {
+				ExibirPopUpSucesso();
+			} else {
+				ExibirPopUpErro();
+			}
+
+		} catch (Exception e) {
+
 			ExibirPopUpSucesso();
-			
-			
-		} else {
-			ExibirPopUpErro();
+
 		}
 
 	}
 
-
-	
 	private void ExibirPopUpSucesso() {
-		
-		   try {
-		        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroSucesso.fxml"));
-		        Parent popupRoot = fxmlLoader.load();
 
-		        Stage popupStage = new Stage();
-		        popupStage.initModality(Modality.APPLICATION_MODAL);
-		        popupStage.setTitle("Success Popup");
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroSucesso.fxml"));
+			Parent popupRoot = fxmlLoader.load();
 
-		        Scene popupScene = new Scene(popupRoot);
-		        popupStage.setScene(popupScene);
-		        popupStage.show();
+			Stage popupStage = new Stage();
+			popupStage.initModality(Modality.APPLICATION_MODAL);
+			popupStage.setTitle("Success Popup");
 
-		        // Define the duration for displaying the popup (in milliseconds)
-		        int popupDuration = 3000; // Change this value as needed
+			Scene popupScene = new Scene(popupRoot);
+			popupStage.setScene(popupScene);
+			popupStage.show();
 
-		        // Create a Timeline to close the popup after the specified duration
-		        Timeline timeline = new Timeline(
-		            new KeyFrame(
-		                Duration.millis(popupDuration),
-		                event -> {
-		                    popupStage.close();
-		                }
-		            )
-		        );
-		        timeline.setCycleCount(1);
-		        timeline.play();
-		    } catch (IOException e) {
-		        e.printStackTrace();
-		    }
+			// Define the duration for displaying the popup (in milliseconds)
+			int popupDuration = 3000; // Change this value as needed
+
+			// Create a Timeline to close the popup after the specified duration
+			Timeline timeline = new Timeline(new KeyFrame(Duration.millis(popupDuration), event -> {
+				popupStage.close();
+			}));
+			timeline.setCycleCount(1);
+			timeline.play();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-	
+	}
+
 	private void ExibirPopUpErro() {
-		
-		   try {
-		        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroErro.fxml"));
-		        Parent popupRoot = fxmlLoader.load();
 
-		        Stage popupStage = new Stage();
-		        popupStage.initModality(Modality.APPLICATION_MODAL);
-		        popupStage.setTitle("Error Popup");
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroErro.fxml"));
+			Parent popupRoot = fxmlLoader.load();
 
-		        Scene popupScene = new Scene(popupRoot);
-		        popupStage.setScene(popupScene);
-		        popupStage.show();
+			Stage popupStage = new Stage();
+			popupStage.initModality(Modality.APPLICATION_MODAL);
+			popupStage.setTitle("Error Popup");
 
-		        // Define the duration for displaying the popup (in milliseconds)
-		        int popupDuration = 3000; // Change this value as needed
+			Scene popupScene = new Scene(popupRoot);
+			popupStage.setScene(popupScene);
+			popupStage.show();
 
-		        // Create a Timeline to close the popup after the specified duration
-		        Timeline timeline = new Timeline(
-		            new KeyFrame(
-		                Duration.millis(popupDuration),
-		                event -> {
-		                    popupStage.close();
-		                }
-		            )
-		        );
-		        timeline.setCycleCount(1);
-		        timeline.play();
-		    } catch (IOException e) {
-		        e.printStackTrace();
-		    }
+			// Define the duration for displaying the popup (in milliseconds)
+			int popupDuration = 3000; // Change this value as needed
+
+			// Create a Timeline to close the popup after the specified duration
+			Timeline timeline = new Timeline(new KeyFrame(Duration.millis(popupDuration), event -> {
+				popupStage.close();
+			}));
+			timeline.setCycleCount(1);
+			timeline.play();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+	}
 
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
-		
-		
-      //  Font fontAwesome = Font.loadFont(getClass().getResourceAsStream("/fonts/fontawesome-webfont.ttf"), 14);
+		// Font fontAwesome =
+		// Font.loadFont(getClass().getResourceAsStream("/fonts/fontawesome-webfont.ttf"),
+		// 14);
 
-		
-		
-		  txtCNPJ.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
-		        if (newValue != null && !newValue.isEmpty()) {
-		            txtCNPJ.setText(CnpjFormatter.formatCnpj(newValue));
-		        }
-		    });
-		
-	
+		txtCNPJ.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
+			if (newValue != null && !newValue.isEmpty()) {
+				txtCNPJ.setText(CnpjFormatter.formatCnpj(newValue));
+			}
+		});
 
 		preencherComboBox();
 	}

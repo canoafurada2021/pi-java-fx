@@ -9,12 +9,11 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
         Parent root = loader.load();
 		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
-        
-        ControllerListFornecedores controller = loader.getController(); // Obtém uma referência ao controlador
+		ControllerDashboard controller = loader.getController(); // Obtém uma referência ao controlador
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

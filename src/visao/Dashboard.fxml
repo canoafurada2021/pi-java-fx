@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerDashboard">
    <children>
       <SplitPane layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
         <items>
@@ -36,14 +36,14 @@
                      </font>
                   </Text>
                   <PieChart fx:id="graphicMarcas" layoutX="610.0" layoutY="540.0" title="Marcas" />
-                  <LineChart fx:id="graphicVendas" layoutX="70.0" layoutY="540.0" title="Vendas">
+                  <BarChart fx:id="graphicVendas" layoutX="105.0" layoutY="540.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
                     <yAxis>
                       <NumberAxis side="LEFT" />
                     </yAxis>
-                  </LineChart>
+                  </BarChart>
                </children></AnchorPane>
         </items>
       </SplitPane>
