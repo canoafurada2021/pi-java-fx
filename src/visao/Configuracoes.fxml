@@ -17,7 +17,7 @@
         <items>
           <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
                <children>
-                  <Pane fx:id="panelConfiguracoes" layoutX="20.0" layoutY="72.0" prefHeight="888.0" prefWidth="1168.0" style="-fx-background-color: white;">
+                  <Pane fx:id="panelConfiguracoes" layoutX="20.0" layoutY="72.0" prefHeight="888.0" prefWidth="1168.0" style="-fx-background-color: white; -fx-background-radius: 20;">
                      <children>
                         <ImageView fx:id="imgConfiguracoes" fitHeight="304.0" fitWidth="1168.0" layoutY="-1.0">
                            <image>
@@ -65,12 +65,12 @@
                         <TextField fx:id="txtId" layoutX="545.0" layoutY="489.0" prefHeight="39.0" prefWidth="305.0" />
                         <TextField fx:id="txtCnpj" layoutX="549.0" layoutY="620.0" prefHeight="39.0" prefWidth="305.0" />
                         <TextField fx:id="txtTelefone" layoutX="547.0" layoutY="759.0" prefHeight="39.0" prefWidth="305.0" />
-                        <Button fx:id="bntSalvar" layoutX="935.0" layoutY="746.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="56.0" prefWidth="179.0" style="-fx-background-color: #0348ce;" text="Salvar" textFill="WHITE">
+                        <Button fx:id="bntSalvar" layoutX="935.0" layoutY="746.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="56.0" prefWidth="179.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Salvar" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnAlterar" layoutX="935.0" layoutY="675.0" mnemonicParsing="false" onAction="#alterarDados" prefHeight="56.0" prefWidth="179.0" style="-fx-background-color: #0348ce;" text="Alterar" textFill="WHITE">
+                        <Button fx:id="btnAlterar" layoutX="935.0" layoutY="675.0" mnemonicParsing="false" onAction="#alterarDados" prefHeight="56.0" prefWidth="179.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Alterar" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -91,7 +91,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Dashboard" textFill="WHITE">
+            <Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Dashboard" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -104,7 +104,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnProdutos" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Produtos" textFill="WHITE">
+            <Button fx:id="btnProdutos" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Produtos" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -117,7 +117,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnLocacao" alignment="TOP_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Locação" textFill="WHITE">
+            <Button fx:id="btnLocacao" alignment="TOP_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Locação" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -130,7 +130,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnFuncionarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Funcionários" textFill="WHITE">
+            <Button fx:id="btnFuncionarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Funcionários" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -143,7 +143,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnUsuarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Usuários" textFill="WHITE">
+            <Button fx:id="btnUsuarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Usuários" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -156,7 +156,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnFornecedores" alignment="TOP_LEFT" layoutX="10.0" layoutY="330.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Fornecedores" textFill="WHITE">
+            <Button fx:id="btnFornecedores" alignment="TOP_LEFT" layoutX="10.0" layoutY="330.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Fornecedores" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -169,7 +169,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" layoutY="420.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white;" text="Configurações" textFill="WHITE">
+            <Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" layoutY="420.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Configurações" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

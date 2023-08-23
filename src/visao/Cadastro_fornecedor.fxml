@@ -12,99 +12,66 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0"
-	prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="application.ControllerCadastroFornecedores">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerCadastroFornecedores">
 	<children>
-		<SplitPane layoutX="307.0" layoutY="-1.0"
-			prefHeight="1018.0" prefWidth="1211.0">
+		<SplitPane layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
 			<items>
-				<AnchorPane layoutX="1.0" layoutY="1.0"
-					prefHeight="398.0" prefWidth="489.0"
-					style="-fx-background-color: #AEB2BF;">
+				<AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
 					<children>
-						<Pane fx:id="pnlFormCadastro" layoutX="264.0" layoutY="350.0"
-							prefHeight="469.0" prefWidth="726.0"
-							style="-fx-background-color: #F9FAFF;">
+						<Pane fx:id="pnlFormCadastro" layoutX="264.0" layoutY="350.0" prefHeight="469.0" prefWidth="726.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
 							<children>
-								<Label fx:id="lblCNPJ" layoutX="30.0" layoutY="40.0"
-									text="CNPJ">
+								<Label fx:id="lblCNPJ" layoutX="30.0" layoutY="40.0" text="CNPJ">
 									<font>
 										<Font size="20.0" />
 									</font>
 								</Label>
-								<TextField fx:id="txtCNPJ" layoutX="30.0"
-									layoutY="75.0" prefHeight="38.0" prefWidth="299.0"
-									style="-fx-border-color: #AEB2BF;" />
-								<Label fx:id="lblIdEndereco" layoutX="380.0"
-									layoutY="40.0" text="ID do endereço">
+								<TextField fx:id="txtCNPJ" layoutX="30.0" layoutY="75.0" prefHeight="38.0" prefWidth="299.0" style="-fx-border-color: #AEB2BF;" />
+								<Label fx:id="lblIdEndereco" layoutX="380.0" layoutY="40.0" text="ID do endereço">
 									<font>
 										<Font size="20.0" />
 									</font>
 								</Label>
-								<Label fx:id="lblNome" layoutX="33.0" layoutY="125.0"
-									text="Nome">
+								<Label fx:id="lblNome" layoutX="33.0" layoutY="125.0" text="Nome">
 									<font>
 										<Font size="20.0" />
 									</font>
 								</Label>
-								<TextField fx:id="txtNome" layoutX="30.0"
-									layoutY="155.0" prefHeight="38.0" prefWidth="649.0"
-									style="-fx-border-color: #AEB2BF;" />
-								<Label fx:id="lblTelefone" layoutX="30.0" layoutY="209.0"
-									text="Telefone">
+								<TextField fx:id="txtNome" layoutX="30.0" layoutY="155.0" prefHeight="38.0" prefWidth="649.0" style="-fx-border-color: #AEB2BF;" />
+								<Label fx:id="lblTelefone" layoutX="30.0" layoutY="209.0" text="Telefone">
 									<font>
 										<Font size="20.0" />
 									</font>
 								</Label>
-								<TextField fx:id="txtTelefone" layoutX="30.0"
-									layoutY="239.0" prefHeight="38.0" prefWidth="649.0"
-									style="-fx-border-color: #AEB2BF;" />
-								<TextField fx:id="txtAtividades" layoutX="30.0"
-									layoutY="319.0" prefHeight="38.0" prefWidth="649.0"
-									style="-fx-border-color: #AEB2BF;" />
-								<Label fx:id="lblAtividades" layoutX="30.0"
-									layoutY="289.0" text="Atividades">
+								<TextField fx:id="txtTelefone" layoutX="30.0" layoutY="239.0" prefHeight="38.0" prefWidth="649.0" style="-fx-border-color: #AEB2BF;" />
+								<TextField fx:id="txtAtividades" layoutX="30.0" layoutY="319.0" prefHeight="38.0" prefWidth="649.0" style="-fx-border-color: #AEB2BF;" />
+								<Label fx:id="lblAtividades" layoutX="30.0" layoutY="289.0" text="Atividades">
 									<font>
 										<Font size="20.0" />
 									</font>
 								</Label>
-								<Button fx:id="btnCadastrar" layoutX="243.0"
-									layoutY="394.0" mnemonicParsing="false"
-									onAction="#cadastrarFornecedor" prefHeight="44.0"
-									prefWidth="224.0" style="-fx-background-color: #0044A9;"
-									text="Cadastrar" textFill="WHITE">
+								<Button fx:id="btnCadastrar" layoutX="243.0" layoutY="394.0" mnemonicParsing="false" onAction="#cadastrarFornecedor" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
 									<font>
 										<Font size="20.0" />
 									</font>
 								</Button>
-								<ComboBox fx:id="comboEnderecoIds" layoutX="380.0"
-									layoutY="75.0" prefHeight="38.0" prefWidth="299.0" />
+								<ComboBox fx:id="comboEnderecoIds" layoutX="380.0" layoutY="75.0" prefHeight="38.0" prefWidth="299.0" />
 								
 								
-								<Button fx:id="infoButton" layoutX="96.0" layoutY="43.0"
-									mnemonicParsing="false"
-									style="-fx-background-radius: 5em; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px;">
+								<Button fx:id="infoButton" layoutX="96.0" layoutY="43.0" mnemonicParsing="false" style="-fx-background-radius: 5em; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px;">
 									<graphic>
-										<Label styleClass="font-awesome-icon" text="&#xf05a;" />
+										<Label styleClass="font-awesome-icon" text="" />
 									</graphic>
 								</Button>
 							</children>
 						</Pane>
-						<Pane layoutX="270.0" layoutY="150.0" prefHeight="200.0"
-							prefWidth="726.0">
+						<Pane layoutX="270.0" layoutY="150.0" prefHeight="200.0" prefWidth="726.0">
 							<children>
-								<Label alignment="BOTTOM_CENTER" layoutX="2.0"
-									prefHeight="150.0" prefWidth="727.0" text="CADASTRO">
+								<Label alignment="BOTTOM_CENTER" layoutX="2.0" prefHeight="150.0" prefWidth="727.0" text="CADASTRO">
 									<font>
 										<Font size="60.0" />
 									</font>
 								</Label>
-								<Label alignment="CENTER" layoutX="-12.0" layoutY="136.0"
-									prefHeight="26.0" prefWidth="730.0"
-									text="Olá, insira as informações para cadastrar um fornecedor:">
+								<Label alignment="CENTER" layoutX="-12.0" layoutY="136.0" prefHeight="26.0" prefWidth="730.0" text="Olá, insira as informações para cadastrar um fornecedor:">
 									<font>
 										<Font size="20.0" />
 									</font>
@@ -115,166 +82,117 @@
 				</AnchorPane>
 			</items>
 		</SplitPane>
-		<VBox prefHeight="1018.0" prefWidth="310.0"
-			style="-fx-background-color: #001C52;">
+		<VBox prefHeight="1018.0" prefWidth="310.0" style="-fx-background-color: #001C52;">
 			<children>
 				<Pane prefHeight="200.0" prefWidth="310.0">
 					<children>
-						<ImageView fx:id="imgLogo" fitHeight="70.0"
-							fitWidth="220.0" layoutX="40.0" layoutY="50.0">
+						<ImageView fx:id="imgLogo" fitHeight="70.0" fitWidth="220.0" layoutX="40.0" layoutY="50.0">
 							<image>
-								<Image
-									url="@../imgs/logo.png" />
+								<Image url="@../imgs/logo.png" />
 							</image>
 						</ImageView>
 					</children>
 				</Pane>
-				<Button fx:id="btnDashboard" alignment="TOP_LEFT"
-					mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0"
-					style="-fx-background-color: #001C52; -fx-border-color: white;"
-					text="Dashboard" textFill="WHITE">
+				<Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Dashboard" textFill="WHITE">
 					<font>
 						<Font size="20.0" />
 					</font>
 					<graphic>
-						<ImageView fx:id="imgDefaultDashboard" fitHeight="50.0"
-							fitWidth="50.0">
+						<ImageView fx:id="imgDefaultDashboard" fitHeight="50.0" fitWidth="50.0">
 							<image>
-								<Image
-									url="@../imgs/Default_Dashboard.png" />
+								<Image url="@../imgs/Default_Dashboard.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
 				<Pane prefHeight="8.0" prefWidth="310.0" />
-				<Button fx:id="btnProdutos" alignment="TOP_LEFT"
-					layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
-					prefHeight="70.0" prefWidth="310.0"
-					style="-fx-background-color: #001C52; -fx-border-color: white;"
-					text="Produtos" textFill="WHITE">
+				<Button fx:id="btnProdutos" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Produtos" textFill="WHITE">
 					<font>
 						<Font size="20.0" />
 					</font>
 					<graphic>
-						<ImageView fx:id="imgDefaultProdutos" fitHeight="50.0"
-							fitWidth="50.0">
+						<ImageView fx:id="imgDefaultProdutos" fitHeight="50.0" fitWidth="50.0">
 							<image>
-								<Image
-									url="@../imgs/Default_Product.png" />
+								<Image url="@../imgs/Default_Product.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
 				<Pane prefHeight="8.0" prefWidth="310.0" />
-				<Button fx:id="btnLocacao" alignment="TOP_LEFT"
-					layoutX="10.0" layoutY="90.0" mnemonicParsing="false"
-					prefHeight="70.0" prefWidth="310.0"
-					style="-fx-background-color: #001C52; -fx-border-color: white;"
-					text="Locação" textFill="WHITE">
+				<Button fx:id="btnLocacao" alignment="TOP_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Locação" textFill="WHITE">
 					<font>
 						<Font size="20.0" />
 					</font>
 					<graphic>
-						<ImageView fx:id="imgDefaultLocacao" fitHeight="50.0"
-							fitWidth="50.0">
+						<ImageView fx:id="imgDefaultLocacao" fitHeight="50.0" fitWidth="50.0">
 							<image>
-								<Image
-									url="@../imgs/Default_Rent.png" />
+								<Image url="@../imgs/Default_Rent.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
 				<Pane prefHeight="8.0" prefWidth="310.0" />
-				<Button fx:id="btnFuncionarios" alignment="TOP_LEFT"
-					layoutX="10.0" layoutY="170.0" mnemonicParsing="false"
-					prefHeight="70.0" prefWidth="310.0"
-					style="-fx-background-color: #001C52; -fx-border-color: white;"
-					text="Funcionários" textFill="WHITE">
+				<Button fx:id="btnFuncionarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Funcionários" textFill="WHITE">
 					<font>
 						<Font size="20.0" />
 					</font>
 					<graphic>
-						<ImageView fx:id="imgDefaultFuncionarios"
-							fitHeight="50.0" fitWidth="50.0">
+						<ImageView fx:id="imgDefaultFuncionarios" fitHeight="50.0" fitWidth="50.0">
 							<image>
-								<Image
-									url="@../imgs/Default_Funcionarios.png" />
+								<Image url="@../imgs/Default_Funcionarios.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
 				<Pane prefHeight="8.0" prefWidth="310.0" />
-				<Button fx:id="btnUsuarios" alignment="TOP_LEFT"
-					layoutX="10.0" layoutY="250.0" mnemonicParsing="false"
-					prefHeight="70.0" prefWidth="310.0"
-					style="-fx-background-color: #001C52; -fx-border-color: white;"
-					text="Usuários" textFill="WHITE">
+				<Button fx:id="btnUsuarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Usuários" textFill="WHITE">
 					<font>
 						<Font size="20.0" />
 					</font>
 					<graphic>
-						<ImageView fx:id="imgDefaultUsuarios" fitHeight="50.0"
-							fitWidth="50.0">
+						<ImageView fx:id="imgDefaultUsuarios" fitHeight="50.0" fitWidth="50.0">
 							<image>
-								<Image
-									url="@../imgs/Default_Usuarios.png" />
+								<Image url="@../imgs/Default_Usuarios.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
 				<Pane prefHeight="8.0" prefWidth="310.0" />
-				<Button fx:id="btnFornecedores" alignment="TOP_LEFT"
-					layoutX="10.0" layoutY="330.0" mnemonicParsing="false"
-					prefHeight="70.0" prefWidth="310.0"
-					style="-fx-background-color: #001C52; -fx-border-color: white;"
-					text="Fornecedores" textFill="WHITE">
+				<Button fx:id="btnFornecedores" alignment="TOP_LEFT" layoutX="10.0" layoutY="330.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Fornecedores" textFill="WHITE">
 					<font>
 						<Font size="20.0" />
 					</font>
 					<graphic>
-						<ImageView fx:id="imgDefaultFornecedores"
-							fitHeight="50.0" fitWidth="50.0">
+						<ImageView fx:id="imgDefaultFornecedores" fitHeight="50.0" fitWidth="50.0">
 							<image>
-								<Image
-									url="@../imgs/Default_Fornecedores.png" />
+								<Image url="@../imgs/Default_Fornecedores.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
 				<Pane prefHeight="8.0" prefWidth="310.0" />
-				<Button fx:id="btnConfiguracoes" alignment="TOP_LEFT"
-					layoutY="420.0" mnemonicParsing="false" prefHeight="70.0"
-					prefWidth="310.0"
-					style="-fx-background-color: #001C52; -fx-border-color: white;"
-					text="Configurações" textFill="WHITE">
+				<Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" layoutY="420.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Configurações" textFill="WHITE">
 					<font>
 						<Font size="20.0" />
 					</font>
 					<graphic>
-						<ImageView fx:id="imgDefaultConfiguracoes"
-							fitHeight="50.0" fitWidth="50.0">
+						<ImageView fx:id="imgDefaultConfiguracoes" fitHeight="50.0" fitWidth="50.0">
 							<image>
-								<Image
-									url="@../imgs/Default_Configurações.png" />
+								<Image url="@../imgs/Default_Configurações.png" />
 							</image>
 						</ImageView>
 					</graphic>
 				</Button>
 				<Pane prefHeight="326.0" prefWidth="310.0">
 					<children>
-						<Button fx:id="btnSair" layoutY="200.0"
-							mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0"
-							style="-fx-background-color: #001C52;" text="Sair"
-							textFill="WHITE">
+						<Button fx:id="btnSair" layoutY="200.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52;" text="Sair" textFill="WHITE">
 							<font>
 								<Font size="30.0" />
 							</font>
 							<graphic>
-								<ImageView fx:id="imgSair" fitHeight="50.0"
-									fitWidth="50.0">
+								<ImageView fx:id="imgSair" fitHeight="50.0" fitWidth="50.0">
 									<image>
-										<Image
-											url="@../imgs/SignOut.png" />
+										<Image url="@../imgs/SignOut.png" />
 									</image>
 								</ImageView>
 							</graphic>
