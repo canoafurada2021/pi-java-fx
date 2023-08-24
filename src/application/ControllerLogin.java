@@ -73,7 +73,7 @@ public class ControllerLogin implements Initializable {
 
 			// fecha a tela atual
 			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			stageAtual.close();
+			stageAtual.close(); 
 			stage.setScene(scene);
 			stage.show();
 

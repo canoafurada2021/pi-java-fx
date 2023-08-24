@@ -216,6 +216,7 @@ public class ControllerListFornecedores implements Initializable {
 
 	@FXML
 	public void abrirListagemFornecedores(ActionEvent event) {
+		
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_fornecedor.fxml"));
 			Parent root = loader.load();
