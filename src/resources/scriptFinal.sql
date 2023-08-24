@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `aluguelRegistros` (
 -- Table .`fornecedores`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `fornecedores` (
-  `cnpj` INT NOT NULL,
+  `cnpj` BIGINT NOT NULL,
   `enderecos_id` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `telefone` LONG NOT NULL,
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `veiculo`(
   `img_Base64` VARCHAR(555) NOT NULL DEFAULT "",
   `unidade_em_estoque` INT NOT NULL,
   `categoria_id_categoria` INT NOT NULL,
-  `fornecedores_cnpj` INT NOT NULL,
+  `fornecedores_cnpj` BIGINT  NOT NULL,
   PRIMARY KEY (`id_veiculo`, `fornecedores_cnpj`),
   FOREIGN KEY (`categoria_id_categoria`) REFERENCES `categoria` (`id_categoria`),
   FOREIGN KEY (`fornecedores_cnpj`) REFERENCES `fornecedores` (`cnpj`)
@@ -153,9 +153,13 @@ CREATE TABLE IF NOT EXISTS `veiculo`(
 insert into empresa (razao_social, telefone, cnpj, nome_fantasia, porte_empresa, cargo) values ('O objetivo da empresa é deixar as pessoas felizes andando de gol', '+55 47 992178827', '12.345.678/0001-99', 'Pope Francis Master', 'grande', "MASTER");
 -- ------------------------------------------------------------------------------------------------------
 
-insert into enderecos (cep, id, rua, bairro, cidade, estado) values ('95560', '1', 'PO Box 26708', '9th Floor', 'PO Box 59776', '7th Floor');
-insert into enderecos (cep, id, rua, bairro, cidade, estado) values ('95590', '2', 'PO Box 74593', 'Suite 85', 'Apt 359', 'Room 630');
-insert into enderecos (cep, id, rua, bairro, cidade, estado) values ('9899', '3', 'Apt 1550', 'Apt 1844', 'Suite 82', 'Suite 87');
+insert into enderecos (cep, id, rua, bairro, cidade, estado) values ('89111042', '1', 'Rua Florianópolis', 'Bela Vista', 'Gaspar', 'Santa Catarina');
+insert into enderecos (cep, id, rua, bairro, cidade, estado) values ('891110826', '2', 'Rua João José Schmitz', 'Bela Vista', 'Gaspar', 'Santa Catarina');
+insert into enderecos (cep, id, rua, bairro, cidade, estado) values ('89025420', '3', 'Rua Juiz de Fora', 'Glória', 'Blumenau', 'Santa Catarina');
+insert into enderecos (cep, id, rua, bairro, cidade, estado) values ('88420000', '4', 'Estrada Geral Pitangueira', 'Estrada Geral', 'Agrolândia', 'Santa Catarina');
+
+
+
 
 
 INSERT INTO vendedor (id_vendedor, salario, nome,  cargo) VALUES (1, 2574.89, 'Patricia Cordeiro', 'FUNCIONARIO');
@@ -176,8 +180,8 @@ insert into categoria (id_categoria, categoria) values ('24', 'sapien');
 insert into categoria (id_categoria, categoria) values ('25', 'semper');
 
 -- inserts FORNECEDORES
-insert into fornecedores (cnpj,  enderecos_id, nome, atividades, telefone) values (82, 1, 'João', 'Honda FIT', 47984273688); 
-insert into fornecedores (cnpj,  enderecos_id, nome, atividades, telefone) values (83, 2, 'Bruno','Sportage',  47997212305); 
+insert into fornecedores (cnpj,  enderecos_id, nome, atividades, telefone) values (82, 1, 'Emily Joanna Alves', 'HB20 all black', 47984273688); 
+insert into fornecedores (cnpj,  enderecos_id, nome, atividades, telefone) values (83, 2, 'Maria Eduarda Mendes','Gol Bolinha 2014',  47997212305); 
 
 
 

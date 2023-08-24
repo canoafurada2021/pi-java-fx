@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,14 +24,11 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import modelo.Categoria;
 import modelo.Fornecedores;
-import modelo.Vendedor;
 import javafx.scene.image.Image;
 
 public class ControllerListFornecedores implements Initializable {
@@ -217,7 +215,7 @@ public class ControllerListFornecedores implements Initializable {
 	}
 
 	@FXML
-	public void abrirTelaCadastroFornecedores(ActionEvent event) {
+	public void abrirListagemFornecedores(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_fornecedor.fxml"));
 			Parent root = loader.load();
@@ -226,6 +224,9 @@ public class ControllerListFornecedores implements Initializable {
 
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
+//			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
 
 			stage.setScene(scene);
 			stage.show();
@@ -259,23 +260,27 @@ public class ControllerListFornecedores implements Initializable {
 			return telefoneStr; // Retornar sem formatação se não corresponder a nenhum padrão
 		}
 	}
-	 @FXML
-	    void abrirDashboard(ActionEvent event) {
-		   try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
-				Parent root = loader.load();
 
-				ControllerDashboard controllerNovaTela = loader.getController();
+	@FXML
+	void abrirDashboard(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
+			Parent root = loader.load();
 
-				Scene scene = new Scene(root);
-				Stage stage = new Stage();
+			ControllerDashboard controllerNovaTela = loader.getController();
 
-				stage.setScene(scene);
-				stage.show();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	    }
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

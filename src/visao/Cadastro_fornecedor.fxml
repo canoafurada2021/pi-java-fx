@@ -120,12 +120,8 @@
                   </Button>
 					</children>
 				</Pane>
-<<<<<<< Updated upstream
 				<Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#abrirDashboard" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Dashboard" textFill="WHITE">
-=======
             <Pane prefHeight="8.0" prefWidth="310.0" />
-				<Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Dashboard" textFill="WHITE">
->>>>>>> Stashed changes
 					<font>
 						<Font size="20.0" />
 					</font>

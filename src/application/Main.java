@@ -4,16 +4,21 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_fornecedor.fxml"));
+    	
+    	primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/imgs/favicon.png")));
+
+    	
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
         Parent root = loader.load();
 		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
-		ControllerCadastroFornecedores controller = loader.getController(); // Obtém uma referência ao controlador
+		ControllerLogin controller = loader.getController(); // Obtém uma referência ao controlador
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
