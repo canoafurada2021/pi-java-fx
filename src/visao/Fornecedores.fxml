@@ -41,7 +41,7 @@
                         </TableView>
                      </children>
                   </Pane>
-                  <Button fx:id="bntCadastrar" layoutX="1050.0" layoutY="24.0" mnemonicParsing="false" onAction="#abrirListagemFornecedores" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
+                  <Button fx:id="bntCadastrar" layoutX="1050.0" layoutY="24.0" mnemonicParsing="false" onAction="#abrirTelaCadastroGemFornecedores" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
