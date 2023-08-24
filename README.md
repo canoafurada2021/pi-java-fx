@@ -1,14 +1,25 @@
 # Sistema Get That Auto
-![image](https://github.com/canoafurada2021/projeto-integrador/assets/84353670/a5a2e867-2ec6-46bc-b96e-57575bcb2bb6)
 
-![Em Desenvolvimento](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue) [![Java Development Kit (JDK)](https://img.shields.io/badge/License-JDK-blue)](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) [![JavaFX](https://img.shields.io/badge/JavaFX-blue)](https://openjfx.io/) ![Progresso: 1%](https://img.shields.io/badge/Progresso-10%25-blue)
+![Sistema Get That Auto](https://github.com/canoafurada2021/projeto-integrador/assets/84353670/a5a2e867-2ec6-46bc-b96e-57575bcb2bb6)
 
-## 📚 DESCRIÇÃO DAS FUNCIONALIDADES DO SISTEMA</span>
-Este é o repositório de códigos fonte base para desenvolvimendo do projeto integrador focado em um sistema desktop/mobile para uma empresa de venda de carros
+![Em Desenvolvimento](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)
+[![Java Development Kit (JDK)](https://img.shields.io/badge/License-JDK-blue)](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+[![JavaFX](https://img.shields.io/badge/JavaFX-blue)](https://openjfx.io/)
+![Progresso: 10%](https://img.shields.io/badge/Progresso-10%25-blue)
 
+## 📚 Descrição das Funcionalidades do Sistema
 
-## 🚙 INTRODUÇÃO</span>
-  O presente projeto propõe o desenvolvimento de um software para o gerenciamento de atividades de uma locadora de veículos e seu respectivo controle de estoque. Tal sistema possuirá apenas uma aplicação para desktop com as visualizações de proprietário e funcionário. Em geral, no sistema poderão ser cadastrados, além de produtos, clientes, funcionários e fornecedores, também será possível realizar a reserva de um veículo. No momento de login, é possível visualizar o sistema a partir de duas interfaces específicas para manuseio, sendo elas a de funcionário e proprietário. Para o funcionário, será possível visualizar a aba de dashboard da empresa, o gerenciamento (CRUD) de produtos, gerenciamento (exclusão e alteração) de clientes, além de uma aba para a visualização dos veículos, seus status e as opções de reserva associadas a um cliente específico, e por fim, o funcionário pode alterar os dados de sua própria cota no sistema. Já o proprietário, que será pré-cadastrado no sistema, terá acesso a todo o sistema, podendo realizar o gerenciamento (CRUD) dos fornecedores, funcionários, clientes, atualizar seus próprios dados nas configurações, realizar reservas de veículos e, por fim, visualizar a análise de todas as locações e atividades de cada funcionário e dos veículos mais locados.
+Este repositório contém o código-fonte base para o desenvolvimento do projeto integrador focado em um sistema desktop para uma empresa de locação de carros.
+
+## 🚘 Introdução
+
+O projeto "Get That Auto" tem como objetivo o desenvolvimento de um software para o gerenciamento de atividades de uma locadora de veículos, incluindo controle de estoque e gestão de clientes. O sistema é projetado para operar em um ambiente desktop e móvel, proporcionando diferentes níveis de acesso para funcionários e proprietários. Algumas das principais funcionalidades incluem:
+
+- Cadastro e gerenciamento de veículos
+- Cadastro e gerenciamento de clientes
+- Controle de estoque de veículos
+- Reserva de veículos
+- Análise de locações e atividades
 
 ## 🚗 Casos de Uso
 | **Número** | **Caso de Uso**                                | **Descrição**                                        |
@@ -29,13 +40,23 @@ Este é o repositório de códigos fonte base para desenvolvimendo do projeto in
 | 14     | Alterar dados de uma locação - UC14      | Alteração dos dados de uma locação no sistema, por vendedor e gerente.|
 | 15     | Remover uma locação - UC15               | Exclusão do registro de uma locação do sistema, por vendedor e gerente. |
 
-## 💠 Diagrama de casos de uso com atores identificados
- A imagem abaixo mostra o diagrama de casos de uso gerais do sistema, o qual possui dois atores e os quinze casos de uso identificados com suas respectivas descrições.
 
-![DiagramaDeCasosDeUsoComAtoresIdentificados](https://github.com/canoafurada2021/pi-java-fx/blob/master/DiagramaDeCasosDeUsoComAtoresIdentificados.jpg?raw=true)
+## ⛽ Diagramas
 
+<div style="text-align: center;">
+  <h4>Diagrama de casos de uso com atores identificados</h3>h3>
+  <p>A imagem abaixo mostra o diagrama de casos de uso gerais do sistema, o qual possui dois atores e os quinze casos de uso identificados com suas respectivas descrições:</p>
+  <img src="https://github.com/canoafurada2021/pi-java-fx/blob/master/DiagramaDeCasosDeUsoComAtoresIdentificados.jpg?raw=true" alt="Diagrama de Casos de Uso">
+</div>
 
-## 💠 Diagrama de Classes
-  Para a aplicação do sistema de concessionária, foram desenvolvidas dez classes armazenadoras das informações necessárias para o funcionamento da aplicação. São elas, as classes Fornecedor, Endereco, Pessoa, Vendedor, Cliente, Produto, Categoria, Venda, EnumPagamento e AgendaVisita, abaixo:
+<div style="text-align: center;">
+  <h4>Diagrama de Classes</h3>
+  <p>Para estabelecer uma sincronização entre o sistema e o banco de dados, deve-se usar um mapeamento do Diagrama de Classes para o Diagrama Entidade-Relacionamento, conforme mostrado abaixo:</p>
+  <img src="https://github.com/canoafurada2021/pi-java-fx/blob/master/DiagramaDeClasses.png?raw=true" alt="Diagrama de Classes">
+</div>
 
-![DiagramaDeClasses](https://github.com/canoafurada2021/pi-java-fx/blob/master/DiagramaDeClasses.png?raw=true)
+<div style="text-align: center;">
+  <h4>Diagrama de Entidade e Relacionamento</h3>
+  <p>Para a aplicação do sistema de concessionária, foram desenvolvidas dez classes armazenadoras das informações necessárias para o funcionamento da aplicação. São elas, as classes Fornecedor, Endereco, Pessoa, Vendedor, Cliente, Produto, Categoria, Venda, EnumPagamento e AgendaVisita, abaixo:</p>
+  <img src="https://github.com/canoafurada2021/pi-java-fx/assets/95760996/299da800-d62c-4fea-9178-26340f579f12.png" alt="Diagrama de Entidade e Relacionamento">
+</div>
