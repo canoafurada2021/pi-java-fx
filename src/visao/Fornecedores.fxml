@@ -41,7 +41,7 @@
                         </TableView>
                      </children>
                   </Pane>
-                  <Button fx:id="bntCadastrar" layoutX="1050.0" layoutY="24.0" mnemonicParsing="false" onAction="#abrirTelaCadastroFornecedores" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
+                  <Button fx:id="bntCadastrar" layoutX="1050.0" layoutY="24.0" mnemonicParsing="false" onAction="#abrirListagemFornecedores" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -51,15 +51,7 @@
                         <Font size="20.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="btnPesquisar" layoutX="960.0" layoutY="26.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: white;">
-                     <graphic>
-                        <ImageView fx:id="btnPesquisa">
-                           <image>
-                              <Image url="@../imgs/FotoPerfilRedonda.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <Button fx:id="btnPesquisar" layoutX="960.0" layoutY="26.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: white;" />
                </children></AnchorPane>
         </items>
       </SplitPane>
@@ -77,11 +69,11 @@
                         <Font size="20.0" />
                      </font>
                      <graphic>
-                        <StackPane fx:id="StackPanePerfil" prefHeight="80.0" prefWidth="282.0">
+                        <StackPane fx:id="StackPanePerfil" prefHeight="58.0" prefWidth="267.0">
                            <children>
                               <ImageView fx:id="imgFotoPerfil" fitHeight="50.0" fitWidth="50.0" StackPane.alignment="TOP_LEFT">
                                  <image>
-                                    <Image url="@../../../../../../../Downloads/FotoPerfil.png" />
+                                    <Image url="@../imgs/FotoPerfilRedonda.png" />
                                  </image>
                               </ImageView>
                               <Label fx:id="lblNomeVendedor" alignment="TOP_CENTER" prefHeight="48.0" prefWidth="158.0" text="Patricia Cordeiro" textFill="WHITE">

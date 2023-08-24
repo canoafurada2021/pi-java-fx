@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,6 +29,7 @@ import javafx.util.Duration;
 import modelo.Endereco;
 import modelo.Fornecedores;
 import utilities.CnpjFormatter;
+import utilities.TelefoneFormatter;
 
 public class ControllerCadastroFornecedores implements Initializable {
 
@@ -102,7 +104,17 @@ public class ControllerCadastroFornecedores implements Initializable {
 
 		String nome = txtNome.getText();
 
-		Long telefone = Long.parseLong(txtTelefone.getText());
+		
+		String telefoneFormat =  txtTelefone.getText().replaceAll("[^0-9]", "");
+		Long telefone = Long.parseLong(telefoneFormat);
+		
+		
+		
+		
+		
+		
+		
+
 		String atividaes = txtAtividades.getText();
 
 		String cnpjFormatted = txtCNPJ.getText().replaceAll("\\D", "");
@@ -207,6 +219,15 @@ public class ControllerCadastroFornecedores implements Initializable {
 		// Font.loadFont(getClass().getResourceAsStream("/fonts/fontawesome-webfont.ttf"),
 		// 14);
 
+		
+		
+		txtTelefone.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
+			if (newValue != null && !newValue.isEmpty()) {
+				txtTelefone.setText(TelefoneFormatter.formatTelefoneBrasil(newValue));
+			}
+		});
+		
+		
 		txtCNPJ.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
 			if (newValue != null && !newValue.isEmpty()) {
 				txtCNPJ.setText(CnpjFormatter.formatCnpj(newValue));
@@ -254,6 +275,9 @@ public class ControllerCadastroFornecedores implements Initializable {
 
 				Scene scene = new Scene(root);
 				Stage stage = new Stage();
+				// fecha a tela atual
+				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				stageAtual.close();
 
 				stage.setScene(scene);
 				stage.show();
@@ -273,6 +297,10 @@ public class ControllerCadastroFornecedores implements Initializable {
 
 				Scene scene = new Scene(root);
 				Stage stage = new Stage();
+				
+				// fecha a tela atual
+				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				stageAtual.close();
 
 				stage.setScene(scene);
 				stage.show();
@@ -281,24 +309,10 @@ public class ControllerCadastroFornecedores implements Initializable {
 				e.printStackTrace();
 			}
 	    }
-	    //falta listagem de func entao coloquei p abri o login q ta bonito
 	    @FXML
 	    void abrirListaFuncionarios(ActionEvent event) {
-	    	try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
-				Parent root = loader.load();
 
-				ControllerLogin controllerNovaTela = loader.getController();
-
-				Scene scene = new Scene(root);
-				Stage stage = new Stage();
-
-				stage.setScene(scene);
-				stage.show();
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 	    }
+	   
 
 }
