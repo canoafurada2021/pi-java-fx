@@ -18,11 +18,11 @@
         <items>
           <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
                <children>
-                  <Pane fx:id="panelConfiguracoes" layoutX="20.0" layoutY="72.0" prefHeight="888.0" prefWidth="1168.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+                  <Pane fx:id="panelConfiguracoes" layoutX="20.0" layoutY="53.0" prefHeight="924.0" prefWidth="1168.0" style="-fx-background-color: white; -fx-background-radius: 20;">
                      <children>
-                        <ImageView fx:id="imgConfiguracoes" fitHeight="304.0" fitWidth="1168.0" layoutY="-1.0">
+                        <ImageView fx:id="imgConfiguracoes" fitHeight="317.0" fitWidth="1168.0" layoutY="-14.0">
                            <image>
-                              <Image url="@clickup-attachments-2023-08-16-13-55/PrimeiraVersõaDaCapa.png" />
+                              <Image url="@../imgs/capa_Dashboard.png" />
                            </image>
                         </ImageView>
                         <Label fx:id="lblDados" layoutX="58.0" layoutY="343.0" prefHeight="45.0" prefWidth="312.0" text="DADOS DA EMPRESA">
