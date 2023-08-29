@@ -104,16 +104,8 @@ public class ControllerCadastroFornecedores implements Initializable {
 
 		String nome = txtNome.getText();
 
-		
-		String telefoneFormat =  txtTelefone.getText().replaceAll("[^0-9]", "");
+		String telefoneFormat = txtTelefone.getText().replaceAll("[^0-9]", "");
 		Long telefone = Long.parseLong(telefoneFormat);
-		
-		
-		
-		
-		
-		
-		
 
 		String atividaes = txtAtividades.getText();
 
@@ -219,15 +211,13 @@ public class ControllerCadastroFornecedores implements Initializable {
 		// Font.loadFont(getClass().getResourceAsStream("/fonts/fontawesome-webfont.ttf"),
 		// 14);
 
-		
-		
-		txtTelefone.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
-			if (newValue != null && !newValue.isEmpty()) {
-				txtTelefone.setText(TelefoneFormatter.formatTelefoneBrasil(newValue));
-			}
-		});
-		
-		
+		txtTelefone.textProperty()
+				.addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
+					if (newValue != null && !newValue.isEmpty()) {
+						txtTelefone.setText(TelefoneFormatter.formatTelefoneBrasil(newValue));
+					}
+				});
+
 		txtCNPJ.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
 			if (newValue != null && !newValue.isEmpty()) {
 				txtCNPJ.setText(CnpjFormatter.formatCnpj(newValue));
@@ -265,54 +255,55 @@ public class ControllerCadastroFornecedores implements Initializable {
 		}
 		return null; // Retorna null se não encontrar o endereço
 	}
-	   @FXML
-	    void abrirDashboard(ActionEvent event) {
-		   try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
-				Parent root = loader.load();
 
-				ControllerDashboard controllerNovaTela = loader.getController();
+	@FXML
+	void abrirDashboard(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
+			Parent root = loader.load();
 
-				Scene scene = new Scene(root);
-				Stage stage = new Stage();
-				// fecha a tela atual
-				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				stageAtual.close();
+			ControllerDashboard controllerNovaTela = loader.getController();
 
-				stage.setScene(scene);
-				stage.show();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	    }
+			stage.setScene(scene);
+			stage.show();
 
-	    @FXML
-	    void abrirListaFornecedores(ActionEvent event) {
-	    	try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
-				Parent root = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-				ControllerListFornecedores controllerNovaTela = loader.getController();
+	@FXML
+	void abrirListaFornecedores(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
+			Parent root = loader.load();
 
-				Scene scene = new Scene(root);
-				Stage stage = new Stage();
-				
-				// fecha a tela atual
-				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				stageAtual.close();
+			ControllerListFornecedores controllerNovaTela = loader.getController();
 
-				stage.setScene(scene);
-				stage.show();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	    }
-	    @FXML
-	    void abrirListaFuncionarios(ActionEvent event) {
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
 
-	    }
-	   
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void abrirListaFuncionarios(ActionEvent event) {
+
+	}
 
 }

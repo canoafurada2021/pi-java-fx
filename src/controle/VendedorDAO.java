@@ -26,6 +26,7 @@ public class VendedorDAO {
 	        while (rs.next()) {
 	            int idVendedor = rs.getInt("id_vendedor");
 	            String nome = rs.getString("nome");
+	            String sobrenome = rs.getString("sobrenome");
 	            double salario = rs.getDouble("salario");
 	            
 	            // Recupere o valor do cargo do enum
@@ -35,6 +36,7 @@ public class VendedorDAO {
 	            Vendedor v = new Vendedor();
 	            v.setId_vendedor(idVendedor);;
 	            v.setNome(nome);
+	            v.setSobrenome(sobrenome);
 	            v.setSalario(salario);
 	            v.setCargo(cargo);
 	            

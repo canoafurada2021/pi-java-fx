@@ -4,7 +4,14 @@ public class Vendedor {
 	 private int id_vendedor;
 	 private Double salario;
 	 private String nome;
-	    private EnumRoles cargo; // Use o enum para o cargo
+	 private String sobrenome;
+	    public String getSobrenome() {
+		return sobrenome;
+	}
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+		private EnumRoles cargo; // Use o enum para o cargo
 	 
 	public EnumRoles getCargo() {
 			return cargo;
