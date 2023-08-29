@@ -112,6 +112,29 @@ public class ControllerDashboard implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	  @FXML
+	void abrirCadastroInfoFuncionarios(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_funcionario.fxml"));
+			Parent root = loader.load();
+
+			TestController controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+//			// fecha a tela atual
+//			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@FXML
 	private void handleDashboardButton() {
