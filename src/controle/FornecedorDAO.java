@@ -99,4 +99,41 @@ public class FornecedorDAO {
 
 		return true;
 	}
+	
+	
+	
+	public boolean excluir(Fornecedores f) {
+	    Conexao c = Conexao.getInstancia();
+	    Connection con = c.conectar();
+	    
+	    String query = "DELETE FROM fornecedores WHERE cnpj = ?";
+	    
+	    try {
+	        PreparedStatement ps = con.prepareStatement(query);
+	        ps.setLong(1, f.getCnpj());
+	        
+	        int rowsAffected = ps.executeUpdate();
+	        
+	        if (rowsAffected > 0) {
+	            c.fecharConexao();
+	            return true;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        c.fecharConexao();
+	    }
+	    
+	    return false;
+	}
+	
+	
+	public boolean atualizar(Fornecedores f) {
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+		String query = "UPDATE fornecedores SET primeiro_nome = ? WHERE id_pessoa = ?";
+		return true;
+	}
 }

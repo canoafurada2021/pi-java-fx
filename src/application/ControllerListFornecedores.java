@@ -99,23 +99,32 @@ public class ControllerListFornecedores implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		FornecedorDAO dao = new FornecedorDAO();
 		tableFornecedores.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
 		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnAtividade.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAtividades()));
 
+		
+		//Método responsável pela criação dos botões de edição e exclusão de fornecedor dentro da tabela com o header 'Ações'
+		
 		columnAcoes.setCellFactory(new Callback<TableColumn<Fornecedores, String>, TableCell<Fornecedores, String>>() {
 			@Override
 			public TableCell<Fornecedores, String> call(TableColumn<Fornecedores, String> param) {
 				return new TableCell<Fornecedores, String>() {
+					
+					//Declaração das variáveis dos dois botões
 					private final Button viewButton = new Button();
 					private final Button editButton = new Button();
+					
+					
 					private final HBox buttonContainer = new HBox(viewButton, editButton);
 
 					{
-						buttonContainer.setSpacing(10); // Set the spacing between buttons
+						buttonContainer.setSpacing(10); // Setta o espaçamento entre os botões
 
+						//Estilização do botão de edição de funcionário, settando a imagem do lapis e a cor de fundo do botão
 						ImageView viewImage = new ImageView(
 								new Image(getClass().getResourceAsStream("/imgs/editar.png")));
 						viewImage.setFitHeight(16);
@@ -127,7 +136,7 @@ public class ControllerListFornecedores implements Initializable {
 							Fornecedores fornecedor = getTableView().getItems().get(getIndex());
 
 							System.out.println("botao de edição clicado");
-							// Lógica para ação de visualização
+							// Lógica para ação de edição
 						});
 
 						ImageView editImage = new ImageView(
@@ -137,10 +146,25 @@ public class ControllerListFornecedores implements Initializable {
 						editButton.setGraphic(editImage);
 						editButton.setStyle("-fx-background-color: red;");
 						editButton.setOnAction(event -> {
+							
 							Fornecedores fornecedor = getTableView().getItems().get(getIndex());
+						
+							if(dao.excluir(fornecedor)) {
+								
+							     getTableView().getItems().remove(fornecedor);
+							        System.out.println("Fornecedor excluído com sucesso.");
+							    
+							
+							
+							
+							
+							} else {
+							        System.out.println("Erro ao excluir o fornecedor.");
+							    }
+							
+							
 							System.out.println("botao de delete clicado");
 
-							// Lógica para ação de edição
 						});
 					}
 
@@ -177,7 +201,6 @@ public class ControllerListFornecedores implements Initializable {
 		});
 
 		// Configuração da coluna de telefone com formatação
-		// Configuração da coluna de telefone com formatação
 		columnTelefone.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTelefone()));
 
 		columnTelefone.setCellFactory(tc -> new TableCell<Fornecedores, Long>() {
@@ -212,6 +235,10 @@ public class ControllerListFornecedores implements Initializable {
 		});
 
 		carregarFornecedores();
+	}
+	
+	private void modalDeleteComSucesso() {
+		
 	}
 
 	@FXML

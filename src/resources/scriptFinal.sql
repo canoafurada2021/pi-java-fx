@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `veiculo`(
   `fornecedores_cnpj` BIGINT  NOT NULL,
   PRIMARY KEY (`id_veiculo`, `fornecedores_cnpj`),
   FOREIGN KEY (`categoria_id_categoria`) REFERENCES `categoria` (`id_categoria`),
-  FOREIGN KEY (`fornecedores_cnpj`) REFERENCES `fornecedores` (`cnpj`)
+  FOREIGN KEY (`fornecedores_cnpj`) REFERENCES `fornecedores` (`cnpj`) ON DELETE CASCADE
 );
 
 
@@ -208,9 +208,4 @@ SELECT * FROM fornecedores;
 SELECT * FROM enderecos;
 SELECT * FROM empresa;
 SELECT * FROM locador;
--- SELECTSSSSSSSSSSSSSSSSSS -----------------------------------------------------------------------------------------
--- -------------------------------
-
-
--- SELECT P LISTAGEM
 
