@@ -95,9 +95,14 @@ public class TestController implements Initializable {
 		
 		//falta o cargo
 		
+		 // Divida a string em partes com base no caractere "-"
+	    String[] partes = idVendedorSelect.split("-");
+	    // Obtenha o primeiro elemento (o número) e remova espaços em branco extras
+	    String numeroVendedorStr = partes[0].trim();
+		
 //		//vendedor selecionado
-		int vendedorId = Integer.parseInt(idVendedorSelect);
-		Vendedor vendedorSelecionado = encontrarVendedorPorId(vendedorId);
+	    int vendedorId = Integer.parseInt(numeroVendedorStr);
+	    Vendedor vendedorSelecionado = encontrarVendedorPorId(vendedorId);
 		
 		Vendedor v = new Vendedor();
 		
