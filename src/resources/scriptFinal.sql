@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `locador` (
   `nome` VARCHAR(45) NOT NULL,
   `sobrenome` VARCHAR(45) NOT NULL,
   `cargo` ENUM('MASTER', 'FUNCIONARIO', 'CLIENTE') NOT NULL, -- Coluna para o cargo diretamente
+  `img_Base64Locador` VARCHAR(555) NOT NULL DEFAULT "",
   PRIMARY KEY (`pessoas_cpf`)
 );
 
@@ -159,7 +160,7 @@ insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_car
 insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, cargo, img_Base64Locador) values ('123456789', 47992117973, 'BRASIL', 32165498, '2025-08-30', 987654, 'Frank', 'Tenpenny', "CLIENTE", 'https://static.wikia.nocookie.net/gta/images/0/02/GTASA_Tenpenny.jpg/revision/latest?cb=20090630163333&path-prefix=pt');
 insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, cargo, img_Base64Locador) values ('321654987', 47991853907, 'BRASIL', 12457869, '2024-11-24', 457869, 'Salvatore', 'Leone', "CLIENTE", 'https://static.wikia.nocookie.net/gta/images/6/6f/LeoneGTASA.jpg/revision/latest?cb=20091207011919&path-prefix=pt');
 insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, cargo, img_Base64Locador) values ('987654321', 47991737302, 'BRASIL', 32659847, '2025-09-19', 124578, 'Mike', 'Toreno', "CLIENTE", 'https://static.wikia.nocookie.net/gta/images/9/90/Mike.jpg/revision/latest?cb=20100517210533&path-prefix=pt');
-insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, cargo, img_Base64Locador) values ('123789456', 47992178827, 'BRASIL', 98653214, '2026-04-31', 362514, 'Catalina', 'Farrel', "CLIENTE", 'https://static.wikia.nocookie.net/gta/images/8/8a/Catalina1992.jpg/revision/latest?cb=20200416151431&path-prefix=pt');
+insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, cargo, img_Base64Locador) values ('123789456', 47992178827, 'BRASIL', 98653214, '2026-09-27', 362514, 'Catalina', 'Farrel', "CLIENTE", 'https://static.wikia.nocookie.net/gta/images/8/8a/Catalina1992.jpg/revision/latest?cb=20200416151431&path-prefix=pt');
 insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, cargo, img_Base64Locador) values ('321987654', 47984241802, 'BRASIL', 14253678, '2030-12-03', 142532, 'Madd', 'Dogg', "CLIENTE", 'https://static.wikia.nocookie.net/gta/images/a/a4/MaddDogg.jpg/revision/latest?cb=20110131231921&path-prefix=pt');
 insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, cargo, img_Base64Locador) values ('654789321', 47995687402, 'BRASIL', 36251498, '2035-06-08', 321654, 'Ken', 'Rosenberg', "CLIENTE", 'https://static.wikia.nocookie.net/gta/images/f/fe/KenEmSa.jpg/revision/latest?cb=20091129221320&path-prefix=pt');
 
@@ -215,3 +216,4 @@ SELECT * FROM fornecedores;
 SELECT * FROM enderecos;
 SELECT * FROM empresa;
 SELECT * FROM locador;
+
