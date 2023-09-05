@@ -14,14 +14,108 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.util.StringConverter;
 import modelo.Vendedor;
 
 public class ControllerTableViewFuncionarios implements Initializable {
 
+	@FXML
+    private SplitPane SlipPaneConfigurações;
+
+    @FXML
+    private StackPane StackPanePerfil;
+
+    @FXML
+    private Button bntSalvar;
+
+    @FXML
+    private Button btnConfiguracoes;
+
+    @FXML
+    private Button btnDashboard;
+
+    @FXML
+    private Button btnFornecedores;
+
+    @FXML
+    private Button btnFuncionarios;
+
+    @FXML
+    private Button btnLocacao;
+
+    @FXML
+    private Button btnPerfil;
+
+    @FXML
+    private ImageView btnPesquisa;
+
+    @FXML
+    private Button btnPesquisar;
+
+    @FXML
+    private Button btnProdutos;
+
+    @FXML
+    private Button btnSair;
+
+    @FXML
+    private Button btnUsuarios;
+
+    @FXML
+    private TextField txtPesquisa;
+    @FXML
+    private ImageView imgDefaultConfiguracoes;
+
+    @FXML
+    private ImageView imgDefaultDashboard;
+
+    @FXML
+    private ImageView imgDefaultFornecedores;
+
+    @FXML
+    private ImageView imgDefaultFuncionarios;
+
+    @FXML
+    private ImageView imgDefaultLocacao;
+
+    @FXML
+    private ImageView imgDefaultProdutos;
+
+    @FXML
+    private ImageView imgDefaultUsuarios;
+
+    @FXML
+    private ImageView imgFotoPerfil;
+
+    @FXML
+    private ImageView imgLogo;
+
+    @FXML
+    private ImageView imgSair;
+
+    @FXML
+    private Label lblFornecedores;
+
+    @FXML
+    private Label lblFuncao;
+
+    @FXML
+    private Label lblNomeVendedor;
+
+    @FXML
+    private Pane panelConfiguracoes;
+
+    
 	@FXML
 	private TableView<Vendedor> tableFuncionario;
 
@@ -36,6 +130,8 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 	@FXML
 	private TableColumn<Vendedor, Double> columnSalario;
+	
+	
 
 	private ObservableList<Vendedor> obsVendedores;
 
@@ -47,7 +143,7 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 	@FXML
 	private void salvarDados(ActionEvent event) {
-		System.out.println("AAAAAAAAAAAAAAAA");
+		System.out.println("AAAAAAAAAAAAAAAA"); //teste
 	}
 
 	// Formata a cédula do salário para o padrão PT-BR (R$ 0000,000)
@@ -81,7 +177,6 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 			@Override
 			public Double fromString(String string) {
-				// TODO Auto-generated method stub
 				return null;
 			}
 
