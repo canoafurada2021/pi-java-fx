@@ -129,11 +129,34 @@ public class FornecedorDAO {
 	
 	
 	public boolean atualizar(Fornecedores f) {
-
-		Conexao c = Conexao.getInstancia();
-
-		Connection con = c.conectar();
-		String query = "UPDATE fornecedores SET primeiro_nome = ? WHERE id_pessoa = ?";
-		return true;
+	    Conexao c = Conexao.getInstancia();
+	    Connection con = c.conectar();
+	    String query = "UPDATE fornecedores SET nome = ?, telefone = ?, atividades = ? WHERE cnpj = ?";
+	    try {
+	        PreparedStatement preparedStatement = con.prepareStatement(query);
+	        preparedStatement.setString(1, f.getNome());
+	        preparedStatement.setLong(2, f.getTelefone());
+	        preparedStatement.setString(3, f.getAtividades()); // Adicione a atualização do campo 'atividades'
+	        preparedStatement.setLong(4, f.getCnpj()); // Certifique-se de fornecer o valor correto do CNPJ
+	        
+	        int rowsUpdated = preparedStatement.executeUpdate();
+	        
+	        if (rowsUpdated > 0) {
+	            // Os dados foram atualizados com sucesso
+	            return true;
+	        } else {
+	            // Nenhum registro foi atualizado (o CNPJ pode não existir)
+	            return false;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    } finally {
+	        c.fecharConexao();
+	    }
 	}
+
+	
+
+
 }

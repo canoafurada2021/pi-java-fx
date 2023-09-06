@@ -134,9 +134,20 @@ public class ControllerListFornecedores implements Initializable {
 						viewButton.setGraphic(viewImage);
 						viewButton.setOnAction(event -> {
 							Fornecedores fornecedor = getTableView().getItems().get(getIndex());
+						    String cnpj = fornecedor.getCnpj().toString();
 
+						    System.out.println("edição com o cnpj"+ cnpj);
+						    
+						    
 							System.out.println("botao de edição clicado");
-							// Lógica para ação de edição
+							
+
+						
+						
+						
+						
+						
+						
 						});
 
 						ImageView editImage = new ImageView(
