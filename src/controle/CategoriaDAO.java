@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Categoria;
-import modelo.EnumRoles;
+import modelo.EnumCargos;
 import modelo.Vendedor;
 
 public class CategoriaDAO {

@@ -11,12 +11,12 @@ public class Vendedor {
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
-		private EnumRoles cargo; // Use o enum para o cargo
+		private EnumCargos cargo; // Use o enum para o cargo
 	 
-	public EnumRoles getCargo() {
+	public EnumCargos getCargo() {
 			return cargo;
 		}
-		public void setCargo(EnumRoles cargo) {
+		public void setCargo(EnumCargos cargo) {
 			this.cargo = cargo;
 		}
 	

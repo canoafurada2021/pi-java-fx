@@ -5,7 +5,7 @@ public class Pessoa {
 private float cpf;
 private String nome;
 private String sobrenome;
-private EnumRoles cargo;
+private EnumCargos cargo;
 public float getCpf() {
 	return cpf;
 }
@@ -24,10 +24,10 @@ public String getSobrenome() {
 public void setSobrenome(String sobrenome) {
 	this.sobrenome = sobrenome;
 }
-public EnumRoles getCargo() {
+public EnumCargos getCargo() {
 	return cargo;
 }
-public void setCargo(EnumRoles cargo) {
+public void setCargo(EnumCargos cargo) {
 	this.cargo = cargo;
 }
 	

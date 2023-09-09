@@ -29,6 +29,8 @@ import javafx.util.Duration;
 import modelo.Endereco;
 import modelo.Fornecedores;
 import utilities.CnpjFormatter;
+import utilities.ExibePopUpErro;
+import utilities.ExibePopUpSucesso;
 import utilities.TelefoneFormatter;
 
 public class ControllerCadastroFornecedores implements Initializable {
@@ -136,80 +138,23 @@ public class ControllerCadastroFornecedores implements Initializable {
 			limpaCampos();
 
 			if (insercaoSucesso) {
-				ExibirPopUpSucesso();
+				ExibePopUpSucesso.ExibirPopUpSucesso();
 			} else {
-				ExibirPopUpErro();
+	        	ExibePopUpErro.ExibirPopUpErro();
 			}
 
 		} catch (Exception e) {
 
-			ExibirPopUpSucesso();
+			ExibePopUpSucesso.ExibirPopUpSucesso();
 
 		}
 
 	}
 
-	private void ExibirPopUpSucesso() {
 
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroSucesso.fxml"));
-			Parent popupRoot = fxmlLoader.load();
-
-			Stage popupStage = new Stage();
-			popupStage.initModality(Modality.APPLICATION_MODAL);
-			popupStage.setTitle("Success Popup");
-
-			Scene popupScene = new Scene(popupRoot);
-			popupStage.setScene(popupScene);
-			popupStage.show();
-
-			// Define the duration for displaying the popup (in milliseconds)
-			int popupDuration = 3000; // Change this value as needed
-
-			// Create a Timeline to close the popup after the specified duration
-			Timeline timeline = new Timeline(new KeyFrame(Duration.millis(popupDuration), event -> {
-				popupStage.close();
-			}));
-			timeline.setCycleCount(1);
-			timeline.play();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void ExibirPopUpErro() {
-
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroErro.fxml"));
-			Parent popupRoot = fxmlLoader.load();
-
-			Stage popupStage = new Stage();
-			popupStage.initModality(Modality.APPLICATION_MODAL);
-			popupStage.setTitle("Error Popup");
-
-			Scene popupScene = new Scene(popupRoot);
-			popupStage.setScene(popupScene);
-			popupStage.show();
-
-			// Define the duration for displaying the popup (in milliseconds)
-			int popupDuration = 3000; // Change this value as needed
-
-			// Create a Timeline to close the popup after the specified duration
-			Timeline timeline = new Timeline(new KeyFrame(Duration.millis(popupDuration), event -> {
-				popupStage.close();
-			}));
-			timeline.setCycleCount(1);
-			timeline.play();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
-		// Font fontAwesome =
-		// Font.loadFont(getClass().getResourceAsStream("/fonts/fontawesome-webfont.ttf"),
-		// 14);
 
 		txtTelefone.textProperty()
 				.addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {

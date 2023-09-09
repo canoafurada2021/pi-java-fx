@@ -11,7 +11,9 @@ public class Locador {
 	private Long cnh;
 	private Date validadeCarteira;
 	private Long numIdentificacaoCarteira;
-	private EnumRoles cargo;
+	private EnumCargos cargo;
+	private String img_Base64;
+
 
 	public String getNome() {
 		return nome;
@@ -29,11 +31,11 @@ public class Locador {
 		this.sobrenome = sobrenome;
 	}
 
-	public EnumRoles getCargo() {
+	public EnumCargos getCargo() {
 		return cargo;
 	}
 
-	public void setCargo(EnumRoles cargo) {
+	public void setCargo(EnumCargos cargo) {
 		this.cargo = cargo;
 	}
 
@@ -83,6 +85,14 @@ public class Locador {
 
 	public void setNumIdentificacaoCarteira(Long numIdentificacaoCarteira) {
 		this.numIdentificacaoCarteira = numIdentificacaoCarteira;
+	}
+
+	public String getImg_Base64() {
+		return img_Base64;
+	}
+
+	public void setImg_Base64(String img_Base64) {
+		this.img_Base64 = img_Base64;
 	}
 
 }

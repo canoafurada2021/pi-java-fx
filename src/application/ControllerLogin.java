@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import controle.LoginDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import utilities.ExibePopUpErro;
 
 public class ControllerLogin implements Initializable {
 
@@ -59,27 +61,47 @@ public class ControllerLogin implements Initializable {
 	@FXML
 	private PasswordField txtSenha;
 
+	private LoginDAO dao = new LoginDAO();
+	
 	@FXML
 	void login(ActionEvent event) {
 
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
-			Parent root = loader.load();
+		
+		
+		
+		
+		  String cpf = txtCpf.getText();
+	        String senha = txtSenha.getText();
 
-			ControllerDashboard controllerNovaTela = loader.getController();
+	        // metodo de login atribuido a uma variável do tipo boolean
+	        boolean loginSucesso = dao.fazerLogin(cpf, senha);
+		
+		
+	        if(loginSucesso){
+	        	try {
+	    			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
+	    			Parent root = loader.load();
 
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
+	    			ControllerDashboard controllerNovaTela = loader.getController();
 
-			// fecha a tela atual
-			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			stageAtual.close(); 
-			stage.setScene(scene);
-			stage.show();
+	    			Scene scene = new Scene(root);
+	    			Stage stage = new Stage();
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	    			// fecha a tela atual
+	    			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    			stageAtual.close(); 
+	    			stage.setScene(scene);
+	    			stage.show();
+
+	    		} catch (IOException e) {
+	    			e.printStackTrace();
+	    		}        	
+	        } else {
+	        	ExibePopUpErro.ExibirPopUpErro();
+	        	
+	        }
+	        
+	
 
 	}
 

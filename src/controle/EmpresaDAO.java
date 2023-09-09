@@ -24,7 +24,9 @@ public class EmpresaDAO {
             ps.setLong(2, e.getTelefone());
             ps.setString(3, Double.toString(e.getCnpj()));
             ps.setString(4, e.getNome_fantasia());
-//            ps.setString(5, e.getCargo()); naos ei fazer conversao de role
+            
+            ps.setString(5, e.getCargo().toString()); //conversão da role para o valor especifico estabelecido para essa coluna no banco
+
             ps.setString(6, e.getPorte_empresa());
 
             // Consolidar a execução do comando no banco

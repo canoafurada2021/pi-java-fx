@@ -7,7 +7,7 @@ public class Empresa {
 	private Double cnpj;
 	private String nome_fantasia;
 	private String porte_empresa;
-	private EnumRoles cargo;
+	private EnumCargos cargo;
 	
 	public int getIdEmpresa() {
 		return idEmpresa;
@@ -45,10 +45,10 @@ public class Empresa {
 	public void setPorte_empresa(String porte_empresa) {
 		this.porte_empresa = porte_empresa;
 	}
-	public EnumRoles getCargo() {
+	public EnumCargos getCargo() {
 		return cargo;
 	}
-	public void setCargo(EnumRoles cargo) {
+	public void setCargo(EnumCargos cargo) {
 		this.cargo = cargo;
 	}
 

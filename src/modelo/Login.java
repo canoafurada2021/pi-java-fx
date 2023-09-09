@@ -2,16 +2,18 @@ package modelo;
 
 public class Login {
 	private int id;
-	  public int getId() {
+
+	private String cpf;
+    private String senha;
+    private EnumCargos cargo;
+    
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	private String cpf;
-	    private String senha;
-	    private EnumRoles tipoUsuario;
-	    
+
 	    
 		public String getCpf() {
 			return cpf;
@@ -25,10 +27,10 @@ public class Login {
 		public void setSenha(String senha) {
 			this.senha = senha;
 		}
-		public EnumRoles getTipoUsuario() {
-			return tipoUsuario;
+		public EnumCargos getTipoUsuario() {
+			return cargo;
 		}
-		public void setTipoUsuario(EnumRoles tipoUsuario) {
-			this.tipoUsuario = tipoUsuario;
+		public void setTipoUsuario(EnumCargos tipoUsuario) {
+			this.cargo = tipoUsuario;
 		}
 }

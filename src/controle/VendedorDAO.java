@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.EnumRoles;
+import modelo.EnumCargos;
 import modelo.Vendedor;
 
 public class VendedorDAO {
@@ -31,7 +31,7 @@ public class VendedorDAO {
 	            
 	            // Recupere o valor do cargo do enum
 	            String cargoString = rs.getString("cargo");
-	            EnumRoles cargo = EnumRoles.valueOf(cargoString);
+	            EnumCargos cargo = EnumCargos.valueOf(cargoString);
 	            
 	            Vendedor v = new Vendedor();
 	            v.setId_vendedor(idVendedor);;
@@ -76,7 +76,7 @@ public class VendedorDAO {
 	            ps.setString(3, v.getNome());
 
 	            // Defina o cargo diretamente usando o valor do enum
-	            ps.setString(5, EnumRoles.FUNCIONARIO.name());
+	            ps.setString(5, EnumCargos.FUNCIONARIO.name());
 	            
 	            
 	            // Consolidar a execução do comando no banco
