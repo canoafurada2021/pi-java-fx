@@ -46,7 +46,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="txtPesquisa" layoutX="16.0" layoutY="24.0" prefHeight="44.0" prefWidth="1022.0" style="-fx-background-radius: 10;" text="Pesquisar">
+                  <TextField fx:id="txtBusca" layoutX="16.0" layoutY="24.0" prefHeight="44.0" prefWidth="1022.0" style="-fx-background-radius: 10;">
                      <font>
                         <Font size="20.0" />
                      </font>

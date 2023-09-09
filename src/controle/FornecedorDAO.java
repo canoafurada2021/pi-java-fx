@@ -136,8 +136,8 @@ public class FornecedorDAO {
 	        PreparedStatement preparedStatement = con.prepareStatement(query);
 	        preparedStatement.setString(1, f.getNome());
 	        preparedStatement.setLong(2, f.getTelefone());
-	        preparedStatement.setString(3, f.getAtividades()); // Adicione a atualização do campo 'atividades'
-	        preparedStatement.setLong(4, f.getCnpj()); // Certifique-se de fornecer o valor correto do CNPJ
+	        preparedStatement.setString(3, f.getAtividades()); 
+	        preparedStatement.setLong(4, f.getCnpj()); 
 	        
 	        int rowsUpdated = preparedStatement.executeUpdate();
 	        

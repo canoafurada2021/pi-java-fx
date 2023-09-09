@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import controle.FornecedorDAO;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +32,15 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import modelo.Fornecedores;
 import javafx.scene.image.Image;
+
+import javafx.scene.control.TextField;
+
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+
+
 
 public class ControllerListFornecedores implements Initializable {
 
@@ -88,8 +99,16 @@ public class ControllerListFornecedores implements Initializable {
 
 	@FXML
 	private Button bntCadastrar;
+	
 
-	// Add event handler methods here
+	   @FXML
+	    private TextField txtBusca;
+
+	   
+	   
+	   
+	   
+	   
 
 	@FXML
 	public void sair(ActionEvent event) {
@@ -98,10 +117,93 @@ public class ControllerListFornecedores implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 
+	    
+	    
+	    
+	    
 		FornecedorDAO dao = new FornecedorDAO();
 		tableFornecedores.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
+		var f = dao.listar();
+//inicio do filtro de busca
+		obsFornecedores = FXCollections.observableArrayList(f);
+
+        
+        
+
+		//tipo de filtro de listagem
+	    FilteredList<Fornecedores> filteredData = new FilteredList<>(obsFornecedores, p -> true);
+
+
+        // Vinculando o filtro de listagem à tabela de fornecedores
+        SortedList<Fornecedores> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tableFornecedores.comparatorProperty());
+        tableFornecedores.setItems(sortedData);
+
+        txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
+        	
+            // Este trecho será executado sempre que o texto no campo de busca mudar
+            filteredData.setPredicate(fornecedor -> {
+                if (newValue == null || newValue.isEmpty()) {
+                	System.out.println("novo valor: "+newValue);
+                    return true; // Mostra todos os dados quando não houver filtro
+                }
+
+                // conversão do texto do filtro para valores sem maiuscula para busca na lsitagem
+                String textoFiltro = newValue.toLowerCase();
+
+                // busca de dados baseada nos valores armazenados na entidade fornecedor
+                System.out.println(textoFiltro);
+                System.out.println(fornecedor.getNome());
+                return fornecedor.getNome().toLowerCase().contains(textoFiltro) ||
+                        String.valueOf(fornecedor.getCnpj()).contains(textoFiltro) ||
+                        String.valueOf(fornecedor.getTelefone()).contains(textoFiltro);            });
+        });
+
+      
+        final String textoPesquisa = txtBusca.getText();
+
+        // O Runnable é responsável pela busca de dados com um atraso de certos segundos
+        final Runnable pesquisa = () -> {
+            // Inside the lambda, use the previously defined variable
+            filteredData.setPredicate(fornecedor -> {
+                if (textoPesquisa == null || textoPesquisa.isEmpty()) {
+                    return true; // Mostra todos os dados quando não houver filtro
+                }
+
+                // conversão do texto do filtro para valores sem maiuscula para busca na listagem
+                String textoFiltro = textoPesquisa.toLowerCase();
+
+                // busca de dados baseada nos valores armazenados na entidade fornecedor
+                return fornecedor.getNome().toLowerCase().contains(textoFiltro) ||
+                       String.valueOf(fornecedor.getCnpj()).contains(textoFiltro) ||
+                       String.valueOf(fornecedor.getTelefone()).contains(textoFiltro);
+            });
+        };
+       
+
+
+
+
+
+
+
+        // Executar pesquisa após um pequeno atraso (300 milissegundos)
+        txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                Platform.runLater(() -> {
+                    if (txtBusca.getText().equals(newValue)) {
+                        pesquisa.run();
+                    }
+                });
+            }
+        });
+        
+        
+
+		
 		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnAtividade.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAtividades()));
@@ -133,6 +235,9 @@ public class ControllerListFornecedores implements Initializable {
 
 						viewButton.setGraphic(viewImage);
 						viewButton.setOnAction(event -> {
+						
+							
+							//Método de acionamento do botão de edição (pendente a tela pra chamar para poder editar os dados existentes)
 							Fornecedores fornecedor = getTableView().getItems().get(getIndex());
 						    String cnpj = fornecedor.getCnpj().toString();
 
