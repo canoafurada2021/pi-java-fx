@@ -30,7 +30,6 @@ public class LocadorDAO {
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				Locador l = new Locador();
-				l.setId(rs.getInt("id"));
 				l.setNome(rs.getString("nome"));
 				l.setSobrenome(rs.getString("sobrenome"));
 				l.setPessoas_cpf(rs.getInt("pessoas_cpf"));
@@ -73,4 +72,27 @@ public class LocadorDAO {
 		return true;
 	
 	
+}
+
+//EXCLUIR
+public void excluir (int id) {
+	try {
+		// Instanciando a classe conexao
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM locador WHERE id = ?";
+		
+		PreparedStatement ps = con.prepareStatement(query);
+		ps.setInt(1, id);
+
+		//Executando a consulta
+		ps.executeUpdate();
+
+		//Fechando a conexao
+		con.close();
+	} catch(Exception l2){
+		l2.printStackTrace();
+	}
 }
