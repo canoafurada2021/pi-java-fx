@@ -19,7 +19,7 @@
          <items>
             <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
                <children>
-                  <Pane fx:id="pnlFormCadastro" layoutX="264.0" layoutY="350.0" prefHeight="469.0" prefWidth="726.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
+                  <Pane fx:id="pnlFormEdicao" layoutX="264.0" layoutY="350.0" prefHeight="469.0" prefWidth="726.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
                      <children>
                         <Label fx:id="lblCNPJ" layoutX="30.0" layoutY="40.0" text="CNPJ">
                            <font>
