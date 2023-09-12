@@ -16,7 +16,7 @@ public class Veiculo {
 	private String img_Base64;
 	private int unidade_em_estoque;
 	private Categoria idCategoria;
-	private Fornecedores cnpj;
+	private Fornecedor cnpj;
 	public int getId_veiculo() {
 		return id_veiculo;
 	}
@@ -95,10 +95,10 @@ public class Veiculo {
 	public void setIdCategoria(Categoria idCategoria) {
 		this.idCategoria = idCategoria;
 	}
-	public Fornecedores getCnpj() {
+	public Fornecedor getCnpj() {
 		return cnpj;
 	}
-	public void setCnpj(Fornecedores cnpj) {
+	public void setCnpj(Fornecedor cnpj) {
 		this.cnpj = cnpj;
 	}
 	

@@ -30,7 +30,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import modelo.Fornecedores;
+import modelo.Fornecedor;
 import javafx.scene.image.Image;
 
 import javafx.scene.control.TextField;
@@ -75,27 +75,27 @@ public class ControllerListFornecedores implements Initializable {
 	private Label lblFornecedores;
 
 	@FXML
-	private TableView<Fornecedores> tableFornecedores;
+	private TableView<Fornecedor> tableFornecedores;
 
 	@FXML
-	private TableColumn<Fornecedores, Long> columnCnpj;
+	private TableColumn<Fornecedor, Long> columnCnpj;
 
 	@FXML
-	private TableColumn<Fornecedores, String> columnNome;
+	private TableColumn<Fornecedor, String> columnNome;
 
 	@FXML
-	private TableColumn<Fornecedores, Long> columnTelefone;
+	private TableColumn<Fornecedor, Long> columnTelefone;
 
 	@FXML
-	private TableColumn<Fornecedores, String> columnEndereco;
+	private TableColumn<Fornecedor, String> columnEndereco;
 
 	@FXML
-	private TableColumn<Fornecedores, String> columnAtividade;
+	private TableColumn<Fornecedor, String> columnAtividade;
 
 	@FXML
-	private TableColumn<Fornecedores, String> columnAcoes;
+	private TableColumn<Fornecedor, String> columnAcoes;
 
-	private ObservableList<Fornecedores> obsFornecedores;
+	private ObservableList<Fornecedor> obsFornecedores;
 
 	@FXML
 	private Button bntCadastrar;
@@ -105,7 +105,7 @@ public class ControllerListFornecedores implements Initializable {
 	    private TextField txtBusca;
 
 	   
-	   
+	   private String textoFiltro;
 	   
 	   
 	   
@@ -127,22 +127,30 @@ public class ControllerListFornecedores implements Initializable {
 		tableFornecedores.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
 		var f = dao.listar();
-//inicio do filtro de busca
+  //inicio do filtro de busca
 		obsFornecedores = FXCollections.observableArrayList(f);
 
         
         
-
+		textoFiltro = txtBusca.getText().toLowerCase();
 		//tipo de filtro de listagem
-	    FilteredList<Fornecedores> filteredData = new FilteredList<>(obsFornecedores, p -> true);
+		FilteredList<Fornecedor> filteredData = new FilteredList<>(obsFornecedores, fornecedor -> {
+		    // Substitua 'getNome()' pelo método que retorna o campo que você deseja filtrar
+		    String searchString = textoFiltro.toLowerCase(); // Converta a palavra digitada para minúsculas
+		    String fornecedorNome = fornecedor.getNome().toLowerCase(); // Converta o campo para minúsculas
+		    
+		    // Realize o filtro com base na palavra chave
+		    return fornecedorNome.contains(searchString);
+		});
 
 
         // Vinculando o filtro de listagem à tabela de fornecedores
-        SortedList<Fornecedores> sortedData = new SortedList<>(filteredData);
+        SortedList<Fornecedor> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(tableFornecedores.comparatorProperty());
         tableFornecedores.setItems(sortedData);
 
         txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
+        	
         	
             // Este trecho será executado sempre que o texto no campo de busca mudar
             filteredData.setPredicate(fornecedor -> {
@@ -154,9 +162,11 @@ public class ControllerListFornecedores implements Initializable {
                 // conversão do texto do filtro para valores sem maiuscula para busca na lsitagem
                 String textoFiltro = newValue.toLowerCase();
 
-                // busca de dados baseada nos valores armazenados na entidade fornecedor
+                // busca de dados baseada nos valores armazenados na entidade fornecedor 
+                
+                
                 System.out.println(textoFiltro);
-                System.out.println(fornecedor.getNome());
+                System.out.println(fornecedor.getNome().toLowerCase());
                 return fornecedor.getNome().toLowerCase().contains(textoFiltro) ||
                         String.valueOf(fornecedor.getCnpj()).contains(textoFiltro) ||
                         String.valueOf(fornecedor.getTelefone()).contains(textoFiltro);            });
@@ -211,10 +221,10 @@ public class ControllerListFornecedores implements Initializable {
 		
 		//Método responsável pela criação dos botões de edição e exclusão de fornecedor dentro da tabela com o header 'Ações'
 		
-		columnAcoes.setCellFactory(new Callback<TableColumn<Fornecedores, String>, TableCell<Fornecedores, String>>() {
+		columnAcoes.setCellFactory(new Callback<TableColumn<Fornecedor, String>, TableCell<Fornecedor, String>>() {
 			@Override
-			public TableCell<Fornecedores, String> call(TableColumn<Fornecedores, String> param) {
-				return new TableCell<Fornecedores, String>() {
+			public TableCell<Fornecedor, String> call(TableColumn<Fornecedor, String> param) {
+				return new TableCell<Fornecedor, String>() {
 					
 					//Declaração das variáveis dos dois botões
 					private final Button viewButton = new Button();
@@ -238,7 +248,7 @@ public class ControllerListFornecedores implements Initializable {
 						
 							
 							//Método de acionamento do botão de edição (pendente a tela pra chamar para poder editar os dados existentes)
-							Fornecedores fornecedor = getTableView().getItems().get(getIndex());
+							Fornecedor fornecedor = getTableView().getItems().get(getIndex());
 						    String cnpj = fornecedor.getCnpj().toString();
 
 						    System.out.println("edição com o cnpj"+ cnpj);
@@ -263,7 +273,7 @@ public class ControllerListFornecedores implements Initializable {
 						editButton.setStyle("-fx-background-color: red;");
 						editButton.setOnAction(event -> {
 							
-							Fornecedores fornecedor = getTableView().getItems().get(getIndex());
+							Fornecedor fornecedor = getTableView().getItems().get(getIndex());
 						
 							if(dao.excluir(fornecedor)) {
 								
@@ -308,7 +318,7 @@ public class ControllerListFornecedores implements Initializable {
 		// para a entidade 'Endereco nessa tabela
 
 		columnEndereco.setCellValueFactory(cellData -> {
-			Fornecedores fornecedor = cellData.getValue();
+			Fornecedor fornecedor = cellData.getValue();
 			String rua = "";
 			if (fornecedor.getEnderecoId() != null) {
 				rua = fornecedor.getEnderecoId().getRua();
@@ -319,7 +329,7 @@ public class ControllerListFornecedores implements Initializable {
 		// Configuração da coluna de telefone com formatação
 		columnTelefone.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTelefone()));
 
-		columnTelefone.setCellFactory(tc -> new TableCell<Fornecedores, Long>() {
+		columnTelefone.setCellFactory(tc -> new TableCell<Fornecedor, Long>() {
 
 			// máscara responsável pela formatação de número de telefone com base no modelo
 			// (99) 99999-9999
@@ -385,7 +395,7 @@ public class ControllerListFornecedores implements Initializable {
 	public void carregarFornecedores() {
 		FornecedorDAO dao = new FornecedorDAO();
 
-		ArrayList<Fornecedores> fornecedores = dao.listar();
+		ArrayList<Fornecedor> fornecedores = dao.listar();
 
 		obsFornecedores = FXCollections.observableArrayList(fornecedores);
 		tableFornecedores.setItems(obsFornecedores);

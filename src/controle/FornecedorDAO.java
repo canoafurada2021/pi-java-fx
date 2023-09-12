@@ -7,15 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Endereco;
-import modelo.Fornecedores;
+import modelo.Fornecedor;
 
 public class FornecedorDAO {
 
-	public ArrayList<Fornecedores> listar() {
+	public ArrayList<Fornecedor> listar() {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		ArrayList<Fornecedores> fornecedores = new ArrayList<>();
+		ArrayList<Fornecedor> fornecedores = new ArrayList<>();
 		// Caso a tabela a ser trabalhada no método de listagem houver uma chave
 		// estrangeira vinculada a outra tabela
 		// Será necessário aplicar um inner join (junção entre duas ou mais tabelas)
@@ -46,7 +46,7 @@ public class FornecedorDAO {
 				Long telefone = rs.getLong("telefone");
 				String atividades = rs.getString("atividades");
 
-				Fornecedores f = new Fornecedores();
+				Fornecedor f = new Fornecedor();
 
 				f.setCnpj(cnpj);
 				f.setNome(nome);
@@ -73,7 +73,7 @@ public class FornecedorDAO {
 
 	}
 
-	public boolean inserir(Fornecedores f) {
+	public boolean inserir(Fornecedor f) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
@@ -102,7 +102,7 @@ public class FornecedorDAO {
 	
 	
 	
-	public boolean excluir(Fornecedores f) {
+	public boolean excluir(Fornecedor f) {
 	    Conexao c = Conexao.getInstancia();
 	    Connection con = c.conectar();
 	    
@@ -128,7 +128,7 @@ public class FornecedorDAO {
 	}
 	
 	
-	public boolean atualizar(Fornecedores f) {
+	public boolean atualizar(Fornecedor f) {
 	    Conexao c = Conexao.getInstancia();
 	    Connection con = c.conectar();
 	    String query = "UPDATE fornecedores SET nome = ?, telefone = ?, atividades = ? WHERE cnpj = ?";
