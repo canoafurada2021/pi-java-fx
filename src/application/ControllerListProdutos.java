@@ -1,12 +1,17 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import controle.VeiculoDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -16,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 public class ControllerListProdutos implements Initializable {
 
@@ -129,10 +135,109 @@ public class ControllerListProdutos implements Initializable {
 
     @FXML
     private TextField txtPesquisa;
+    
+    @FXML
+    void abrirDashboard(ActionEvent event) {
+    	// Abre a tela Dashboard
+    	
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
+			Parent root = loader.load();
+
+			ControllerDashboard controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
 
     @FXML
-    void salvarDados(ActionEvent event) {
+    void abrirFornecedores(ActionEvent event) {
+    	// Abre a tela Fornecedores
+    	
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
+			Parent root = loader.load();
 
+			ControllerListFornecedores controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+
+    @FXML
+    void abrirFuncionarios(ActionEvent event) {
+    	// Abre a tela Funcinoarios 
+    	
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Funcionarios.fxml"));
+			Parent root = loader.load();
+
+			ControllerTableViewFuncionarios controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+
+
+    @FXML
+    void sair(ActionEvent event) {
+    	// Lógica para sair do aplicativo
+    	
+    	// CONTINUAR
+    }
+    
+    @FXML
+    void cadastrar(ActionEvent event) {
+    	// Ir para a tela de cadastro de produtos
+    	
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_produto.fxml"));
+			Parent root = loader.load();
+
+			ControllerCadastroProduto controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 	
 	@Override

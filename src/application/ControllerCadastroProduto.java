@@ -1,12 +1,16 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class ControllerCadastroProduto {
+public class ControllerCadastroProduto implements Initializable {
 
     @FXML
     private TextField txtIdVeiculo;
@@ -65,6 +69,12 @@ public class ControllerCadastroProduto {
 
         // Implemente aqui a lógica para cadastrar o veículo no banco de dados ou onde for necessário
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
 
     // Aqui você pode adicionar outros métodos conforme necessário
 
