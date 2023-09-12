@@ -105,7 +105,7 @@ public class ControllerListFornecedores implements Initializable {
 	    private TextField txtBusca;
 
 	   
-	   private String textoFiltro;
+	   private String textoFiltro; //bruna mandou botar aqui mas ainda nao funciona
 	   
 	   
 	   
@@ -131,10 +131,10 @@ public class ControllerListFornecedores implements Initializable {
 		obsFornecedores = FXCollections.observableArrayList(f);
 
         
-        
+        //de acordo c ela o problema ta aqui no filtro
 		textoFiltro = txtBusca.getText().toLowerCase();
 		//tipo de filtro de listagem
-		FilteredList<Fornecedor> filteredData = new FilteredList<>(obsFornecedores, fornecedor -> {
+		FilteredList<Fornecedor> filteredData = new FilteredList<>(obsFornecedores, fornecedor -> { //ela mandou tirar o true daqui 
 		    // Substitua 'getNome()' pelo método que retorna o campo que você deseja filtrar
 		    String searchString = textoFiltro.toLowerCase(); // Converta a palavra digitada para minúsculas
 		    String fornecedorNome = fornecedor.getNome().toLowerCase(); // Converta o campo para minúsculas
