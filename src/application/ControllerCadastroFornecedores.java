@@ -27,7 +27,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import modelo.Endereco;
-import modelo.Fornecedores;
+import modelo.Fornecedor;
 import utilities.CnpjFormatter;
 import utilities.ExibePopUpErro;
 import utilities.ExibePopUpSucesso;
@@ -123,7 +123,7 @@ public class ControllerCadastroFornecedores implements Initializable {
 
 		Endereco enderecoSelecionado = encontrarEnderecoPorId(enderecoId);
 
-		Fornecedores f = new Fornecedores();
+		Fornecedor f = new Fornecedor();
 
 		f.setNome(nome);
 		f.setTelefone(telefone);
