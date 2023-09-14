@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
         <items>
           <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
                <children>
-                  <Pane layoutX="270.0" layoutY="324.0" prefHeight="502.0" prefWidth="688.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
+                  <Pane layoutX="160.0" layoutY="317.0" prefHeight="509.0" prefWidth="886.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
                      <children>
                         <Label fx:id="lblNomeVeiculo" layoutX="30.0" layoutY="30.0" text="Nome do veículo:">
                            <font>
@@ -30,35 +30,53 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtMarcaVeiculo" layoutX="30.0" layoutY="165.0" prefHeight="40.0" prefWidth="620.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtMarcaVeiculo" layoutX="30.0" layoutY="165.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
                         <Button layoutX="220.0" layoutY="425.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="txtNomeVeiculo" layoutX="30.0" layoutY="70.0" prefHeight="40.0" prefWidth="620.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtNomeVeiculo" layoutX="30.0" layoutY="70.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
                         <Label fx:id="lblTipoVeiculo" layoutX="30.0" layoutY="230.0" text="Tipo do veículo:">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtTipoVeiculo" layoutX="30.0" layoutY="265.0" prefHeight="40.0" prefWidth="620.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtTipoVeiculo" layoutX="30.0" layoutY="265.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
                         <Label fx:id="lblQuantidadeVeiculos" layoutX="30.0" layoutY="325.0" text="Quantidade total de veículos">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtQuantidadeVeiculos" layoutX="30.0" layoutY="360.0" prefHeight="40.0" prefWidth="620.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtQuantidadeVeiculos" layoutX="30.0" layoutY="360.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblNomeVeiculo1" layoutX="466.0" layoutY="79.0" text="Nome do veículo:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblMarcaVeiculo1" layoutX="466.0" layoutY="174.0" text="Marca do veículo:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtMarcaVeiculo1" layoutX="466.0" layoutY="214.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtNomeVeiculo1" layoutX="466.0" layoutY="119.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblTipoVeiculo1" layoutX="466.0" layoutY="279.0" text="Tipo do veículo:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtTipoVeiculo1" layoutX="466.0" layoutY="314.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
                      </children>
                   </Pane>
-                  <Pane layoutX="270.0" layoutY="10.0" prefHeight="287.0" prefWidth="726.0">
+                  <Pane layoutX="252.0" layoutY="10.0" prefHeight="287.0" prefWidth="726.0">
                      <children>
                         <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="100.0" prefHeight="150.0" prefWidth="727.0" text="CADASTRO">
                            <font>
                               <Font name="System Bold" size="60.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="-12.0" layoutY="250.0" prefHeight="26.0" prefWidth="730.0" text="Olá insira as informações para cadastrar uma categoria:">
+                        <Label alignment="CENTER" layoutX="-12.0" layoutY="250.0" prefHeight="26.0" prefWidth="730.0" text="Olá insira as informações para cadastrar uma locação:">
                            <font>
                               <Font size="20.0" />
                            </font>
