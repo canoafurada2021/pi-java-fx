@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import controle.EnderecoDAO;
+import controle.FornecedorDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -131,6 +132,10 @@ public class ControllerEdicaoFornecedores implements Initializable{
 	private EnderecoDAO dao = new EnderecoDAO();
 
 	private ArrayList<Endereco> enderecos = dao.listar();
+	
+	FornecedorDAO daoFornecedor = new FornecedorDAO();
+
+	
 	@FXML
 	void abrirDashboard(ActionEvent event) {
 
@@ -148,7 +153,25 @@ public class ControllerEdicaoFornecedores implements Initializable{
 
 	@FXML
 	void alterarFornecedor(ActionEvent event) {
+		
+		  // Capture as alterações dos campos do formulário
+	    String novoNome = txtNome.getText();
+	    String novoAtividades = txtAtividades.getText();
+	    long novoTelefone = Long.parseLong(txtTelefone.getText());
 
+	    // Atualize o objeto Fornecedor com as alterações
+	    Fornecedor fornecedor = new Fornecedor();
+	    fornecedor.setCnpj(fornecedor.getCnpj()); // Defina o ID do fornecedor que você está editando
+	    fornecedor.setNome(novoNome);
+	    fornecedor.setAtividades(novoAtividades);
+	    fornecedor.setTelefone(novoTelefone);
+	    
+	    
+	    if(daoFornecedor.atualizar(fornecedor)) {
+	    	System.out.println(("Edição com sucesso"));
+	    } else {
+	    	System.out.println("Deu ruim");
+	    }
 	}
 
 	@FXML
