@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `empresa` (
 -- Table .`vendedores`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `vendedor` (
-  `id_vendedor` INT NOT NULL,
+  `id_vendedor` INT NOT NULL AUTO_INCREMENT,
   `salario` DOUBLE NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `sobrenome` VARCHAR(45) NOT NULL,
@@ -186,8 +186,8 @@ insert into enderecos (cep, id, rua, bairro, cidade, estado) values ('88420000',
 
 
 -- inserts VENDEDORES
-INSERT INTO vendedor (id_vendedor, salario, nome, sobrenome,  cargo) VALUES (1, 2574.89, 'Patricia', 'Cordeiro',  'FUNCIONARIO');
-INSERT INTO vendedor (id_vendedor, salario, nome, sobrenome, cargo) VALUES (3, 3452.90, 'Andrieli', 'Mendes', 'FUNCIONARIO');
+INSERT INTO vendedor ( salario, nome, sobrenome,  cargo) VALUES ( 2574.89, 'Patricia', 'Cordeiro',  'FUNCIONARIO');
+INSERT INTO vendedor ( salario, nome, sobrenome, cargo) VALUES ( 3452.90, 'Andrieli', 'Mendes', 'FUNCIONARIO');
 
 
 -- inserts CATEGORIAS
@@ -221,7 +221,7 @@ WHERE EXISTS (
     WHERE pessoas_cpf = '13093824923'
 );
 
-
+DESC locador;
 
 
 -- -----------------------------------------------------
