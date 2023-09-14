@@ -148,6 +148,33 @@ public class ControllerDashboard implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	 @FXML
+	    void abrirListProdutos(ActionEvent event) {
+		// Abre a tela de listagem de produtos
+	    	
+		 try {
+
+				
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Produtos.fxml"));
+				Parent root = loader.load();
+
+				ControllerListProdutos controllerNovaTela = loader.getController();
+
+				Scene scene = new Scene(root);
+				Stage stage = new Stage();
+
+				// fecha a tela atual
+				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				stageAtual.close();
+
+				stage.setScene(scene);
+				stage.show();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	    }
 
 	@FXML
 	private void handleDashboardButton() {
