@@ -7,7 +7,7 @@ public class Locador {
 	private String sobrenome;
 	private String pessoas_cpf;
 	private Long tel_contato;
-	private String paisResidencia;
+	private String pais_residencia;
 	private Long cnh;
 	private Date validadeCarteira;
 	private Long numIdentificacaoCarteira;
@@ -56,14 +56,14 @@ public class Locador {
 	}
 
 	public String getPaisResidencia() {
-		return paisResidencia;
+		return pais_residencia;
 	}
 
 	public void setPaisResidencia(String paisResidencia) {
-		this.paisResidencia = paisResidencia;
+		this.pais_residencia = paisResidencia;
 	}
 
-	public Long getChn() {
+	public Long getCnh() {
 		return cnh;
 	}
 

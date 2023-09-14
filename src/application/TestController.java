@@ -93,20 +93,14 @@ public class TestController implements Initializable {
 		String nome = txtNome.getText();
 		String sobrenome = txtSobrenome.getText();
 		
-		//falta o cargo
+
 		
-		 // Divida a string em partes com base no caractere "-"
-	    String[] partes = idVendedorSelect.split("-");
-	    // Obtenha o primeiro elemento (o número) e remova espaços em branco extras
-	    String numeroVendedorStr = partes[0].trim();
-		
-//		//vendedor selecionado
-	    int vendedorId = Integer.parseInt(numeroVendedorStr);
-	    Vendedor vendedorSelecionado = encontrarVendedorPorId(vendedorId);
+		 
 		
 		Vendedor v = new Vendedor();
+	
+		System.out.println("cargo"+v.getCargo());
 		
-		v.setId_vendedor(vendedorId);
 		v.setSalario(salario);
 		v.setNome(nome);
 		v.setSobrenome(sobrenome);

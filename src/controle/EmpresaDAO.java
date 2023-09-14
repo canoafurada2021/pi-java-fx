@@ -35,8 +35,8 @@ public class EmpresaDAO {
             // Fecha a conexão com o banco
             c.fecharConexao();
         } catch (SQLException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
+
+        	e1.printStackTrace();
             return false; // Retorna false em caso de falha na inserção
         }
 
