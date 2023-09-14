@@ -182,15 +182,27 @@ public class ControllerEdicaoFornecedores implements Initializable{
 		txtAtividades.setText(f.getAtividades());
 		txtTelefone.setText(String.valueOf(f.getTelefone()));
 		
-		 int enderecoIndex = encontrarIndiceEndereco(f.getEnderecoId().getId());
+	    if (f.getEnderecoId() != null) {
+	        int enderecoIndex = encontrarIndiceEndereco(f.getEnderecoId().getId());
+	        String enderecoText = f.getEnderecoId().getRua(); // Suponha que 'getRua()' seja o método que retorna o nome da rua.
+            
+	        comboEnderecoIds.getEditor().setText(enderecoText);
 
-		    // Defina o índice no ComboBox
-		    comboEnderecoIds.getSelectionModel().select(enderecoIndex);
+            
+	        if (enderecoIndex != -1) {
+	            // Defina o índice no ComboBox
+	            comboEnderecoIds.getEditor().setText(enderecoText);
+
+	        	comboEnderecoIds.getSelectionModel().select(enderecoIndex);
+
+	        }
+	    }
 	}
 	
 	private int encontrarIndiceEndereco(long enderecoId) {
 	    for (int i = 0; i < enderecos.size(); i++) {
 	        if (enderecos.get(i).getId() == enderecoId) {
+	        	System.out.println("indice"+ i);
 	            return i;
 	        }
 	    }
