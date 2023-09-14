@@ -1,6 +1,8 @@
 package application;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Base64;
@@ -103,7 +105,6 @@ public class ControllerDashboard implements Initializable {
 	void abrirListFornecedores(ActionEvent event) {
 		try {
 
-			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
 			Parent root = loader.load();
 
@@ -154,41 +155,42 @@ public class ControllerDashboard implements Initializable {
 	}
 
 	private void converteImagemPerfil(String url) {
-		
-		//conversor de base64 para imagem no banco (ta com erro no base64 no banco, por isso o tratamento de exceção)
-		
-	    try {
-	        byte[] imageBytes = Base64.getDecoder().decode(url);
-	        Image image = new Image(new ByteArrayInputStream(imageBytes));
-	        imgFotoPerfil.setImage(image);
-	    } catch (IllegalArgumentException e) {
 
-	    	//verificar porque na hora de transformar a rota em uma imagem ela só aceita o caminho absoluto de onde a imagem se encontra
-	    	
-	        Image imagemLocal = new Image("file:///C:/Users/PC/Documents/github/pi-java-fx/src/imgs/FotoPerfilRedonda.png");
+		if (!url.isEmpty()) {
+			// conversor de base64 para imagem no banco (ta com erro no base64 no banco, por
+			// isso o tratamento de exceção)
 
-	        imgFotoPerfil.setImage(imagemLocal);
+			try {
+				byte[] imageBytes = Base64.getDecoder().decode("C:///Users//mende//OneDrive//Documentos//java//pi-java-fx//src//imgs//FotoPerfilRedonda.png");
+				ByteArrayInputStream is = new ByteArrayInputStream(imageBytes);
+				Image image = new Image(is);
+				imgFotoPerfil.setImage(image);
+			} catch (IllegalArgumentException e) {
+				
+				System.err.println(e.toString());
 
-	    }
+				// verificar porque na hora de transformar a rota em uma imagem ela só aceita o
+				// caminho absoluto de onde a imagem se encontra
+
+				Image imagemLocal = new Image(
+						"C:///Users//mende//OneDrive//Documentos//java//pi-java-fx//src//imgs//FotoPerfilRedonda.png");
+
+				imgFotoPerfil.setImage(imagemLocal);
+
+			}
+		}
 	}
 
-
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		
 		List<Locador> locadores = dao.listar();
 
 		for (Locador locador : locadores) {
 			converteImagemPerfil(locador.getImg_Base64());
 
 		}
-		
 
-		
-		
-		
 		// conversão da imagem do usuario
 
 		/// Cores do gráfico de barra (baseadas no método getColorCode que também pe
