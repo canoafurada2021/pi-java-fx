@@ -1,8 +1,10 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import controle.EnderecoDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import modelo.Endereco;
+import modelo.Fornecedor;
 
 public class ControllerEdicaoFornecedores implements Initializable{
 
@@ -53,7 +57,7 @@ public class ControllerEdicaoFornecedores implements Initializable{
 	private Button btnUsuarios;
 
 	@FXML
-	private ComboBox<?> comboEnderecoIds;
+	private ComboBox<String> comboEnderecoIds;
 
 	@FXML
 	private ImageView imgDefaultConfiguracoes;
@@ -123,7 +127,10 @@ public class ControllerEdicaoFornecedores implements Initializable{
 
 	@FXML
 	private TextField txtTelefone;
+	
+	private EnderecoDAO dao = new EnderecoDAO();
 
+	private ArrayList<Endereco> enderecos = dao.listar();
 	@FXML
 	void abrirDashboard(ActionEvent event) {
 
@@ -151,7 +158,42 @@ public class ControllerEdicaoFornecedores implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		preencherComboBox();
+		txtCNPJ.setDisable(true);
+
+	}
+	
+	
+	private void preencherComboBox() {
+
+		System.out.println("enderecos" + enderecos);
+
+		for (Endereco endereco : enderecos) {
+			String enderecoInfo = endereco.getId() + " - " + endereco.getRua();
+			comboEnderecoIds.getItems().add(enderecoInfo);
+		}
+
 	}
 
+	
+	public void setFornecedor(Fornecedor f) {
+		txtNome.setText(f.getNome());
+		txtCNPJ.setText(String.valueOf(f.getCnpj()));
+		txtAtividades.setText(f.getAtividades());
+		txtTelefone.setText(String.valueOf(f.getTelefone()));
+		
+		 int enderecoIndex = encontrarIndiceEndereco(f.getEnderecoId().getId());
+
+		    // Defina o índice no ComboBox
+		    comboEnderecoIds.getSelectionModel().select(enderecoIndex);
+	}
+	
+	private int encontrarIndiceEndereco(long enderecoId) {
+	    for (int i = 0; i < enderecos.size(); i++) {
+	        if (enderecos.get(i).getId() == enderecoId) {
+	            return i;
+	        }
+	    }
+	    return -1; // Retornar -1 se o ID do endereço não for encontrado (trate isso adequadamente)
+	}
 }

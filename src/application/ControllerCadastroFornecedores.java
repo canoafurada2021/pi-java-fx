@@ -117,7 +117,6 @@ public class ControllerCadastroFornecedores implements Initializable {
 		// endereco selecionado
 		String selectedEnderecoInfo = comboEnderecoIds.getValue();
 
-		System.out.println("enderço selecionado" + selectedEnderecoInfo);
 
 		int enderecoId = Integer.parseInt(selectedEnderecoInfo.split(" - ")[0]);
 

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import controle.FornecedorDAO;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -34,13 +33,6 @@ import modelo.Fornecedor;
 import javafx.scene.image.Image;
 
 import javafx.scene.control.TextField;
-
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-
-
 
 public class ControllerListFornecedores implements Initializable {
 
@@ -99,89 +91,74 @@ public class ControllerListFornecedores implements Initializable {
 
 	@FXML
 	private Button bntCadastrar;
-	
 
-	   @FXML
-	    private TextField txtBusca;
-
-	   
-	   private String textoFiltro; //bruna mandou botar aqui mas ainda nao funciona
-	 
-
-	   
-	   
+	@FXML
+	private TextField txtBusca;
 
 	@FXML
 	public void sair(ActionEvent event) {
 		// Lógica para sair do aplicativo
 	}
-	
-	
+
 	public void filtroPesquisa() {
-		
+
 		FornecedorDAO dao = new FornecedorDAO();
 
 		ArrayList<Fornecedor> fornecedores = dao.listar();
 
 		obsFornecedores = FXCollections.observableArrayList(fornecedores);
-		   FilteredList<Fornecedor> listaFiltrada = new FilteredList<>(obsFornecedores, p -> true); // Inicialmente, não há filtro
+		FilteredList<Fornecedor> listaFiltrada = new FilteredList<>(obsFornecedores, p -> true); // Inicialmente, não há
+																									// filtro
 
 		txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
-		    listaFiltrada.setPredicate(seuObjeto -> {
-		        // Verifique se o texto de busca está vazio; se estiver, mostre todos os itens
-		        if (newValue == null || newValue.isEmpty()) {
-		            return true;
-		        }
+			listaFiltrada.setPredicate(seuObjeto -> {
+				// Verifique se o texto de busca está vazio; se estiver, mostre todos os itens
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
 
-		        // Transforme o texto de busca e o texto no objeto em minúsculas para realizar uma busca insensível a maiúsculas
-		        String termoBusca = newValue.toLowerCase();
+				// Transforme o texto de busca e o texto no objeto em minúsculas para realizar
+				// uma busca insensível a maiúsculas
+				String termoBusca = newValue.toLowerCase();
 
-		        // Implemente a lógica de filtro com base nos campos do objeto
-		        // Por exemplo, se você deseja filtrar pelo campo 'nome':
-		        return seuObjeto.getNome().toLowerCase().contains(termoBusca);
-		    });
+				// Implemente a lógica de filtro com base nos campos do objeto
+				// Por exemplo, se você deseja filtrar pelo campo 'nome':
+				return seuObjeto.getNome().toLowerCase().contains(termoBusca);
+			});
 		});
 		tableFornecedores.setItems(listaFiltrada);
 
 	}
-	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
 
-	    
-	    
-	    
-	    
 		FornecedorDAO dao = new FornecedorDAO();
 		tableFornecedores.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-		
-		
 		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnAtividade.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAtividades()));
 
-		
-		//Método responsável pela criação dos botões de edição e exclusão de fornecedor dentro da tabela com o header 'Ações'
-		
+		// Método responsável pela criação dos botões de edição e exclusão de fornecedor
+		// dentro da tabela com o header 'Ações'
+
 		columnAcoes.setCellFactory(new Callback<TableColumn<Fornecedor, String>, TableCell<Fornecedor, String>>() {
 			@Override
 			public TableCell<Fornecedor, String> call(TableColumn<Fornecedor, String> param) {
 				return new TableCell<Fornecedor, String>() {
-					
-					//Declaração das variáveis dos dois botões
+
+					// Declaração das variáveis dos dois botões
 					private final Button viewButton = new Button();
 					private final Button editButton = new Button();
-					
-					
+
 					private final HBox buttonContainer = new HBox(viewButton, editButton);
 
 					{
 						buttonContainer.setSpacing(10); // Setta o espaçamento entre os botões
 
-						//Estilização do botão de edição de funcionário, settando a imagem do lapis e a cor de fundo do botão
+						// Estilização do botão de edição de funcionário, settando a imagem do lapis e a
+						// cor de fundo do botão
 						ImageView viewImage = new ImageView(
 								new Image(getClass().getResourceAsStream("/imgs/editar.png")));
 						viewImage.setFitHeight(16);
@@ -190,42 +167,34 @@ public class ControllerListFornecedores implements Initializable {
 
 						viewButton.setGraphic(viewImage);
 						viewButton.setOnAction(event -> {
-						
-							
-							//Método de acionamento do botão de edição 
+
+							// Método de acionamento do botão de edição
 							Fornecedor fornecedor = getTableView().getItems().get(getIndex());
-						    String cnpj = fornecedor.getCnpj().toString();
+							String cnpj = fornecedor.getCnpj().toString();
 
-						    
 							try {
-							    FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Edicao_fornecedores.fxml"));
-								ControllerEdicaoFornecedores controllerNovaTela = loader.getController();
-								
+								FXMLLoader loader = new FXMLLoader(
+										getClass().getResource("/visao/Edicao_fornecedores.fxml"));
 								Parent root = loader.load();
+								ControllerEdicaoFornecedores controllerNovaTela = loader.getController();
 
-							} catch (IOException e) {
 								
+								//Passando os dados do fornecedor selecionado de uma tela para outra
+								controllerNovaTela.setFornecedor(fornecedor);
+
+								// Configurar a nova janela e mostrá-la
+								Scene scene = new Scene(root);
+								Stage stage = new Stage();
+								stage.setScene(scene);
+								stage.show();
+							} catch (IOException e) {
 								e.printStackTrace();
 							}
 
+							System.out.println("edição com o cnpj" + cnpj);
 
-						    
-						    
-						    
-						    
-						    
-						    System.out.println("edição com o cnpj"+ cnpj);
-						    
-						    
 							System.out.println("botao de edição clicado");
-							
 
-						
-						
-						
-						
-						
-						
 						});
 
 						ImageView editImage = new ImageView(
@@ -235,23 +204,20 @@ public class ControllerListFornecedores implements Initializable {
 						editButton.setGraphic(editImage);
 						editButton.setStyle("-fx-background-color: red;");
 						editButton.setOnAction(event -> {
-							
+
 							Fornecedor fornecedor = getTableView().getItems().get(getIndex());
-						
-							if(dao.excluir(fornecedor)) {
-								
-							     getTableView().getItems().remove(fornecedor);
-							        System.out.println("Fornecedor excluído com sucesso.");
-							    
-							
-							
-							
-							
+
+							if (dao.excluir(fornecedor)) {
+
+								// ADICIONAR POPUP DE CONFIRMAÇÃO DE EXCLUSÃO DE FORNECEDOR
+
+								getTableView().getItems().remove(fornecedor);
+								System.out.println("Fornecedor excluído com sucesso.");
+
 							} else {
-							        System.out.println("Erro ao excluir o fornecedor.");
-							    }
-							
-							
+								System.out.println("Erro ao excluir o fornecedor.");
+							}
+
 							System.out.println("botao de delete clicado");
 
 						});
@@ -322,42 +288,34 @@ public class ControllerListFornecedores implements Initializable {
 				}
 			}
 		});
-		
-		
-		
 
-        // Configuração do filtro de pesquisa
-        txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
-        	//Lista filtrada de fornecedores que inicializa todos os fornecedores na lista 'obgsFornecedores'
-            FilteredList<Fornecedor> listaFiltrada = new FilteredList<>(obsFornecedores, p -> true);
+		// Configuração do filtro de pesquisa
+		txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
+			// Lista filtrada de fornecedores que inicializa todos os fornecedores na lista
+			// 'obgsFornecedores'
+			FilteredList<Fornecedor> listaFiltrada = new FilteredList<>(obsFornecedores, p -> true);
 
-            if (newValue != null && !newValue.isEmpty()) {
-                String termoBusca = newValue.toLowerCase();
-                listaFiltrada.setPredicate(fornecedor -> {
-                	//O filtro permite a busca pelos campos de tipo nome e cnpj do fornecedor
-                	  String nome = fornecedor.getNome().toLowerCase();
-                      String cnpj = fornecedor.getCnpj().toString();
-                      return nome.contains(termoBusca) || cnpj.contains(termoBusca);
-                	
-                    // Implemente a lógica de filtro com base nos campos do objeto
-                });
-            }
+			if (newValue != null && !newValue.isEmpty()) {
+				String termoBusca = newValue.toLowerCase();
+				listaFiltrada.setPredicate(fornecedor -> {
+					// O filtro permite a busca pelos campos de tipo nome e cnpj do fornecedor
+					String nome = fornecedor.getNome().toLowerCase();
+					String cnpj = fornecedor.getCnpj().toString();
+					return nome.contains(termoBusca) || cnpj.contains(termoBusca);
 
-            tableFornecedores.setItems(listaFiltrada);
-        });
-    
-		
-		
-		
+					// Implemente a lógica de filtro com base nos campos do objeto
+				});
+			}
+
+			tableFornecedores.setItems(listaFiltrada);
+		});
 
 		carregarFornecedores();
 	}
-	
-
 
 	@FXML
 	public void abrirTelaCadastroGemFornecedores(ActionEvent event) {
-		
+
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_fornecedor.fxml"));
 			Parent root = loader.load();
@@ -387,20 +345,6 @@ public class ControllerListFornecedores implements Initializable {
 
 		obsFornecedores = FXCollections.observableArrayList(fornecedores);
 		tableFornecedores.setItems(obsFornecedores);
-	}
-
-	public class TelefoneFormatter {
-		public static String formatTelefoneBrasil(int telefone) {
-			String telefoneStr = String.valueOf(telefone);
-			if (telefoneStr.length() == 10) { // (XX) XXXX-XXXX
-				return "(" + telefoneStr.substring(0, 2) + ") " + telefoneStr.substring(2, 6) + "-"
-						+ telefoneStr.substring(6);
-			} else if (telefoneStr.length() == 11) { // (XX) XXXXX-XXXX
-				return "(" + telefoneStr.substring(0, 2) + ") " + telefoneStr.substring(2, 7) + "-"
-						+ telefoneStr.substring(7);
-			}
-			return telefoneStr; // Retornar sem formatação se não corresponder a nenhum padrão
-		}
 	}
 
 	@FXML
