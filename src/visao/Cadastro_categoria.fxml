@@ -33,7 +33,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="txtCategoria" layoutX="30.0" layoutY="165.0" prefHeight="40.0" prefWidth="620.0" style="-fx-border-color: #AEB2BF;" />
-                        <Button layoutX="220.0" layoutY="230.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
+                        <Button fx:id="btnCadastroCategoria" layoutX="220.0" layoutY="230.0" mnemonicParsing="false" onAction="#cadastrarCategoria" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>

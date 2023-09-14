@@ -38,7 +38,7 @@
                         </TableView>
                      </children>
                   </Pane>
-                  <Button fx:id="bntSalvar" layoutX="1050.0" layoutY="24.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Salvar" textFill="WHITE">
+                  <Button fx:id="bntSalvar" layoutX="1050.0" layoutY="24.0" mnemonicParsing="false" onAction="#cadastrarFuncionario" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
