@@ -17,6 +17,7 @@ public class Veiculo {
 	private int unidade_em_estoque;
 	private Categoria idCategoria;
 	private Fornecedor cnpj;
+	
 	public int getId_veiculo() {
 		return id_veiculo;
 	}

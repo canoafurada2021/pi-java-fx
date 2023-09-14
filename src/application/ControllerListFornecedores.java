@@ -106,7 +106,8 @@ public class ControllerListFornecedores implements Initializable {
 
 	   
 	   private String textoFiltro; //bruna mandou botar aqui mas ainda nao funciona
-	   
+	 
+
 	   
 	   
 
@@ -114,6 +115,36 @@ public class ControllerListFornecedores implements Initializable {
 	public void sair(ActionEvent event) {
 		// Lógica para sair do aplicativo
 	}
+	
+	
+	public void filtroPesquisa() {
+		
+		FornecedorDAO dao = new FornecedorDAO();
+
+		ArrayList<Fornecedor> fornecedores = dao.listar();
+
+		obsFornecedores = FXCollections.observableArrayList(fornecedores);
+		   FilteredList<Fornecedor> listaFiltrada = new FilteredList<>(obsFornecedores, p -> true); // Inicialmente, não há filtro
+
+		txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
+		    listaFiltrada.setPredicate(seuObjeto -> {
+		        // Verifique se o texto de busca está vazio; se estiver, mostre todos os itens
+		        if (newValue == null || newValue.isEmpty()) {
+		            return true;
+		        }
+
+		        // Transforme o texto de busca e o texto no objeto em minúsculas para realizar uma busca insensível a maiúsculas
+		        String termoBusca = newValue.toLowerCase();
+
+		        // Implemente a lógica de filtro com base nos campos do objeto
+		        // Por exemplo, se você deseja filtrar pelo campo 'nome':
+		        return seuObjeto.getNome().toLowerCase().contains(termoBusca);
+		    });
+		});
+		tableFornecedores.setItems(listaFiltrada);
+
+	}
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -126,93 +157,7 @@ public class ControllerListFornecedores implements Initializable {
 		FornecedorDAO dao = new FornecedorDAO();
 		tableFornecedores.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-		var f = dao.listar();
-  //inicio do filtro de busca
-		obsFornecedores = FXCollections.observableArrayList(f);
-
-        
-        //de acordo c ela o problema ta aqui no filtro
-		textoFiltro = txtBusca.getText().toLowerCase();
-		//tipo de filtro de listagem
-		FilteredList<Fornecedor> filteredData = new FilteredList<>(obsFornecedores, fornecedor -> { //ela mandou tirar o true daqui 
-		    // Substitua 'getNome()' pelo método que retorna o campo que você deseja filtrar
-		    String searchString = textoFiltro.toLowerCase(); // Converta a palavra digitada para minúsculas
-		    String fornecedorNome = fornecedor.getNome().toLowerCase(); // Converta o campo para minúsculas
-		    
-		    // Realize o filtro com base na palavra chave
-		    return fornecedorNome.contains(searchString);
-		});
-
-
-        // Vinculando o filtro de listagem à tabela de fornecedores
-        SortedList<Fornecedor> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(tableFornecedores.comparatorProperty());
-        tableFornecedores.setItems(sortedData);
-
-        txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
-        	
-        	
-            // Este trecho será executado sempre que o texto no campo de busca mudar
-            filteredData.setPredicate(fornecedor -> {
-                if (newValue == null || newValue.isEmpty()) {
-                	System.out.println("novo valor: "+newValue);
-                    return true; // Mostra todos os dados quando não houver filtro
-                }
-
-                // conversão do texto do filtro para valores sem maiuscula para busca na lsitagem
-                String textoFiltro = newValue.toLowerCase();
-
-                // busca de dados baseada nos valores armazenados na entidade fornecedor 
-                
-                
-                System.out.println(textoFiltro);
-                System.out.println(fornecedor.getNome().toLowerCase());
-                return fornecedor.getNome().toLowerCase().contains(textoFiltro) ||
-                        String.valueOf(fornecedor.getCnpj()).contains(textoFiltro) ||
-                        String.valueOf(fornecedor.getTelefone()).contains(textoFiltro);            });
-        });
-
-      
-        final String textoPesquisa = txtBusca.getText();
-
-        // O Runnable é responsável pela busca de dados com um atraso de certos segundos
-        final Runnable pesquisa = () -> {
-            // Inside the lambda, use the previously defined variable
-            filteredData.setPredicate(fornecedor -> {
-                if (textoPesquisa == null || textoPesquisa.isEmpty()) {
-                    return true; // Mostra todos os dados quando não houver filtro
-                }
-
-                // conversão do texto do filtro para valores sem maiuscula para busca na listagem
-                String textoFiltro = textoPesquisa.toLowerCase();
-
-                // busca de dados baseada nos valores armazenados na entidade fornecedor
-                return fornecedor.getNome().toLowerCase().contains(textoFiltro) ||
-                       String.valueOf(fornecedor.getCnpj()).contains(textoFiltro) ||
-                       String.valueOf(fornecedor.getTelefone()).contains(textoFiltro);
-            });
-        };
-       
-
-
-
-
-
-
-
-        // Executar pesquisa após um pequeno atraso (300 milissegundos)
-        txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                Platform.runLater(() -> {
-                    if (txtBusca.getText().equals(newValue)) {
-                        pesquisa.run();
-                    }
-                });
-            }
-        });
-        
-        
-
+		
 		
 		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
@@ -247,10 +192,28 @@ public class ControllerListFornecedores implements Initializable {
 						viewButton.setOnAction(event -> {
 						
 							
-							//Método de acionamento do botão de edição (pendente a tela pra chamar para poder editar os dados existentes)
+							//Método de acionamento do botão de edição 
 							Fornecedor fornecedor = getTableView().getItems().get(getIndex());
 						    String cnpj = fornecedor.getCnpj().toString();
 
+						    
+							try {
+							    FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Edicao_fornecedores.fxml"));
+								ControllerEdicaoFornecedores controllerNovaTela = loader.getController();
+								
+								Parent root = loader.load();
+
+							} catch (IOException e) {
+								
+								e.printStackTrace();
+							}
+
+
+						    
+						    
+						    
+						    
+						    
 						    System.out.println("edição com o cnpj"+ cnpj);
 						    
 						    
@@ -359,13 +322,38 @@ public class ControllerListFornecedores implements Initializable {
 				}
 			}
 		});
+		
+		
+		
+
+        // Configuração do filtro de pesquisa
+        txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
+        	//Lista filtrada de fornecedores que inicializa todos os fornecedores na lista 'obgsFornecedores'
+            FilteredList<Fornecedor> listaFiltrada = new FilteredList<>(obsFornecedores, p -> true);
+
+            if (newValue != null && !newValue.isEmpty()) {
+                String termoBusca = newValue.toLowerCase();
+                listaFiltrada.setPredicate(fornecedor -> {
+                	//O filtro permite a busca pelos campos de tipo nome e cnpj do fornecedor
+                	  String nome = fornecedor.getNome().toLowerCase();
+                      String cnpj = fornecedor.getCnpj().toString();
+                      return nome.contains(termoBusca) || cnpj.contains(termoBusca);
+                	
+                    // Implemente a lógica de filtro com base nos campos do objeto
+                });
+            }
+
+            tableFornecedores.setItems(listaFiltrada);
+        });
+    
+		
+		
+		
 
 		carregarFornecedores();
 	}
 	
-	private void modalDeleteComSucesso() {
-		
-	}
+
 
 	@FXML
 	public void abrirTelaCadastroGemFornecedores(ActionEvent event) {

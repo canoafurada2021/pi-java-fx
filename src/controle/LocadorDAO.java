@@ -35,7 +35,7 @@ public class LocadorDAO {
 
 				l.setNome(rs.getString("nome"));
 				l.setSobrenome(rs.getString("sobrenome"));
-				l.setPessoas_cpf(rs.getInt("pessoas_cpf"));
+				l.setPessoas_cpf(rs.getString("pessoas_cpf"));
 				l.setTel_contato(rs.getLong("tel_contato"));
 				l.setPaisResidencia(rs.getString("pais_residencia"));
 				l.setChn(rs.getLong("cnh"));
@@ -70,7 +70,7 @@ public class LocadorDAO {
 	    
 	    try {
 	        PreparedStatement ps = con.prepareStatement(query);
-	        ps.setInt(1, l.getPessoas_cpf());
+	        ps.setString(1, l.getPessoas_cpf());
 	        
 	        int rowsAffected = ps.executeUpdate();
 	        

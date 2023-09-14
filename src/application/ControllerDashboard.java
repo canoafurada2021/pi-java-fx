@@ -1,9 +1,13 @@
 package application;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Base64;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import controle.LocadorDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,9 +24,11 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import modelo.Locador;
 
 public class ControllerDashboard implements Initializable {
 
@@ -88,11 +94,16 @@ public class ControllerDashboard implements Initializable {
 
 	@FXML
 	private ImageView imgDefaultConfiguracoes;
+	@FXML
+	private ImageView imgFotoPerfil;
+
+	private LocadorDAO dao = new LocadorDAO();
 
 	@FXML
 	void abrirListFornecedores(ActionEvent event) {
 		try {
 
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
 			Parent root = loader.load();
 
@@ -101,9 +112,9 @@ public class ControllerDashboard implements Initializable {
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
 
-//			// fecha a tela atual
-//			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//			stageAtual.close();
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
 
 			stage.setScene(scene);
 			stage.show();
@@ -112,7 +123,8 @@ public class ControllerDashboard implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	  @FXML
+
+	@FXML
 	void abrirCadastroInfoFuncionarios(ActionEvent event) {
 		try {
 
@@ -124,9 +136,9 @@ public class ControllerDashboard implements Initializable {
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
 
-//			// fecha a tela atual
-//			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//			stageAtual.close();
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
 
 			stage.setScene(scene);
 			stage.show();
@@ -141,8 +153,43 @@ public class ControllerDashboard implements Initializable {
 		// Lógica para quando o botão Dashboard for clicado
 	}
 
+	private void converteImagemPerfil(String url) {
+		
+		//conversor de base64 para imagem no banco (ta com erro no base64 no banco, por isso o tratamento de exceção)
+		
+	    try {
+	        byte[] imageBytes = Base64.getDecoder().decode(url);
+	        Image image = new Image(new ByteArrayInputStream(imageBytes));
+	        imgFotoPerfil.setImage(image);
+	    } catch (IllegalArgumentException e) {
+
+	    	//verificar porque na hora de transformar a rota em uma imagem ela só aceita o caminho absoluto de onde a imagem se encontra
+	    	
+	        Image imagemLocal = new Image("file:///C:/Users/PC/Documents/github/pi-java-fx/src/imgs/FotoPerfilRedonda.png");
+
+	        imgFotoPerfil.setImage(imagemLocal);
+
+	    }
+	}
+
+
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+		
+		List<Locador> locadores = dao.listar();
+
+		for (Locador locador : locadores) {
+			converteImagemPerfil(locador.getImg_Base64());
+
+		}
+		
+
+		
+		
+		
+		// conversão da imagem do usuario
 
 		/// Cores do gráfico de barra (baseadas no método getColorCode que também pe
 		/// utilizado pelo gráfico de pizza

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Locador {
 	private String nome;
 	private String sobrenome;
-	private int pessoas_cpf;
+	private String pessoas_cpf;
 	private Long tel_contato;
 	private String paisResidencia;
 	private Long cnh;
@@ -39,11 +39,11 @@ public class Locador {
 		this.cargo = cargo;
 	}
 
-	public int getPessoas_cpf() {
+	public String getPessoas_cpf() {
 		return pessoas_cpf;
 	}
 
-	public void setPessoas_cpf(int pessoas_cpf) {
+	public void setPessoas_cpf(String pessoas_cpf) {
 		this.pessoas_cpf = pessoas_cpf;
 	}
 

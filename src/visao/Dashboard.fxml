@@ -66,9 +66,6 @@
                         <StackPane fx:id="StackPanePerfil" prefHeight="80.0" prefWidth="282.0">
                            <children>
                               <ImageView fx:id="imgFotoPerfil" fitHeight="50.0" fitWidth="50.0" StackPane.alignment="TOP_LEFT">
-                                 <image>
-                                    <Image url="@../imgs/FotoPerfilRedonda.png" />
-                                 </image>
                               </ImageView>
                               <Label fx:id="lblNomeVendedor" alignment="TOP_CENTER" prefHeight="48.0" prefWidth="158.0" text="Patricia Cordeiro" textFill="WHITE">
                                  <font>
