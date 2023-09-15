@@ -214,7 +214,7 @@ insert into aluguelRegistros (id_venda, forma_pagamento, data_inicio, quant_dias
 
 -- inserts LOGIN
 INSERT INTO login (id, cpf, senha)
-SELECT 1, '13093824923', '24102005'
+SELECT 1, '12345', '123456'
 WHERE EXISTS (
     SELECT 1
     FROM locador

@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -13,7 +14,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -24,6 +29,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import modelo.Vendedor;
 
@@ -36,7 +42,7 @@ public class ControllerTableViewFuncionarios implements Initializable {
     private StackPane StackPanePerfil;
 
     @FXML
-    private Button bntSalvar;
+    private Button bntCadastrar;
 
     @FXML
     private Button btnConfiguracoes;
@@ -114,6 +120,8 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
     @FXML
     private Pane panelConfiguracoes;
+    
+    
 
     
 	@FXML
@@ -132,7 +140,31 @@ public class ControllerTableViewFuncionarios implements Initializable {
 	private TableColumn<Vendedor, Double> columnSalario;
 	
 	
+	  @FXML
+	    void abrirTelaCadastrarFuncionario(ActionEvent event) {
+		  try {
 
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_funcionario.fxml"));
+				Parent root = loader.load();
+
+				TestController controllerNovaTela = loader.getController();
+
+				Scene scene = new Scene(root);
+				Stage stage = new Stage();
+
+				// fecha a tela atual
+				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				stageAtual.close();
+
+				stage.setScene(scene);
+				stage.show();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		  
+	    }
+	
 	private ObservableList<Vendedor> obsVendedores;
 
 	@FXML
@@ -141,10 +173,7 @@ public class ControllerTableViewFuncionarios implements Initializable {
 		System.out.println("Botão de sair pressionado");
 	}
 
-	@FXML
-	private void salvarDados(ActionEvent event) {
-		System.out.println("AAAAAAAAAAAAAAAA"); //teste
-	}
+	
 
 	// Formata a cédula do salário para o padrão PT-BR (R$ 0000,000)
 	NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
