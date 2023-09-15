@@ -26,104 +26,105 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
+import modelo.Fornecedor;
 import modelo.Vendedor;
 
 public class ControllerTableViewFuncionarios implements Initializable {
 
 	@FXML
-    private SplitPane SlipPaneConfigurações;
+	private SplitPane SlipPaneConfigurações;
 
-    @FXML
-    private StackPane StackPanePerfil;
+	@FXML
+	private StackPane StackPanePerfil;
 
-    @FXML
-    private Button bntCadastrar;
+	@FXML
+	private Button bntCadastrar;
 
-    @FXML
-    private Button btnConfiguracoes;
+	@FXML
+	private Button btnConfiguracoes;
 
-    @FXML
-    private Button btnDashboard;
+	@FXML
+	private Button btnDashboard;
 
-    @FXML
-    private Button btnFornecedores;
+	@FXML
+	private Button btnFornecedores;
 
-    @FXML
-    private Button btnFuncionarios;
+	@FXML
+	private Button btnFuncionarios;
 
-    @FXML
-    private Button btnLocacao;
+	@FXML
+	private Button btnLocacao;
 
-    @FXML
-    private Button btnPerfil;
+	@FXML
+	private Button btnPerfil;
 
-    @FXML
-    private ImageView btnPesquisa;
+	@FXML
+	private ImageView btnPesquisa;
 
-    @FXML
-    private Button btnPesquisar;
+	@FXML
+	private Button btnPesquisar;
 
-    @FXML
-    private Button btnProdutos;
+	@FXML
+	private Button btnProdutos;
 
-    @FXML
-    private Button btnSair;
+	@FXML
+	private Button btnSair;
 
-    @FXML
-    private Button btnUsuarios;
+	@FXML
+	private Button btnUsuarios;
 
-    @FXML
-    private TextField txtPesquisa;
-    @FXML
-    private ImageView imgDefaultConfiguracoes;
+	@FXML
+	private TextField txtPesquisa;
+	@FXML
+	private ImageView imgDefaultConfiguracoes;
 
-    @FXML
-    private ImageView imgDefaultDashboard;
+	@FXML
+	private ImageView imgDefaultDashboard;
 
-    @FXML
-    private ImageView imgDefaultFornecedores;
+	@FXML
+	private ImageView imgDefaultFornecedores;
 
-    @FXML
-    private ImageView imgDefaultFuncionarios;
+	@FXML
+	private ImageView imgDefaultFuncionarios;
 
-    @FXML
-    private ImageView imgDefaultLocacao;
+	@FXML
+	private ImageView imgDefaultLocacao;
 
-    @FXML
-    private ImageView imgDefaultProdutos;
+	@FXML
+	private ImageView imgDefaultProdutos;
 
-    @FXML
-    private ImageView imgDefaultUsuarios;
+	@FXML
+	private ImageView imgDefaultUsuarios;
 
-    @FXML
-    private ImageView imgFotoPerfil;
+	@FXML
+	private ImageView imgFotoPerfil;
 
-    @FXML
-    private ImageView imgLogo;
+	@FXML
+	private ImageView imgLogo;
 
-    @FXML
-    private ImageView imgSair;
+	@FXML
+	private ImageView imgSair;
 
-    @FXML
-    private Label lblFornecedores;
+	@FXML
+	private Label lblFornecedores;
 
-    @FXML
-    private Label lblFuncao;
+	@FXML
+	private Label lblFuncao;
 
-    @FXML
-    private Label lblNomeVendedor;
+	@FXML
+	private Label lblNomeVendedor;
 
-    @FXML
-    private Pane panelConfiguracoes;
-    
-    
+	@FXML
+	private Pane panelConfiguracoes;
 
-    
 	@FXML
 	private TableView<Vendedor> tableFuncionario;
 
@@ -138,42 +139,19 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 	@FXML
 	private TableColumn<Vendedor, Double> columnSalario;
-	
-	
-	  @FXML
-	    void abrirTelaCadastrarFuncionario(ActionEvent event) {
-		  try {
+	@FXML
+	private TableColumn<Vendedor, String> columnAcoes;
 
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_funcionario.fxml"));
-				Parent root = loader.load();
-
-				TestController controllerNovaTela = loader.getController();
-
-				Scene scene = new Scene(root);
-				Stage stage = new Stage();
-
-				// fecha a tela atual
-				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				stageAtual.close();
-
-				stage.setScene(scene);
-				stage.show();
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		  
-	    }
-	
 	private ObservableList<Vendedor> obsVendedores;
+	
+	Vendedor vendedor = new Vendedor();
+	VendedorDAO dao = new VendedorDAO();
 
 	@FXML
 	private void sair(ActionEvent event) {
 		// Implemente a lógica para sair aqui
 		System.out.println("Botão de sair pressionado");
 	}
-
-	
 
 	// Formata a cédula do salário para o padrão PT-BR (R$ 0000,000)
 	NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
@@ -185,9 +163,11 @@ public class ControllerTableViewFuncionarios implements Initializable {
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnCargo.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCargo().toString()));
 
+		
 		// Configura a formatação da célula da coluna de salário
 		columnSalario.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSalario()));
 
+		
 		// Usa um StringConverter (Classe do FXML responsável por facilitar na conversão
 		// de tipos Long e Double pra String)
 		// para formatar o valor do salário como moeda
@@ -227,8 +207,92 @@ public class ControllerTableViewFuncionarios implements Initializable {
 					setText(currencyConverter.toString(salario));
 				}
 			}
+			
+			
+			
 		});
+		
+		columnAcoes.setCellFactory(new Callback<TableColumn<Vendedor, String>, TableCell<Vendedor, String>>());
+		return new TableCell<Vendedor, String>() {
+			
+			//declaraçaõ variavel dos botoes 
+			private final Button viewButton = new Button();
+			private final Button editButton = new Button();
+			
+			private final HBox buttonContainer = new HBox (viewButton, editButton);
+			{
+				buttonContainer.setSpacing(10); //seta espacamento entre os botes
+				
+				//estilizacao do botao de edicao, setando a imagem lapis e a cor de fundo do botao
+				ImageView viewImage = new ImageView();
+						new Image(getClass().getResourceAsStream("/imgs/editar.png"));
+				viewImage.setFitHeight(16);
+				viewImage.setFitWidth(16);
+				viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
+				
+				viewButton.setGraphic(viewImage);
+				viewButton.setOnAction(event -> {
+					//metodo p acionar o botao de edicao
+					Vendedor vendedor = getTableView().getItems().get(getIndex());
+					String idVende = Integer.toString(vendedor.getId_vendedor());//conversao nao sei se ta certo
+					
+					try {
+						FXMLLoader loader = new FXMLLoader(
+								getClass().getResource("/visao/Edicao_fornecedores.fxml"));
+						Parent root = loader.load();
+						ControllerEdicaoFuncionario controllerNovaTela = loader.getController();
+						
+						//passanddo dados fornecedor selecionado de uma tela pra a outra
+						controllerNovaTela.setVendedor(vendedor);
+						
+						//configura a nova janela e mostra ela
+						Scene scene = new Scene(root);
+						Stage stage = new Stage();
+						stage.setScene(scene);
+						stage.show();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 
+					System.out.println("botao de edição clicado");
+					});
+				
+				ImageView editImage = new ImageView(
+						new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
+						editImage.setFitHeight(16);
+						editImage.setFitHeight(16);
+						editButton.setGraphic(editImage);
+						editButton.setStyle("-fx-background-color: red;");
+						editButton.setOnAction(event -> {
+							
+							Vendedor vendedor = getTableView().getItems().get(getIndex());
+							
+							if(dao)
+							
+								
+								)
+						
+						
+						
+						
+						
+				
+				
+				}
+				
+				
+						
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+		}
+		
 		carregarVendedores();
 	}
 
@@ -238,5 +302,30 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 		obsVendedores = FXCollections.observableArrayList(vendedores);
 		tableFuncionario.setItems(obsVendedores);
+	}
+
+	@FXML
+	void abrirTelaCadastrarFuncionario(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_funcionario.fxml"));
+			Parent root = loader.load();
+
+			TestController controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 }
