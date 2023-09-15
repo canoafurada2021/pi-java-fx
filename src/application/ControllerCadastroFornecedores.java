@@ -106,7 +106,7 @@ public class ControllerCadastroFornecedores implements Initializable {
 
 		String nome = txtNome.getText();
 
-		String telefoneFormat = txtTelefone.getText().replaceAll("[^0-9]", "");
+		String telefoneFormat = txtTelefone.getText().replaceAll("[^0-9]", ""); //formata endereco
 		Long telefone = Long.parseLong(telefoneFormat);
 
 		String atividaes = txtAtividades.getText();

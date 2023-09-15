@@ -186,7 +186,6 @@ public class TestController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		preencherComboBoxVendedor();
 		}
 	
 	//metodo preencher combobox

@@ -10,15 +10,9 @@ public class Conexao {
 	private static final String DATABASE = "get_that_auto";
 	private static final String URL =  "jdbc:mysql://localhost/"+ DATABASE + "?serverTimezone=UTC";
 	private static final String USER= "root";
-<<<<<<< Updated upstream
-	private static final String PSW= "aluno";
-=======
-<<<<<<< Updated upstream
 	private static final String PSW= "andri123";
-=======
-	private static final String PSW= "Mendes123-Duda";
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
+
 	
 	private Conexao() {}
 	
