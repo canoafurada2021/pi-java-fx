@@ -145,9 +145,12 @@ public class ControllerListClientes implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		LocadorDAO dao = new LocadorDAO();
-		tableClientes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+	
+	}
+}
+//		
+//		LocadorDAO dao = new LocadorDAO();
+//		tableClientes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		
 		/*Tabelas
 		columnCPF
@@ -158,32 +161,32 @@ public class ControllerListClientes implements Initializable{
 		
 		*/
 		
-		//Método com os botões e o header
-		columnAcoes.setCellFactory(new Callback<TableColumn<Locador, String>, TableCell<Locador, String>>(){	
-
-			/*
-			@Override
-			public TableCell<Locador, String> call(TableColumn<Locador, String> param) {
-				
-				//Declarando variáveis				
-				 private final Button viewButton = new Button();
-				 private final Button editButton= new Button();
-				
-				private final HBox buttonCountainer = new HBox(viewButton, editButton);
-				
-				{
-					buttonCountainer.setSpacing(10);
-					
-					ImageView viewImage = new ImageView();
-					
-					
-				}
-				
-				return null;
-			}
-			
-		});
-		
-	}*/
-
-		}
+//		//Método com os botões e o header
+//		columnAcoes.setCellFactory(new Callback<TableColumn<Locador, String>, TableCell<Locador, String>>(){	
+//
+//			/*
+//			@Override
+//			public TableCell<Locador, String> call(TableColumn<Locador, String> param) {
+//				
+//				//Declarando variáveis				
+//				 private final Button viewButton = new Button();
+//				 private final Button editButton= new Button();
+//				
+//				private final HBox buttonCountainer = new HBox(viewButton, editButton);
+//				
+//				{
+//					buttonCountainer.setSpacing(10);
+//					
+//					ImageView viewImage = new ImageView();
+//					
+//					
+//				}
+//				
+//				return null;
+//			}
+//			
+//		});
+//		
+//	}*/
+//
+//		}
