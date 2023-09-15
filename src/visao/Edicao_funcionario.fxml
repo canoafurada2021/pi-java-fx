@@ -38,13 +38,13 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtNomeFuncionario" layoutX="30.0" layoutY="250.0" prefHeight="38.0" prefWidth="649.0" style="-fx-border-color: #AEB2BF;" />
+            <TextField fx:id="txtNome" layoutX="30.0" layoutY="250.0" prefHeight="38.0" prefWidth="649.0" style="-fx-border-color: #AEB2BF;" />
             <Label fx:id="lblSobrenomeFuncionario" layoutX="30.0" layoutY="310.0" text="Sobrenome">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtSobrenomeFuncionario" layoutX="30.0" layoutY="340.0" prefHeight="38.0" prefWidth="649.0" style="-fx-border-color: #AEB2BF;" />
+            <TextField fx:id="txtSobrenome" layoutX="30.0" layoutY="340.0" prefHeight="38.0" prefWidth="649.0" style="-fx-border-color: #AEB2BF;" />
             <Button fx:id="btnSalvar" layoutX="387.0" layoutY="400.0" mnemonicParsing="false" onAction="#alterarFuncionario" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Salvar" textFill="WHITE">
                <font>
                   <Font size="20.0" />
