@@ -62,11 +62,11 @@ public class CategoriaDAO {
 	//ABRE conexao com banco
 	Connection con = a.conectar();
 	
-	String query = "INSERT INTO categoria(id_categorias, categoria) VALUES(?, ?); ";
+	String query = "INSERT INTO categoria(id_categoria, categoria) VALUES(?, ?); ";
 	
 	try {
 		PreparedStatement ps = con.prepareStatement(query);
-		ps.setString(1, Integer.toString(c.getIdCategoria()));
+		ps.setInt(1, c.getIdCategoria());
 		ps.setString(2, c.getCategoria());
 		
 		//consolida a execução do comando no banco

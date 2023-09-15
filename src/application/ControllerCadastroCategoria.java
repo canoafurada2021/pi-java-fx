@@ -2,8 +2,12 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import controle.CategoriaDAO;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +21,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import modelo.Categoria;
+import utilities.ExibePopUpErro;
+import utilities.ExibePopUpSucesso;
 
 public class ControllerCadastroCategoria implements Initializable{
 
@@ -52,7 +61,7 @@ public class ControllerCadastroCategoria implements Initializable{
     private Button btnUsuarios;
 
     @FXML
-    private ComboBox<?> comboIdCategoria;
+    private ComboBox<String> comboIdCategoria;
 
     @FXML
     private ImageView imgDefaultConfiguracoes;
@@ -99,34 +108,64 @@ public class ControllerCadastroCategoria implements Initializable{
     @FXML
     private TextField txtCategoria;
     
+ // instanciando DAOCategora (pra pegar os metodos)
+	CategoriaDAO daoCategoria = new CategoriaDAO();
+    
+	//para listar as categorias, já que está usando o comboBox, para listar todos os ids já cadastrados
+    ArrayList<Categoria> categorias = daoCategoria.listar();
+    
     @FXML
     void cadastrarCategoria(ActionEvent event) {
+    	
+    	
+    	
+    	//Conversão a variavel e atribuido os valores
+    	String idCategoriaSelect = comboIdCategoria.getValue();    	
+    	System.out.println("Id selecionado + idCategoriaSelect");
+    	
+    	String nomeCategoria = txtCategoria.getText();
+
+    	//Instaciando os atributos, variaveis, a própria categoria
+    	Categoria c = new Categoria();
+        
+    	c.setCategoria(nomeCategoria);
+    	
+    	//chamando o metodos pra fazer as validações (que já existem no pacote utilities)
     	try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/PopUpSucesso.fxml"));
-			Parent root = loader.load();
 
-			ControllerCadastroCategoria controllerNovaTela = loader.getController();
+			boolean insercaoSucesso = daoCategoria.inserir(c);
 
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			// fecha a tela atual
-			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			stageAtual.close();
+			limpaCampos();
 
-			stage.setScene(scene);
-			stage.show();
+			if (insercaoSucesso) {
+				ExibePopUpSucesso.ExibirPopUpSucesso();
+			} else {
+	        	ExibePopUpErro.ExibirPopUpErro();
+			}
 
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+
+			ExibePopUpSucesso.ExibirPopUpSucesso();
+
 		}
     }
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+
+		preencherComboBoxCategoria();
 	}
 	
+	private void limpaCampos() {
+		//Para quando cadastrar os dados, ele automaticamente limpar os campos
+		txtCategoria.setText(null);
+	}
 	
+	private void preencherComboBoxCategoria() {
+		for (Categoria categoria : categorias) {
+			int categoriaInfo = categoria.getIdCategoria();
+			comboIdCategoria.getItems().add(String.valueOf(categoriaInfo));
+		}
+	}
 
 }
