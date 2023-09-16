@@ -116,12 +116,10 @@ public class CategoriaDAO {
 //		
 //		PreparedStatement preparedStatement = con.prepareStatement(query);
 //		try {
-//			preparedStatement.setInt(1, ca.getIdCategoria()); //
+//			preparedStatement.setString(2, ca.getCategoria()); //
 //		} catch (SQLException e) {
 //			e.printStackTrace();
 //		}
-//		
-//		
 //		
 //	}
 	

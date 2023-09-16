@@ -10,7 +10,7 @@ public class Locador {
 	private String pais_residencia;
 	private Long cnh;
 	private Date validadeCarteira;
-	private Long numIdentificacaoCarteira;
+	private Long num_identificacao_carteira;
 	private EnumCargos cargo;
 	private String img_Base64;
 
@@ -80,11 +80,11 @@ public class Locador {
 	}
 
 	public Long getNumIdentificacaoCarteira() {
-		return numIdentificacaoCarteira;
+		return num_identificacao_carteira;
 	}
 
 	public void setNumIdentificacaoCarteira(Long numIdentificacaoCarteira) {
-		this.numIdentificacaoCarteira = numIdentificacaoCarteira;
+		this.num_identificacao_carteira = numIdentificacaoCarteira;
 	}
 
 	public String getImg_Base64() {

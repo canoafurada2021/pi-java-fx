@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 import controle.LocadorDAO;
@@ -66,28 +67,28 @@ public class ControllerListClientes implements Initializable{
 	private Button btnUsuarios;
 
 	@FXML
-	private TableColumn<?, ?> columnAcoes;
+	private TableColumn<Locador, String> columnAcoes;
 
 	@FXML
-	private TableColumn<?, ?> columnCNH;
+	private TableColumn<Locador, Long> columnCNH;
 
 	@FXML
-	private TableColumn<?, ?> columnCPF;
+	private TableColumn<Locador, String> columnCPF;
 
 	@FXML
-	private TableColumn<?, ?> columnIdCarteira;
+	private TableColumn<Locador, Long> columnIdCarteira;
 
 	@FXML
-	private TableColumn<?, ?> columnNome;
+	private TableColumn<Locador, String> columnNome;
 
 	@FXML
-	private TableColumn<?, ?> columnPaisResidencia;
+	private TableColumn<Locador, String> columnPaisResidencia;
 
 	@FXML
-	private TableColumn<?, ?> columnTelefone;
+	private TableColumn<Locador, Long> columnTelefone;
 
 	@FXML
-	private TableColumn<?, ?> columnValidadeCarteira;
+	private TableColumn<Locador, Date> columnValidadeCarteira;
 
 	@FXML
 	private ImageView imgDefaultConfiguracoes;
@@ -132,7 +133,7 @@ public class ControllerListClientes implements Initializable{
 	private Pane panelConfiguracoes;
 
 	@FXML
-	private TableView<?> tableClientes;
+	private TableView<Locador> tableClientes;
 
 	@FXML
 	private TextField txtPesquisa;
