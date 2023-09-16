@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerTableViewFuncionarios">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ListViewController">
    <children>
       <SplitPane fx:id="SlipPaneConfigurações" layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
         <items>
@@ -27,7 +27,7 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tableCategorias" layoutX="14.0" layoutY="57.0" prefHeight="800.0" prefWidth="1160.0" style="-fx-background-radius: 10;">
+                        <TableView fx:id="tabela" layoutX="14.0" layoutY="57.0" prefHeight="800.0" prefWidth="1160.0" style="-fx-background-radius: 10;">
                           <columns>
                             <TableColumn fx:id="columnIdCategoria" prefWidth="130.0" text="ID Categoria" />
                               <TableColumn fx:id="columnCategoria" prefWidth="900.0" text="Categoria" />
@@ -36,7 +36,7 @@
                         </TableView>
                      </children>
                   </Pane>
-                  <Button fx:id="bntSalvar" layoutX="1050.0" layoutY="24.0" mnemonicParsing="false" onAction="#cadastrarCategoria" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
+                  <Button fx:id="bntSalvar" layoutX="1050.0" layoutY="24.0" mnemonicParsing="false" onAction="#abrirCadastroCategoria" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

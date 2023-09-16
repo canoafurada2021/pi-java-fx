@@ -37,7 +37,6 @@ public class CategoriaDAO {
 	            Categoria cat = new Categoria();
 	            cat.setCategoria(nome);
 	            cat.setIdCategoria(idCategoria);
-	
 	            
 	            categorias.add(cat);
 	        }
@@ -81,4 +80,51 @@ public class CategoriaDAO {
 	}
 	return true; // retorna true se insercao bem sucedida
 	}
+	
+	
+	public boolean excluir (Categoria ca) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+		
+		String query = "DELETE FROM categoria WHERE id_categoria = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, ca.getIdCategoria());
+			
+			int rowsAffected = ps.executeUpdate();
+			
+			if(rowsAffected >0 ) {
+				c.fecharConexao();
+				return true; //se bem sucedida
+			}
+		}catch(SQLException e ) {
+			e.printStackTrace();
+		}finally {
+			c.fecharConexao();
+		}
+		return false; //se bem falha na exclusao
+	}
+	
+	
+	//TA DANDO ERRO NO con.preparedStatement -ANDRI
+//	public boolean atualizar (Categoria ca) {
+//		Conexao c = Conexao.getInstancia();
+//		Connection con = c.conectar();
+//		
+//		String query = "UPDATE categoria SET categoria = ? WHERE id_categoria =?";
+//		
+//		PreparedStatement preparedStatement = con.prepareStatement(query);
+//		try {
+//			preparedStatement.setInt(1, ca.getIdCategoria()); //
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		
+//		
+//	}
+	
+	
+	
 }
