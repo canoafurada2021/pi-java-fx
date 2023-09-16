@@ -143,7 +143,7 @@ public class ControllerTableViewFuncionarios implements Initializable {
 	private TableColumn<Vendedor, String> columnAcoes;
 
 	private ObservableList<Vendedor> obsVendedores;
-	
+
 	Vendedor vendedor = new Vendedor();
 	VendedorDAO dao = new VendedorDAO();
 
@@ -212,86 +212,85 @@ public class ControllerTableViewFuncionarios implements Initializable {
 			
 		});
 		
-		columnAcoes.setCellFactory(new Callback<TableColumn<Vendedor, String>, TableCell<Vendedor, String>>());
-		return new TableCell<Vendedor, String>() {
-			
-			//declaraçaõ variavel dos botoes 
-			private final Button viewButton = new Button();
-			private final Button editButton = new Button();
-			
-			private final HBox buttonContainer = new HBox (viewButton, editButton);
-			{
-				buttonContainer.setSpacing(10); //seta espacamento entre os botes
-				
-				//estilizacao do botao de edicao, setando a imagem lapis e a cor de fundo do botao
-				ImageView viewImage = new ImageView();
-						new Image(getClass().getResourceAsStream("/imgs/editar.png"));
-				viewImage.setFitHeight(16);
-				viewImage.setFitWidth(16);
-				viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
-				
-				viewButton.setGraphic(viewImage);
-				viewButton.setOnAction(event -> {
-					//metodo p acionar o botao de edicao
-					Vendedor vendedor = getTableView().getItems().get(getIndex());
-					String idVende = Integer.toString(vendedor.getId_vendedor());//conversao nao sei se ta certo
-					
-					try {
-						FXMLLoader loader = new FXMLLoader(
-								getClass().getResource("/visao/Edicao_fornecedores.fxml"));
-						Parent root = loader.load();
-						ControllerEdicaoFuncionario controllerNovaTela = loader.getController();
-						
-						//passanddo dados fornecedor selecionado de uma tela pra a outra
-						controllerNovaTela.setVendedor(vendedor);
-						
-						//configura a nova janela e mostra ela
-						Scene scene = new Scene(root);
-						Stage stage = new Stage();
-						stage.setScene(scene);
-						stage.show();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+		columnAcoes.setCellFactory(new Callback<TableColumn<Vendedor, String>, TableCell<Vendedor, String>>() {
+		    @Override
+		    public TableCell<Vendedor, String> call(TableColumn<Vendedor, String> param) {
+		        return new TableCell<>() {
+		        	
+		        	//declarando as variaveis dos dois botoes
+		            private final Button viewButton = new Button();
+		            private final Button editButton = new Button();
 
-					System.out.println("botao de edição clicado");
-					});
-				
-				ImageView editImage = new ImageView(
-						new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
-						editImage.setFitHeight(16);
-						editImage.setFitHeight(16);
-						editButton.setGraphic(editImage);
-						editButton.setStyle("-fx-background-color: red;");
-						editButton.setOnAction(event -> {
-							
-							Vendedor vendedor = getTableView().getItems().get(getIndex());
-							
-							if(dao)
-							
-								
-								)
-						
-						
-						
-						
-						
-				
-				
-				}
-				
-				
-						
-				
-				
-				
-				
-			}
-			
-			
-			
-			
-		}
+		            private final HBox buttonContainer = new HBox(viewButton, editButton);
+
+		            {
+		                buttonContainer.setSpacing(10);
+
+		                ImageView viewImage = new ImageView(
+		                        new Image(getClass().getResourceAsStream("/imgs/editar.png")));
+		                viewImage.setFitHeight(16);
+		                viewImage.setFitWidth(16);
+		                viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
+		                viewButton.setGraphic(viewImage);
+		                viewButton.setOnAction(event -> {
+		                    Vendedor vendedor = getTableView().getItems().get(getIndex());
+		                    String idVende = Integer.toString(vendedor.getId_vendedor());
+
+		                    try {
+		                        FXMLLoader loader = new FXMLLoader(
+		                                getClass().getResource("/visao/Edicao_fornecedores.fxml"));
+		                        Parent root = loader.load();
+		                        ControllerEdicaoFuncionario controllerNovaTela = loader.getController();
+
+		                        controllerNovaTela.setVendedor(vendedor);
+
+		                        Scene scene = new Scene(root);
+		                        Stage stage = new Stage();
+		                        stage.setScene(scene);
+		                        stage.show();
+		                    } catch (IOException e) {
+		                        e.printStackTrace();
+		                    }
+
+		                    System.out.println("botao de edição clicado");
+		                });
+
+		                ImageView editImage = new ImageView(
+		                        new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
+		                editImage.setFitHeight(16);
+		                editImage.setFitWidth(16);
+		                editButton.setGraphic(editImage);
+		                editButton.setStyle("-fx-background-color: red;");
+		                editButton.setOnAction(event -> {
+
+		                    Vendedor vendedor = getTableView().getItems().get(getIndex());
+		                    if (dao.excluir(vendedor)) {
+
+		                        // FALTA ADICIOANR POP UP DE CONFIRMAR EXLCUSAO
+
+		                        getTableView().getItems().remove(vendedor);
+		                        System.out.println("vendedor excluido c sucesso");
+		                    } else {
+		                        System.out.println("falha ao excluir vendedor");
+		                    }
+		                    System.out.println("botao de delete clicadoo");
+		                });
+
+		            }
+
+		            @Override
+		            protected void updateItem(String item, boolean empty) {
+		                super.updateItem(item, empty);
+
+		                if (empty) {
+		                    setGraphic(null);
+		                } else {
+		                    setGraphic(buttonContainer);
+		                }
+		            }
+		        };
+		    }
+		});	
 		
 		carregarVendedores();
 	}

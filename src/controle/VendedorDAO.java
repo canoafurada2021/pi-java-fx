@@ -86,4 +86,64 @@ public class VendedorDAO {
 
 		return true; // Retorna true se a inserção for bem-sucedida
 	}
+	
+	public boolean excluir(Vendedor v) { //metodo de exclusao
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+		
+		String query = "DELETE FROM vendedor WHERE id_vendedor = ?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query); //prepara consulta sql
+			ps.setInt(1, v.getId_vendedor());
+			
+			int rowsAffected = ps.executeUpdate();
+			
+			if(rowsAffected > 0) {
+				c.fecharConexao();
+				return true; //se exclusao bem-sucessida
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			c.fecharConexao();
+		}
+		return false;// retorna false se falha na exclusao
+		
+	}
+	
+	
+	public boolean atualizar(Vendedor v) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+		
+		//acho q o cargo n pode atualizar 
+		String query = "UPDATE vendedor SET  salario = ?, nome = ?, sobrenome = ? WHERE = id_vendedor = ? ";
+		
+		try {
+			PreparedStatement preparedStatement = con.prepareStatement(query);
+			preparedStatement.setDouble(1, v.getSalario());
+			preparedStatement.setString(2, v.getNome());
+			preparedStatement.setString(3, v.getSobrenome());
+			
+			int rowsUpdate = preparedStatement.executeUpdate();
+			
+			if(rowsUpdate >0 ) {
+				//dados atualizados com sucesso
+				return true;
+			}else {
+				//nenhum registro atualizado (id pode n existir)
+				return false;
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}finally {
+			c.fecharConexao();
+		}
+		
+	}
+	
+	
+	
 }
