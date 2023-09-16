@@ -1,15 +1,15 @@
 package modelo;
 
 public class Categoria {
-	private int idCategoria;
+	private int id_categoria;
 	private String categoria; 
 	
 
 	public int getIdCategoria() {
-		return idCategoria;
+		return id_categoria;
 	}
 	public void setIdCategoria(int idCategoria) {
-		this.idCategoria = idCategoria;
+		this.id_categoria = idCategoria;
 	}
 	public String getCategoria() {
 		return categoria;
