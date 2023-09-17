@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="724.0" prefWidth="966.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEdicaoFornecedores">
+   <children>
+      <Pane fx:id="pnlLocadorEdicao" prefHeight="724.0" prefWidth="966.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
+         <children>
+            <Button fx:id="btnSalvar" layoutX="526.0" layoutY="642.0" mnemonicParsing="false" onAction="#alterarLocador" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Salvar" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnCancelar" layoutX="231.0" layoutY="642.0" mnemonicParsing="false" onAction="#cancelarAlteracaoLocador" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-border-color: #D70034;" text="Cancelar" textFill="#d70034">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Pane layoutX="119.0" layoutY="-18.0" prefHeight="200.0" prefWidth="726.0">
+               <children>
+                  <Label alignment="BOTTOM_CENTER" layoutX="2.0" prefHeight="150.0" prefWidth="727.0" text="EDIÇÃO">
+                     <font>
+                        <Font size="60.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="-12.0" layoutY="136.0" prefHeight="26.0" prefWidth="730.0" text="Olá, edite as informações para alterar um locador:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label fx:id="lblCpf" layoutX="38.0" layoutY="194.0" text="CPF">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTelefone" layoutX="38.0" layoutY="289.0" text="Telefone">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtFormPag" layoutX="38.0" layoutY="329.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <TextField fx:id="txtCpf" layoutX="38.0" layoutY="234.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblPais" layoutX="38.0" layoutY="394.0" text="País de residência">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPais" layoutX="38.0" layoutY="429.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblCnh" layoutX="38.0" layoutY="489.0" text="CNH">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCnh" layoutX="38.0" layoutY="524.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblNumeroIdent" layoutX="522.0" layoutY="191.0" text="Número de identificação da carteira">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblNome" layoutX="522.0" layoutY="286.0" text="Nome">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNumIdent" layoutX="522.0" layoutY="231.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblSobrenome" layoutX="522.0" layoutY="391.0" text="Sobreme">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtSobrenome" layoutX="522.0" layoutY="426.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblValidadeCardeira" layoutX="523.0" layoutY="491.0" text="Validade da carteira">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dateDataValidade" layoutX="522.0" layoutY="528.0" prefHeight="40.0" prefWidth="414.0" />
+            <TextField fx:id="txtNome" layoutX="522.0" layoutY="329.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
