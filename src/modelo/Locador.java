@@ -71,8 +71,8 @@ public class Locador {
 		this.cnh = cnh;
 	}
 
-	public Date getValidadeCarteira() {
-		return validadeCarteira;
+	public java.sql.Date getValidadeCarteira() {
+		return (java.sql.Date) validadeCarteira;
 	}
 
 	public void setValidadeCarteira(Date validadeCarteira) {
