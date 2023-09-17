@@ -64,7 +64,7 @@ public class LocadorDAO {
 	}
 
 	
-	public boolean atualizar(Locador l) {
+	public boolean atualizar(Locador l) { //ta certo esse?
 	    Conexao c = Conexao.getInstancia();
 	    Connection con = c.conectar();
 	    String query = "INSERT INTO fornecedores " +
