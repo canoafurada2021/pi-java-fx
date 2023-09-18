@@ -39,8 +39,8 @@ public class VeiculoDAO {
 				Long precoPorDia = rs.getLong("preco_por_dia");
 				String imgBase64 = rs.getString("img_Base64");
 				int unidadeEmEstoque = rs.getInt("unidade_em_estoque");
-				int categoria = rs.getInt("c.id_categoria");
-				Long fornecedorCnpj = rs.getLong("f.cnpj");
+				int categoria = rs.getInt("c.categoria_id_categoria");
+				Long fornecedorCnpj = rs.getLong("f.fornecedores_cnpj");
 
 				Veiculo v = new Veiculo();
 
@@ -64,6 +64,7 @@ public class VeiculoDAO {
 
 				v.setIdCategoria(cat);
 
+				// Definindo o id do fornecedor
 				Fornecedor f = new Fornecedor();
 				f.setCnpj(fornecedorCnpj);
 
@@ -80,48 +81,118 @@ public class VeiculoDAO {
 
 	}
 
-	public boolean inserir(Veiculo v) {
-
+	public boolean inserir(Veiculo veiculo) {
 		Conexao c = Conexao.getInstancia();
-
 		Connection con = c.conectar();
-		String query = "INSERT INTO veiculo " + "(id_veiculo," + " quant_assento," + " tipo_cambio," + " quant_portas,"
-				+ " espaco_porta_malas," + " marca," + " nome," + " cor," + " nota_avaliacao," + " preco_por_dia,"
-				+ " img_Base64," + " unidade_em_estoque," + " idCategoria," + " fornecedores_cnpj)"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		String query = "INSERT INTO veiculo " + "(quant_assento," + " tipo_cambio, " + "quant_portas,"
+				+ " espaco_porta_malas," + " marca," + " nome," + " cor," + " ano," + " nota_avaliacao,"
+				+ " preco_por_dia," + " img_Base64, " + "unidade_em_estoque," + " categoria_id_categoria,"
+				+ " fornecedores_cnpj" + ") " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 
-			ps.setInt(1, v.getId_veiculo());
-			ps.setInt(3, v.getQuant_assento());
-			ps.setString(4, v.getTipo_cambio());
-			ps.setInt(5, v.getQuant_portas());
-			ps.setInt(6, v.getEspaco_porta_malas());
-			ps.setString(7, v.getMarca());
-			ps.setString(8, v.getNome());
-			ps.setString(9, v.getCor());
-			ps.setInt(10, v.getNota_avaliacao());
-			ps.setDouble(11, v.getPreco_por_dia());
-			ps.setString(12, v.getImg_Base64());
-//			ps.setInt(13, v.getIdCategoria());
-//			ps.setInt(14, v.getCnpj());
+			ps.setInt(1, veiculo.getQuant_assento());
+			ps.setString(2, veiculo.getTipo_cambio());
+			ps.setInt(3, veiculo.getQuant_portas());
+			ps.setInt(4, veiculo.getEspaco_porta_malas());
+			ps.setString(5, veiculo.getMarca());
+			ps.setString(6, veiculo.getNome());
+			ps.setString(7, veiculo.getCor());
+			ps.setInt(8, veiculo.getAno());
+			ps.setInt(9, veiculo.getNota_avaliacao());
+			ps.setLong(10, veiculo.getPreco_por_dia());
+			ps.setString(11, veiculo.getImg_Base64());
+			ps.setInt(12, veiculo.getUnidade_em_estoque());
+			// erro no id categoria
+			ps.setInt(13, veiculo.getIdCategoria().getIdCategoria());
+			ps.setLong(14, veiculo.getCnpj().getCnpj()); // Chave estrangeira para fornecedores
 
-			// CHAVES ESTRANGEIRAS
-			ps.setInt(13, v.getIdCategoria().getIdCategoria()); // Preenche a chave estrangeira sendo a chave primaria
-																// da tabela o ID
-
-			ps.setLong(14, v.getCnpj().getCnpj()); // Preenche a chave estrangeira sendo a chave primaria da
-													// tabela o cnpj
 			ps.executeUpdate();
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			c.fecharConexao();
-
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			return false; // Retorna false em caso de falha na inserção
 		}
-		return true;
+
+		return false; // Falha na inserção
 	}
+
+	public boolean excluir(int idVeiculo) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM veiculo WHERE id_veiculo = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			// Defina o valor do parâmetro com base no ID do veículo que você deseja excluir
+			ps.setInt(1, idVeiculo);
+
+			int rowsAffected = ps.executeUpdate();
+
+			if (rowsAffected > 0) {
+				c.fecharConexao();
+				return true; // Exclusão bem-sucedida
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return false; // Falha na exclusão
+	}
+
+	public boolean atualizar(Veiculo veiculo) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "UPDATE veiculo SET "
+				+ "quant_assento = ?, tipo_cambio = ?, quant_portas = ?, espaco_porta_malas = ?, "
+				+ "marca = ?, nome = ?, cor = ?, ano = ?, nota_avaliacao = ?, preco_por_dia = ?, "
+				+ "img_Base64 = ?, unidade_em_estoque = ?, idCategoria = ?, fornecedores_cnpj = ? "
+				+ "WHERE id_veiculo = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			// Configure os valores dos parâmetros com base no objeto Veiculo
+			ps.setInt(1, veiculo.getQuant_assento());
+			ps.setString(2, veiculo.getTipo_cambio());
+			ps.setInt(3, veiculo.getQuant_portas());
+			ps.setInt(4, veiculo.getEspaco_porta_malas());
+			ps.setString(5, veiculo.getMarca());
+			ps.setString(6, veiculo.getNome());
+			ps.setString(7, veiculo.getCor());
+			ps.setInt(8, veiculo.getAno());
+			ps.setInt(9, veiculo.getNota_avaliacao());
+			ps.setLong(10, veiculo.getPreco_por_dia());
+			ps.setString(11, veiculo.getImg_Base64());
+			ps.setInt(12, veiculo.getUnidade_em_estoque());
+			ps.setInt(13, veiculo.getIdCategoria().getIdCategoria());
+			ps.setLong(14, veiculo.getCnpj().getCnpj());
+
+			// Defina o valor do último parâmetro como o ID do veículo que você deseja
+			// atualizar
+			ps.setInt(15, veiculo.getId_veiculo());
+
+			int rowsAffected = ps.executeUpdate();
+
+			if (rowsAffected > 0) {
+				c.fecharConexao();
+				return true; // Atualização bem-sucedida
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return false; // Falha na atualização
+	}
+
 }

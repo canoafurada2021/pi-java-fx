@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 import controle.CategoriaDAO;
 import javafx.animation.KeyFrame;
@@ -31,7 +32,7 @@ import utilities.ExibePopUpSucesso;
 public class ControllerCadastroCategoria implements Initializable{
 
 	@FXML
-    private StackPane StackPanePerfil;
+    private Stack StackPanePerfil;
 
     @FXML
     private Button btnConfiguracoes;
