@@ -87,8 +87,8 @@ public class VeiculoDAO {
 
 		String query = "INSERT INTO veiculo " + "(quant_assento," + " tipo_cambio, " + "quant_portas,"
 				+ " espaco_porta_malas," + " marca," + " nome," + " cor," + " ano," + " nota_avaliacao,"
-				+ " preco_por_dia," + " img_Base64, " + "unidade_em_estoque," + " categoria_id_categoria,"
-				+ " fornecedor_cnpj" + ") " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " preco_por_dia,"  + "unidade_em_estoque," + " categoria_id_categoria,"
+				+ " fornecedor_cnpj" + ") " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -97,17 +97,18 @@ public class VeiculoDAO {
 			ps.setString(2, veiculo.getTipo_cambio());
 			ps.setInt(3, veiculo.getQuant_portas());
 			ps.setInt(4, veiculo.getEspaco_porta_malas());
-			ps.setString(5, veiculo.getMarca());
-			ps.setString(6, veiculo.getNome());
-			ps.setString(7, veiculo.getCor());
-			ps.setInt(8, veiculo.getAno());
-			ps.setInt(9, veiculo.getNota_avaliacao());
-			ps.setLong(10, veiculo.getPreco_por_dia());
-			ps.setString(11, veiculo.getImg_Base64());
-			ps.setInt(12, veiculo.getUnidade_em_estoque());
-			// erro no id categoria
-			ps.setInt(13, veiculo.getIdCategoria().getIdCategoria());
-			ps.setLong(14, veiculo.getCnpj().getCnpj()); // Chave estrangeira para fornecedores
+			ps.setString(5,veiculo.getMarca());
+			ps.setString(6,veiculo.getNome());
+			ps.setString(7,veiculo.getCor());
+			ps.setInt(8,veiculo.getAno());
+			ps.setInt(9,veiculo.getNota_avaliacao());
+			ps.setLong(10,veiculo.getPreco_por_dia());
+			ps.setInt(11,veiculo.getUnidade_em_estoque());
+			ps.setInt(12,veiculo.getIdCategoria().getIdCategoria());
+			ps.setLong(13,veiculo.getCnpj().getCnpj());
+
+	
+			// Chave estrangeira para fornecedores
 
 			ps.executeUpdate();
 

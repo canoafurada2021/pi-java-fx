@@ -137,7 +137,6 @@ public class ControllerCadastroProduto implements Initializable {
 		int ano = Integer.parseInt(txtAno.getText());
 		int notaAvaliacao = Integer.parseInt(txtNotaAvaliacao.getText());
 		Long precoPorDia = Long.parseLong(txtPrecoPorDia.getText());
-		String imgBase64 = "ainda n funciona img kkkkkkk";
 		int unidadeEmEstoque = Integer.parseInt(txtUnidadeEmEstoque.getText());
 
 		String selectedCategoriaInfo = comboCategoriaIds.getValue();
@@ -162,7 +161,6 @@ public class ControllerCadastroProduto implements Initializable {
 		v.setAno(ano);
 		v.setNota_avaliacao(notaAvaliacao);
 		v.setPreco_por_dia(precoPorDia);
-		v.setImg_Base64(imgBase64);
 		v.setUnidade_em_estoque(unidadeEmEstoque);
 
 
@@ -178,9 +176,13 @@ public class ControllerCadastroProduto implements Initializable {
 			limpaCampos();
 
 			if (insercaoSucesso) {
+				System.out.println("inserção sucesso"+ insercaoSucesso);
+				System.out.println("deu bom");
 				ExibePopUpSucesso.ExibirPopUpSucesso();
 			} else {
 	        	ExibePopUpErro.ExibirPopUpErro();
+	        	System.out.println("n deu bom");
+				System.out.println(v.getIdCategoria());
 			}
 
 		} catch (Exception e) {
