@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.EnumCargos;
-import modelo.Fornecedor;
 import modelo.Locador;
 
 public class LocadorDAO {
@@ -67,7 +66,7 @@ public class LocadorDAO {
 	public boolean atualizar(Locador l) { //ta certo esse?
 	    Conexao c = Conexao.getInstancia();
 	    Connection con = c.conectar();
-	    String query = "INSERT INTO fornecedores " +
+	    String query = "INSERT INTO locador " +
                 "(pessoas_cpf, nome, sobrenome, tel_contato, pais_residencia, cnh, validade_carteira, num_identificacao_carteira, cargo) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";	 
 	    
@@ -104,7 +103,7 @@ public class LocadorDAO {
 	    Conexao c = Conexao.getInstancia();
 	    Connection con = c.conectar();
 
-	    String query = "INSERT INTO fornecedores " +
+	    String query = "INSERT INTO locador " +
 	                   "(pessoas_cpf, nome, sobrenome, tel_contato, pais_residencia, cnh, validade_carteira, num_identificacao_carteira, cargo) " +
 	                   "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 

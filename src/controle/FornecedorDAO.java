@@ -33,7 +33,7 @@ public class FornecedorDAO {
 		// INNER JOIN pedidos p ON c.id_cliente = p.id_cliente
 		// INNER JOIN itens_pedido ip ON p.id_pedido = ip.id_pedido;
 
-		String query = "SELECT f.*, e.rua FROM fornecedores f " + "INNER JOIN enderecos e ON f.enderecos_id = e.id";
+		String query = "SELECT f.*, e.rua FROM fornecedor f " + "INNER JOIN endereco e ON f.endereco_id = e.id";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -77,7 +77,7 @@ public class FornecedorDAO {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO fornecedores " + "(cnpj," + " enderecos_id" + ", nome," + " atividades,"
+		String query = "INSERT INTO fornecedor " + "(cnpj," + " endereco_id" + ", nome," + " atividades,"
 				+ " telefone) " + "VALUES (?, ?, ?, ?, ?);";
 
 		try {
@@ -106,7 +106,7 @@ public class FornecedorDAO {
 	    Conexao c = Conexao.getInstancia();
 	    Connection con = c.conectar();
 	    
-	    String query = "DELETE FROM fornecedores WHERE cnpj = ?";
+	    String query = "DELETE FROM fornecedor WHERE cnpj = ?";
 	    
 	    try {
 	        PreparedStatement ps = con.prepareStatement(query);
@@ -131,7 +131,7 @@ public class FornecedorDAO {
 	public boolean atualizar(Fornecedor f) {
 	    Conexao c = Conexao.getInstancia();
 	    Connection con = c.conectar();
-	    String query = "UPDATE fornecedores SET nome = ?, telefone = ?, atividades = ? WHERE cnpj = ?";
+	    String query = "UPDATE fornecedor SET nome = ?, telefone = ?, atividades = ? WHERE cnpj = ?";
 	    try {
 	        PreparedStatement preparedStatement = con.prepareStatement(query);
 	        preparedStatement.setString(1, f.getNome());

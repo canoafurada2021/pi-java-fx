@@ -7,14 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Endereco;
-import modelo.Vendedor;
 
 public class EnderecoDAO {
 	public boolean inserir(Endereco e) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO enderecos (cep, id, rua, bairro, cidade, estado) VALUES (?, ?, ?, ?, ?, ?);";
+		String query = "INSERT INTO endereco (cep, id, rua, bairro, cidade, estado) VALUES (?, ?, ?, ?, ?, ?);";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -43,7 +42,7 @@ public class EnderecoDAO {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "SELECT * FROM enderecos";
+		String query = "SELECT * FROM endereco";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

@@ -18,7 +18,7 @@ public class VeiculoDAO {
 
 		ArrayList<Veiculo> veiculos = new ArrayList<>();
 		String query = "SELECT v.*, f.nome AS fornecedor_nome, c.categoria AS categoria_nome " + "FROM veiculo v "
-				+ "INNER JOIN fornecedores f ON v.fornecedores_cnpj = f.cnpj "
+				+ "INNER JOIN fornecedor f ON v.fornecedor = f.cnpj "
 				+ "INNER JOIN categoria c ON v.idCategoria = c.id_categoria";
 
 		try {
@@ -88,7 +88,7 @@ public class VeiculoDAO {
 		String query = "INSERT INTO veiculo " + "(quant_assento," + " tipo_cambio, " + "quant_portas,"
 				+ " espaco_porta_malas," + " marca," + " nome," + " cor," + " ano," + " nota_avaliacao,"
 				+ " preco_por_dia," + " img_Base64, " + "unidade_em_estoque," + " categoria_id_categoria,"
-				+ " fornecedores_cnpj" + ") " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " fornecedor_cnpj" + ") " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -154,7 +154,7 @@ public class VeiculoDAO {
 		String query = "UPDATE veiculo SET "
 				+ "quant_assento = ?, tipo_cambio = ?, quant_portas = ?, espaco_porta_malas = ?, "
 				+ "marca = ?, nome = ?, cor = ?, ano = ?, nota_avaliacao = ?, preco_por_dia = ?, "
-				+ "img_Base64 = ?, unidade_em_estoque = ?, idCategoria = ?, fornecedores_cnpj = ? "
+				+ "img_Base64 = ?, unidade_em_estoque = ?, idCategoria = ?, fornecedor_cnpj = ? "
 				+ "WHERE id_veiculo = ?";
 
 		try {
