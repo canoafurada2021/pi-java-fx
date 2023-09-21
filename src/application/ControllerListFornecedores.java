@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import controle.FornecedorDAO;
@@ -100,6 +101,8 @@ public class ControllerListFornecedores implements Initializable {
 		// Lógica para sair do aplicativo
 	}
 
+	FornecedorDAO dao = new FornecedorDAO();
+
 	public void filtroPesquisa() {
 
 		FornecedorDAO dao = new FornecedorDAO();
@@ -178,8 +181,7 @@ public class ControllerListFornecedores implements Initializable {
 								Parent root = loader.load();
 								ControllerEdicaoFornecedores controllerNovaTela = loader.getController();
 
-								
-								//Passando os dados do fornecedor selecionado de uma tela para outra
+								// Passando os dados do fornecedor selecionado de uma tela para outra
 								controllerNovaTela.setFornecedor(fornecedor);
 
 								// Configurar a nova janela e mostrá-la
@@ -210,8 +212,9 @@ public class ControllerListFornecedores implements Initializable {
 							if (dao.excluir(fornecedor)) {
 
 								// ADICIONAR POPUP DE CONFIRMAÇÃO DE EXCLUSÃO DE FORNECEDOR
-
+								dao.excluir(fornecedor);
 								getTableView().getItems().remove(fornecedor);
+
 								System.out.println("Fornecedor excluído com sucesso.");
 
 							} else {
@@ -309,7 +312,7 @@ public class ControllerListFornecedores implements Initializable {
 
 			tableFornecedores.setItems(listaFiltrada);
 		});
-
+		
 		carregarFornecedores();
 	}
 
@@ -317,6 +320,12 @@ public class ControllerListFornecedores implements Initializable {
 	public void abrirTelaCadastroGemFornecedores(ActionEvent event) {
 
 		try {
+			
+			
+
+	
+			
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_fornecedor.fxml"));
 			Parent root = loader.load();
 
@@ -330,6 +339,11 @@ public class ControllerListFornecedores implements Initializable {
 
 			stage.setScene(scene);
 			stage.show();
+			
+			
+			
+			
+			
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -368,5 +382,12 @@ public class ControllerListFornecedores implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	 public void atualizarTabela(List<Fornecedor> fornecedores) {
+		 
+		 System.out.println("table"+ tableFornecedores.getItems() );
+		 tableFornecedores.getItems().clear();
+		 tableFornecedores.getItems().addAll(fornecedores);
+	    }
 
 }
