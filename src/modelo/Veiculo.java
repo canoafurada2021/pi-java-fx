@@ -102,5 +102,12 @@ public class Veiculo {
 	public void setCnpj(Fornecedor cnpj) {
 		this.cnpj = cnpj;
 	}
+	public void setAno(int ano) {
+		this.setAno(ano);
+	}
+	public int getAno() {
+		// TODO Auto-generated method stub
+		return getAno();
+	}
 	
 }
