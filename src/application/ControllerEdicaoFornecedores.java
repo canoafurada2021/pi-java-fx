@@ -19,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import modelo.Endereco;
 import modelo.Fornecedor;
 import utilities.ExibePopUpErro;
@@ -26,11 +27,6 @@ import utilities.ExibePopUpSucesso;
 
 public class ControllerEdicaoFornecedores implements Initializable{
 
-    private ControllerListFornecedores telaTabelaController;
-
-    public void setTelaTabelaController(ControllerListFornecedores telaTabelaController) {
-        this.telaTabelaController = telaTabelaController;
-    }
 
  
 
@@ -194,16 +190,12 @@ public class ControllerEdicaoFornecedores implements Initializable{
 		    
 		    // Obtém o Stage (janela) atual com base no Node
 		    Stage stage = (Stage) source.getScene().getWindow();
+		   
+		    stage.getOnCloseRequest().handle(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
 		    
 		    // Fecha o Stage atual
 		    stage.close();
-	    	System.out.println("controller"+telaTabelaController);
-		    
-		    if (telaTabelaController != null) {
-		    	
-		    	System.out.println(telaTabelaController);
-	            telaTabelaController.atualizarTabela(daoFornecedor.listar());
-	        }
+	
 	    } else {
 			ExibePopUpErro.ExibirPopUpErro();
 
@@ -212,10 +204,7 @@ public class ControllerEdicaoFornecedores implements Initializable{
 	}
 
 	
-    public void atualizarTabela(List<Fornecedor> fornecedores) {
-        // Chame o método na tela de listagem de fornecedores para atualizar a tabela
-        telaTabelaController.atualizarTabela(fornecedores);
-    }
+
 	
 	
 	@FXML
