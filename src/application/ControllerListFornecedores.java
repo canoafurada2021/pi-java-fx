@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import controle.FornecedorDAO;
@@ -12,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,6 +30,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import modelo.Fornecedor;
 import javafx.scene.image.Image;
@@ -36,6 +39,10 @@ import javafx.scene.control.TextField;
 
 public class ControllerListFornecedores implements Initializable {
 
+	
+
+	
+	
 	@FXML
 	private SplitPane SlipPaneConfigurações;
 
@@ -87,7 +94,6 @@ public class ControllerListFornecedores implements Initializable {
 	@FXML
 	private TableColumn<Fornecedor, String> columnAcoes;
 
-	private ObservableList<Fornecedor> obsFornecedores;
 
 	@FXML
 	private Button bntCadastrar;
@@ -95,10 +101,28 @@ public class ControllerListFornecedores implements Initializable {
 	@FXML
 	private TextField txtBusca;
 
+	private ObservableList<Fornecedor> obsFornecedores;
+	
+	FornecedorDAO daoFor = new FornecedorDAO();
+
+	public void tblViewDivergenciaSearch() {
+		tableFornecedores.getItems().clear();
+		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
+		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+		columnAtividade.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAtividades()));
+		 ObservableList<Fornecedor> obsFornecedores = FXCollections.observableArrayList(daoFor.listar());
+		 tableFornecedores.setItems(obsFornecedores);
+				;
+
+	}
+	
+	
 	@FXML
 	public void sair(ActionEvent event) {
 		// Lógica para sair do aplicativo
 	}
+
+	FornecedorDAO dao = new FornecedorDAO();
 
 	public void filtroPesquisa() {
 
@@ -168,6 +192,7 @@ public class ControllerListFornecedores implements Initializable {
 						viewButton.setGraphic(viewImage);
 						viewButton.setOnAction(event -> {
 
+							
 							// Método de acionamento do botão de edição
 							Fornecedor fornecedor = getTableView().getItems().get(getIndex());
 							String cnpj = fornecedor.getCnpj().toString();
@@ -179,14 +204,34 @@ public class ControllerListFornecedores implements Initializable {
 								ControllerEdicaoFornecedores controllerNovaTela = loader.getController();
 
 								
-								//Passando os dados do fornecedor selecionado de uma tela para outra
+								
+								
+								// Passando os dados do fornecedor selecionado de uma tela para outra
 								controllerNovaTela.setFornecedor(fornecedor);
 
+								
+								
+								
+								
+								
+								
 								// Configurar a nova janela e mostrá-la
 								Scene scene = new Scene(root);
 								Stage stage = new Stage();
 								stage.setScene(scene);
+								
+								stage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
+			                        public void handle(WindowEvent we) {
+			                            tblViewDivergenciaSearch();//Esse método eu populo o tableView (ver acima)
+			                        }
+			                    });
+								
+								
 								stage.show();
+						
+						
+
+							
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
@@ -210,8 +255,9 @@ public class ControllerListFornecedores implements Initializable {
 							if (dao.excluir(fornecedor)) {
 
 								// ADICIONAR POPUP DE CONFIRMAÇÃO DE EXCLUSÃO DE FORNECEDOR
-
+								dao.excluir(fornecedor);
 								getTableView().getItems().remove(fornecedor);
+
 								System.out.println("Fornecedor excluído com sucesso.");
 
 							} else {
@@ -309,7 +355,7 @@ public class ControllerListFornecedores implements Initializable {
 
 			tableFornecedores.setItems(listaFiltrada);
 		});
-
+		
 		carregarFornecedores();
 	}
 
@@ -317,6 +363,12 @@ public class ControllerListFornecedores implements Initializable {
 	public void abrirTelaCadastroGemFornecedores(ActionEvent event) {
 
 		try {
+			
+			
+
+	
+			
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_fornecedor.fxml"));
 			Parent root = loader.load();
 
@@ -330,6 +382,11 @@ public class ControllerListFornecedores implements Initializable {
 
 			stage.setScene(scene);
 			stage.show();
+			
+			
+			
+			
+			
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -368,5 +425,6 @@ public class ControllerListFornecedores implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
 
 }

@@ -2,6 +2,7 @@ package application;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import controle.EnderecoDAO;
@@ -9,6 +10,7 @@ import controle.FornecedorDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -16,11 +18,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import modelo.Endereco;
 import modelo.Fornecedor;
+import utilities.ExibePopUpErro;
+import utilities.ExibePopUpSucesso;
 
 public class ControllerEdicaoFornecedores implements Initializable{
 
+
+ 
+
+	
 	@FXML
 	private StackPane StackPanePerfil;
 
@@ -158,25 +168,55 @@ public class ControllerEdicaoFornecedores implements Initializable{
 	    String novoNome = txtNome.getText();
 	    String novoAtividades = txtAtividades.getText();
 	    long novoTelefone = Long.parseLong(txtTelefone.getText());
+	    long cpnj = Long.parseLong(txtCNPJ.getText());
 
+	    System.out.println(cpnj);
+	    
 	    // Atualize o objeto Fornecedor com as alterações
 	    Fornecedor fornecedor = new Fornecedor();
-	    fornecedor.setCnpj(fornecedor.getCnpj()); // Defina o ID do fornecedor que você está editando
+	    fornecedor.setCnpj(cpnj); // Defina o ID do fornecedor que você está editando
 	    fornecedor.setNome(novoNome);
 	    fornecedor.setAtividades(novoAtividades);
 	    fornecedor.setTelefone(novoTelefone);
 	    
 	    
 	    if(daoFornecedor.atualizar(fornecedor)) {
-	    	System.out.println(("Edição com sucesso"));
+			ExibePopUpSucesso.ExibirPopUpSucesso();
+
+	    	//    telaTabelaController.atualizarTabela(daoFornecedor.listar());
+
+			   // Obtém o Node (geralmente um botão) que acionou o evento
+		    Node source = (Node) event.getSource();
+		    
+		    // Obtém o Stage (janela) atual com base no Node
+		    Stage stage = (Stage) source.getScene().getWindow();
+		   
+		    stage.getOnCloseRequest().handle(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
+		    
+		    // Fecha o Stage atual
+		    stage.close();
+	
 	    } else {
+			ExibePopUpErro.ExibirPopUpErro();
+
 	    	System.out.println("Deu ruim");
 	    }
 	}
 
+	
+
+	
+	
 	@FXML
 	void cancelarAlteracaoFornecedor(ActionEvent event) {
-
+		   // Obtém o Node (geralmente um botão) que acionou o evento
+	    Node source = (Node) event.getSource();
+	    
+	    // Obtém o Stage (janela) atual com base no Node
+	    Stage stage = (Stage) source.getScene().getWindow();
+	    
+	    // Fecha o Stage atual
+	    stage.close();
 	}
 
 	@Override
@@ -231,4 +271,8 @@ public class ControllerEdicaoFornecedores implements Initializable{
 	    }
 	    return -1; // Retornar -1 se o ID do endereço não for encontrado (trate isso adequadamente)
 	}
+	
+
+
+
 }

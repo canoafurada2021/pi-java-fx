@@ -136,11 +136,12 @@ public class ControllerCadastroFornecedores implements Initializable {
 
 			limpaCampos();
 
-			if (insercaoSucesso) {
-				ExibePopUpSucesso.ExibirPopUpSucesso();
-			} else {
-	        	ExibePopUpErro.ExibirPopUpErro();
-			}
+			ExibePopUpSucesso.ExibirPopUpSucesso();
+
+//			if (insercaoSucesso) {
+//			} else {
+//	        	ExibePopUpErro.ExibirPopUpErro();
+//			}
 
 		} catch (Exception e) {
 

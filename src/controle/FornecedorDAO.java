@@ -138,7 +138,7 @@ public class FornecedorDAO {
 	        preparedStatement.setLong(2, f.getTelefone());
 	        preparedStatement.setString(3, f.getAtividades()); 
 	        preparedStatement.setLong(4, f.getCnpj()); 
-	        
+
 	        int rowsUpdated = preparedStatement.executeUpdate();
 	        
 	        if (rowsUpdated > 0) {
