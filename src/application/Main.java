@@ -11,14 +11,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
     	
-    	primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/imgs/favicon.png")));
+    	//primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/imgs/favicon.png")));
 
     	
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_produto.fxml"));
         Parent root = loader.load();
 		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
-		ControllerListFornecedores controller = loader.getController(); // Obtém uma referência ao controlador
+		ControllerCadastroProduto controller = loader.getController(); // Obtém uma referência ao controlador
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

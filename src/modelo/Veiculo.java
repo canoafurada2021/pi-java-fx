@@ -1,6 +1,5 @@
 package modelo;
 
-import java.util.Date;
 
 public class Veiculo {
 	private int id_veiculo;
@@ -11,8 +10,9 @@ public class Veiculo {
 	private String marca;
 	private String nome;
 	private String cor;
+	private int ano;
 	private int nota_avaliacao;
-	private Double preco_por_dia;
+	private Long preco_por_dia;
 	private String img_Base64;
 	private int unidade_em_estoque;
 	private Categoria idCategoria;
@@ -72,10 +72,10 @@ public class Veiculo {
 	public void setNota_avaliacao(int nota_avaliacao) {
 		this.nota_avaliacao = nota_avaliacao;
 	}
-	public Double getPreco_por_dia() {
+	public Long getPreco_por_dia() {
 		return preco_por_dia;
 	}
-	public void setPreco_por_dia(Double preco_por_dia) {
+	public void setPreco_por_dia(Long preco_por_dia) {
 		this.preco_por_dia = preco_por_dia;
 	}
 	public String getImg_Base64() {
@@ -102,12 +102,11 @@ public class Veiculo {
 	public void setCnpj(Fornecedor cnpj) {
 		this.cnpj = cnpj;
 	}
-	public void setAno(int ano) {
-		this.setAno(ano);
-	}
 	public int getAno() {
-		// TODO Auto-generated method stub
-		return getAno();
+		return ano;
+	}
+	public void setAno(int ano) {
+		this.ano = ano;
 	}
 	
 }

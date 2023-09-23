@@ -156,10 +156,10 @@ public class ControllerDashboard implements Initializable {
 		 try {
 
 				
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Produtos.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_Produto.fxml"));
 				Parent root = loader.load();
 
-				ControllerListProdutos controllerNovaTela = loader.getController();
+				ControllerCadastroProduto controllerNovaTela = loader.getController();
 
 				Scene scene = new Scene(root);
 				Stage stage = new Stage();
@@ -213,11 +213,14 @@ public class ControllerDashboard implements Initializable {
 
 		List<Locador> locadores = dao.listar();
 
-		for (Locador locador : locadores) {
-			converteImagemPerfil(locador.getImg_Base64());
-
-		}
-
+//		for (Locador locador : locadores) {
+//			converteImagemPerfil(locador.getImg_Base64());
+//
+////		}
+//		Image imagemLocal = new Image(
+//				"imgs//FotoPerfilRedonda.png");
+//
+//		imgFotoPerfil.setImage(imagemLocal);
 		// conversão da imagem do usuario
 
 		/// Cores do gráfico de barra (baseadas no método getColorCode que também pe
