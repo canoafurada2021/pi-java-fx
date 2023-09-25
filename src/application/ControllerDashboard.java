@@ -129,10 +129,10 @@ public class ControllerDashboard implements Initializable {
 	void abrirCadastroInfoFuncionarios(ActionEvent event) {
 		try {
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_funcionario.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Funcionarios.fxml"));
 			Parent root = loader.load();
 
-			TestController controllerNovaTela = loader.getController();
+			ControllerTableViewFuncionarios controllerNovaTela = loader.getController();
 
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();

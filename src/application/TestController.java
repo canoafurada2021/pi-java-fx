@@ -86,8 +86,8 @@ public class TestController implements Initializable {
 	@FXML
 	private void cadastrarFuncionario(ActionEvent event) {
 
-		String idVendedorSelect = comboIdVendedor.getValue();
-		System.out.println("id selecionado "+ idVendedorSelect);
+//		String idVendedorSelect = comboIdVendedor.getValue();
+//		System.out.println("id selecionado "+ idVendedorSelect);
 		
 		Double salario = Double.valueOf(txtSalario.getText());
 		String nome = txtNome.getText();
@@ -189,14 +189,14 @@ public class TestController implements Initializable {
 		}
 	
 	//metodo preencher combobox
-	 private void preencherComboBoxVendedor() {
-
-        for (Vendedor vendedor: vendedores) {
-            String vendedorInfo= vendedor.getId_vendedor() + " - " + vendedor.getNome();
-            comboIdVendedor.getItems().add(vendedorInfo);
-        }
-
-    } 
+//	 private void preencherComboBoxVendedor() {
+//
+//        for (Vendedor vendedor: vendedores) {
+//            String vendedorInfo= vendedor.getId_vendedor() + " - " + vendedor.getNome();
+//            comboIdVendedor.getItems().add(vendedorInfo);
+//        }
+//
+//    } 
 	
 	//metodo p/ comboBox
 	private Vendedor encontrarVendedorPorId(int vendedorId) {
