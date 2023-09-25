@@ -136,6 +136,9 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 	@FXML
 	private TableColumn<Vendedor, String> columnNome;
+	
+	@FXML
+	private TableColumn<Vendedor, String> columnSobrenome;
 
 	@FXML
 	private TableColumn<Vendedor, Double> columnSalario;
@@ -159,15 +162,16 @@ public class ControllerTableViewFuncionarios implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		columnIdVendedor.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId_vendedor()));
+		columnIdVendedor
+				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId_vendedor()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
-		columnCargo.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCargo().toString()));
+		columnSobrenome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSobrenome()));
+		columnCargo
+				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCargo().toString()));
 
-		
 		// Configura a formatação da célula da coluna de salário
 		columnSalario.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSalario()));
 
-		
 		// Usa um StringConverter (Classe do FXML responsável por facilitar na conversão
 		// de tipos Long e Double pra String)
 		// para formatar o valor do salário como moeda
@@ -207,91 +211,89 @@ public class ControllerTableViewFuncionarios implements Initializable {
 					setText(currencyConverter.toString(salario));
 				}
 			}
-			
-			
-			
+
 		});
-		
+
 		columnAcoes.setCellFactory(new Callback<TableColumn<Vendedor, String>, TableCell<Vendedor, String>>() {
-		    @Override
-		    public TableCell<Vendedor, String> call(TableColumn<Vendedor, String> param) {
-		        return new TableCell<>() {
-		        	
-		        	//declarando as variaveis dos dois botoes
-		            private final Button viewButton = new Button();
-		            private final Button editButton = new Button();
+			@Override
+			public TableCell<Vendedor, String> call(TableColumn<Vendedor, String> param) {
+				return new TableCell<>() {
 
-		            private final HBox buttonContainer = new HBox(viewButton, editButton);
+					// declarando as variaveis dos dois botoes
+					private final Button viewButton = new Button();
+					private final Button editButton = new Button();
 
-		            {
-		                buttonContainer.setSpacing(10);
+					private final HBox buttonContainer = new HBox(viewButton, editButton);
 
-		                ImageView viewImage = new ImageView(
-		                        new Image(getClass().getResourceAsStream("/imgs/editar.png")));
-		                viewImage.setFitHeight(16);
-		                viewImage.setFitWidth(16);
-		                viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
-		                viewButton.setGraphic(viewImage);
-		                viewButton.setOnAction(event -> {
-		                    Vendedor vendedor = getTableView().getItems().get(getIndex());
-		                    String idVende = Integer.toString(vendedor.getId_vendedor());
+					{
+						buttonContainer.setSpacing(10);
 
-		                    try {
-		                        FXMLLoader loader = new FXMLLoader(
-		                                getClass().getResource("/visao/Edicao_fornecedores.fxml"));
-		                        Parent root = loader.load();
-		                        ControllerEdicaoFuncionario controllerNovaTela = loader.getController();
+						ImageView viewImage = new ImageView(
+								new Image(getClass().getResourceAsStream("/imgs/editar.png")));
+						viewImage.setFitHeight(16);
+						viewImage.setFitWidth(16);
+						viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
+						viewButton.setGraphic(viewImage);
+						viewButton.setOnAction(event -> {
+							Vendedor vendedor = getTableView().getItems().get(getIndex());
+							String idVende = Integer.toString(vendedor.getId_vendedor());
 
-		                        controllerNovaTela.setVendedor(vendedor);
+							try {
+								FXMLLoader loader = new FXMLLoader(
+										getClass().getResource("/visao/Edicao_funcionario.fxml"));
+								Parent root = loader.load();
+								ControllerEdicaoFuncionario controllerNovaTela = loader.getController();
 
-		                        Scene scene = new Scene(root);
-		                        Stage stage = new Stage();
-		                        stage.setScene(scene);
-		                        stage.show();
-		                    } catch (IOException e) {
-		                        e.printStackTrace();
-		                    }
+								controllerNovaTela.setVendedor(vendedor);
 
-		                    System.out.println("botao de edição clicado");
-		                });
+								Scene scene = new Scene(root);
+								Stage stage = new Stage();
+								stage.setScene(scene);
+								stage.show();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
 
-		                ImageView editImage = new ImageView(
-		                        new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
-		                editImage.setFitHeight(16);
-		                editImage.setFitWidth(16);
-		                editButton.setGraphic(editImage);
-		                editButton.setStyle("-fx-background-color: red;");
-		                editButton.setOnAction(event -> {
+							System.out.println("botao de edição clicado");
+						});
 
-		                    Vendedor vendedor = getTableView().getItems().get(getIndex());
-		                    if (dao.excluir(vendedor)) {
+						ImageView editImage = new ImageView(
+								new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
+						editImage.setFitHeight(16);
+						editImage.setFitWidth(16);
+						editButton.setGraphic(editImage);
+						editButton.setStyle("-fx-background-color: red;");
+						editButton.setOnAction(event -> {
 
-		                        // FALTA ADICIOANR POP UP DE CONFIRMAR EXLCUSAO
+							Vendedor vendedor = getTableView().getItems().get(getIndex());
+							if (dao.excluir(vendedor)) {
 
-		                        getTableView().getItems().remove(vendedor);
-		                        System.out.println("vendedor excluido c sucesso");
-		                    } else {
-		                        System.out.println("falha ao excluir vendedor");
-		                    }
-		                    System.out.println("botao de delete clicadoo");
-		                });
+								// FALTA ADICIOANR POP UP DE CONFIRMAR EXLCUSAO
 
-		            }
+								getTableView().getItems().remove(vendedor);
+								System.out.println("vendedor excluido c sucesso");
+							} else {
+								System.out.println("falha ao excluir vendedor");
+							}
+							System.out.println("botao de delete clicadoo");
+						});
 
-		            @Override
-		            protected void updateItem(String item, boolean empty) {
-		                super.updateItem(item, empty);
+					}
 
-		                if (empty) {
-		                    setGraphic(null);
-		                } else {
-		                    setGraphic(buttonContainer);
-		                }
-		            }
-		        };
-		    }
-		});	
-		
+					@Override
+					protected void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+
+						if (empty) {
+							setGraphic(null);
+						} else {
+							setGraphic(buttonContainer);
+						}
+					}
+				};
+			}
+		});
+
 		carregarVendedores();
 	}
 

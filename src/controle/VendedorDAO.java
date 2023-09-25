@@ -119,13 +119,14 @@ public class VendedorDAO {
 		Connection con = c.conectar();
 		
 		//acho q o cargo n pode atualizar 
-		String query = "UPDATE vendedor SET  salario = ?, nome = ?, sobrenome = ? WHERE = id_vendedor = ? ";
+		String query = "UPDATE vendedor SET  salario = ?, nome = ?, sobrenome = ? WHERE id_vendedor = ? ";
 		
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(query);
 			preparedStatement.setDouble(1, v.getSalario());
 			preparedStatement.setString(2, v.getNome());
 			preparedStatement.setString(3, v.getSobrenome());
+			preparedStatement.setInt(4, v.getId_vendedor());
 			
 			int rowsUpdate = preparedStatement.executeUpdate();
 			
