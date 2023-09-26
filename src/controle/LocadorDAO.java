@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.EnumCargos;
+import modelo.TipoAcessoLogin;
 import modelo.Locador;
 
 public class LocadorDAO {
@@ -47,7 +47,7 @@ public class LocadorDAO {
 				String cargoFromDatabase = rs.getString("cargo");
 
 				// Faz a conversão do valor do banco de dados para o mesmo tipo do EnumCargos
-				EnumCargos cargoEnum = EnumCargos.valueOf(cargoFromDatabase);
+				TipoAcessoLogin cargoEnum = TipoAcessoLogin.valueOf(cargoFromDatabase);
 
 				// Settando o valor do cargo corretamente para a entidade locador
 				l.setCargo(cargoEnum);

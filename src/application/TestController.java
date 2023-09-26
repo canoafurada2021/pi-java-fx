@@ -99,7 +99,7 @@ public class TestController implements Initializable {
 		
 		Vendedor v = new Vendedor();
 	
-		System.out.println("cargo"+v.getCargo());
+		System.out.println("cargo"+v.getTipoAcesso());
 		
 		v.setSalario(salario);
 		v.setNome(nome);

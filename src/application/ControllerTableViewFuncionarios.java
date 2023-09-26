@@ -8,6 +8,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import controle.VendedorDAO;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -36,7 +37,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-import modelo.Fornecedor;
 import modelo.Vendedor;
 
 public class ControllerTableViewFuncionarios implements Initializable {
@@ -151,13 +151,15 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 	Vendedor vendedor = new Vendedor();
 	VendedorDAO dao = new VendedorDAO();
-	
+
 	VendedorDAO forDao = new VendedorDAO();
 
-	public void tblViewDivergenciaSearchFunc(){
+	public void tblViewDivergenciaSearchFunc() {
 		tableFuncionario.getItems().clear();
-		columnCargo.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCargo().toString()));
-		columnIdVendedor.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId_vendedor()));
+		columnCargo
+				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTipoAcesso().toString()));
+		columnIdVendedor
+				.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getId_vendedor()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnSobrenome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSobrenome()));
 		columnSalario.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSalario()));
@@ -180,11 +182,11 @@ public class ControllerTableViewFuncionarios implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		columnIdVendedor
-				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId_vendedor()));
+				.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getId_vendedor()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnSobrenome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSobrenome()));
 		columnCargo
-				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCargo().toString()));
+				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTipoAcesso().toString()));
 
 		// Configura a formatação da célula da coluna de salário
 		columnSalario.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSalario()));
@@ -253,7 +255,7 @@ public class ControllerTableViewFuncionarios implements Initializable {
 						viewButton.setGraphic(viewImage);
 						viewButton.setOnAction(event -> {
 							Vendedor vendedor = getTableView().getItems().get(getIndex());
-							String idVende = Integer.toString(vendedor.getId_vendedor());
+							String idVende = vendedor.getId_vendedor().toString();
 
 							try {
 								FXMLLoader loader = new FXMLLoader(
@@ -266,14 +268,14 @@ public class ControllerTableViewFuncionarios implements Initializable {
 								Scene scene = new Scene(root);
 								Stage stage = new Stage();
 								stage.setScene(scene);
-								
-								//atualizar a lsitagem depois do alter
+
+								// atualizar a lsitagem depois do alter
 								stage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
 									public void handle(WindowEvent we) {
 										tblViewDivergenciaSearchFunc();// metodo p popular o tableView
 									}
 								});
-								
+
 								stage.show();
 							} catch (IOException e) {
 								e.printStackTrace();

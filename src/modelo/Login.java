@@ -5,7 +5,7 @@ public class Login {
 
 	private String cpf;
     private String senha;
-    private EnumCargos cargo;
+    private TipoAcessoLogin cargo;
     
 	public int getId() {
 		return id;
@@ -27,10 +27,10 @@ public class Login {
 		public void setSenha(String senha) {
 			this.senha = senha;
 		}
-		public EnumCargos getTipoUsuario() {
+		public TipoAcessoLogin getTipoUsuario() {
 			return cargo;
 		}
-		public void setTipoUsuario(EnumCargos tipoUsuario) {
+		public void setTipoUsuario(TipoAcessoLogin tipoUsuario) {
 			this.cargo = tipoUsuario;
 		}
 }

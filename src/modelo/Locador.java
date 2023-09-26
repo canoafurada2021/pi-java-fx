@@ -11,7 +11,7 @@ public class Locador {
 	private Long cnh;
 	private Date validadeCarteira;
 	private Long num_identificacao_carteira;
-	private EnumCargos cargo;
+	private TipoAcessoLogin cargo;
 	private String img_Base64;
 
 
@@ -31,11 +31,11 @@ public class Locador {
 		this.sobrenome = sobrenome;
 	}
 
-	public EnumCargos getCargo() {
+	public TipoAcessoLogin getCargo() {
 		return cargo;
 	}
 
-	public void setCargo(EnumCargos cargo) {
+	public void setCargo(TipoAcessoLogin cargo) {
 		this.cargo = cargo;
 	}
 
