@@ -76,7 +76,10 @@ public class ControllerEdicaoFuncionario implements Initializable {
 			
 			Node source = (Node) event.getSource();
 	        Stage stage = (Stage) source.getScene().getWindow();
-            System.out.println("deu bonba " + stage);
+	        
+		    stage.getOnCloseRequest().handle(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
+
+            System.out.println("deu bomba " + stage);
 
 	        // Verifica se onCloseRequest é nulo antes de chamar handle
 	        
