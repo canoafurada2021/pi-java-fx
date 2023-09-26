@@ -178,6 +178,18 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button fx:id="btnCategorias" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Categorias" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultConfiguracoes1" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../Ícone_%20PI_FinalFase%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
             <Button fx:id="btnConfiguracoes" alignment="TOP_LEFT" layoutY="420.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Configurações" textFill="WHITE">
                <font>

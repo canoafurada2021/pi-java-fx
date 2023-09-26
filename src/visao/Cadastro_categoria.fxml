@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
@@ -21,18 +20,12 @@
                <children>
                   <Pane layoutX="270.0" layoutY="310.0" prefHeight="314.0" prefWidth="688.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
                      <children>
-                        <Label fx:id="lblIdCategoria" layoutX="30.0" layoutY="30.0" text="ID da Categoria:">
+                        <Label fx:id="lblCategoria" layoutX="34.0" layoutY="97.0" text="Categoria">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="comboIdCategoria" layoutX="30.0" layoutY="65.0" prefHeight="40.0" prefWidth="620.0" />
-                        <Label fx:id="lblCategoria" layoutX="30.0" layoutY="125.0" text="Categoria">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtCategoria" layoutX="30.0" layoutY="165.0" prefHeight="40.0" prefWidth="620.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtCategoria" layoutX="34.0" layoutY="137.0" prefHeight="40.0" prefWidth="620.0" style="-fx-border-color: #AEB2BF;" />
                         <Button fx:id="btnCadastroCategoria" layoutX="220.0" layoutY="230.0" mnemonicParsing="false" onAction="#cadastrarCategoria" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
@@ -168,6 +161,18 @@
                   <ImageView fx:id="imgDefaultFornecedores" fitHeight="50.0" fitWidth="50.0">
                      <image>
                         <Image url="@../imgs/Default_Fornecedores.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnCategorias" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Categorias" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="imgDefaultConfiguracoes1" fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../../../../Ícone_%20PI_FinalFase%20(1).png" />
                      </image>
                   </ImageView>
                </graphic>
