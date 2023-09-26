@@ -25,53 +25,48 @@
                               <Image url="@../imgs/capa_Dashboard.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="lblDados" layoutX="58.0" layoutY="343.0" prefHeight="45.0" prefWidth="312.0" text="DADOS DA EMPRESA">
+                        <Label fx:id="lblDados" layoutX="74.0" layoutY="339.0" prefHeight="45.0" prefWidth="312.0" text="DADOS DA EMPRESA">
                            <font>
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblId" layoutX="547.0" layoutY="440.0" text="ID Empresa">
+                        <Label fx:id="lblId" layoutX="616.0" layoutY="400.0" text="ID Empresa">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblRazaoSocial" layoutX="77.0" layoutY="584.0" text="Razão Social">
+                        <Label fx:id="lblRazaoSocial" layoutX="74.0" layoutY="526.0" text="Razão Social">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblTelefone" layoutX="551.0" layoutY="716.0" text="Telefone">
+                        <Label fx:id="lblTelefone" layoutX="616.0" layoutY="661.0" text="Telefone">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblCnpj" layoutX="548.0" layoutY="580.0" text="CNPJ">
+                        <Label fx:id="lblCnpj" layoutX="616.0" layoutY="526.0" text="CNPJ">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblNomeFantasia" layoutX="73.0" layoutY="444.0" text="Nome Fantasia">
+                        <Label fx:id="lblNomeFantasia" layoutX="74.0" layoutY="400.0" text="Nome Fantasia">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblPorte" layoutX="79.0" layoutY="718.0" text="Porte da Empresa">
+                        <Label fx:id="lblPorte" layoutX="74.0" layoutY="661.0" text="Porte da Empresa">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtNomeFantasia" layoutX="76.0" layoutY="491.0" prefHeight="39.0" prefWidth="305.0" />
-                        <TextField fx:id="txtRazaoSocial" layoutX="77.0" layoutY="622.0" prefHeight="39.0" prefWidth="305.0" />
-                        <TextField fx:id="txtPorteEmpresa" layoutX="79.0" layoutY="761.0" prefHeight="39.0" prefWidth="305.0" />
-                        <TextField fx:id="txtId" layoutX="545.0" layoutY="489.0" prefHeight="39.0" prefWidth="305.0" />
-                        <TextField fx:id="txtCnpj" layoutX="549.0" layoutY="620.0" prefHeight="39.0" prefWidth="305.0" />
-                        <TextField fx:id="txtTelefone" layoutX="547.0" layoutY="759.0" prefHeight="39.0" prefWidth="305.0" />
-                        <Button fx:id="bntSalvar" layoutX="935.0" layoutY="746.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="56.0" prefWidth="179.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Salvar" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnAlterar" layoutX="935.0" layoutY="675.0" mnemonicParsing="false" onAction="#alterarDados" prefHeight="56.0" prefWidth="179.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Alterar" textFill="WHITE">
+                        <TextField fx:id="txtNomeFantasia" layoutX="74.0" layoutY="448.0" prefHeight="39.0" prefWidth="424.0" />
+                        <TextField fx:id="txtRazaoSocial" layoutX="74.0" layoutY="578.0" prefHeight="39.0" prefWidth="424.0" />
+                        <TextField fx:id="txtPorteEmpresa" layoutX="74.0" layoutY="713.0" prefHeight="39.0" prefWidth="424.0" />
+                        <TextField fx:id="txtId" layoutX="616.0" layoutY="448.0" prefHeight="39.0" prefWidth="424.0" />
+                        <TextField fx:id="txtCnpj" layoutX="616.0" layoutY="578.0" prefHeight="39.0" prefWidth="424.0" />
+                        <TextField fx:id="txtTelefone" layoutX="616.0" layoutY="713.0" prefHeight="39.0" prefWidth="424.0" />
+                        <Button fx:id="bntSalvarAlteraoes" layoutX="374.0" layoutY="816.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="56.0" prefWidth="344.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Salvar Alterações" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
