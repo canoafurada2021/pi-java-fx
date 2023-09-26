@@ -13,6 +13,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,6 +33,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import modelo.Fornecedor;
@@ -136,7 +138,7 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 	@FXML
 	private TableColumn<Vendedor, String> columnNome;
-	
+
 	@FXML
 	private TableColumn<Vendedor, String> columnSobrenome;
 
@@ -149,6 +151,21 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 	Vendedor vendedor = new Vendedor();
 	VendedorDAO dao = new VendedorDAO();
+	
+	VendedorDAO forDao = new VendedorDAO();
+
+	public void tblViewDivergenciaSearchFunc(){
+		tableFuncionario.getItems().clear();
+		columnCargo.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCargo().toString()));
+		columnIdVendedor.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId_vendedor()));
+		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+		columnSobrenome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSobrenome()));
+		columnSalario.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSalario()));
+
+		ObservableList<Vendedor> obsVendedore = FXCollections.observableArrayList(forDao.listar());
+		tableFuncionario.setItems(obsVendedore);
+		;
+	}
 
 	@FXML
 	private void sair(ActionEvent event) {
@@ -249,6 +266,14 @@ public class ControllerTableViewFuncionarios implements Initializable {
 								Scene scene = new Scene(root);
 								Stage stage = new Stage();
 								stage.setScene(scene);
+								
+								//atualizar a lsitagem depois do alter
+								stage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
+									public void handle(WindowEvent we) {
+										tblViewDivergenciaSearchFunc();// metodo p popular o tableView
+									}
+								});
+								
 								stage.show();
 							} catch (IOException e) {
 								e.printStackTrace();
