@@ -13,7 +13,6 @@ public class Veiculo {
 	private int ano;
 	private int nota_avaliacao;
 	private Long preco_por_dia;
-	private String img_Base64;
 	private int unidade_em_estoque;
 	private Categoria idCategoria;
 	private Fornecedor cnpj;
@@ -78,12 +77,7 @@ public class Veiculo {
 	public void setPreco_por_dia(Long preco_por_dia) {
 		this.preco_por_dia = preco_por_dia;
 	}
-	public String getImg_Base64() {
-		return img_Base64;
-	}
-	public void setImg_Base64(String img_Base64) {
-		this.img_Base64 = img_Base64;
-	}
+
 	public int getUnidade_em_estoque() {
 		return unidade_em_estoque;
 	}

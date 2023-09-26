@@ -55,7 +55,6 @@ public class VeiculoDAO {
 				v.setAno(ano);
 				v.setNota_avaliacao(notaAvaliacao);
 				v.setPreco_por_dia(precoPorDia);
-				v.setImg_Base64(imgBase64);
 				v.setUnidade_em_estoque(unidadeEmEstoque);
 
 				// Definindo o id da categoria
@@ -90,6 +89,8 @@ public class VeiculoDAO {
 				+ " preco_por_dia,"  + "unidade_em_estoque," + " categoria_id_categoria,"
 				+ " fornecedor_cnpj" + ") " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+	    boolean insercaoSucesso = false; // Inicializa com false
+
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 
@@ -110,7 +111,12 @@ public class VeiculoDAO {
 	
 			// Chave estrangeira para fornecedores
 
-			ps.executeUpdate();
+	        int linhasAfetadas = ps.executeUpdate();
+	        
+
+	        if (linhasAfetadas > 0) {
+	            insercaoSucesso = true; // Define como true se pelo menos uma linha foi afetada
+	        }
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -118,9 +124,12 @@ public class VeiculoDAO {
 			c.fecharConexao();
 		}
 
-		return false; // Falha na inserção
+	    return insercaoSucesso; // Retorna o resultado da inserção
 	}
 
+	
+	
+	
 	public boolean excluir(int idVeiculo) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
@@ -155,7 +164,7 @@ public class VeiculoDAO {
 		String query = "UPDATE veiculo SET "
 				+ "quant_assento = ?, tipo_cambio = ?, quant_portas = ?, espaco_porta_malas = ?, "
 				+ "marca = ?, nome = ?, cor = ?, ano = ?, nota_avaliacao = ?, preco_por_dia = ?, "
-				+ "img_Base64 = ?, unidade_em_estoque = ?, idCategoria = ?, fornecedor_cnpj = ? "
+				+ "unidade_em_estoque = ?, idCategoria = ?, fornecedor_cnpj = ? "
 				+ "WHERE id_veiculo = ?";
 
 		try {
@@ -172,7 +181,6 @@ public class VeiculoDAO {
 			ps.setInt(8, veiculo.getAno());
 			ps.setInt(9, veiculo.getNota_avaliacao());
 			ps.setLong(10, veiculo.getPreco_por_dia());
-			ps.setString(11, veiculo.getImg_Base64());
 			ps.setInt(12, veiculo.getUnidade_em_estoque());
 			ps.setInt(13, veiculo.getIdCategoria().getIdCategoria());
 			ps.setLong(14, veiculo.getCnpj().getCnpj());

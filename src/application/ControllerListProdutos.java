@@ -21,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import modelo.Veiculo;
 
 public class ControllerListProdutos implements Initializable {
 
@@ -67,25 +68,25 @@ public class ControllerListProdutos implements Initializable {
 	private Button btnUsuarios;
 
 	@FXML
-	private TableColumn<?, ?> columnAcoes;
+	private TableColumn<Veiculo, String> columnAcoes;
 
 	@FXML
-	private TableColumn<?, ?> columnAno;
+	private TableColumn<Veiculo, Integer> columnAno;
 
 	@FXML
-	private TableColumn<?, ?> columnIdProduto;
+	private TableColumn<Veiculo, Integer> columnIdProduto;
 
 	@FXML
-	private TableColumn<?, ?> columnMarca;
+	private TableColumn<Veiculo, String> columnMarca;
 
 	@FXML
-	private TableColumn<?, ?> columnNome;
+	private TableColumn<Veiculo, String> columnNome;
 
 	@FXML
-	private TableColumn<?, ?> columnPreco;
+	private TableColumn<Veiculo, ?> columnPreco;
 
 	@FXML
-	private TableColumn<?, ?> columnUnidade;
+	private TableColumn<Veiculo, ?> columnUnidade;
 
 	@FXML
 	private ImageView imgDefaultConfiguracoes;
