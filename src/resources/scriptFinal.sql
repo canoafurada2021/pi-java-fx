@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `fornecedor` (
 -- Table .`categorias`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `categoria` (
-  `id_categoria` INT NOT NULL  AUTO_INCREMENT,
+  `id_categoria` BIGINT NOT NULL  AUTO_INCREMENT,
   `categoria` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_categoria`)
 );
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `veiculo`(
   `nota_avaliacao` INT NOT NULL,
   `preco_por_dia` INT NOT NULL,
   `unidade_em_estoque` INT NOT NULL,
-  `categoria_id_categoria` INT NOT NULL,
+  `categoria_id_categoria` BIGINT NOT NULL,
   `fornecedor_cnpj` BIGINT  NOT NULL,
   PRIMARY KEY (`id_veiculo`, `fornecedor_cnpj`),
   FOREIGN KEY (`categoria_id_categoria`) REFERENCES `categoria` (`id_categoria`),
@@ -198,11 +198,11 @@ INSERT INTO vendedor ( salario, nome, sobrenome, TipoAcessoLogin) VALUES ( 3452.
 
 
 -- inserts CATEGORIAS
-insert into categoria (id_categoria, categoria) values ('1', 'felis');
-insert into categoria (id_categoria, categoria) values ('2', 'justo');
-insert into categoria (id_categoria, categoria) values ('23', 'in lectus');
-insert into categoria (id_categoria, categoria) values ('24', 'sapien');
-insert into categoria (id_categoria, categoria) values ('25', 'semper');
+insert into categoria ( categoria) values ( 'felis');
+insert into categoria ( categoria) values ( 'justo');
+insert into categoria ( categoria) values ( 'in lectus');
+insert into categoria ( categoria) values ('sapien');
+insert into categoria ( categoria) values ( 'semper');
 
 
 -- inserts fornecedor

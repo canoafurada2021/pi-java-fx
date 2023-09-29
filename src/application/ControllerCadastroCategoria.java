@@ -29,143 +29,217 @@ import modelo.Categoria;
 import utilities.ExibePopUpErro;
 import utilities.ExibePopUpSucesso;
 
-public class ControllerCadastroCategoria implements Initializable{
+public class ControllerCadastroCategoria implements Initializable {
 
 	@FXML
-    private Stack StackPanePerfil;
+	private StackPane StackPanePerfil;
 
-    @FXML
-    private Button btnConfiguracoes;
+	
 
-    @FXML
-    private Button btnDashboard;
+	    @FXML
+	    private Button btnCadastroCategoria;
+	@FXML
+	private Button btnConfiguracoes;
 
-    @FXML
-    private Button btnFornecedores;
+	@FXML
+	private Button btnDashboard;
 
-    @FXML
-    private Button btnFuncionarios;
+	@FXML
+	private Button btnFornecedores;
 
-    @FXML
-    private Button btnLocacao;
+	@FXML
+	private Button btnFuncionarios;
 
-    @FXML
-    private Button btnPerfil;
+	@FXML
+	private Button btnLocacao;
 
-    @FXML
-    private Button btnProdutos;
+	@FXML
+	private Button btnPerfil;
 
-    @FXML
-    private Button btnSair;
+	@FXML
+	private Button btnProdutos;
 
-    @FXML
-    private Button btnUsuarios;
+	@FXML
+	private Button btnSair;
 
-    @FXML
-    private ComboBox<String> comboIdCategoria;
+	@FXML
+	private Button btnUsuarios;
 
-    @FXML
-    private ImageView imgDefaultConfiguracoes;
+	@FXML
+	private ImageView imgDefaultConfiguracoes;
 
-    @FXML
-    private ImageView imgDefaultDashboard;
+	@FXML
+	private ImageView imgDefaultDashboard;
 
-    @FXML
-    private ImageView imgDefaultFornecedores;
+	@FXML
+	private ImageView imgDefaultFornecedores;
 
-    @FXML
-    private ImageView imgDefaultFuncionarios;
+	@FXML
+	private ImageView imgDefaultFuncionarios;
 
-    @FXML
-    private ImageView imgDefaultLocacao;
+	@FXML
+	private ImageView imgDefaultLocacao;
 
-    @FXML
-    private ImageView imgDefaultProdutos;
+	@FXML
+	private ImageView imgDefaultProdutos;
 
-    @FXML
-    private ImageView imgDefaultUsuarios;
+	@FXML
+	private ImageView imgDefaultUsuarios;
 
-    @FXML
-    private ImageView imgFotoPerfil;
+	@FXML
+	private ImageView imgFotoPerfil;
 
-    @FXML
-    private ImageView imgLogo;
+	@FXML
+	private ImageView imgLogo;
 
-    @FXML
-    private ImageView imgSair;
+	@FXML
+	private ImageView imgSair;
 
-    @FXML
-    private Label lblCategoria;
+	@FXML
+	private Label lblCategoria;
 
-    @FXML
-    private Label lblFuncao;
+	@FXML
+	private Label lblFuncao;
 
-    @FXML
-    private Label lblIdCategoria;
+	@FXML
+	private Label lblIdCategoria;
 
-    @FXML
-    private Label lblNomeVendedor;
+	@FXML
+	private Label lblNomeVendedor;
 
-    @FXML
-    private TextField txtCategoria;
-    
- // instanciando DAOCategora (pra pegar os metodos)
+	@FXML
+	private TextField txtCategoria;
+
+	// instanciando DAOCategora (pra pegar os metodos)
 	CategoriaDAO daoCategoria = new CategoriaDAO();
-    
-	//para listar as categorias, já que está usando o comboBox, para listar todos os ids já cadastrados
-    ArrayList<Categoria> categorias = daoCategoria.listar();
-    
-    @FXML
-    void cadastrarCategoria(ActionEvent event) {
-    	
-    	
-    	
-    	//Conversão a variavel e atribuido os valores
-    	String idCategoriaSelect = comboIdCategoria.getValue();    	
-    	System.out.println("Id selecionado + idCategoriaSelect");
-    	
-    	String nomeCategoria = txtCategoria.getText();
 
-    	//Instaciando os atributos, variaveis, a própria categoria
-    	Categoria c = new Categoria();
-        
-    	c.setCategoria(nomeCategoria);
-    	
-    	//chamando o metodos pra fazer as validações (que já existem no pacote utilities)
-    	try {
+	// para listar as categorias, já que está usando o comboBox, para listar todos
+	// os ids já cadastrados
+	ArrayList<Categoria> categorias = daoCategoria.listar();
+
+	@FXML
+	void cadastrarCategoria(ActionEvent event) {
+
+		String nomeCategoria = txtCategoria.getText();
+
+		// Instaciando os atributos, variaveis, a própria categoria
+		Categoria c = new Categoria();
+
+		c.setCategoria(nomeCategoria);
+
+		// chamando o metodos pra fazer as validações (que já existem no pacote
+		// utilities)
+		try {
 
 			boolean insercaoSucesso = daoCategoria.inserir(c);
+			System.out.println("cadastro deu bom");
 
 			limpaCampos();
 
 			if (insercaoSucesso) {
-				ExibePopUpSucesso.ExibirPopUpSucesso();
+				ExibirPopUpSucesso();
 			} else {
-	        	ExibePopUpErro.ExibirPopUpErro();
+				ExibirPopUpErro();
 			}
 
 		} catch (Exception e) {
 
-			ExibePopUpSucesso.ExibirPopUpSucesso();
+			ExibirPopUpSucesso();
 
 		}
-    }
+
+		
 	
+
+	}
+	private void ExibirPopUpSucesso() {
+
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroSucesso.fxml"));
+			Parent popupRoot = fxmlLoader.load();
+
+			Stage popupStage = new Stage();
+			popupStage.initModality(Modality.APPLICATION_MODAL);
+			popupStage.setTitle("Success Popup");
+
+			Scene popupScene = new Scene(popupRoot);
+			popupStage.setScene(popupScene);
+			popupStage.show();
+
+			// Define the duration for displaying the popup (in milliseconds)
+			int popupDuration = 3000; // Change this value as needed
+
+			// Create a Timeline to close the popup after the specified duration
+			Timeline timeline = new Timeline(new KeyFrame(Duration.millis(popupDuration), event -> {
+				popupStage.close();
+			}));
+			timeline.setCycleCount(1);
+			timeline.play();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void ExibirPopUpErro() {
+
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroErro.fxml"));
+			Parent popupRoot = fxmlLoader.load();
+
+			Stage popupStage = new Stage();
+			popupStage.initModality(Modality.APPLICATION_MODAL);
+			popupStage.setTitle("Error Popup");
+
+			Scene popupScene = new Scene(popupRoot);
+			popupStage.setScene(popupScene);
+			popupStage.show();
+
+			// Define the duration for displaying the popup (in milliseconds)
+			int popupDuration = 3000; // Change this value as needed
+
+			// Create a Timeline to close the popup after the specified duration
+			Timeline timeline = new Timeline(new KeyFrame(Duration.millis(popupDuration), event -> {
+				popupStage.close();
+			}));
+			timeline.setCycleCount(1);
+			timeline.play();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		preencherComboBoxCategoria();
 	}
-	
+
 	private void limpaCampos() {
-		//Para quando cadastrar os dados, ele automaticamente limpar os campos
+		// Para quando cadastrar os dados, ele automaticamente limpar os campos
 		txtCategoria.setText(null);
 	}
-	
-	private void preencherComboBoxCategoria() {
-		for (Categoria categoria : categorias) {
-			int categoriaInfo = categoria.getIdCategoria();
-			comboIdCategoria.getItems().add(String.valueOf(categoriaInfo));
+
+	@FXML
+	void abrirListCategorias(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Categorias.fxml"));
+			Parent root = loader.load();
+
+			ListViewController controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

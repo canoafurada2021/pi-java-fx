@@ -159,35 +159,37 @@ public class ControllerEdicaoConfiguracao implements Initializable {
 	    	
 	    	System.out.println(cnpj);
 	    	
-	    	// Atualize o objeto Configuracao com as alterações
-	    	Configuracao configuracao = new Configuracao();
-	    	configuracao.setNomeFantasia(novoNomeFantasia);
-	    	configuracao.setRazaoSocial(novoRazaoSocial);
-	    	configuracao.setPorteEmpresa(novoPorteEmpresa);
-	    	configuracao.setCnpj(cnpj);
-	    	configuracao.setTelefone(novoTelefone);
 	    	
-	    	if(daoConfiguracao.atualizar (configuracao)) {
-	    		ExibePopUpSucesso.ExibirPopUpSucesso();
-
-		    	//    telaTabelaController.atualizarTabela(daoFornecedor.listar());
-
-				   // Obtém o Node (geralmente um botão) que acionou o evento
-			    Node source = (Node) event.getSource();
-			    
-			    // Obtém o Stage (janela) atual com base no Node
-			    Stage stage = (Stage) source.getScene().getWindow();
-			   
-			    stage.getOnCloseRequest().handle(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
-			    
-			    // Fecha o Stage atual
-			    stage.close();
-		
-		    } else {
-				ExibePopUpErro.ExibirPopUpErro();
-
-		    	System.out.println("Deu ruim");
-		    }
+	    	//PRECISA ARRUMAR - CRIAR MODELO E DAO
+	    	// Atualize o objeto Configuracao com as alterações
+//	    	Configuracao configuracao = new Configuracao();
+//	    	configuracao.setNomeFantasia(novoNomeFantasia);
+//	    	configuracao.setRazaoSocial(novoRazaoSocial);
+//	    	configuracao.setPorteEmpresa(novoPorteEmpresa);
+//	    	configuracao.setCnpj(cnpj);
+//	    	configuracao.setTelefone(novoTelefone);
+//	    	
+//	    	if(daoConfiguracao.atualizar (configuracao)) {
+//	    		ExibePopUpSucesso.ExibirPopUpSucesso();
+//
+//		    	//    telaTabelaController.atualizarTabela(daoFornecedor.listar());
+//
+//				   // Obtém o Node (geralmente um botão) que acionou o evento
+//			    Node source = (Node) event.getSource();
+//			    
+//			    // Obtém o Stage (janela) atual com base no Node
+//			    Stage stage = (Stage) source.getScene().getWindow();
+//			   
+//			    stage.getOnCloseRequest().handle(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
+//			    
+//			    // Fecha o Stage atual
+//			    stage.close();
+//		
+//		    } else {
+//				ExibePopUpErro.ExibirPopUpErro();
+//
+//		    	System.out.println("Deu ruim");
+//		    }
 
 	    }
 
@@ -198,15 +200,16 @@ public class ControllerEdicaoConfiguracao implements Initializable {
 		// TODO Auto-generated method stub
 		
 	}
+	//PRECISA ARRUMAR - CRIAR O MODELO E DAO
 	    
-	public void setConfiguracoes (Configuracoes c) {
-		txtNomeFantasia.setText(c.getNomeFantasia());
-		txtRazaoSocial.setText(c.getRazaoSocial());
-		txtPorteEmpresa.setText(c.getPorteEmpresa());
-		txtId.setText(valueOf(c.getId()));
-		txtCnpj.setText(valueOf(c.getCNPJ()));
-		txtTelefone.setText(valueOf(c.getTelefone()));
-	
-	}
+//	public void setConfiguracoes (Configuracoes c) {
+//		txtNomeFantasia.setText(c.getNomeFantasia());
+//		txtRazaoSocial.setText(c.getRazaoSocial());
+//		txtPorteEmpresa.setText(c.getPorteEmpresa());
+//		txtId.setText(valueOf(c.getId()));
+//		txtCnpj.setText(valueOf(c.getCNPJ()));
+//		txtTelefone.setText(valueOf(c.getTelefone()));
+//	
+//	}
 
 }

@@ -26,13 +26,12 @@ public class CategoriaDAO implements ICategoriaDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				int idCategoria = rs.getInt("id_categoria");
+				Long idCategoria = rs.getLong("id_categoria");
 				String nome = rs.getString("categoria");
 
 				Categoria cat = new Categoria();
 				cat.setCategoria(nome);
 				cat.setIdCategoria(idCategoria);
-
 				categorias.add(cat);
 			}
 		} catch (SQLException e) {
@@ -57,7 +56,7 @@ public class CategoriaDAO implements ICategoriaDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, c.getIdCategoria());
+			ps.setLong(1, c.getIdCategoria());
 			ps.setString(2, c.getCategoria());
 
 			// consolida a execução do comando no banco
@@ -81,7 +80,7 @@ public class CategoriaDAO implements ICategoriaDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, ca.getIdCategoria());
+			ps.setLong(1, ca.getIdCategoria());
 
 			int rowsAffected = ps.executeUpdate();
 
@@ -97,20 +96,31 @@ public class CategoriaDAO implements ICategoriaDAO {
 		return false; // se bem falha na exclusao
 	}
 
-	// TA DANDO ERRO NO con.preparedStatement -ANDRI
-//	public boolean atualizar (Categoria ca) {
-//		Conexao c = Conexao.getInstancia();
-//		Connection con = c.conectar();
-//		
-//		String query = "UPDATE categoria SET categoria = ? WHERE id_categoria =?";
-//		
-//		PreparedStatement preparedStatement = con.prepareStatement(query);
-//		try {
-//			preparedStatement.setString(2, ca.getCategoria()); //
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//	}
+	// TA DANDO ERRO NO con.preparedStatement - ANDRI
+	public boolean atualizar(Categoria ca) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "UPDATE categoria SET categoria = ? WHERE id_categoria = ?";
+		try {
+			PreparedStatement preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, ca.getCategoria()); // Alterada a ordem aqui
+	        preparedStatement.setLong(2, ca.getIdCategoria()); // Alterada a ordem aqui
+
+			int rowsUpdate = preparedStatement.executeUpdate();
+			
+			if(rowsUpdate>0) {
+				return true;
+			}else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}finally {
+			c.fecharConexao();
+		}
+
+	}
 
 }
