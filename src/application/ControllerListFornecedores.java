@@ -62,6 +62,8 @@ public class ControllerListFornecedores implements Initializable {
 
 	@FXML
 	private Button btnConfiguracoes;
+	@FXML
+	private Button btnSair;
 
 	@FXML
 	private Pane panelFornecedores;
@@ -384,6 +386,30 @@ public class ControllerListFornecedores implements Initializable {
 
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void sairListForncedores(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+			Parent root = loader.load();
+
+			ControllerLogin controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
 			// fecha a tela atual
 			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stageAtual.close();

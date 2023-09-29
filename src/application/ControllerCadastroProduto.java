@@ -1,6 +1,8 @@
 package application;
 
 import javafx.event.ActionEvent;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -9,11 +11,16 @@ import controle.CategoriaDAO;
 import controle.FornecedorDAO;
 import controle.VeiculoDAO;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import modelo.Categoria;
 import modelo.Fornecedor;
 import modelo.Veiculo;
@@ -36,6 +43,9 @@ public class ControllerCadastroProduto implements Initializable {
 
 	@FXML
 	private Button btnCadastrarVeiculo;
+
+	@FXML
+	private Button btnSair;
 
 	@FXML
 	private TextField txtQuantPortas;
@@ -113,19 +123,17 @@ public class ControllerCadastroProduto implements Initializable {
 	private ComboBox<String> comboFornecedorIds;
 
 	CategoriaDAO daoCategoria = new CategoriaDAO();
-    
-	//para listar as categorias, já que está usando o comboBox, para listar todos os ids já cadastrados
-    ArrayList<Categoria> categorias = daoCategoria.listar();
-	
-    private FornecedorDAO daoFornecedor = new FornecedorDAO();
+
+	// para listar as categorias, já que está usando o comboBox, para listar todos
+	// os ids já cadastrados
+	ArrayList<Categoria> categorias = daoCategoria.listar();
+
+	private FornecedorDAO daoFornecedor = new FornecedorDAO();
 	private ArrayList<Fornecedor> fornecedores = daoFornecedor.listar();
 	VeiculoDAO daoVeiculo = new VeiculoDAO();
 
-	
-
 	@FXML
 	void cadastrarVeiculo(ActionEvent event) {
-
 
 		int quantAssento = Integer.parseInt(txtQuantAssentos.getText());
 		String tipoCambio = txtTipoCambio.getText();
@@ -163,12 +171,9 @@ public class ControllerCadastroProduto implements Initializable {
 		v.setPreco_por_dia(precoPorDia);
 		v.setUnidade_em_estoque(unidadeEmEstoque);
 
-
-		
 		v.setIdCategoria(categoriaSelecionada);
 		v.setCnpj(fornecedorSelecionado);
 
-		
 		try {
 
 			boolean insercaoSucesso = daoVeiculo.inserir(v);
@@ -176,12 +181,12 @@ public class ControllerCadastroProduto implements Initializable {
 			limpaCampos();
 
 			if (insercaoSucesso) {
-				System.out.println("inserção sucesso"+ insercaoSucesso);
+				System.out.println("inserção sucesso" + insercaoSucesso);
 				System.out.println("deu bom");
 				ExibePopUpSucesso.ExibirPopUpSucesso();
 			} else {
-	        	ExibePopUpErro.ExibirPopUpErro();
-	        	System.out.println("n deu bom");
+				ExibePopUpErro.ExibirPopUpErro();
+				System.out.println("n deu bom");
 				System.out.println(v.getIdCategoria());
 			}
 
@@ -190,8 +195,6 @@ public class ControllerCadastroProduto implements Initializable {
 			ExibePopUpSucesso.ExibirPopUpSucesso();
 
 		}
-		
-		
 
 	}
 
@@ -200,15 +203,15 @@ public class ControllerCadastroProduto implements Initializable {
 
 		System.out.println(categorias);
 		System.out.println(fornecedores);
-				
+
 		preencherComboCategoria();
-	preencherComboFornecedores();
+		preencherComboFornecedores();
 
 	}
 
 	private void preencherComboCategoria() {
 		for (Categoria categoria : categorias) {
-			String categoriaInfo = categoria.getIdCategoria() + " - "+ categoria.getCategoria();
+			String categoriaInfo = categoria.getIdCategoria() + " - " + categoria.getCategoria();
 			comboCategoriaIds.getItems().add(String.valueOf(categoriaInfo));
 		}
 	}
@@ -239,22 +242,43 @@ public class ControllerCadastroProduto implements Initializable {
 
 		return null; // Retorna null se não encontrar o endereço
 	}
-	
+
 	private void limpaCampos() {
-	    txtQuantAssentos.setText(null);
-	    txtTipoCambio.setText(null);
-	    txtQuantPortas.setText(null);
-	    txtEspacoPortaMalas.setText(null);
-	    txtMarca.setText(null);
-	    txtNome.setText(null);
-	    txtCor.setText(null);
-	    txtAno.setText(null);
-	    txtNotaAvaliacao.setText(null);
-	    txtPrecoPorDia.setText(null);
-	    //txtImgBase64.setText(null);
-	    txtUnidadeEmEstoque.setText(null);
+		txtQuantAssentos.setText(null);
+		txtTipoCambio.setText(null);
+		txtQuantPortas.setText(null);
+		txtEspacoPortaMalas.setText(null);
+		txtMarca.setText(null);
+		txtNome.setText(null);
+		txtCor.setText(null);
+		txtAno.setText(null);
+		txtNotaAvaliacao.setText(null);
+		txtPrecoPorDia.setText(null);
+		// txtImgBase64.setText(null);
+		txtUnidadeEmEstoque.setText(null);
 	}
-	
-	
+	@FXML
+    void saircCadProdLogin(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+			Parent root = loader.load();
+
+			ControllerLogin controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
 
 }

@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -88,23 +89,19 @@ public class TestController implements Initializable {
 
 //		String idVendedorSelect = comboIdVendedor.getValue();
 //		System.out.println("id selecionado "+ idVendedorSelect);
-		
+
 		Double salario = Double.valueOf(txtSalario.getText());
 		String nome = txtNome.getText();
 		String sobrenome = txtSobrenome.getText();
-		
 
-		
-		 
-		
 		Vendedor v = new Vendedor();
-	
-		System.out.println("cargo"+v.getTipoAcesso());
-		
+
+		System.out.println("cargo" + v.getTipoAcesso());
+
 		v.setSalario(salario);
 		v.setNome(nome);
 		v.setSobrenome(sobrenome);
-		
+
 		try {
 
 			boolean insercaoSucesso = dao.inserir(v);
@@ -123,10 +120,8 @@ public class TestController implements Initializable {
 
 		}
 
-		
-	
-
 	}
+
 	private void ExibirPopUpSucesso() {
 
 		try {
@@ -186,9 +181,9 @@ public class TestController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		}
-	
-	//metodo preencher combobox
+	}
+
+	// metodo preencher combobox
 //	 private void preencherComboBoxVendedor() {
 //
 //        for (Vendedor vendedor: vendedores) {
@@ -197,11 +192,11 @@ public class TestController implements Initializable {
 //        }
 //
 //    } 
-	
-	//metodo p/ comboBox
+
+	// metodo p/ comboBox
 	private Vendedor encontrarVendedorPorId(int vendedorId) {
 		for (Vendedor vendedor : vendedores) {
-			if(vendedor.getId_vendedor()== vendedorId) {
+			if (vendedor.getId_vendedor() == vendedorId) {
 				return vendedor;
 			}
 		}
@@ -214,5 +209,29 @@ public class TestController implements Initializable {
 		txtSobrenome.setText(null);
 		txtSalario.setText(null);
 
+	}
+
+	@FXML
+	void sairCadasFuncionario(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+			Parent root = loader.load();
+
+			ControllerLogin controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

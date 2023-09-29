@@ -192,7 +192,7 @@
             </Button>
             <Pane layoutY="30.0" prefHeight="272.0" prefWidth="310.0">
                <children>
-                  <Button fx:id="btnSair" layoutX="1.0" layoutY="150.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52;" text="Sair" textFill="WHITE">
+                  <Button fx:id="btnSair" layoutX="1.0" layoutY="150.0" mnemonicParsing="false" onAction="#sairCategoriaParaLogin" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52;" text="Sair" textFill="WHITE">
                      <font>
                         <Font size="30.0" />
                      </font>
