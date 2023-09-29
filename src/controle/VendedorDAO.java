@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.EnumCargos;
+import modelo.TipoAcessoLogin;
 import modelo.Vendedor;
 
 public class VendedorDAO {
@@ -24,22 +24,22 @@ public class VendedorDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				int idVendedor = rs.getInt("id_vendedor");
+				Long idVendedor = rs.getLong("id_vendedor");
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				double salario = rs.getDouble("salario");
 
 				// Recupere o valor do cargo do enum
 				String cargoString = rs.getString("cargo");
-				EnumCargos cargo = EnumCargos.valueOf(cargoString);
+				TipoAcessoLogin tipoAcesso = TipoAcessoLogin.valueOf(cargoString);
 
 				Vendedor v = new Vendedor();
-				v.setId_vendedor(idVendedor);
+				v.setIdVendedor(idVendedor);
 
 				v.setNome(nome);
 				v.setSobrenome(sobrenome);
 				v.setSalario(salario);
-				v.setCargo(cargo);
+				v.setTipoAcesso(tipoAcesso);
 
 				vendedores.add(v);
 
@@ -70,7 +70,7 @@ public class VendedorDAO {
 			ps.setString(2, v.getNome());
 			ps.setString(3, v.getSobrenome());
 			// Defina o cargo diretamente usando o valor do enum
-			ps.setString(4, EnumCargos.FUNCIONARIO.name());
+			ps.setString(4, TipoAcessoLogin.FUNCIONARIO.name());
 
 			// Consolidar a execução do comando no banco
 			ps.executeUpdate();
@@ -96,7 +96,7 @@ public class VendedorDAO {
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(query); //prepara consulta sql
-			ps.setInt(1, v.getId_vendedor());
+			ps.setLong(1, v.getId_vendedor());
 			
 			int rowsAffected = ps.executeUpdate();
 			
@@ -126,7 +126,7 @@ public class VendedorDAO {
 			preparedStatement.setDouble(1, v.getSalario());
 			preparedStatement.setString(2, v.getNome());
 			preparedStatement.setString(3, v.getSobrenome());
-			preparedStatement.setInt(4, v.getId_vendedor());
+			preparedStatement.setLong(4, v.getId_vendedor());
 			
 			int rowsUpdate = preparedStatement.executeUpdate();
 			

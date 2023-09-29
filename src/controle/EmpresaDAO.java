@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import modelo.Empresa;
+import modelo.TipoAcessoLogin;
 
 public class EmpresaDAO {
 
@@ -23,9 +24,10 @@ public class EmpresaDAO {
             ps.setString(1, e.getRazaoSocial());
             ps.setLong(2, e.getTelefone());
             ps.setString(3, Double.toString(e.getCnpj()));
-            ps.setString(4, e.getNome_fantasia());
+            ps.setString(4, e.getNome());
             
-            ps.setString(5, e.getCargo().toString()); //conversão da role para o valor especifico estabelecido para essa coluna no banco
+            // TODO 
+//            ps.setString(5, TipoAcessoLogin.getById(0)); //conversão da role para o valor especifico estabelecido para essa coluna no banco
 
             ps.setString(6, e.getPorte_empresa());
 

@@ -29,7 +29,7 @@ public class ControllerEdicaoFuncionario implements Initializable {
 	private Button btnSalvar;
 
 	@FXML
-	private ComboBox<Integer> comboIdFuncionario;
+	private ComboBox<Long> comboIdFuncionario;
 
 	@FXML
 	private Label lblIdFuncionario;
@@ -66,25 +66,25 @@ public class ControllerEdicaoFuncionario implements Initializable {
 
 		Vendedor vendedor = new Vendedor();
 
-		vendedor.setId_vendedor(comboIdFuncionario.getValue());
+		vendedor.setIdVendedor(comboIdFuncionario.getValue());
 		vendedor.setNome(nomeNovo);
 		vendedor.setSalario(salarioNovo);
 		vendedor.setSobrenome(sobrenomeNovo);
-		
-		if(dao.atualizar(vendedor)) {
+
+		if (dao.atualizar(vendedor)) {
 			ExibePopUpSucesso.ExibirPopUpSucesso();
-			
+
 			Node source = (Node) event.getSource();
-	        Stage stage = (Stage) source.getScene().getWindow();
-	        
-		    stage.getOnCloseRequest().handle(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
+			Stage stage = (Stage) source.getScene().getWindow();
 
-            System.out.println("deu bomba " + stage);
+			stage.getOnCloseRequest().handle(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
 
-	        // Verifica se onCloseRequest é nulo antes de chamar handle
-	        
-	        stage.close();
-		}else {
+			System.out.println("deu bomba " + stage);
+
+			// Verifica se onCloseRequest é nulo antes de chamar handle
+
+			stage.close();
+		} else {
 			ExibePopUpErro.ExibirPopUpErro();
 			System.out.println("bomba");
 		}
@@ -92,18 +92,16 @@ public class ControllerEdicaoFuncionario implements Initializable {
 
 	@FXML
 	void cancelarAlteracaoFuncionario(ActionEvent event) {
-		  
-		//esse so dei ctrlc + ctrlv
+
 		// Obtém o Node (geralmente um botão) que acionou o evento
-	    Node source = (Node) event.getSource();
-	    
-	    // Obtém o Stage (janela) atual com base no Node
-	    Stage stage = (Stage) source.getScene().getWindow();
-	    
-	    // Fecha o Stage atual
-	    stage.close();
-		
-		
+		Node source = (Node) event.getSource();
+
+		// Obtém o Stage (janela) atual com base no Node
+		Stage stage = (Stage) source.getScene().getWindow();
+
+		// Fecha o Stage atual
+		stage.close();
+
 	}
 
 	Vendedor vendedor = new Vendedor();
@@ -113,21 +111,21 @@ public class ControllerEdicaoFuncionario implements Initializable {
 		txtNome.setText(v.getNome());
 		txtSobrenome.setText(v.getSobrenome());
 		txtSalario.setText(String.valueOf(v.getSalario()));
-		
-		Integer idVendedor = v.getId_vendedor();
+
+		Long idVendedor = v.getId_vendedor();
 
 		if (idVendedor != null) {
 			int vendedorIndex = encontrarIndexVendedor(v.getId_vendedor());
-			String vendedorText = Integer.toString(v.getId_vendedor());
+			String vendedorText = v.getId_vendedor().toString();
 
 			comboIdFuncionario.getEditor().setText(vendedorText);
-			
+
 			if (vendedorIndex != -1) {
 				comboIdFuncionario.getEditor().setText(vendedorText);
-				
+
 				comboIdFuncionario.getSelectionModel().select(vendedorIndex);
 			}
-			
+
 		}
 	}
 
@@ -150,7 +148,7 @@ public class ControllerEdicaoFuncionario implements Initializable {
 
 	private void preencherComboBoxVendedorAlter() {
 		for (Vendedor vendedor : vendedores) {
-			Integer infoVendedor = vendedor.getId_vendedor();
+			Long infoVendedor = vendedor.getId_vendedor();
 			comboIdFuncionario.getItems().add(infoVendedor);
 		}
 	}

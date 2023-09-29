@@ -7,10 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,6 +32,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import modelo.Categoria;
 import modelo.Fornecedor;
@@ -135,8 +138,21 @@ public class ListViewController implements Initializable {
 	CategoriaDAO dao = new CategoriaDAO();
 
 	@FXML
-	private TableColumn<Categoria, Integer> columnIdCategoria;
+	private TableColumn<Categoria, Long> columnIdCategoria;
+	
+	private CategoriaDAO forDao = new CategoriaDAO();
+	
+	public void tblViewDivergenciaSearchCat() {
+		tabela.getItems().clear();
+		columnIdCategoria.setCellValueFactory(new PropertyValueFactory<>("idCategoria"));
+		columnCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria()));
 
+		ObservableList<Categoria> obsCategorias = FXCollections.observableArrayList(forDao.listar());
+		tabela.setItems(obsCategorias);
+		;
+	}
+	
+	
 	@FXML
 	void abrirCadastroCategoria(ActionEvent event) {
 		try {
@@ -144,7 +160,7 @@ public class ListViewController implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_categoria.fxml"));
 			Parent root = loader.load();
 
-			ListViewController controllerNovaTela = loader.getController();
+			ControllerCadastroCategoria controllerNovaTela = loader.getController();
 
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
@@ -169,10 +185,8 @@ public class ListViewController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		columnIdCategoria.setText("Id");
-		columnIdCategoria.setCellValueFactory(new PropertyValueFactory<>("idCategoria"));
+		columnIdCategoria.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getIdCategoria()));
 
-		columnCategoria.setText("Nome da Categoria");
 		columnCategoria.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategoria()));
 
 		columnAcoes.setCellFactory(new Callback<TableColumn<Categoria, String>, TableCell<Categoria, String>>(){
@@ -217,12 +231,18 @@ public class ListViewController implements Initializable {
 								Scene scene = new Scene(root);
 								Stage stage = new Stage();
 								stage.setScene(scene);
+								
+								stage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
+									public void handle(WindowEvent we) {
+										tblViewDivergenciaSearchCat();// Esse método eu populo o tableView (ver acima)
+									}
+								});
+								
 								stage.show();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 
-							System.out.println("edição com o id categoria n achei o nome do id n quero procurar" );
 
 							System.out.println("botao de edição clicado");
 

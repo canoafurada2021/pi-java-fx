@@ -1,14 +1,14 @@
 package modelo;
 
 public class Categoria {
-	private int id_categoria;
+	private Long id_categoria;
 	private String categoria; 
 	
 
-	public int getIdCategoria() {
+	public Long getIdCategoria() {
 		return id_categoria;
 	}
-	public void setIdCategoria(int idCategoria) {
+	public void setIdCategoria(Long idCategoria) {
 		this.id_categoria = idCategoria;
 	}
 	public String getCategoria() {

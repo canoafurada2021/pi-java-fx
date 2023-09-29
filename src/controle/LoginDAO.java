@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import modelo.EnumCargos;
+import modelo.TipoAcessoLogin;
 import modelo.Login;
 
 public class LoginDAO {
@@ -30,7 +30,7 @@ public class LoginDAO {
         return true;
     }
 
-    private String mapearTipoUsuario(EnumCargos role) {
+    private String mapearTipoUsuario(TipoAcessoLogin role) {
         switch (role) {
             case MASTER:
                 return "master";
