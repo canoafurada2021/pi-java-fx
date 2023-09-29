@@ -39,7 +39,7 @@ public class VeiculoDAO {
 				Long precoPorDia = rs.getLong("preco_por_dia");
 				String imgBase64 = rs.getString("img_Base64");
 				int unidadeEmEstoque = rs.getInt("unidade_em_estoque");
-				int categoria = rs.getInt("c.categoria_id_categoria");
+				Long categoria = rs.getLong("c.categoria_id_categoria");
 				Long fornecedorCnpj = rs.getLong("f.fornecedores_cnpj");
 
 				Veiculo v = new Veiculo();
@@ -105,7 +105,7 @@ public class VeiculoDAO {
 			ps.setInt(9,veiculo.getNota_avaliacao());
 			ps.setLong(10,veiculo.getPreco_por_dia());
 			ps.setInt(11,veiculo.getUnidade_em_estoque());
-			ps.setInt(12,veiculo.getIdCategoria().getIdCategoria());
+			ps.setLong(12,veiculo.getIdCategoria().getIdCategoria());
 			ps.setLong(13,veiculo.getCnpj().getCnpj());
 
 	
@@ -182,7 +182,7 @@ public class VeiculoDAO {
 			ps.setInt(9, veiculo.getNota_avaliacao());
 			ps.setLong(10, veiculo.getPreco_por_dia());
 			ps.setInt(12, veiculo.getUnidade_em_estoque());
-			ps.setInt(13, veiculo.getIdCategoria().getIdCategoria());
+			ps.setLong(13, veiculo.getIdCategoria().getIdCategoria());
 			ps.setLong(14, veiculo.getCnpj().getCnpj());
 
 			// Defina o valor do último parâmetro como o ID do veículo que você deseja
