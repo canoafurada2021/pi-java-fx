@@ -156,8 +156,8 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 	public void tblViewDivergenciaSearchFunc() {
 		tableFuncionario.getItems().clear();
-		columnCargo
-				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTipoAcesso().toString()));
+		columnCargo.setCellValueFactory(
+				cellData -> new SimpleObjectProperty<>(cellData.getValue().getTipoAcesso().toString()));
 		columnIdVendedor
 				.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getId_vendedor()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
@@ -171,8 +171,26 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 	@FXML
 	private void sair(ActionEvent event) {
-		// Implemente a lógica para sair aqui
-		System.out.println("Botão de sair pressionado");
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+			Parent root = loader.load();
+
+			ControllerLogin controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// Formata a cédula do salário para o padrão PT-BR (R$ 0000,000)
@@ -185,8 +203,8 @@ public class ControllerTableViewFuncionarios implements Initializable {
 				.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getId_vendedor()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnSobrenome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSobrenome()));
-		columnCargo
-				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTipoAcesso().toString()));
+		columnCargo.setCellValueFactory(
+				cellData -> new SimpleObjectProperty<>(cellData.getValue().getTipoAcesso().toString()));
 
 		// Configura a formatação da célula da coluna de salário
 		columnSalario.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSalario()));

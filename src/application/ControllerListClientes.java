@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.Scene;
@@ -34,7 +35,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import modelo.Locador;
 
-public class ControllerListClientes implements Initializable{
+public class ControllerListClientes implements Initializable {
 
 	@FXML
 	private SplitPane SlipPaneConfigurações;
@@ -149,12 +150,11 @@ public class ControllerListClientes implements Initializable{
 
 	@FXML
 	private TextField txtPesquisa;
-	
+
 	private ObservableList<Locador> obsLocadores;
 
 	@FXML
 	void salvarDados(ActionEvent event) {
-		
 
 	}
 
@@ -162,109 +162,129 @@ public class ControllerListClientes implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		LocadorDAO dao = new LocadorDAO();
 		tableClientes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-		
+
 		columnCPF.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPessoas_cpf()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
-		columnIdCarteira.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getNumIdentificacaoCarteira()));
-		columnTelefone.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTel_contato()));
-		columnPaisResidencia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPaisResidencia()));
+		columnIdCarteira.setCellValueFactory(
+				cellData -> new SimpleObjectProperty<>(cellData.getValue().getNumIdentificacaoCarteira()));
+		columnTelefone
+				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTel_contato()));
+		columnPaisResidencia
+				.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPaisResidencia()));
 		columnCNH.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnh()));
-		columnValidadeCarteira.setCellValueFactory(cellData -> new SimpleObjectProperty<Date>(cellData.getValue().getValidadeCarteira()));
-		
-		
+		columnValidadeCarteira.setCellValueFactory(
+				cellData -> new SimpleObjectProperty<Date>(cellData.getValue().getValidadeCarteira()));
+
 		columnAcoes.setCellFactory(new Callback<TableColumn<Locador, String>, TableCell<Locador, String>>() {
-		    @Override
-		    public TableCell<Locador, String> call(TableColumn<Locador, String> param) {
-		        return new TableCell<Locador, String>() {
-		            private final Button viewButton = new Button();
-		            private final Button editButton = new Button();
+			@Override
+			public TableCell<Locador, String> call(TableColumn<Locador, String> param) {
+				return new TableCell<Locador, String>() {
+					private final Button viewButton = new Button();
+					private final Button editButton = new Button();
 
-		            private final HBox buttonContainer = new HBox(viewButton, editButton);
+					private final HBox buttonContainer = new HBox(viewButton, editButton);
 
-		            {
-		                buttonContainer.setSpacing(10);
+					{
+						buttonContainer.setSpacing(10);
 
-		                ImageView viewImage = new ImageView(
-		                        new Image(getClass().getResourceAsStream("/imgs/editar.png")));
-		                viewImage.setFitHeight(16);
-		                viewImage.setFitWidth(16);
-		                viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
+						ImageView viewImage = new ImageView(
+								new Image(getClass().getResourceAsStream("/imgs/editar.png")));
+						viewImage.setFitHeight(16);
+						viewImage.setFitWidth(16);
+						viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
 
-		                viewButton.setGraphic(viewImage);
-		                viewButton.setOnAction(event -> {
-		                	
-		                	//MUDAR PARA FORNECEDOR
-		                    Locador locador = getTableView().getItems().get(getIndex());
-		                    String validadeCarteira = locador.getValidadeCarteira().toString();
+						viewButton.setGraphic(viewImage);
+						viewButton.setOnAction(event -> {
 
-		                    try {
-		                        //PRECISA MUDAR PRO CONTROLLER CLIENTES !!!!! - ANDRI
-		                        FXMLLoader loader = new FXMLLoader(
-		                                getClass().getResource("/visao/Edicao_fornecedores.fxml"));
-		                        Parent root = loader.load();
-		                        ControllerEdicaoClientes controllerNovaTela = loader.getController();
+							// MUDAR PARA FORNECEDOR
+							Locador locador = getTableView().getItems().get(getIndex());
+							String validadeCarteira = locador.getValidadeCarteira().toString();
 
-		                        //Passando os dados do fornecedor selecionado de uma tela para outra
-		                        controllerNovaTela.setLocador(locador);
+							try {
+								// PRECISA MUDAR PRO CONTROLLER CLIENTES !!!!! - ANDRI
+								FXMLLoader loader = new FXMLLoader(
+										getClass().getResource("/visao/Edicao_fornecedores.fxml"));
+								Parent root = loader.load();
+								ControllerEdicaoClientes controllerNovaTela = loader.getController();
 
-		                        // Configurar a nova janela e mostrá-la
-		                        Scene scene = new Scene(root);
-		                        Stage stage = new Stage();
-		                        stage.setScene(scene);
-		                        stage.show();
-		                    } catch (IOException e) {
-		                        e.printStackTrace();
-		                    }
-		                });
+								// Passando os dados do fornecedor selecionado de uma tela para outra
+								controllerNovaTela.setLocador(locador);
 
-		                ImageView editImage = new ImageView(
-		                        new Image(getClass().getResourceAsStream("/imgs/excluir.png"))
-		                );
-		                editImage.setFitHeight(16);
-		                editImage.setFitWidth(16);
-		                editButton.setGraphic(editImage);
-		                editButton.setStyle("-fx-background-color: red;");
-		                editButton.setOnAction(event -> {
-		                    Locador locador = getTableView().getItems().get(getIndex());
+								// Configurar a nova janela e mostrá-la
+								Scene scene = new Scene(root);
+								Stage stage = new Stage();
+								stage.setScene(scene);
+								stage.show();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						});
 
-		                    if (dao.excluir(locador)) {
-		                        getTableView().getItems().remove(locador);
-		                    } else {
-		                        System.out.println("erro ao excluir cliente");
-		                    }
-		                });
-		            }
+						ImageView editImage = new ImageView(
+								new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
+						editImage.setFitHeight(16);
+						editImage.setFitWidth(16);
+						editButton.setGraphic(editImage);
+						editButton.setStyle("-fx-background-color: red;");
+						editButton.setOnAction(event -> {
+							Locador locador = getTableView().getItems().get(getIndex());
 
-		            @Override
-		            protected void updateItem(String item, boolean empty) {
-		                super.updateItem(item, empty);
+							if (dao.excluir(locador)) {
+								getTableView().getItems().remove(locador);
+							} else {
+								System.out.println("erro ao excluir cliente");
+							}
+						});
+					}
 
-		                if (empty) {
-		                    setGraphic(null);
-		                } else {
-		                    setGraphic(buttonContainer);
-		                }
-		            }
-		        };
-		    }
+					@Override
+					protected void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+
+						if (empty) {
+							setGraphic(null);
+						} else {
+							setGraphic(buttonContainer);
+						}
+					}
+				};
+			}
 		});
 		carregarLocadores();
-		}
-		public void carregarLocadores() {
-			LocadorDAO dao = new LocadorDAO();
-			
-			List<Locador> locadores = dao.listar();
-			
-			obsLocadores = FXCollections.observableArrayList(locadores);
-			tableClientes.setItems(obsLocadores);
-			
-		}
-	
-	
 	}
 
+	public void carregarLocadores() {
+		LocadorDAO dao = new LocadorDAO();
 
+		List<Locador> locadores = dao.listar();
 
+		obsLocadores = FXCollections.observableArrayList(locadores);
+		tableClientes.setItems(obsLocadores);
 
+	}
 
+	@FXML
+	void sairListCliente(ActionEvent event) {
+		try {
 
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+			Parent root = loader.load();
+
+			ControllerLogin controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
