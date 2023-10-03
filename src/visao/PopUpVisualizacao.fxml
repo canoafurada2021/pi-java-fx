@@ -44,11 +44,7 @@
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Label fx:id="lblAno" layoutX="4.0" layoutY="169.0" style="-fx-font-family: Inter;" text="Ano">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
+            <Label fx:id="lblAno" layoutX="4.0" layoutY="169.0" style="-fx-font-family: Inter;" text="Ano" />
             <TextField fx:id="txtAno" layoutX="4.0" layoutY="187.0" prefHeight="16.0" prefWidth="139.0" style="-fx-border-color: #B9BDCA; -fx-background-color: white; -fx-border-radius: 2;">
                <font>
                   <Font size="10.0" />
@@ -94,31 +90,19 @@
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Label fx:id="lblCategoria" layoutX="4.0" layoutY="223.0" style="-fx-font-family: Inter;" text="Categoria">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
+            <Label fx:id="lblCategoria" layoutX="4.0" layoutY="223.0" style="-fx-font-family: Inter;" text="Categoria" />
             <TextField fx:id="txtCategoria" layoutX="4.0" layoutY="241.0" prefHeight="16.0" prefWidth="139.0" style="-fx-border-color: #B9BDCA; -fx-background-color: white; -fx-border-radius: 2;">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Label fx:id="lblCor" layoutX="4.0" layoutY="277.0" style="-fx-font-family: Inter;" text="Cor">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
+            <Label fx:id="lblCor" layoutX="4.0" layoutY="277.0" style="-fx-font-family: Inter;" text="Cor" />
             <TextField fx:id="txtCor" layoutX="4.0" layoutY="295.0" prefHeight="16.0" prefWidth="139.0" style="-fx-border-color: #B9BDCA; -fx-background-color: white; -fx-border-radius: 2;">
                <font>
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Label fx:id="lblQuantAssentos" layoutX="4.0" layoutY="331.0" style="-fx-font-family: Inter;" text="Quantidade assentos">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
+            <Label fx:id="lblQuantAssentos" layoutX="4.0" layoutY="331.0" style="-fx-font-family: Inter;" text="Quantidade assentos" />
             <TextField fx:id="txtQuantAssentos" layoutX="4.0" layoutY="349.0" prefHeight="16.0" prefWidth="139.0" style="-fx-border-color: #B9BDCA; -fx-background-color: white; -fx-border-radius: 2;">
                <font>
                   <Font size="10.0" />

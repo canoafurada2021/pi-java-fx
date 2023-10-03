@@ -88,7 +88,7 @@
                </font>
             </Label>
             <TextField fx:id="txtCor" layoutX="39.0" layoutY="725.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
-            <Label fx:id="lvlQuantAssentos" layoutX="39.0" layoutY="785.0" text="Quantidade de asentos">
+            <Label fx:id="lvlQuantAssentos" layoutX="39.0" layoutY="785.0" text="Quantidade de assentos">
                <font>
                   <Font size="20.0" />
                </font>
