@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="966.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEdicaoProdutos">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="966.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEdicaoProdutos">
    <children>
-      <Pane fx:id="pnlLocacaoEdicao" prefHeight="694.0" prefWidth="966.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
+      <Pane fx:id="pnlLocacaoEdicao" prefHeight="1000.0" prefWidth="966.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
          <children>
-            <Button fx:id="btnSalvar" layoutX="522.0" layoutY="616.0" mnemonicParsing="false" onAction="#alterarLocacao" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Salvar" textFill="WHITE">
+            <Button fx:id="btnSalvar" layoutX="522.0" layoutY="917.0" mnemonicParsing="false" onAction="#salvarAlteracaoProduto" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Salvar" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="btnCancelar" layoutX="228.0" layoutY="616.0" mnemonicParsing="false" onAction="#cancelarAlteracaoLocacao" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-border-color: #D70034;" text="Cancelar" textFill="#d70034">
+            <Button fx:id="btnCancelar" layoutX="230.0" layoutY="917.0" mnemonicParsing="false" onAction="#cancelarAlteracaoProduto" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-border-color: #D70034;" text="Cancelar" textFill="#d70034">
                <font>
                   <Font size="20.0" />
                </font>
@@ -29,55 +29,97 @@
                         <Font size="60.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="-12.0" layoutY="136.0" prefHeight="26.0" prefWidth="730.0" text="Olá, edite as informações para alterar uma locação:">
+                  <Label alignment="CENTER" layoutX="-12.0" layoutY="136.0" prefHeight="26.0" prefWidth="730.0" text="Olá, edite as informações para alterar um produto:">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Label fx:id="lblNomeVeiculo" layoutX="38.0" layoutY="194.0" text="ID da locação">
+            <Label fx:id="lblNomeVeiculo" layoutX="38.0" layoutY="194.0" text="ID do veículo">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblMarcaVeiculo" layoutX="38.0" layoutY="289.0" text="Forma de pagamento">
+            <Label fx:id="lblNome" layoutX="38.0" layoutY="295.0" text="Nome">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtFormPag" layoutX="38.0" layoutY="329.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
-            <TextField fx:id="txtIdLocacao" layoutX="38.0" layoutY="234.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
-            <Label fx:id="lblTipoVeiculo" layoutX="38.0" layoutY="394.0" text="Data de início">
+            <TextField fx:id="txtNome" layoutX="38.0" layoutY="329.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <TextField fx:id="txtIdVeiculo" layoutX="38.0" layoutY="234.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblMarca" layoutX="38.0" layoutY="394.0" text="Marca">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtDataInicio" layoutX="38.0" layoutY="429.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
-            <Label fx:id="lblQuantidadeVeiculos" layoutX="38.0" layoutY="489.0" text="Quantidade de dias">
+            <TextField fx:id="txtMarca" layoutX="38.0" layoutY="429.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblQuantidadeVeiculos" layoutX="38.0" layoutY="489.0" text="Ano">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
             <TextField fx:id="txtQuantDias" layoutX="38.0" layoutY="524.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
-            <Label fx:id="lblNomeVeiculo1" layoutX="522.0" layoutY="191.0" text="Valor">
+            <Label fx:id="lblTipoCambio" layoutX="522.0" layoutY="191.0" text="Tipo de câmbio">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lblMarcaVeiculo1" layoutX="522.0" layoutY="286.0" text="ID do vendedor">
+            <Label fx:id="lblQuantPortas" layoutX="522.0" layoutY="295.0" text="Quantidade de portas">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtValor" layoutX="522.0" layoutY="231.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
-            <Label fx:id="lblTipoVeiculo1" layoutX="522.0" layoutY="391.0" text="CPF do locador">
+            <TextField fx:id="txtTipoCambio" layoutX="522.0" layoutY="234.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblEpacoPortaMalas" layoutX="522.0" layoutY="394.0" text="Espaço porta malas">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtCpfLocador" layoutX="522.0" layoutY="426.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
-            <ComboBox fx:id="comboIdVendedor" layoutX="522.0" layoutY="330.0" onAction="#comboIdVendedor" prefHeight="40.0" prefWidth="414.0" />
+            <TextField fx:id="txtEspacoPortaMalas" layoutX="522.0" layoutY="429.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblMarcaVeiculo2" layoutX="39.0" layoutY="585.0" text="Categoria">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCor" layoutX="39.0" layoutY="690.0" text="Cor">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCor" layoutX="39.0" layoutY="725.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lvlQuantAssentos" layoutX="39.0" layoutY="785.0" text="Quantidade de asentos">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtQuantAssentos" layoutX="39.0" layoutY="820.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <ComboBox fx:id="comboCategoria" layoutX="39.0" layoutY="625.0" onAction="#comboSelecionarCategoria" prefHeight="40.0" prefWidth="414.0" />
+            <TextField fx:id="txtQuantPortas" layoutX="522.0" layoutY="329.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblNotaAvaliacao" layoutX="522.0" layoutY="489.0" text="Nota de avaliação">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUnidadeEmEstoque" layoutX="522.0" layoutY="585.0" text="Unidade em estoque">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNotaAvaliacao" layoutX="522.0" layoutY="524.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblPrecoPorDia" layoutX="522.0" layoutY="690.0" text="Preço por dia">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPrecoPorDia" layoutX="522.0" layoutY="725.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <TextField fx:id="txtUniadeEmEstoque" layoutX="522.0" layoutY="625.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblFornecedor" layoutX="522.0" layoutY="785.0" text="Fornecedor">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="comboFornecedor" layoutX="522.0" layoutY="820.0" onAction="#comboSelecionarFornecedor" prefHeight="40.0" prefWidth="414.0" />
          </children>
       </Pane>
    </children>
