@@ -80,6 +80,12 @@ public class TestController implements Initializable {
 	@FXML
 	private TextField txtSobrenome;
 
+	@FXML
+	private PasswordField txtSenha;
+
+	@FXML
+	private TextField txtCPF;
+
 	private VendedorDAO dao = new VendedorDAO();
 
 	private ArrayList<Vendedor> vendedores = dao.listar();
@@ -93,7 +99,10 @@ public class TestController implements Initializable {
 		Double salario = Double.valueOf(txtSalario.getText());
 		String nome = txtNome.getText();
 		String sobrenome = txtSobrenome.getText();
-
+		Long cpf = Long.parseLong(txtCPF.getText());
+		String senha = txtSenha.getText();
+		
+		
 		Vendedor v = new Vendedor();
 
 		System.out.println("cargo" + v.getTipoAcesso());
@@ -101,6 +110,8 @@ public class TestController implements Initializable {
 		v.setSalario(salario);
 		v.setNome(nome);
 		v.setSobrenome(sobrenome);
+		v.setCpf(cpf);
+		v.setSenha(senha);
 
 		try {
 
@@ -208,6 +219,8 @@ public class TestController implements Initializable {
 		txtNome.setText(null);
 		txtSobrenome.setText(null);
 		txtSalario.setText(null);
+		txtCPF.setText(null);
+		txtSenha.setText(null);
 
 	}
 

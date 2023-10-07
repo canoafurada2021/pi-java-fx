@@ -44,6 +44,8 @@ CREATE TABLE IF NOT EXISTS `vendedor` (
   `salario` DOUBLE NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `sobrenome` VARCHAR(45) NOT NULL,
+  `cpf` BIGINT NOT NULL,
+  `senha` VARCHAR(12) NOT NULL,
   `TipoAcessoLogin` INT NOT NULL, -- Coluna para o TipoAcessoLogin diretamente
   PRIMARY KEY (`id_vendedor`)
 );
@@ -193,8 +195,8 @@ insert into endereco (cep, id, rua, bairro, cidade, estado) values ('88420000', 
 
 
 -- inserts VENDEDORES
-INSERT INTO vendedor ( salario, nome, sobrenome,  TipoAcessoLogin) VALUES ( 2574.89, 'Patricia', 'Cordeiro', 2);
-INSERT INTO vendedor ( salario, nome, sobrenome, TipoAcessoLogin) VALUES ( 3452.90, 'Andrieli', 'Mendes',2);
+INSERT INTO vendedor ( salario, nome, sobrenome, cpf, senha, TipoAcessoLogin) VALUES ( 2574.89, 'Patricia', 'Cordeiro', 12348, 'patinha',  2);
+INSERT INTO vendedor ( salario, nome, sobrenome, cpf, senha, TipoAcessoLogin) VALUES ( 3452.90, 'Andrieli', 'Mendes', 4321, 'andrinha', 2);
 
 
 -- inserts CATEGORIAS

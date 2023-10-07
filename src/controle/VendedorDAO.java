@@ -27,6 +27,8 @@ public class VendedorDAO {
 				Long idVendedor = rs.getLong("id_vendedor");
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
+				Long cpf = rs.getLong("cpf");
+				String senha = rs.getString("senha");
 				double salario = rs.getDouble("salario");
 
 				// Recupere o valor do cargo do enum
@@ -39,6 +41,8 @@ public class VendedorDAO {
 				v.setNome(nome);
 				v.setSobrenome(sobrenome);
 				v.setSalario(salario);
+				v.setCpf(cpf);
+				v.setSenha(senha);
 				v.setTipoAcesso(tipoAcesso);
 
 				vendedores.add(v);
@@ -59,7 +63,7 @@ public class VendedorDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO vendedor " + "(" + " salario, " + "nome," + "sobrenome,"
+		String query = "INSERT INTO vendedor " + "(" + " salario, " + "nome," + "sobrenome," + "cpf, "+ "senha, " 
 
 				+ " cargo)" + " VALUES ( ?, ?, ?, ?)";
 
@@ -69,8 +73,10 @@ public class VendedorDAO {
 			ps.setDouble(1, v.getSalario());
 			ps.setString(2, v.getNome());
 			ps.setString(3, v.getSobrenome());
+			ps.setLong(4, v.getCpf());
+			ps.setString(5, v.getSenha());
 			// Defina o cargo diretamente usando o valor do enum
-			ps.setString(4, TipoAcessoLogin.FUNCIONARIO.name());
+			ps.setString(6, TipoAcessoLogin.FUNCIONARIO.name());
 
 			// Consolidar a execução do comando no banco
 			ps.executeUpdate();
@@ -127,7 +133,8 @@ public class VendedorDAO {
 			preparedStatement.setString(2, v.getNome());
 			preparedStatement.setString(3, v.getSobrenome());
 			preparedStatement.setLong(4, v.getId_vendedor());
-			
+			preparedStatement.setLong(5, v.getCpf());
+			preparedStatement.setString(6, v.getSenha());
 			int rowsUpdate = preparedStatement.executeUpdate();
 			
 			if(rowsUpdate >0 ) {
