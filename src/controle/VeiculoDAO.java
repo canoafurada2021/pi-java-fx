@@ -42,7 +42,7 @@ public class VeiculoDAO {
 //				String imgBase64 = rs.getString("img_Base64");
 				int unidadeEmEstoque = rs.getInt("unidade_em_estoque");
 				String categoria = rs.getString("categoria_nome"); // Correção aqui
-				Long fornecedorCnpj = rs.getLong("f.fornecedor_cnpj");
+				Long fornecedorCnpj = rs.getLong("fornecedor_cnpj");
 
 				Veiculo v = new Veiculo();
 
@@ -67,9 +67,11 @@ public class VeiculoDAO {
 
 				// Definindo o id do fornecedor
 				Fornecedor f = new Fornecedor();
+				
 				f.setCnpj(fornecedorCnpj);
 
 				v.setCnpj(f);
+				System.out.println("fornecedor"+ f);
 
 				veiculos.add(v);
 			}
