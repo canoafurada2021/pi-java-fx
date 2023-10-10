@@ -153,7 +153,9 @@ public class ControllerEdicaoFuncionario implements Initializable {
 		}
 	}
 
-	// metodo p combobox
+	// metodo p combobox 
+	
+	//achoq  repeteiu
 	private Vendedor encontrarVendedorPeloId(int idVendedor) {
 		for (Vendedor vendedor : vendedores) {
 			if (vendedor.getId_vendedor() == idVendedor) {

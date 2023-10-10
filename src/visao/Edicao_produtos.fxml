@@ -59,7 +59,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtQuantDias" layoutX="38.0" layoutY="524.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <TextField fx:id="txtAno" layoutX="38.0" layoutY="524.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
             <Label fx:id="lblTipoCambio" layoutX="522.0" layoutY="191.0" text="Tipo de câmbio">
                <font>
                   <Font size="20.0" />
@@ -113,7 +113,7 @@
                </font>
             </Label>
             <TextField fx:id="txtPrecoPorDia" layoutX="522.0" layoutY="725.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
-            <TextField fx:id="txtUniadeEmEstoque" layoutX="522.0" layoutY="625.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <TextField fx:id="txtUnidadeEmEstoque" layoutX="522.0" layoutY="625.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
             <Label fx:id="lblFornecedor" layoutX="522.0" layoutY="785.0" text="Fornecedor">
                <font>
                   <Font size="20.0" />

@@ -17,9 +17,11 @@ public class VeiculoDAO {
 		Connection con = c.conectar();
 
 		ArrayList<Veiculo> veiculos = new ArrayList<>();
-		String query = "SELECT v.*, f.nome AS fornecedor_nome, c.categoria AS categoria_nome " + "FROM veiculo v "
-				+ "INNER JOIN fornecedor f ON v.fornecedor = f.cnpj "
-				+ "INNER JOIN categoria c ON v.idCategoria = c.id_categoria";
+		String query = "SELECT v.*, f.nome AS fornecedor_nome, c.categoria AS categoria_nome " +
+	               "FROM veiculo v " +
+	               "INNER JOIN fornecedor f ON v.fornecedor_cnpj = f.cnpj " +  // Correção aqui
+	               "INNER JOIN categoria c ON v.categoria_id_categoria = c.id_categoria";  // Correção aqui
+
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -37,10 +39,10 @@ public class VeiculoDAO {
 				int ano = rs.getInt("ano");
 				int notaAvaliacao = rs.getInt("nota_avaliacao");
 				Long precoPorDia = rs.getLong("preco_por_dia");
-				String imgBase64 = rs.getString("img_Base64");
+//				String imgBase64 = rs.getString("img_Base64");
 				int unidadeEmEstoque = rs.getInt("unidade_em_estoque");
-				Long categoria = rs.getLong("c.categoria_id_categoria");
-				Long fornecedorCnpj = rs.getLong("f.fornecedores_cnpj");
+				String categoria = rs.getString("categoria_nome"); // Correção aqui
+				Long fornecedorCnpj = rs.getLong("fornecedor_cnpj");
 
 				Veiculo v = new Veiculo();
 
@@ -59,15 +61,17 @@ public class VeiculoDAO {
 
 				// Definindo o id da categoria
 				Categoria cat = new Categoria();
-				cat.setIdCategoria(categoria);
+				cat.setCategoria(categoria);
 
 				v.setIdCategoria(cat);
 
 				// Definindo o id do fornecedor
 				Fornecedor f = new Fornecedor();
+				
 				f.setCnpj(fornecedorCnpj);
 
 				v.setCnpj(f);
+				System.out.println("fornecedor"+ f);
 
 				veiculos.add(v);
 			}

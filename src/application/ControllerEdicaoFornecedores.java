@@ -272,7 +272,4 @@ public class ControllerEdicaoFornecedores implements Initializable{
 	    return -1; // Retornar -1 se o ID do endereço não for encontrado (trate isso adequadamente)
 	}
 	
-
-
-
 }

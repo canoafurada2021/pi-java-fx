@@ -44,6 +44,8 @@ CREATE TABLE IF NOT EXISTS `vendedor` (
   `salario` DOUBLE NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `sobrenome` VARCHAR(45) NOT NULL,
+  `cpf` BIGINT NOT NULL,
+  `senha` VARCHAR(12) NOT NULL,
   `TipoAcessoLogin` INT NOT NULL, -- Coluna para o TipoAcessoLogin diretamente
   PRIMARY KEY (`id_vendedor`)
 );
@@ -193,8 +195,8 @@ insert into endereco (cep, id, rua, bairro, cidade, estado) values ('88420000', 
 
 
 -- inserts VENDEDORES
-INSERT INTO vendedor ( salario, nome, sobrenome,  TipoAcessoLogin) VALUES ( 2574.89, 'Patricia', 'Cordeiro', 2);
-INSERT INTO vendedor ( salario, nome, sobrenome, TipoAcessoLogin) VALUES ( 3452.90, 'Andrieli', 'Mendes',2);
+INSERT INTO vendedor ( salario, nome, sobrenome, cpf, senha, TipoAcessoLogin) VALUES ( 2574.89, 'Patricia', 'Cordeiro', 12348, 'patinha',  2);
+INSERT INTO vendedor ( salario, nome, sobrenome, cpf, senha, TipoAcessoLogin) VALUES ( 3452.90, 'Andrieli', 'Mendes', 4321, 'andrinha', 2);
 
 
 -- inserts CATEGORIAS
@@ -213,6 +215,8 @@ insert into fornecedor (cnpj,  endereco_id, nome, atividades, telefone) values (
 -- inserts PRODUTOS
 -- FAZER PRE CADASTRADOS CARROS GTA - EMILY ALVES
 -- insert into veiculo (id_veiculo, quant_assento, tipo_cambio, quant_portas, espaco_porta_malas, marca, nome, cor, ano, nota_avaliacao, preco_por_dia, unidade_em_estoque, categoria_id_categoria, fornecedor_cnpj) values (1, 5, 'Automático', 4, '4', 'Volkswagem', 'Gol', 'Vermelho', '2018', 5.0, 300,  5, 23, 82);
+INSERT INTO veiculo (quant_assento, tipo_cambio, quant_portas, espaco_porta_malas, marca, nome, cor, ano, nota_avaliacao, preco_por_dia, unidade_em_estoque, categoria_id_categoria, fornecedor_cnpj)
+VALUES (5, 'Automático', 4, 400, 'Volkswagen', 'Golf', 'Prata', 2020, 4.5, 200.0, 10, 1, 82);
 
 
 -- inserts aluguelRegistro
@@ -231,6 +235,8 @@ SELECT * FROM aluguelRegistro;
 SELECT * FROM vendedor;
 SELECT * FROM fornecedor;
 SELECT * FROM endereco;
+
+
 SELECT * FROM empresa;
 SELECT * FROM locador;
 SELECT * FROM veiculo;
