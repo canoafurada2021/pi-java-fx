@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
@@ -18,65 +20,59 @@
         <items>
           <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
                <children>
-                  <Pane layoutX="160.0" layoutY="317.0" prefHeight="509.0" prefWidth="886.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
+                  <Pane layoutX="270.0" layoutY="317.0" prefHeight="565.0" prefWidth="682.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
                      <children>
-                        <Label fx:id="lblNomeVeiculo" layoutX="30.0" layoutY="30.0" text="Nome do veículo:">
+                        <Label fx:id="lblFormaPagamento" layoutX="30.0" layoutY="30.0" text="Forma de pagamento:">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblMarcaVeiculo" layoutX="30.0" layoutY="125.0" text="Marca do veículo:">
+                        <Label fx:id="lblMarcaVeiculo" layoutX="30.0" layoutY="115.0" text="Data de início:">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtMarcaVeiculo" layoutX="30.0" layoutY="165.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
-                        <Button layoutX="220.0" layoutY="425.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
+                        <Button fx:id="btnCadastrarLocacao" layoutX="220.0" layoutY="490.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="txtNomeVeiculo" layoutX="30.0" layoutY="70.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblTipoVeiculo" layoutX="30.0" layoutY="230.0" text="Tipo do veículo:">
+                        <TextField fx:id="txtFormaPagamento" layoutX="30.0" layoutY="60.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblQuantDias" layoutX="30.0" layoutY="200.0" text="Quantidade de dias:">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtTipoVeiculo" layoutX="30.0" layoutY="265.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblQuantidadeVeiculos" layoutX="30.0" layoutY="325.0" text="Quantidade total de veículos">
+                        <TextField fx:id="txtQuantDias" layoutX="30.0" layoutY="235.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblValor" layoutX="30.0" layoutY="290.0" text="Valor:">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtQuantidadeVeiculos" layoutX="30.0" layoutY="360.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblNomeVeiculo1" layoutX="466.0" layoutY="79.0" text="Nome do veículo:">
+                        <TextField fx:id="txtValor" layoutX="30.0" layoutY="330.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <DatePicker fx:id="dateDataInicio" layoutX="30.0" layoutY="145.0" prefHeight="38.0" prefWidth="619.0" />
+                        <Label fx:id="lblIdVendedor" layoutX="30.0" layoutY="390.0" text="ID vendedor:">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblMarcaVeiculo1" layoutX="466.0" layoutY="174.0" text="Marca do veículo:">
+                        <ComboBox fx:id="comboIdVendedor" layoutX="30.0" layoutY="420.0" prefHeight="38.0" prefWidth="300.0" />
+                        <ComboBox fx:id="comboCpfLocador" layoutX="350.0" layoutY="420.0" prefHeight="38.0" prefWidth="300.0" />
+                        <Label fx:id="lblCpfLocador" layoutX="350.0" layoutY="390.0" text="CPF locador">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtMarcaVeiculo1" layoutX="466.0" layoutY="214.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
-                        <TextField fx:id="txtNomeVeiculo1" layoutX="466.0" layoutY="119.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblTipoVeiculo1" layoutX="466.0" layoutY="279.0" text="Tipo do veículo:">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtTipoVeiculo1" layoutX="466.0" layoutY="314.0" prefHeight="40.0" prefWidth="365.0" style="-fx-border-color: #AEB2BF;" />
                      </children>
                   </Pane>
-                  <Pane layoutX="252.0" layoutY="10.0" prefHeight="287.0" prefWidth="726.0">
+                  <Pane layoutX="266.0" layoutY="10.0" prefHeight="287.0" prefWidth="688.0">
                      <children>
-                        <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="100.0" prefHeight="150.0" prefWidth="727.0" text="CADASTRO">
+                        <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="100.0" prefHeight="150.0" prefWidth="689.0" text="CADASTRO">
                            <font>
                               <Font name="System Bold" size="60.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="-12.0" layoutY="250.0" prefHeight="26.0" prefWidth="730.0" text="Olá insira as informações para cadastrar uma locação:">
+                        <Label alignment="CENTER" layoutY="250.0" prefHeight="30.0" prefWidth="690.0" text="Olá insira as informações para cadastrar uma locação:">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -150,7 +146,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnLocacao" alignment="TOP_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Locação" textFill="WHITE">
+            <Button fx:id="btnLocacao" alignment="TOP_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #0348CE; -fx-border-color: white; -fx-border-radius: 10;" text="Locação" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -170,7 +166,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultFuncionarios" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../../../Documentos/GitHub/pi-java-fx/pi-java-fx/src/imgs/Default_Funcionarios.png" />
+                        <Image url="@../imgs/Default_Funcionarios.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -208,7 +204,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultConfiguracoes1" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../../../../Ícone_%20PI_FinalFase%20(1).png" />
+                        <Image url="@../imgs/Default_Categoria.png" />
                      </image>
                   </ImageView>
                </graphic>

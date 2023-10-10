@@ -186,7 +186,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultConfiguracoes1" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@../../../../Ícone_%20PI_FinalFase%20(1).png" />
+                        <Image url="@../imgs/Default_Categoria.png" />
                      </image>
                   </ImageView>
                </graphic>
