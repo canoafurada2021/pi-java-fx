@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="966.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEdicaoProdutos">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="966.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEdicaoProduto">
    <children>
       <Pane fx:id="pnlLocacaoEdicao" prefHeight="1000.0" prefWidth="966.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
          <children>
@@ -94,7 +94,7 @@
                </font>
             </Label>
             <TextField fx:id="txtQuantAssentos" layoutX="39.0" layoutY="820.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
-            <ComboBox fx:id="comboCategoria" layoutX="39.0" layoutY="625.0" onAction="#comboSelecionarCategoria" prefHeight="40.0" prefWidth="414.0" />
+            <ComboBox fx:id="comboCategoria" layoutX="39.0" layoutY="625.0" prefHeight="40.0" prefWidth="414.0" />
             <TextField fx:id="txtQuantPortas" layoutX="522.0" layoutY="329.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
             <Label fx:id="lblNotaAvaliacao" layoutX="522.0" layoutY="489.0" text="Nota de avaliação">
                <font>
@@ -119,7 +119,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <ComboBox fx:id="comboFornecedor" layoutX="522.0" layoutY="820.0" onAction="#comboSelecionarFornecedor" prefHeight="40.0" prefWidth="414.0" />
+            <ComboBox fx:id="comboFornecedor" layoutX="522.0" layoutY="820.0" prefHeight="40.0" prefWidth="414.0" />
          </children>
       </Pane>
    </children>
