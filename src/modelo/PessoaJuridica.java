@@ -2,7 +2,7 @@ package modelo;
 
 public abstract class PessoaJuridica {
 
-	private Long idEmpresa;
+	private Long id_empresa;
 	private Long cnpj;
 	private String nome;
 	private Long telefone;
@@ -17,11 +17,11 @@ public abstract class PessoaJuridica {
 	}
 
 	public Long getIdEmpresa() {
-		return idEmpresa;
+		return id_empresa;
 	}
 
 	public void setIdEmpresa(Long idEmpresa) {
-		this.idEmpresa = idEmpresa;
+		this.id_empresa = idEmpresa;
 	}
 
 	public Long getCnpj() {
