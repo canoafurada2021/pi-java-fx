@@ -301,11 +301,11 @@ public class ControllerListProdutos implements Initializable {
 							int idVeic = veiculo.getId_veiculo();
 							try {
 								FXMLLoader loader = new FXMLLoader(
-										getClass().getResource("/visao/Edicao_produto.fxml"));
+										getClass().getResource("/visao/Edicao_produtos.fxml"));
 								Parent root = loader.load();
 								ControllerEdicaoProduto controllerNovaTela = loader.getController();
 
-								controllerNovaTela.seVeiculo(veiculo);
+								controllerNovaTela.setVeiculo(veiculo);
 
 								Scene scene = new Scene(root);
 								Stage stage = new Stage();

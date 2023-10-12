@@ -205,7 +205,7 @@ public class ControllerEdicaoProduto implements Initializable {
 		
 	}
 
-	public void seVeiculo(Veiculo v) {
+	public void setVeiculo(Veiculo v) {
 		txtIdVeiculo.setText(String.valueOf(v.getId_veiculo()));
 		txtCor.setText(v.getCor());
 		txtEspacoPortaMalas.setText(String.valueOf(v.getEspaco_porta_malas()));
@@ -219,18 +219,18 @@ public class ControllerEdicaoProduto implements Initializable {
 		txtTipoCambio.setText(v.getTipo_cambio());
 		txtUnidadeEmEstoque.setText(String.valueOf(v.getUnidade_em_estoque()));
 		
-		if (v.getIdCategoria() != null) {
-			 long categoriaId = v.getIdCategoria().getIdCategoria();  // Supondo que getIdCategoria() retorna um long
-			    int categoriaIndex = encontrarIndiceCategoria(categoriaId);
-			    String categoriaText = String.valueOf(categoriaId);
+		if (v.getIdCategoria() != null && v.getIdCategoria().getIdCategoria() != null) {
+		    long categoriaId = v.getIdCategoria().getIdCategoria();  // Supondo que getIdCategoria() retorna um long
+		    int categoriaIndex = encontrarIndiceCategoria(categoriaId);
+		    String categoriaText = String.valueOf(categoriaId);
 
-			    comboCategoria.getEditor().setText(categoriaText);
-			    
-			    if(categoriaText.equals("-1")) {
-			    	  // Definir o índice no ComboBox
-			    	comboCategoria.getEditor().setText(categoriaText);
-			    	comboCategoria.getSelectionModel().select(categoriaIndex);
-			    }
+		    comboCategoria.getEditor().setText(categoriaText);
+
+		    if(categoriaText.equals("-1")) {
+		        // Definir o índice no ComboBox
+		        comboCategoria.getEditor().setText(categoriaText);
+		        comboCategoria.getSelectionModel().select(categoriaIndex);
+		    }
 		}
 		
 		if(v.getCnpj() !=  null) {
