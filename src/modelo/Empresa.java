@@ -2,23 +2,28 @@ package modelo;
 
 public class Empresa extends PessoaJuridica {
 
-	private String razaoSocial;
+	private String razao_social;
 	private String porte_empresa;
-
-	public String getRazaoSocial() {
-		return razaoSocial;
+	private String nome_fantasia;
+	public String getRazao_social() {
+		return razao_social;
 	}
-
-	public void setRazaoSocial(String razaoSocial) {
-		this.razaoSocial = razaoSocial;
+	public void setRazao_social(String razao_social) {
+		this.razao_social = razao_social;
 	}
-
 	public String getPorte_empresa() {
 		return porte_empresa;
 	}
-
 	public void setPorte_empresa(String porte_empresa) {
 		this.porte_empresa = porte_empresa;
 	}
+	public String getNome_fantasia() {
+		return nome_fantasia;
+	}
+	public void setNome_fantasia(String nome_fantasia) {
+		this.nome_fantasia = nome_fantasia;
+	}
+
+	
 
 }
