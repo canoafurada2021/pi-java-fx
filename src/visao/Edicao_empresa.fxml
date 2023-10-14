@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="978.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerEdicaoClientes">
+   <children>
+      <Pane fx:id="pnlEdicaoEmpresa" prefHeight="591.0" prefWidth="978.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
+         <children>
+            <Button fx:id="btnSalvar" layoutX="522.0" layoutY="510.0" mnemonicParsing="false" onAction="#alterarEmpresa" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Salvar" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnCancelar" layoutX="230.0" layoutY="510.0" mnemonicParsing="false" onAction="#cancelarAlteracaoEmpresa" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-border-color: #D70034;" text="Cancelar" textFill="#d70034">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Pane layoutX="119.0" layoutY="-18.0" prefHeight="200.0" prefWidth="726.0">
+               <children>
+                  <Label alignment="BOTTOM_CENTER" layoutX="2.0" prefHeight="150.0" prefWidth="727.0" text="EDIÇÃO">
+                     <font>
+                        <Font size="60.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="-12.0" layoutY="136.0" prefHeight="26.0" prefWidth="730.0" text="Olá, edite as informações para alterar a empresa:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label fx:id="lblNomeFantasia" layoutX="38.0" layoutY="194.0" text="Nome fantasia">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblRazaoSocial" layoutX="38.0" layoutY="289.0" text="Razão social">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtRazaoSocial" layoutX="38.0" layoutY="329.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <TextField fx:id="txtNomeFantasia" layoutX="38.0" layoutY="234.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblPorteEmpresa" layoutX="38.0" layoutY="394.0" text="Porte da empresa">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPorteEmpresa" layoutX="38.0" layoutY="429.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblIdEmpresa" layoutX="522.0" layoutY="194.0" text="ID da empresa">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCnpj" layoutX="522.0" layoutY="289.0" text="CNPJ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtIdEmpresa" layoutX="522.0" layoutY="234.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <Label fx:id="lblTelefone" layoutX="522.0" layoutY="394.0" text="Telefone">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtTelefone" layoutX="522.0" layoutY="429.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+            <TextField fx:id="txtCnpj" layoutX="522.0" layoutY="329.0" prefHeight="40.0" prefWidth="414.0" style="-fx-border-color: #AEB2BF;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
