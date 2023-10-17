@@ -2,9 +2,8 @@ package testes;
 
 import controle.CategoriaDAO;
 import modelo.Categoria;
-//import static org.junit.jupiter.api.Assertions.assertEquals; 
-
-public class testCategoriaDAO {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+public class CategoriaDAOTest {
 
     private CategoriaDAO daoCategoria;
 
@@ -15,7 +14,6 @@ public class testCategoriaDAO {
 
         CategoriaDAO dao = new CategoriaDAO();
         boolean inserirok = dao.inserir(c);
-
-//        assertEquals(true, inserirok);
+assertEquals(true ,inserirok);
     }
 }
