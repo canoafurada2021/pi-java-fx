@@ -5,7 +5,7 @@
 ![Em Desenvolvimento](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)
 [![Java Development Kit (JDK)](https://img.shields.io/badge/License-JDK-blue)](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
 [![JavaFX](https://img.shields.io/badge/JavaFX-blue)](https://openjfx.io/)
-![Progresso: 10%](https://img.shields.io/badge/Progresso-10%25-blue)
+![Progresso: 30%](https://img.shields.io/badge/Progresso-10%25-blue)
 
 ## 📚 Descrição das Funcionalidades do Sistema
 
@@ -13,13 +13,21 @@ Este repositório contém o código-fonte base para o desenvolvimento do projeto
 
 ## 🚘 Introdução
 
-O projeto "Get That Auto" tem como objetivo o desenvolvimento de um software para o gerenciamento de atividades de uma locadora de veículos, incluindo controle de estoque e gestão de clientes. O sistema é projetado para operar em um ambiente desktop e móvel, proporcionando diferentes níveis de acesso para funcionários e proprietários. Algumas das principais funcionalidades incluem:
+  O projeto propõe a criação de um software para gerenciar uma locadora de veículos e seu estoque. O sistema terá uma aplicação de desktop com duas interfaces, uma para funcionários e outra para o proprietário. Funcionários poderão fazer o gerenciamento de produtos, clientes e reservas de veículos, além de alterar seus próprios dados. O proprietário terá controle total, podendo gerenciar fornecedores, funcionários, clientes, fazer reservas e analisar atividades dos funcionários e veículos mais locados.
 
-- Cadastro e gerenciamento de veículos
-- Cadastro e gerenciamento de clientes
-- Controle de estoque de veículos
-- Reserva de veículos
-- Análise de locações e atividades
+
+### 🎯 Objetivos do Projeto
+
+1. **Cadastro Completo**: Permitir o cadastro detalhado de produtos, clientes, funcionários e fornecedores.
+2. **Personalização da Empresa**: Facilitar a personalização dos dados da empresa.
+3. **Gestão de Usuários**: Permitir aos funcionários e clientes alterar suas informações pessoais.
+4. **Interfaces Distintas**: Oferecer diferentes interfaces de manuseio para funcionários e proprietário.
+5. **Controle de Estoque**: Manter um controle rigoroso do estoque de produtos, com atualizações em tempo real.
+6. **Reservas de Veículos**: Possibilitar o cadastro e gerenciamento de locações de veículos associadas a clientes específicos.
+7. **Análise de Desempenho**: Permitir ao proprietário visualizar informações sobre os melhores vendedores e os veículos mais locados.
+8. **Filtros de Pesquisa**: Facilitar a busca e listagem dos produtos disponíveis em estoque.
+
+
 
 ## 🚗 Casos de Uso
 | **Número** | **Caso de Uso**                                | **Descrição**                                        |
@@ -44,19 +52,19 @@ O projeto "Get That Auto" tem como objetivo o desenvolvimento de um software par
 ## ⛽ Diagramas
 
 <div style="text-align: center;">
-  <h4>Diagrama de casos de uso com atores identificados</h3>h3>
+  <h3>Diagrama de casos de uso com atores identificados</h3>
   <p>A imagem abaixo mostra o diagrama de casos de uso gerais do sistema, o qual possui dois atores e os quinze casos de uso identificados com suas respectivas descrições:</p>
   <img src="https://github.com/canoafurada2021/pi-java-fx/blob/master/DiagramaDeCasosDeUsoComAtoresIdentificados.jpg?raw=true" alt="Diagrama de Casos de Uso">
 </div>
 
 <div style="text-align: center;">
-  <h4>Diagrama de Classes</h3>
+  <h3>Diagrama de Classes</h3>
   <p>Para estabelecer uma sincronização entre o sistema e o banco de dados, deve-se usar um mapeamento do Diagrama de Classes para o Diagrama Entidade-Relacionamento, conforme mostrado abaixo:</p>
   <img src="https://github.com/canoafurada2021/pi-java-fx/blob/master/DiagramaDeClasses.png?raw=true" alt="Diagrama de Classes">
 </div>
 
 <div style="text-align: center;">
-  <h4>Diagrama de Entidade e Relacionamento</h3>
+  <h3>Diagrama de Entidade e Relacionamento</h3>
   <p>Para a aplicação do sistema de concessionária, foram desenvolvidas dez classes armazenadoras das informações necessárias para o funcionamento da aplicação. São elas, as classes Fornecedor, Endereco, Pessoa, Vendedor, Cliente, Produto, Categoria, Venda, EnumPagamento e AgendaVisita, abaixo:</p>
   <img src="https://github.com/canoafurada2021/pi-java-fx/assets/95760996/299da800-d62c-4fea-9178-26340f579f12.png" alt="Diagrama de Entidade e Relacionamento">
 </div>
