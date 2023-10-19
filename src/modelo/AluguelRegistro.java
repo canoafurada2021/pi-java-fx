@@ -11,9 +11,8 @@ public class AluguelRegistro {
 	private int quantDias;
 	private Double valor;
 	private Vendedor idVendedor;
-	private ArrayList<Veiculo> carrinho = new ArrayList<>();
-	private Locador idLocador;
-	private EnumPagamento tipoPagamento;
+	private Locador pessoas_cpf;
+	private EnumPagamento tipoPagamento;//adicionar no banco 
 	private Fornecedor fornecedor;
 	
 	public Fornecedor getFornecedor() {
@@ -58,17 +57,12 @@ public class AluguelRegistro {
 	public void setIdVendedor(Vendedor idVendedor) {
 		this.idVendedor = idVendedor;
 	}
-	public ArrayList<Veiculo> getCarrinho() {
-		return carrinho;
+		
+	public Locador getPessoas_cpf() {
+		return pessoas_cpf;
 	}
-	public void setCarrinho(ArrayList<Veiculo> carrinho) {
-		this.carrinho = carrinho;
-	}
-	public Locador getIdLocador() {
-		return idLocador;
-	}
-	public void setIdLocador(Locador idLocador) {
-		this.idLocador = idLocador;
+	public void setPessoas_cpf(Locador pessoas_cpf) {
+		this.pessoas_cpf = pessoas_cpf;
 	}
 	public EnumPagamento getTipoPagamento() {
 		return tipoPagamento;

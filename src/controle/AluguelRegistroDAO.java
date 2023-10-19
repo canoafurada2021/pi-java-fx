@@ -10,7 +10,9 @@ import java.util.ArrayList;
 
 import modelo.AluguelRegistro;
 import modelo.Categoria;
+import modelo.EnumPagamento;
 import modelo.Fornecedor;
+import modelo.Locador;
 import modelo.Vendedor;
 
 public class AluguelRegistroDAO implements IAluguelRegistroDAO{
@@ -23,9 +25,12 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 
 		ArrayList<AluguelRegistro> alugueis = new ArrayList<>();
 
-		  String query = "SELECT ar.*, f.nome as nomeFornecedor " +
-                  "FROM aluguelRegistro ar " +
-                  "INNER JOIN fornecedor f ON ar.fornecedor_id = f.id";
+		  String query = "SELECT ar.*, f.nome as nomeFornecedor, l.cpf as locador_cpf,"
+		  		+ " v.id_vendedor FROM aluguelRegistro ar"
+		  		+ "	 INNER JOIN fornecedor f ON ar.fornecedor_id = f.id"
+		  		+ "	 INNER JOIN locador l ON ar.locador_pessoas_cpf = l.pessoas_cpf"
+		  		+ "  INNER JOIN vendedor v ON ar.vendedor_id_vendedor = v.id_vendedor";
+
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -42,34 +47,42 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 				Long idVendedor = rs.getLong("id_vendedor");
 				int pessoasCpf = rs.getInt("pessoas_cpf");
 				Date data_inicio = rs.getDate("data_inicio");
+				String cpfLocador = rs.getString("locador_cpf");
 				
-				
-				
-				
-				
+				//crie um objeto vendedor e configure os atributos
 				Vendedor vendedor = new Vendedor();
-				vendedor.setId_vendedor(idVendedor);
-				aluguel.setIdVendedor(vendedor);
+					vendedor.setId_vendedor(idVendedor);
+					//associe o vendedor ao aluguel
+					aluguel.setIdVendedor(vendedor);
 		            
-				  Fornecedor fornecedor = new Fornecedor();
+				Locador locador = new Locador();
+					locador.setPessoas_cpf(cpfLocador);
+					//associando o lcoador ao aluguel
+					aluguel.setPessoas_cpf(locador);
+				
+				 Fornecedor fornecedor = new Fornecedor();
 		            fornecedor.setCnpj(idRegistro);
 		            fornecedor.setNome(rs.getString("nomeFornecedor"));
 		            aluguel.setFornecedor(fornecedor);
 
+		            //resto das atribuições
+		            aluguel.setFormaPagamento(formaPagamento);
+		            aluguel.setDataInicio(dataInicio);
+		            aluguel.setQuantDias(quantDias);
+		            aluguel.setValor(valor);
+		            aluguel.setIdVendedor(vendedor);
 		            
-		            
+		            //fazer o enum tipo pagamento
+		            String tipoPagamentoString = rs.getString("forma_pagamento");
+		            //converte a string pra um enum
+		            EnumPagamento tipoPagamento = EnumPagamento.valueOf(tipoPagamentoString);
+		            //atribui p valor do enum ao objeto alugel
+		            aluguel.setTipoPagamento(tipoPagamento); //validar se esta certo
 		            
 		            
 		            // Adicione o AluguelRegistro à lista
 		            alugueis.add(aluguel);
-				
-				
-				Long idCategoria = rs.getLong("id_categoria");
-				String nome = rs.getString("categoria");
 
-				Categoria cat = new Categoria();
-				cat.setCategoria(nome);
-				cat.setIdCategoria(idCategoria);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -81,43 +94,63 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 
 	}
 
-	public boolean inserir(Categoria c) {
-
+	public boolean inserir(AluguelRegistro ar) {
 		// instancia a classe
 		Conexao a = Conexao.getInstancia();
-
 		// ABRE conexao com banco
 		Connection con = a.conectar();
 
-		String query = "INSERT INTO categoria(id_categoria, categoria) VALUES(?, ?); ";
+		String query = "INSERT INTO aluguelRegistro (forma_pagamento, data_inicio, quant_dias, valor, vendedor_id_vendedor, locador_pessoas_cpf, fornecedor_id)"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?);";
+	   
+		boolean insercaoSucesso = false; // Inicializa com false
+
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setLong(1, c.getIdCategoria());
-			ps.setString(2, c.getCategoria());
+			
+			ps.setString(1, ar.getFormaPagamento());
+			//conversão do date
+			java.util.Date dataUtil = ar.getDataInicio(); // Suponha que ar.getDataInicio() retorne um java.util.Date
+			java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+			ps.setDate(2, dataSql);
+			ps.setInt(3, ar.getQuantDias());
+			ps.setDouble(4,ar.getValor());
+			ps.setLong(5, ar.getIdVendedor().getId_vendedor());
+			ps.setString(6, ar.getPessoas_cpf().getPessoas_cpf());
+			ps.setLong(7, ar.getFornecedor().getCnpj());
+		
+			
+			
+			// Chave estrangeira para fornecedor, locador e vendedor
 
-			// consolida a execução do comando no banco
-			ps.executeUpdate();
+	        int linhasAfetadas = ps.executeUpdate();
+	        
 
-			// fecha a conexão com banco
+	        if (linhasAfetadas > 0) {
+	            insercaoSucesso = true; // Define como true se pelo menos uma linha foi afetada
+	        }
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			a.fecharConexao();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-			return false; // retorna falso caso falha na inserção
 		}
-		return true; // retorna true se insercao bem sucedida
+
+	    return insercaoSucesso; // Retorna o resultado da inserção
 	}
 
-	public boolean excluir(Categoria ca) {
+	
+
+	public boolean excluir(AluguelRegistro ar) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "DELETE FROM categoria WHERE id_categoria = ?";
+		String query = "DELETE FROM aluguelRegistro WHERE id_venda = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setLong(1, ca.getIdCategoria());
+			ps.setInt(1, ar.getIdVenda());
 
 			int rowsAffected = ps.executeUpdate();
 
@@ -133,21 +166,33 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 		return false; // se bem falha na exclusao
 	}
 
-	// TA DANDO ERRO NO con.preparedStatement - ANDRI
-	public boolean atualizar(Categoria ca) {
+	public boolean atualizar(AluguelRegistro ar) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "UPDATE categoria SET categoria = ? WHERE id_categoria = ?";
+		String query = "UPDATE aluguelRegistro SET forma_pagamento = ?, data_inicio = ?, quant_dias = ?,"
+				+ " valor = ?,  vendedor_id_vendedor = ?, locador_pessoas_cpf= ?, fornecedor_id = ?"
+				+ " WHERE id_venda = ?";
 		try {
-			PreparedStatement preparedStatement = con.prepareStatement(query);
-			preparedStatement.setString(1, ca.getCategoria()); // Alterada a ordem aqui
-	        preparedStatement.setLong(2, ca.getIdCategoria()); // Alterada a ordem aqui
+			PreparedStatement ps = con.prepareStatement(query);
+			
+			ps.setString(1, ar.getFormaPagamento());
+			//conversão do date
+			java.util.Date dataUtil = ar.getDataInicio(); // Suponha que ar.getDataInicio() retorne um java.util.Date
+			java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+			ps.setDate(2, dataSql);
+			ps.setInt(3, ar.getQuantDias());
+			ps.setDouble(4,ar.getValor());
+			ps.setLong(5, ar.getIdVendedor().getId_vendedor());
+			ps.setString(6, ar.getPessoas_cpf().getPessoas_cpf());
+			ps.setLong(7, ar.getFornecedor().getCnpj());
+			
+			ps.setInt(8 , ar.getIdVenda());
 
-			int rowsUpdate = preparedStatement.executeUpdate();
+			int rowsUpdate = ps.executeUpdate();
 			
 			if(rowsUpdate>0) {
-				return true;
+				return true; //se alter bem sucedido
 			}else {
 				return false;
 			}
