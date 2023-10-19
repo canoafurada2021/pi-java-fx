@@ -27,10 +27,6 @@ import utilities.ExibePopUpSucesso;
 
 public class ControllerEdicaoFornecedores implements Initializable{
 
-
- 
-
-	
 	@FXML
 	private StackPane StackPanePerfil;
 
