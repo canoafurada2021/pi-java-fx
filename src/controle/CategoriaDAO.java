@@ -52,12 +52,11 @@ public class CategoriaDAO implements ICategoriaDAO {
 		// ABRE conexao com banco
 		Connection con = a.conectar();
 
-		String query = "INSERT INTO categoria(id_categoria, categoria) VALUES(?, ?); ";
+		String query = "INSERT INTO categoria( categoria) VALUES( ?); ";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setLong(1, c.getIdCategoria());
-			ps.setString(2, c.getCategoria());
+			ps.setString(1, c.getCategoria());
 
 			// consolida a execução do comando no banco
 			ps.executeUpdate();
