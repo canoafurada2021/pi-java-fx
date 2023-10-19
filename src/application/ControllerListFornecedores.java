@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import controle.FornecedorDAO;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -103,6 +104,10 @@ public class ControllerListFornecedores implements Initializable {
 	FornecedorDAO daoFor = new FornecedorDAO();
 
 	public void tblViewDivergenciaSearch() {
+		
+	
+		
+		
 		tableFornecedores.getItems().clear();
 		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));

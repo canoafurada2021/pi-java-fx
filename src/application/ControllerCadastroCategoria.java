@@ -127,13 +127,13 @@ public class ControllerCadastroCategoria implements Initializable {
 
 		c.setCategoria(nomeCategoria);
 
+		
 		// chamando o metodos pra fazer as validações (que já existem no pacote
 		// utilities)
 		try {
 
 			boolean insercaoSucesso = daoCategoria.inserir(c);
-			System.out.println("cadastro deu bom");
-
+		
 			limpaCampos();
 
 			if (insercaoSucesso) {

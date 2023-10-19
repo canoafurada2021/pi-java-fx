@@ -16,7 +16,7 @@ public class ExibePopUpSucesso {
 
 		try {
 			// a parte 'ExibePopUpErro.class' se refere a classe em que esta diretamente definido o metodo 'ExibirPopUpSucesso'
-            FXMLLoader fxmlLoader = new FXMLLoader(ExibePopUpErro.class.getResource("/visao/PopUpCadastroErro.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(ExibePopUpErro.class.getResource("/visao/PopUpCadastroSucesso.fxml"));
 			Parent popupRoot = fxmlLoader.load();
 
 			Stage popupStage = new Stage();
