@@ -6,23 +6,57 @@ import java.util.List;
 
 public class AluguelRegistro {
 	private int idVenda;
-	private String forma_pagamento;
-	private Date data_inicio;
-	private int quant_dias;
+	private String formaPagamento;
+	private Date dataInicio;
+	private int quantDias;
 	private Double valor;
-	private int vendedor_id_vendedor;
-	private int locador_pessoas_cpf;
+	private Vendedor idVendedor;
 	private ArrayList<Veiculo> carrinho = new ArrayList<>();
 	private Locador idLocador;
-	private EnumPagamento formaPagamento;
+	private EnumPagamento tipoPagamento;
+	private Fornecedor fornecedor;
 	
-	
-	
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
+	}
 	public int getIdVenda() {
 		return idVenda;
 	}
 	public void setIdVenda(int idVenda) {
 		this.idVenda = idVenda;
+	}
+	public String getFormaPagamento() {
+		return formaPagamento;
+	}
+	public void setFormaPagamento(String formaPagamento) {
+		this.formaPagamento = formaPagamento;
+	}
+	public Date getDataInicio() {
+		return dataInicio;
+	}
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+	public int getQuantDias() {
+		return quantDias;
+	}
+	public void setQuantDias(int quantDias) {
+		this.quantDias = quantDias;
+	}
+	public Double getValor() {
+		return valor;
+	}
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+	public Vendedor getIdVendedor() {
+		return idVendedor;
+	}
+	public void setIdVendedor(Vendedor idVendedor) {
+		this.idVendedor = idVendedor;
 	}
 	public ArrayList<Veiculo> getCarrinho() {
 		return carrinho;
@@ -36,12 +70,16 @@ public class AluguelRegistro {
 	public void setIdLocador(Locador idLocador) {
 		this.idLocador = idLocador;
 	}
-	public EnumPagamento getFormaPagamento() {
-		return formaPagamento;
+	public EnumPagamento getTipoPagamento() {
+		return tipoPagamento;
 	}
-	public void setFormaPagamento(EnumPagamento formaPagamento) {
-		this.formaPagamento = formaPagamento;
+	public void setTipoPagamento(EnumPagamento tipoPagamento) {
+		this.tipoPagamento = tipoPagamento;
 	}
+	
+	
+	
+
 	
 
 }
