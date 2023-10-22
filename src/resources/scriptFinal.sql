@@ -151,7 +151,16 @@ CREATE TABLE IF NOT EXISTS `veiculo`(
 -- -----------------------------------------------------
 -- INSERTS
 -- -----------------------------------------------------
-
+DELIMITER $$
+CREATE TRIGGER criar_login_vendedor
+AFTER INSERT ON vendedor
+FOR EACH ROW
+BEGIN
+    INSERT INTO login (cpf, senha, TipoAcessoLogin)
+    VALUES (NEW.cpf, NEW.senha, NEW.TipoAcessoLogin);
+END;
+$$
+DELIMITER ;
 -- insert EMPRESA (É UMA SÓ)
 insert into empresa (razao_social, telefone, cnpj, nome_fantasia, porte_empresa, TipoAcessoLogin) values ('O objetivo da empresa é deixar as pessoas felizes andando de gol', '+55 47 992178827', '12.345.678/0001-99', 'Pope Francis Master', 'grande', 1);
 
