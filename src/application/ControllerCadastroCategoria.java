@@ -34,10 +34,9 @@ public class ControllerCadastroCategoria implements Initializable {
 	@FXML
 	private StackPane StackPanePerfil;
 
-	
+	@FXML
+	private Button btnCadastroCategoria;
 
-	    @FXML
-	    private Button btnCadastroCategoria;
 	@FXML
 	private Button btnConfiguracoes;
 
@@ -152,6 +151,7 @@ public class ControllerCadastroCategoria implements Initializable {
 	
 
 	}
+
 	private void ExibirPopUpSucesso() {
 
 		try {

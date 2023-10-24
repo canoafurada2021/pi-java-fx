@@ -24,6 +24,6 @@
 	<natures>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
-		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.jdt.core.java nature</nature>
 	</natures>
 </projectDescription>
