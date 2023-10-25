@@ -32,8 +32,8 @@ public class VendedorDAO {
 				double salario = rs.getDouble("salario");
 
 				// Recupere o valor do cargo do enum
-				String cargoString = rs.getString("cargo");
-				TipoAcessoLogin tipoAcesso = TipoAcessoLogin.valueOf(cargoString);
+				String cargoString = rs.getString("TipoAcessoLogin");
+				TipoAcessoLogin tipoAcesso = TipoAcessoLogin.getById(Integer.parseInt(cargoString));
 
 				Vendedor v = new Vendedor();
 				v.setIdVendedor(idVendedor);
@@ -65,7 +65,7 @@ public class VendedorDAO {
 
 		String query = "INSERT INTO vendedor " + "(" + " salario, " + "nome," + "sobrenome," + "cpf, "+ "senha, " 
 
-				+ " cargo)" + " VALUES ( ?, ?, ?, ?)";
+				+ " TipoAcessoLogin)" + " VALUES ( ?, ?, ?, ?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -76,7 +76,7 @@ public class VendedorDAO {
 			ps.setLong(4, v.getCpf());
 			ps.setString(5, v.getSenha());
 			// Defina o cargo diretamente usando o valor do enum
-			ps.setString(6, TipoAcessoLogin.FUNCIONARIO.name());
+			ps.setInt(6, TipoAcessoLogin.FUNCIONARIO.getId());
 
 			// Consolidar a execução do comando no banco
 			ps.executeUpdate();
