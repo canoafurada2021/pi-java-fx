@@ -1,11 +1,16 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -13,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 public class ControllerConfiguracoes implements Initializable {
 
@@ -150,6 +156,29 @@ public class ControllerConfiguracoes implements Initializable {
 		public void initialize(URL location, ResourceBundle resources) {
 
 			
+		}
+
+		@FXML
+		void sairTelaConfiguracoes(ActionEvent event) {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+				Parent root = loader.load();
+
+				ControllerLogin controllerNovaTela = loader.getController();
+
+				Scene scene = new Scene(root);
+				Stage stage = new Stage();
+
+				// fecha a tela atual
+				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				stageAtual.close();
+
+				stage.setScene(scene);
+				stage.show();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 }

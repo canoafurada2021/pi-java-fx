@@ -80,30 +80,30 @@
                            </font>
                         </Label>
                         <TextField fx:id="txtNotaAvaliacao" layoutX="550.0" layoutY="140.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <TextField fx:id="txtPrecoPorDia" layoutX="550.0" layoutY="310.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblPrecoPorDia" layoutX="550.0" layoutY="280.0" text="Preço por Dia">
+                        <TextField fx:id="txtPrecoPorDia" layoutX="551.0" layoutY="225.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblPrecoPorDia" layoutX="551.0" layoutY="195.0" text="Preço por Dia">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtUnidadeEmEstoque" layoutX="550.0" layoutY="390.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
-                        <Label fx:id="lblUnidadeEmEstoque" layoutX="550.0" layoutY="355.0" text="Unidade em Estoque">
+                        <TextField fx:id="txtUnidadeEmEstoque" layoutX="551.0" layoutY="310.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
+                        <Label fx:id="lblUnidadeEmEstoque" layoutX="549.0" layoutY="280.0" text="Unidade em Estoque">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblCategoria" layoutX="550.0" layoutY="440.0" text="Categoria">
+                        <Label fx:id="lblCategoria" layoutX="551.0" layoutY="363.0" text="Categoria">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblCNPJFornecedor" layoutX="550.0" layoutY="525.0" text="CNPJ do Fornecedor">
+                        <Label fx:id="lblCNPJFornecedor" layoutX="550.0" layoutY="440.0" text="CNPJ do Fornecedor">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-<ComboBox fx:id="comboCategoriaIds" layoutX="548.0" layoutY="479.0" prefHeight="40.0" prefWidth="450.0" />
-<ComboBox fx:id="comboFornecedorIds" layoutX="549.0" layoutY="560.0" prefHeight="40.0" prefWidth="450.0" />
+<ComboBox fx:id="comboCategoriaIds" layoutX="550.0" layoutY="390.0" prefHeight="40.0" prefWidth="450.0" />
+<ComboBox fx:id="comboFornecedorIds" layoutX="550.0" layoutY="470.0" prefHeight="40.0" prefWidth="450.0" />
                      </children>
                   </Pane>
                   <Pane layoutX="270.0" layoutY="70.0" prefHeight="126.0" prefWidth="726.0">

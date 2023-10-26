@@ -217,7 +217,7 @@
             </Button>
             <Pane prefHeight="272.0" prefWidth="310.0">
                <children>
-                  <Button fx:id="btnSair" layoutY="150.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52;" text="Sair" textFill="WHITE">
+                  <Button fx:id="btnSair" layoutY="150.0" mnemonicParsing="false" onAction="#sairTelaConfiguracoes" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52;" text="Sair" textFill="WHITE">
                      <font>
                         <Font size="30.0" />
                      </font>

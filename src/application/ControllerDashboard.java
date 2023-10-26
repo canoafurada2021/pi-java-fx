@@ -126,7 +126,7 @@ public class ControllerDashboard implements Initializable {
 	}
 
 	@FXML
-	void abrirCadastroInfoFuncionarios(ActionEvent event) {
+	void abrirListFuncionarios(ActionEvent event) {
 		try {
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Funcionarios.fxml"));
@@ -154,12 +154,10 @@ public class ControllerDashboard implements Initializable {
 		// Abre a tela de listagem de produtos
 	    	
 		 try {
-
-				
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_Produto.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Produtos.fxml"));
 				Parent root = loader.load();
 
-				ControllerCadastroProduto controllerNovaTela = loader.getController();
+				ControllerListProdutos controllerNovaTela = loader.getController();
 
 				Scene scene = new Scene(root);
 				Stage stage = new Stage();
@@ -176,7 +174,7 @@ public class ControllerDashboard implements Initializable {
 			}
 	    }
 	 @FXML
-	    void abrirTelaCategorias(ActionEvent event) {
+	    void abrirListCategorias(ActionEvent event) {
 		 try {
 
 				
@@ -199,6 +197,75 @@ public class ControllerDashboard implements Initializable {
 				e.printStackTrace();
 			}
 	    }
+
+	@FXML
+	void abrirListLocacao(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Locacoes.fxml"));
+			Parent root = loader.load();
+
+			ControllerListLocacoes controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void abrirListUsuarios(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/ListClientes.fxml"));
+			Parent root = loader.load();
+
+			ControllerListClientes controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void abrirTelaConfiguracoes(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Configuracoes.fxml"));
+			Parent root = loader.load();
+
+			ControllerConfiguracoes controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@FXML
 	private void handleDashboardButton() {
@@ -287,4 +354,27 @@ public class ControllerDashboard implements Initializable {
 		return colors[index];
 	}
 	// Outros métodos de manipulação de eventos podem ser definidos da mesma forma
+
+	@FXML
+	void sairTelaDashboard(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+			Parent root = loader.load();
+
+			ControllerLogin controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
