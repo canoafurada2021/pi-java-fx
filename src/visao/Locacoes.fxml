@@ -27,7 +27,7 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tableFornecedores" layoutX="14.0" layoutY="57.0" prefHeight="864.0" prefWidth="1160.0" style="-fx-background-radius: 10;">
+                        <TableView fx:id="tableLocacoes" layoutX="14.0" layoutY="57.0" prefHeight="864.0" prefWidth="1160.0" style="-fx-background-radius: 10;">
                           <columns>
                             <TableColumn fx:id="columnId" prefWidth="72.0" text="ID" />
                             <TableColumn fx:id="columnFormaPag" prefWidth="149.0" text="Forma de pagamento" />
