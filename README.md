@@ -5,7 +5,9 @@
 ![Em Desenvolvimento](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)
 [![Java Development Kit (JDK)](https://img.shields.io/badge/License-JDK-blue)](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
 [![JavaFX](https://img.shields.io/badge/JavaFX-blue)](https://openjfx.io/)
-![Progresso: 30%](https://img.shields.io/badge/Progresso-10%25-blue)
+![Progresso: 30%](https://img.shields.io/badge/Progresso-90%25-blue)
+![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ_IDEA-Usando-Blue)
+
 
 ## 📚 Descrição das Funcionalidades do Sistema
 
