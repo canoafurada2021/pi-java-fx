@@ -36,9 +36,7 @@
                               <TableColumn fx:id="columnValor" prefWidth="132.0" text="Valor" />
                               <TableColumn fx:id="columnIdVendedor" prefWidth="222.0" text="Vendedor" />
                               <TableColumn fx:id="columnLocador" prefWidth="220.0" text="Cliente" />
-                              <TableColumn fx:id="columnViualizar" minWidth="0.0" prefWidth="49.0" />
-                              <TableColumn fx:id="columnEditar" prefWidth="47.0" />
-                              <TableColumn fx:id="columnExcluir" prefWidth="47.0" />
+                              <TableColumn fx:id="columnAcoes" minWidth="0.0" prefWidth="145.0" />
                           </columns>
                         </TableView>
                      </children>
