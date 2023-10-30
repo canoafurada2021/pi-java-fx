@@ -72,6 +72,10 @@ public class CategoriaDAO implements ICategoriaDAO {
 	}
 
 	public boolean excluir(Categoria ca) {
+		if (ca.getIdCategoria() == null) {
+			return false; // Não é possível excluir uma categoria com id nulo
+		}
+
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
@@ -92,10 +96,10 @@ public class CategoriaDAO implements ICategoriaDAO {
 		} finally {
 			c.fecharConexao();
 		}
-		return false; // se bem falha na exclusao
+		return false; // se bem falha na exclusão
 	}
 
-	// TA DANDO ERRO NO con.preparedStatement - ANDRI
+
 	public boolean atualizar(Categoria ca) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
