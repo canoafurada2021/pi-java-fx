@@ -75,10 +75,10 @@ public class ControllerEdicaoLocacoes implements Initializable {
     @FXML
     private TextField txtValor;
 
-    private VendedorDAO dao = VendedorDAO();
+    private VendedorDAO dao = new VendedorDAO();
     private ArrayList<Vendedor> vendedores = dao.listar();
 
-    private LocadorDAO daoL = LocadorDAO();
+    private LocadorDAO daoL = new LocadorDAO();
     private ArrayList<Locador> locadores = (ArrayList<Locador>) daoL.listar();
 
     AluguelRegistroDAO daoAluguelRegistro = new AluguelRegistroDAO();

@@ -25,8 +25,11 @@ import utilities.TelefoneFormatter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ControllerCadastroLocacao {
@@ -154,7 +157,9 @@ public class ControllerCadastroLocacao {
         AluguelRegistroDAO daoAluguelRegistro = new AluguelRegistroDAO();
 
         String formaPagamento = txtFormaPagamento.getText();
-        LocalDate dataInicio = dateDataInicio.getValue();
+        LocalDate localDate = dateDataInicio.getValue();
+        Date dataInicio = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
 
         String quantDiasF = txtQuantDias.getText();
         Integer quantDias = Integer.parseInt(quantDiasF);
@@ -198,20 +203,6 @@ public class ControllerCadastroLocacao {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-        txtFormaPagamento.textProperty()
-                .addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
-                    if (newValue != null && !newValue.isEmpty()) {
-                        txtFormaPagamento.setText(TelefoneFormatter.formatTelefoneBrasil(newValue));
-                    }
-                });
-
-        txtValor.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
-            if (newValue != null && !newValue.isEmpty()) {
-                txtValor.setText(CnpjFormatter.formatCnpj(newValue));
-            }
-        });
 
         preencherComboBox();
     }
@@ -282,7 +273,7 @@ public class ControllerCadastroLocacao {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Locacoes.fxml"));
             Parent root = loader.load();
 
-            ListViewController controllerNovaTela = loader.getController();
+            ControllerListLocacoes controllerNovaTela = loader.getController();
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -483,5 +474,31 @@ public class ControllerCadastroLocacao {
             e.printStackTrace();
         }
     }
+    @FXML
+    void abrirListCategorias(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Categorias.fxml"));
+            Parent root = loader.load();
+
+            ListViewController controllerNovaTela = loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            // fecha a tela atual
+            Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stageAtual.close();
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
 
 }
