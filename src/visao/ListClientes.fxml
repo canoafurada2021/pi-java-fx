@@ -50,7 +50,7 @@
                      <graphic>
                         <ImageView fx:id="btnPesquisa" fitHeight="33.0" fitWidth="33.0">
                            <image>
-                              <Image url="@projInt/pi-java-fx/src/imgs/Default_pesquisar.png" />
+                              <Image url="@../imgs/IconePesquisa.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -65,7 +65,7 @@
                <children>
                   <ImageView fx:id="imgLogo" fitHeight="70.0" fitWidth="220.0" layoutX="40.0" layoutY="50.0">
                      <image>
-                        <Image url="@projInt/pi-java-fx/src/imgs/logo.png" />
+                        <Image url="@../imgs/logo.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="btnPerfil" alignment="TOP_LEFT" layoutY="150.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-radius: 10;" textFill="WHITE">
@@ -77,7 +77,7 @@
                            <children>
                               <ImageView fx:id="imgFotoPerfil" fitHeight="50.0" fitWidth="50.0" StackPane.alignment="TOP_LEFT">
                                  <image>
-                                    <Image url="@projInt/pi-java-fx/src/imgs/FotoPerfilRedonda.png" />
+                                    <Image url="@../imgs/FotoPerfilRedonda.png" />
                                  </image>
                               </ImageView>
                               <Label fx:id="lblNomeVendedor" alignment="TOP_CENTER" prefHeight="48.0" prefWidth="158.0" text="Patricia Cordeiro" textFill="WHITE">
@@ -103,7 +103,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultDashboard" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@projInt/pi-java-fx/src/imgs/Default_Dashboard.png" />
+                        <Image url="@../imgs/Default_Dashboard.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -116,7 +116,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultProdutos" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@projInt/pi-java-fx/src/imgs/Default_Product.png" />
+                        <Image url="@../imgs/Default_Product.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -129,7 +129,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultLocacao" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@projInt/pi-java-fx/src/imgs/Default_Rent.png" />
+                        <Image url="@../imgs/Default_Rent.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -142,7 +142,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultFuncionarios" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@projInt/pi-java-fx/src/imgs/Default_Funcionarios.png" />
+                        <Image url="@../imgs/Default_Funcionarios.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -155,7 +155,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultUsuarios" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@projInt/pi-java-fx/src/imgs/Default_Usuarios.png" />
+                        <Image url="@../imgs/Default_Usuarios.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -168,7 +168,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultFornecedores" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@projInt/pi-java-fx/src/imgs/Default_Fornecedores.png" />
+                        <Image url="@../imgs/Default_Fornecedores.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -193,7 +193,7 @@
                <graphic>
                   <ImageView fx:id="imgDefaultConfiguracoes" fitHeight="50.0" fitWidth="50.0">
                      <image>
-                        <Image url="@projInt/pi-java-fx/src/imgs/Default_Configurações.png" />
+                        <Image url="@../imgs/Default_Configurações.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -207,7 +207,7 @@
                      <graphic>
                         <ImageView fx:id="imgSair" fitHeight="50.0" fitWidth="50.0">
                            <image>
-                              <Image url="@projInt/pi-java-fx/src/imgs/SignOut.png" />
+                              <Image url="@../imgs/SignOut.png" />
                            </image>
                         </ImageView>
                      </graphic>

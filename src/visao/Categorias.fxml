@@ -50,7 +50,7 @@
                      <graphic>
                         <ImageView fx:id="btnPesquisa" fitHeight="33.0" fitWidth="33.0">
                            <image>
-                              <Image url="@../../../Documentos/GitHub/pi-java-fx/pi-java-fx/src/imgs/Default_pesquisar.png" />
+                              <Image url="@../imgs/IconePesquisa.png" />
                            </image>
                         </ImageView>
                      </graphic>
