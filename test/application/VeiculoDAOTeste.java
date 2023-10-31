@@ -1,100 +1,79 @@
 package application;
 
-import java.sql.Date;
-import controle.VendedorDAO;
-import modelo.Vendedor;
+import controle.VeiculoDAO;
+import modelo.Veiculo;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 
-public class VeiculoDAOTeste{
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class VeiculoDAOTeste {
     private VeiculoDAO daoVeiculo;
+
+    private Veiculo veiculoTeste;
+
+    @BeforeEach
+    public void setUp() {
+        daoVeiculo = new VeiculoDAO();
+        veiculoTeste = new Veiculo();
+
+        veiculoTeste.setQuant_assento(5);
+        veiculoTeste.setTipo_cambio("Automático");
+        veiculoTeste.setQuant_portas(4);
+        veiculoTeste.setEspaco_porta_malas(400);
+        veiculoTeste.setMarca("Mercedes");
+        veiculoTeste.setNome("EQB SUV");
+        veiculoTeste.setCor("Preto");
+        veiculoTeste.setAno(2020);
+        veiculoTeste.setNota_avaliacao((int) 5.0);
+        veiculoTeste.setPreco_por_dia((long) 200.00);
+        veiculoTeste.setUnidade_em_estoque(100);
+
+    }
 
     @Test
     @Order(1)
-    public void TesteListarVeiculo() {
-        Veiculo v = new Veiculo();
-
-        v.setQuant_assento(quantAssento);
-        v.setTipo_cambio(tipoCambio);
-        v.setQuant_portas(quantPortas);
-        v.setEspaco_porta_malas(espacoPortaMalas);
-        v.setMarca(marca);
-        v.setNome(nome);
-        v.setCor(cor);
-        v.setAno(ano);
-        v.setNota_avaliacao(notaAvaliacao);
-        v.setPreco_por_dia(precoPorDia);
-        v.setUnidade_em_estoque(unidadeEmEstoque);
-
-        VeiculoDAO dao = new VeiculoDAO();
-        List<Veiculo> passou = dao.listar();
-
+    public void testInserirFornecedor() {
+        assertTrue(daoVeiculo.inserir(veiculoTeste));
     }
 
     @Test
     @Order(2)
-    public void TesteInserirVeiculo() {
-        Veiculo v = new Veiculo();
+    public void testeListarVeiculo() {
+        daoVeiculo.inserir(veiculoTeste);
 
-        v.setQuant_assento((int) 5);
-        v.setTipo_cambio("Automático");
-        v.setQuant_portas((int) 4);
-        v.setEspaco_porta_malas((int) 400);
-        v.setMarca("Mercedes");
-        v.setNome("EQB SUV");
-        v.setCor("Preto");
-        v.setAno((int) 2020);
-        v.setNota_avaliacao((boolean)5.0);
-        v.setPreco_por_dia((boolean)200.00);
-        v.setUnidade_em_estoque((int)100);
-
-        VeiculoDAO dao = new VeiculoDAO();
-        boolean passou = dao.inserir(v);
-        assertTrue(passou);
-
+        assertFalse(daoVeiculo.listar().isEmpty());
     }
 
     @Test
-    public void TesteExcluirVeiculo() {
-        Veiculo v = new Veiculo();
+    @Order(3)
+    public void testeAtualizarVeiculo() {
+        daoVeiculo.inserir(veiculoTeste);
 
-        v.setQuant_assento((int) 5);
-        v.setTipo_cambio("Automático");
-        v.setQuant_portas((int) 4);
-        v.setEspaco_porta_malas((int) 400);
-        v.setMarca("Mercedes");
-        v.setNome("EQB SUV");
-        v.setCor("Preto");
-        v.setAno((int) 2020);
-        v.setNota_avaliacao((boolean)5.0);
-        v.setPreco_por_dia((boolean)200.00);
-        v.setUnidade_em_estoque((int)100);
+        veiculoTeste.setQuant_assento(4);
+        veiculoTeste.setTipo_cambio("Manual");
+        veiculoTeste.setQuant_portas(2);
+        veiculoTeste.setEspaco_porta_malas(200);
+        veiculoTeste.setMarca("Volkswagen");
+        veiculoTeste.setNome("Polo");
+        veiculoTeste.setCor("Prata");
 
-        VeiculoDAO dao = new VeiculoDAO();
-        boolean deletou = dao.exluir(v);
-        assertTrue (true, deletou);
-
+        assertTrue(daoVeiculo.atualizar(veiculoTeste));
     }
 
     @Test
-    public void TesteAtualizarVeiculo() {
-        Veiculo v = new Veiculo();
+    @Order(4)
+    public void testExcluirVeiculo() {
+        daoVeiculo.inserir(veiculoTeste);
 
-        v.setQuant_assento((int) 5);
-        v.setTipo_cambio("Automático");
-        v.setQuant_portas((int) 4);
-        v.setEspaco_porta_malas((int) 400);
-        v.setMarca("Mercedes");
-        v.setNome("EQB SUV");
-        v.setCor("Preto");
-        v.setAno((int) 2020);
-        v.setNota_avaliacao((boolean)5.0);
-        v.setPreco_por_dia((boolean)200.00);
-        v.setUnidade_em_estoque((int)100);
-
-
-        VeiculoDAO dao = new VeiculoDAO();
-        boolean atualizado = dao.atulaizar(v);
-        assertTrue (true, atualizado);
-
+        assertTrue(daoVeiculo.excluir(veiculoTeste.getId_veiculo()));
     }
+
+    @AfterEach
+    public void tearDown() { daoVeiculo.excluir(veiculoTeste.getId_veiculo());}
 
 }
