@@ -13,44 +13,36 @@ import modelo.Locador;
 
 public class LocadorDAO {
 
-	public List<Locador> listar() {
-
-		// Instanciando a classe conexao
+	public ArrayList<Locador> listar() {
 		Conexao c = Conexao.getInstancia();
-
-		// Abrindo a conexao
 		Connection con = c.conectar();
 
 		String query = "SELECT * FROM locador";
-		List<Locador> locadores = new ArrayList<>();
+		ArrayList<Locador> locadores = new ArrayList<>();
 
 		try {
-
 			PreparedStatement ps = con.prepareStatement(query);
-
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-
 				Locador l = new Locador();
 
+				l.setPessoas_cpf(rs.getString("pessoas_cpf"));
 				l.setNome(rs.getString("nome"));
 				l.setSobrenome(rs.getString("sobrenome"));
-				l.setPessoas_cpf(rs.getString("pessoas_cpf"));
 				l.setTel_contato(rs.getLong("tel_contato"));
 				l.setPaisResidencia(rs.getString("pais_residencia"));
 				l.setChn(rs.getLong("cnh"));
-				l.setValidadeCarteira(rs.getDate("validade_carteira"));
-				l.setImg_Base64("img_Base64Locador");
 
-				/// Pegando a variável do tipo do cargo do usuário diretamente do banco
+				Date validadeCarteira = rs.getDate("validade_carteira");
+				l.setValidadeCarteira(validadeCarteira);
+
+				l.setNumIdentificacaoCarteira(rs.getLong("num_identificacao_carteira"));
+				l.setImg_Base64(rs.getString("img_Base64Locador"));
+
 				Integer cargoFromDatabase = rs.getInt("TipoAcessoLogin");
-
-
-				// Faz a conversão do valor do banco de dados para o mesmo tipo do EnumCargos
 				TipoAcessoLogin cargoEnum = TipoAcessoLogin.getById(cargoFromDatabase);
 
-				// Settando o valor do cargo corretamente para a entidade locador
 				l.setCargo(cargoEnum);
 				locadores.add(l);
 			}
@@ -60,95 +52,84 @@ public class LocadorDAO {
 			c.fecharConexao();
 		}
 		return locadores;
-
 	}
 
-	
-	public boolean atualizar(Locador l) { //ta certo esse?
-	    Conexao c = Conexao.getInstancia();
-	    Connection con = c.conectar();
-	    String query = "INSERT INTO locador " +
-                "(pessoas_cpf, nome, sobrenome, tel_contato, pais_residencia, cnh, validade_carteira, num_identificacao_carteira, cargo) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";	 
-	    
-	    
-	    try {
-	        PreparedStatement ps = con.prepareStatement(query);
-	        ps.setString(1, l.getPessoas_cpf());
-	        ps.setString(2, l.getNome());
-	        ps.setString(3, l.getSobrenome());
-	        ps.setLong(4, l.getTel_contato());
-	        ps.setString(5, l.getPaisResidencia());
-	        ps.setLong(6, l.getCnh());
-	        
-	        int rowsUpdated = ps.executeUpdate();
-	        
-	        if (rowsUpdated > 0) {
-	            // Os dados foram atualizados com sucesso
-	            return true;
-	        } else {
-	            // Nenhum registro foi atualizado (o CNPJ pode não existir)
-	            return false;
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	        return false;
-	    } finally {
-	        c.fecharConexao();
-	    }
-	}
-	
-
-	
 	public boolean inserir(Locador l) {
-	    Conexao c = Conexao.getInstancia();
-	    Connection con = c.conectar();
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
 
-	    String query = "INSERT INTO locador " +
-	                   "(pessoas_cpf, nome, sobrenome, tel_contato, pais_residencia, cnh, validade_carteira, num_identificacao_carteira, cargo) " +
-	                   "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO locador (pessoas_cpf, nome, sobrenome, tel_contato, pais_residencia, cnh, validade_carteira, num_identificacao_carteira, cargo, img_Base64Locador) " +
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-	    try {
-	        PreparedStatement ps = con.prepareStatement(query);
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
 
-	        // Substitua os índices no setXXX pelos valores corretos (1, 2, 3, etc.)
-	        ps.setString(1, l.getPessoas_cpf());
-	        ps.setString(2, l.getNome());
-	        ps.setString(3, l.getSobrenome());
-	        ps.setLong(4, l.getTel_contato());
-	        ps.setString(5, l.getPaisResidencia());
-	        ps.setLong(6, l.getCnh());
+			ps.setString(1, l.getPessoas_cpf());
+			ps.setString(2, l.getNome());
+			ps.setString(3, l.getSobrenome());
+			ps.setLong(4, l.getTel_contato());
+			ps.setString(5, l.getPaisResidencia());
+			ps.setLong(6, l.getCnh());
 
-	        
-	        
-	        Date validadeCarteira = new Date(l.getValidadeCarteira().getTime());
+			Date validadeCarteira = new Date(l.getValidadeCarteira().getTime());
+			ps.setDate(7, validadeCarteira);
 
-	        // Certifique-se de que getValidadeCarteira() retorna um java.sql.Date
-	        ps.setDate(7, validadeCarteira);
+			ps.setLong(8, l.getNumIdentificacaoCarteira());
+			ps.setInt(9, l.getCargo().getId()); // Converte o Enum para o valor correspondente no banco
+			ps.setString(10, l.getImg_Base64());
 
-	        // Substitua os índices restantes pelos valores apropriados
-	        ps.setLong(8, l.getNumIdentificacaoCarteira());
+			int rowsInserted = ps.executeUpdate();
 
-			ps.setInt(9, TipoAcessoLogin.CLIENTE.getId()); //conversão da role para o valor especifico estabelecido para essa coluna no banco
+			if (rowsInserted > 0) {
+				c.fecharConexao();
+				return true; // Inserção bem-sucedida
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
 
-      ps.setString(10, l.getImg_Base64());
-
-	        // Execute a consulta SQL
-	        ps.executeUpdate();
-	        
-	        
-	        // Fecha a conexão com o banco
-            c.fecharConexao();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	        return false; // Retorna false em caso de erro
-	    } finally {
-	        c.fecharConexao();
-	    }
-
-	    return true;
+		return false; // Falha na inserção
 	}
 
+	public boolean atualizar(Locador l) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "UPDATE locador SET nome = ?, sobrenome = ?, tel_contato = ?, pais_residencia = ?, cnh = ?, validade_carteira = ?, num_identificacao_carteira = ?, cargo = ?, img_Base64Locador = ? WHERE pessoas_cpf = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setString(1, l.getNome());
+			ps.setString(2, l.getSobrenome());
+			ps.setLong(3, l.getTel_contato());
+			ps.setString(4, l.getPaisResidencia());
+			ps.setLong(5, l.getCnh());
+
+			Date validadeCarteira = new Date(l.getValidadeCarteira().getTime());
+			ps.setDate(6, validadeCarteira);
+
+			ps.setLong(7, l.getNumIdentificacaoCarteira());
+			ps.setInt(8, l.getCargo().getId());
+			ps.setString(9, l.getImg_Base64());
+			ps.setString(10, l.getPessoas_cpf());
+
+			int rowsUpdated = ps.executeUpdate();
+
+			if (rowsUpdated > 0) {
+				c.fecharConexao();
+				return true; // Atualização bem-sucedida
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return false; // Falha na atualização
+	}
 
 	public boolean excluir(Locador l) {
 		Conexao c = Conexao.getInstancia();
@@ -160,11 +141,11 @@ public class LocadorDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, l.getPessoas_cpf());
 
-			int rowsAffected = ps.executeUpdate();
+			int rowsDeleted = ps.executeUpdate();
 
-			if (rowsAffected > 0) {
+			if (rowsDeleted > 0) {
 				c.fecharConexao();
-				return true;
+				return true; // Exclusão bem-sucedida
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -172,7 +153,6 @@ public class LocadorDAO {
 			c.fecharConexao();
 		}
 
-		return false;
+		return false; // Falha na exclusão
 	}
-
 }
