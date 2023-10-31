@@ -1,21 +1,29 @@
 package application;
 
+import java.sql.Connection;
 import java.sql.Date;
 
 import controle.VeiculoDAO;
 import controle.VendedorDAO;
 import modelo.TipoAcessoLogin;
 import modelo.Vendedor;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class VendedorDAOTeste{
-    private VendedorDAO daoVendedor;
 
+    @BeforeAll
+    public static void setUpClass(){
+        Connection connection = controle.Conexao.getInstancia().conectar();
+    }
+
+    @AfterAll
+    public static void tearDownClass(){
+        controle.Conexao.getInstancia().fecharConexao();
+    }
+
+    private VendedorDAO daoVendedor;
     private Vendedor vendedorTest;
 
     @Test
