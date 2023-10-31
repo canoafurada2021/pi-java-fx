@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="panelCadastroErro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="PanelMensagemCadastroErro" layoutY="70.0" prefHeight="54.0" prefWidth="302.0">
+         <children>
+            <Label fx:id="lblErro" layoutX="53.0" layoutY="21.0" prefHeight="30.0" prefWidth="200.0" text="TODOS OS CAMPOS!" textFill="#d70034" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblMensagem" alignment="CENTER" layoutX="41.0" prefHeight="30.0" prefWidth="220.0" text="Para realizar o login preencha" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fx:id="imgErro" fitHeight="54.0" fitWidth="54.0" layoutX="124.0" layoutY="21.0">
+         <image>
+            <Image url="@../../../../imgs/IconsErro.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

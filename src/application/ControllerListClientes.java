@@ -168,7 +168,7 @@ public class ControllerListClientes implements Initializable {
 				.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPaisResidencia()));
 		columnCNH.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnh()));
 		columnValidadeCarteira.setCellValueFactory(
-				cellData -> new SimpleObjectProperty<Date>(cellData.getValue().getValidadeCarteira()));
+				cellData -> new SimpleObjectProperty<Date>((Date) cellData.getValue().getValidadeCarteira()));
 
 		columnAcoes.setCellFactory(new Callback<TableColumn<Locador, String>, TableCell<Locador, String>>() {
 			@Override

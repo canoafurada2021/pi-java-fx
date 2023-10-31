@@ -47,28 +47,34 @@ public class ControllerDashboard implements Initializable {
 	private BarChart<String, Number> graphicVendas;
 
 	@FXML
-	private Button btnDashboard;
-
-	@FXML
-	private Button btnProdutos;
-
-	@FXML
-	private Button btnLocacao;
-
-	@FXML
-	private Button btnFuncionarios;
-
-	@FXML
-	private Button btnUsuarios;
-
-	@FXML
-	private Button btnFornecedores;
+	private Button btnCategorias;
 
 	@FXML
 	private Button btnConfiguracoes;
 
 	@FXML
+	private Button btnDashboard;
+
+	@FXML
+	private Button btnFornecedores;
+
+	@FXML
+	private Button btnFuncionarios;
+
+	@FXML
+	private Button btnLocacao;
+
+	@FXML
+	private Button btnPerfil;
+
+	@FXML
+	private Button btnProdutos;
+
+	@FXML
 	private Button btnSair;
+
+	@FXML
+	private Button btnUsuarios;
 
 	@FXML
 	private ImageView imgSair;
@@ -148,55 +154,52 @@ public class ControllerDashboard implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
-	 @FXML
-	    void abrirListProdutos(ActionEvent event) {
-		// Abre a tela de listagem de produtos
-	    	
-		 try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Produtos.fxml"));
-				Parent root = loader.load();
 
-				ControllerListProdutos controllerNovaTela = loader.getController();
+	@FXML
+	void abrirListProdutos(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Produtos.fxml"));
+			Parent root = loader.load();
 
-				Scene scene = new Scene(root);
-				Stage stage = new Stage();
+			ControllerListProdutos controllerNovaTela = loader.getController();
 
-				// fecha a tela atual
-				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				stageAtual.close();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
 
-				stage.setScene(scene);
-				stage.show();
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	    }
-	 @FXML
-	    void abrirListCategorias(ActionEvent event) {
-		 try {
+			stage.setScene(scene);
+			stage.show();
 
-				
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Categorias.fxml"));
-				Parent root = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-				ListViewController controllerNovaTela = loader.getController();
+	@FXML
+	void abrirListCategorias(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Categorias.fxml"));
+			Parent root = loader.load();
 
-				Scene scene = new Scene(root);
-				Stage stage = new Stage();
+			ListViewController controllerNovaTela = loader.getController();
 
-				// fecha a tela atual
-				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				stageAtual.close();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
 
-				stage.setScene(scene);
-				stage.show();
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-	    }
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@FXML
 	void abrirListLocacao(ActionEvent event) {

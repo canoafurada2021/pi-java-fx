@@ -14,7 +14,6 @@ public class Locador {
 	private TipoAcessoLogin cargo;
 	private String img_Base64;
 
-
 	public String getNome() {
 		return nome;
 	}
@@ -29,14 +28,6 @@ public class Locador {
 
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
-	}
-
-	public TipoAcessoLogin getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(TipoAcessoLogin cargo) {
-		this.cargo = cargo;
 	}
 
 	public String getPessoas_cpf() {
@@ -59,20 +50,22 @@ public class Locador {
 		return pais_residencia;
 	}
 
-	public void setPaisResidencia(String paisResidencia) {
-		this.pais_residencia = paisResidencia;
+	public void setPaisResidencia(String pais_residencia) {
+		this.pais_residencia = pais_residencia;
 	}
 
 	public Long getCnh() {
 		return cnh;
 	}
 
-	public void setChn(Long cnh) {
+
+	public void setCnh(Long cnh) {
 		this.cnh = cnh;
 	}
 
-	public java.sql.Date getValidadeCarteira() {
-		return (java.sql.Date) validadeCarteira;
+
+	public Date getValidadeCarteira() {
+		return validadeCarteira;
 	}
 
 	public void setValidadeCarteira(Date validadeCarteira) {
@@ -83,8 +76,8 @@ public class Locador {
 		return num_identificacao_carteira;
 	}
 
-	public void setNumIdentificacaoCarteira(Long numIdentificacaoCarteira) {
-		this.num_identificacao_carteira = numIdentificacaoCarteira;
+	public void setNumIdentificacaoCarteira(Long num_identificacao_carteira) {
+		this.num_identificacao_carteira = num_identificacao_carteira;
 	}
 
 	public String getImg_Base64() {
@@ -95,4 +88,11 @@ public class Locador {
 		this.img_Base64 = img_Base64;
 	}
 
+	public TipoAcessoLogin getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(TipoAcessoLogin cargo) {
+		this.cargo = cargo;
+	}
 }
