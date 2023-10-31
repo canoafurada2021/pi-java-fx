@@ -17,72 +17,54 @@ import modelo.Vendedor;
 
 public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 
-	
-	public ArrayList<AluguelRegistro> listar() {
 
+	public ArrayList<AluguelRegistro> listar() {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
-
 		ArrayList<AluguelRegistro> alugueis = new ArrayList<>();
 
-		  String query = "SELECT ar.*, f.nome as nomeFornecedor, l.cpf as locador_cpf,"
-		  		+ " v.id_vendedor FROM aluguelRegistro ar"
-		  		+ "	 INNER JOIN fornecedor f ON ar.fornecedor_id = f.id"
-		  		+ "	 INNER JOIN locador l ON ar.locador_pessoas_cpf = l.pessoas_cpf"
-		  		+ "  INNER JOIN vendedor v ON ar.vendedor_id_vendedor = v.id_vendedor";
-
+		String query = "SELECT ar.id_venda, ar.forma_pagamento, ar.data_inicio, ar.quant_dias, ar.valor, v.id_vendedor, l.pessoas_cpf as locador_cpf "
+				+ "FROM aluguelRegistro ar "
+				+ "INNER JOIN locador l ON ar.locador_pessoas_cpf = l.pessoas_cpf "
+				+ "INNER JOIN vendedor v ON ar.vendedor_id_vendedor = v.id_vendedor";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-	            AluguelRegistro aluguel = new AluguelRegistro();
+				AluguelRegistro aluguel = new AluguelRegistro();
 
-	            Long idRegistro = rs.getLong("id_venda");
+				Long idRegistro = rs.getLong("id_venda");
 				String formaPagamento = rs.getString("forma_pagamento");
-				Timestamp dataInicio = rs.getTimestamp("data_inicio");
+				Date dataInicio = rs.getDate("data_inicio");
 				int quantDias = rs.getInt("quant_dias");
 				Double valor = rs.getDouble("valor");
 				Long idVendedor = rs.getLong("id_vendedor");
-				int pessoasCpf = rs.getInt("pessoas_cpf");
-				Date data_inicio = rs.getDate("data_inicio");
 				String cpfLocador = rs.getString("locador_cpf");
-				
-				//crie um objeto vendedor e configure os atributos
+
+				// Configurar o ID do aluguel
+				aluguel.setIdVenda(idRegistro.intValue());
+
+
+				// Configurar os outros atributos
+				aluguel.setFormaPagamento(formaPagamento);
+				aluguel.setDataInicio(dataInicio);
+				aluguel.setQuantDias(quantDias);
+				aluguel.setValor(valor);
+
+				// Criar um objeto vendedor e configurar o ID do vendedor
 				Vendedor vendedor = new Vendedor();
-					vendedor.setId_vendedor(idVendedor);
-					//associe o vendedor ao aluguel
-					aluguel.setIdVendedor(vendedor);
-		            
+				vendedor.setId_vendedor(idVendedor);
+				aluguel.setVendedor(vendedor);
+
+				// Criar um objeto locador e configurar o CPF
 				Locador locador = new Locador();
-					locador.setPessoas_cpf(cpfLocador);
-					//associando o lcoador ao aluguel
-					aluguel.setPessoas_cpf(locador);
-				
-				 Fornecedor fornecedor = new Fornecedor();
-		            fornecedor.setCnpj(idRegistro);
-		            fornecedor.setNome(rs.getString("nomeFornecedor"));
-		            aluguel.setFornecedor(fornecedor);
+				locador.setPessoas_cpf(cpfLocador);
+				aluguel.setLocador(locador);
 
-		            //resto das atribuições
-		            aluguel.setFormaPagamento(formaPagamento);
-		            aluguel.setDataInicio(dataInicio);
-		            aluguel.setQuantDias(quantDias);
-		            aluguel.setValor(valor);
-		            aluguel.setIdVendedor(vendedor);
-		            
-		            //fazer o enum tipo pagamento
-		            String tipoPagamentoString = rs.getString("forma_pagamento");
-		            //converte a string pra um enum
-		            EnumPagamento tipoPagamento = EnumPagamento.valueOf(tipoPagamentoString);
-		            //atribui p valor do enum ao objeto alugel
-		            aluguel.setTipoPagamento(tipoPagamento); //validar se esta certo
-		            
-		            
-		            // Adicione o AluguelRegistro à lista
-		            alugueis.add(aluguel);
-
+				// Adicionar o AluguelRegistro à lista
+				alugueis.add(aluguel);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -91,8 +73,8 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 		}
 
 		return alugueis;
-
 	}
+
 
 	public boolean inserir(AluguelRegistro ar) {
 		// instancia a classe
@@ -100,8 +82,8 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 		// ABRE conexao com banco
 		Connection con = a.conectar();
 
-		String query = "INSERT INTO aluguelRegistro (forma_pagamento, data_inicio, quant_dias, valor, vendedor_id_vendedor, locador_pessoas_cpf, fornecedor_id)"
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?);";
+		String query = "INSERT INTO aluguelRegistro (forma_pagamento, data_inicio, quant_dias, valor, vendedor_id_vendedor, locador_pessoas_cpf)"
+				+ "VALUES (?, ?, ?, ?, ?, ?);";
 	   
 		boolean insercaoSucesso = false; // Inicializa com false
 
@@ -111,14 +93,13 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 			
 			ps.setString(1, ar.getFormaPagamento());
 			//conversão do date
-			java.util.Date dataUtil = ar.getDataInicio(); // Suponha que ar.getDataInicio() retorne um java.util.Date
-			java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
-			ps.setDate(2, dataSql);
+
+			ps.setDate(2, ar.getDataInicio());
 			ps.setInt(3, ar.getQuantDias());
 			ps.setDouble(4,ar.getValor());
 			ps.setLong(5, ar.getIdVendedor().getId_vendedor());
 			ps.setString(6, ar.getPessoas_cpf().getPessoas_cpf());
-			ps.setLong(7, ar.getFornecedor().getCnpj());
+
 		
 			
 			
@@ -171,23 +152,21 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 		Connection con = c.conectar();
 
 		String query = "UPDATE aluguelRegistro SET forma_pagamento = ?, data_inicio = ?, quant_dias = ?,"
-				+ " valor = ?,  vendedor_id_vendedor = ?, locador_pessoas_cpf= ?, fornecedor_id = ?"
+				+ " valor = ?,  vendedor_id_vendedor = ?, locador_pessoas_cpf= ?"
 				+ " WHERE id_venda = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			
 			ps.setString(1, ar.getFormaPagamento());
 			//conversão do date
-			java.util.Date dataUtil = ar.getDataInicio(); // Suponha que ar.getDataInicio() retorne um java.util.Date
-			java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
-			ps.setDate(2, dataSql);
+
+			ps.setDate(2, ar.getDataInicio());
 			ps.setInt(3, ar.getQuantDias());
 			ps.setDouble(4,ar.getValor());
 			ps.setLong(5, ar.getIdVendedor().getId_vendedor());
 			ps.setString(6, ar.getPessoas_cpf().getPessoas_cpf());
 			ps.setLong(7, ar.getFornecedor().getCnpj());
 			
-			ps.setInt(8 , ar.getIdVenda());
 
 			int rowsUpdate = ps.executeUpdate();
 			

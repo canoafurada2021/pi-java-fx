@@ -12,9 +12,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CategoriaDAOTest {
     private CategoriaDAO categoriaDAO;
 
+    private Categoria categoriaTeste;
+
     @BeforeEach
     void setUp() {
         categoriaDAO = new CategoriaDAO();
+        categoriaTeste = new Categoria();
+        categoriaTeste.setCategoria("Categoria");
     }
 
     @Test
@@ -30,7 +34,7 @@ public class CategoriaDAOTest {
     void testListarCategorias() {
         ArrayList<Categoria> categorias = categoriaDAO.listar();
         assertNotNull(categorias);
-        assertTrue(categorias.size() > 0);
+        assertFalse(categorias.isEmpty());
     }
 
     @Test

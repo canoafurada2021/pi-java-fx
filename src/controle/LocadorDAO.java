@@ -44,11 +44,11 @@ public class LocadorDAO {
 				l.setImg_Base64("img_Base64Locador");
 
 				/// Pegando a variável do tipo do cargo do usuário diretamente do banco
-				String cargoFromDatabase = rs.getString("TipoAcessoLogin");
+				Integer cargoFromDatabase = rs.getInt("TipoAcessoLogin");
 
 
 				// Faz a conversão do valor do banco de dados para o mesmo tipo do EnumCargos
-				TipoAcessoLogin cargoEnum = TipoAcessoLogin.valueOf(cargoFromDatabase);
+				TipoAcessoLogin cargoEnum = TipoAcessoLogin.getById(cargoFromDatabase);
 
 				// Settando o valor do cargo corretamente para a entidade locador
 				l.setCargo(cargoEnum);

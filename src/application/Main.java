@@ -14,11 +14,11 @@ public class Main extends Application {
     	//primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/imgs/favicon.png")));
 
     	
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_fornecedor.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Cadastro_locacao.fxml"));
         Parent root = loader.load();
 		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
-		ControllerCadastroFornecedores controller = loader.getController(); // Obtém uma referência ao controlador
+		ControllerCadastroLocacao controller = loader.getController(); // Obtém uma referência ao controlador
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

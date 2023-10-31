@@ -425,101 +425,84 @@ public class ControllerListLocacoes implements Initializable {
         columnIdVendedor.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getIdVendedor()));
         columnLocador.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPessoas_cpf()));
 
-        columnAcoes.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AluguelRegistro, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<AluguelRegistro, String> param) {
-                return new TableCell<AluguelRegistro, String>(){
+        columnAcoes.setCellFactory(param -> new TableCell<AluguelRegistro, String>() {
+            private final Button viewButton = new Button();
+            private final Button editButton = new Button();
+            private final HBox buttonContainer = new HBox(viewButton, editButton);
 
-                    private final Button viewButton = new Button();
+            {
+                buttonContainer.setSpacing(10); // Definir o espaçamento entre os botões
 
-                    private final Button editButton = new Button();
+                // Estilização dos botões
+                ImageView viewImage = new ImageView(new Image(getClass().getResourceAsStream("/imgs/editar.png")));
+                viewImage.setFitHeight(16);
+                viewImage.setFitWidth(16);
+                viewButton.setGraphic(viewImage);
+                viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
 
-                    private final HBox buttonContainer = new HBox(viewButton, editButton);
+                viewButton.setOnAction(event -> {
+                    AluguelRegistro aluguelRegistro = getTableView().getItems().get(getIndex());
+                    String formaPagamento = aluguelRegistro.getFormaPagamento().toString();
 
-                    {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Edicao_locacao.fxml"));
+                        Parent root = loader.load();
+                        ControllerEdicaoLocacoes controllerNovaTela = loader.getController();
 
-                        buttonContainer.setSpacing(10); //setta o espaçamento entre os botões
+                        // Passando os dados da locação selecionada de uma tela para outra
+                        controllerNovaTela.setAluguelRegistro(aluguelRegistro);
 
-                        // Estilização do botão de edição de funcionário, settando a imagem do lapis e a
-                        // cor de fundo do botão
+                        // Configurar a nova janela e mostrá-la
+                        Scene scene = new Scene(root);
+                        Stage stage = new Stage();
+                        stage.setScene(scene);
 
-                        ImageView imageView = new ImageView(
-                                new Image(getClass().getResourceAsStream("/imgs/editar.png")));
-                        imageView.setFitHeight(16);
-                        imageView.setFitWidth(16);
-                        viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
+                        stage.setOnCloseRequest(event1 -> tblViewAluguelRegistroSearch());
+                        stage.show();
 
-                        viewButton.setGraphic(imageView);
-                        viewButton.setOnAction(event -> {
-                            AluguelRegistro aluguelRegistro = getTableView().getItems().get(getIndex());
-                            String formaPagamento = aluguelRegistro.getFormaPagamento().toString();
-
-                            try {
-                                FXMLLoader loader = new FXMLLoader(
-                                        getClass().getResource("/visao/Edicao_locacao.fxml"));
-                                Parent root = loader.load();
-                                ControllerEdicaoLocacoes controllerNovaTela = loader.getController();
-
-                                //Passando os dados da locação selecionada de uma tela para outra
-                                controllerNovaTela.setAluguelRegistro(aluguelRegistro);
-
-                                //Configurar a nova janela e mostra-la
-                                Scene scene = new Scene(root);
-                                Stage stage = new Stage();
-                                stage.setScene(scene);
-
-                                stage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>(){
-
-                                    @Override
-                                    public void handle(WindowEvent event) {
-                                        tblViewAluguelRegistroSearch();
-                                    }
-                                });
-                                stage.show();
-
-
-                            } catch (IOException e1){
-                                e1.printStackTrace();
-                            }
-                            System.out.println("edicao forma pagamento"+formaPagamento);
-                            System.out.println("botao de edição clicado");
-
-                        });
-
-                        ImageView editImage = new ImageView(
-                                new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
-                        editImage.setFitWidth(16);
-                        editImage.setFitWidth(16);
-                        editButton.setGraphic(editImage);
-                        editButton.setStyle("-fx-background-color: red;");
-                        editButton.setOnAction(event -> {
-                            AluguelRegistro aluguelRegistro = getTableView().getItems().get().get(getIndex());
-
-                            if (dao.excluir(aluguelRegistro)) {
-                                dao.excluir(aluguelRegistro);
-                                getTableView().getItems().remove(aluguelRegistro);
-
-                                System.out.println("Locacao excluída com sucesso.");
-                            } else {
-                                System.out.println("Erro ao excluir a locacao.");
-                            }
-                            System.out.println("botao de delete clicado");
-                        });
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
                     }
+                    System.out.println("Edição da forma de pagamento: " + formaPagamento);
+                    System.out.println("Botão de edição clicado");
+                });
 
-                    @Override
-                    protected void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
+                ImageView editImage = new ImageView(new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
+                editImage.setFitWidth(16);
+                editImage.setFitHeight(16);
+                editButton.setGraphic(editImage);
+                editButton.setStyle("-fx-background-color: red;");
 
-                        if (empty) {
-                            setGraphic(null);
+                editButton.setOnAction(event -> {
+                    AluguelRegistro aluguelRegistro = getTableView().getItems().get(getIndex());
+
+                    if (aluguelRegistro != null) {
+                        if (dao.excluir(aluguelRegistro)) {
+                            getTableView().getItems().remove(aluguelRegistro);
+                            System.out.println("Locação excluída com sucesso.");
                         } else {
-                            setGraphic(buttonContainer);
+                            System.out.println("Erro ao excluir a locação.");
                         }
+                    } else {
+                        System.out.println("AluguelRegistro é nulo. Não é possível excluir.");
                     }
-                };
+
+                    System.out.println("Botão de excluir clicado");
+                });
+            }
+
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(buttonContainer);
+                }
             }
         });
+
 
         columnLocador.setCellValueFactory(cellData -> {
             AluguelRegistro aluguelRegistro = cellData.getValue();
@@ -553,12 +536,12 @@ public class ControllerListLocacoes implements Initializable {
                 });
             }
             tableLocacoes.setItems(listaFiltrada);
-        }
-        carregarLocacoes();
+        });
 
+        carregarLocacoes();
     }
 
-    private Object carregarLocacoes() {
+    private void carregarLocacoes() {
         AluguelRegistroDAO dao = new AluguelRegistroDAO();
 
         ArrayList<AluguelRegistro> aluguelRegistros = dao.listar();
