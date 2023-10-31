@@ -1,5 +1,9 @@
 package application;
 
+import controle.AluguelRegistroDAO;
+import controle.LocadorDAO;
+import controle.VendedorDAO;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,8 +14,20 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import modelo.AluguelRegistro;
+import modelo.Endereco;
+import modelo.Locador;
+import modelo.Vendedor;
+import utilities.CnpjFormatter;
+import utilities.ExibePopUpErro;
+import utilities.ExibePopUpSucesso;
+import utilities.TelefoneFormatter;
 
 import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class ControllerCadastroLocacao {
 
@@ -52,10 +68,10 @@ public class ControllerCadastroLocacao {
     private Button btnUsuarios;
 
     @FXML
-    private ComboBox<?> comboCpfLocador;
+    private ComboBox<String> comboCpfLocador;
 
     @FXML
-    private ComboBox<?> comboIdVendedor;
+    private ComboBox<String> comboIdVendedor;
 
     @FXML
     private DatePicker dateDataInicio;
@@ -126,13 +142,194 @@ public class ControllerCadastroLocacao {
     @FXML
     private TextField txtValor;
 
+    private VendedorDAO dao = new VendedorDAO();
+    private ArrayList<Vendedor> vendedores = dao.listar();
+
+    private LocadorDAO daoL = new LocadorDAO();
+    private ArrayList<Locador> locadores = (ArrayList<Locador>) daoL.listar();
+
+
     @FXML
-    void abrirListCategorias(ActionEvent event) {
+    void cadastrarLocacao(ActionEvent event) {
+        AluguelRegistroDAO daoAluguelRegistro = new AluguelRegistroDAO();
+
+        String formaPagamento = txtFormaPagamento.getText();
+        LocalDate dataInicio = dateDataInicio.getValue();
+
+        String quantDiasF = txtQuantDias.getText();
+        Integer quantDias = Integer.parseInt(quantDiasF);
+
+        String valorF = txtValor.getText();
+        Double valor = Double.parseDouble(valorF);
+
+        //vendedor selecionado
+        String selectedVendedor = comboIdVendedor.getValue();
+        int vendedorId = Integer.parseInt(selectedVendedor.split(" - ")[0]);
+        Vendedor vendedorSelecionado = encontrarVendedorPorId(vendedorId);
+
+        // locador selecionado
+        String selectedLocador = comboCpfLocador.getValue();
+        Locador locadorSelecionado = encontrarLocadorPorCpf(selectedLocador);
+
+        AluguelRegistro a = new AluguelRegistro();
+
+        a.setFormaPagamento(formaPagamento);
+        a.setDataInicio(dataInicio);
+        a.setQuantDias(quantDias);
+        a.setValor(valor);
+        a.setIdVendedor(vendedorSelecionado);
+        a.setPessoas_cpf(locadorSelecionado);
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Categorias.fxml"));
+            boolean insercaoSucesso = daoAluguelRegistro.inserir(a);
+
+            limpaCampos();
+
+            ExibePopUpSucesso.ExibirPopUpSucesso();
+
+            if(insercaoSucesso){
+            }else{
+                ExibePopUpErro.ExibirPopUpErro();
+            }
+        } catch (Exception e){
+            ExibePopUpSucesso.ExibirPopUpSucesso();
+        }
+
+    }
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+        txtFormaPagamento.textProperty()
+                .addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
+                    if (newValue != null && !newValue.isEmpty()) {
+                        txtFormaPagamento.setText(TelefoneFormatter.formatTelefoneBrasil(newValue));
+                    }
+                });
+
+        txtValor.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
+            if (newValue != null && !newValue.isEmpty()) {
+                txtValor.setText(CnpjFormatter.formatCnpj(newValue));
+            }
+        });
+
+        preencherComboBox();
+    }
+
+    private void preencherComboBox() {
+        for (Vendedor vendedor : vendedores){
+            String vendedorInfo = vendedor.getId_vendedor()+ " - "+ vendedor.getNome();
+            comboIdVendedor.getItems().add(vendedorInfo);
+        }
+
+        for (Locador locador : locadores){
+            String locadorInfo = locador.getPessoas_cpf()+" - "+locador.getNome();
+            comboCpfLocador.getItems().add(locadorInfo);
+        }
+    }
+
+    private void limpaCampos() {
+        txtFormaPagamento.setText(null);
+        txtValor.setText(null);
+        txtQuantDias.setText(null);
+        dateDataInicio.setValue(null);
+    }
+
+    private Locador encontrarLocadorPorCpf(String selectedLocador) {
+        for (Locador locador : locadores){
+            if (locador.getPessoas_cpf().equals(selectedLocador)){
+                return locador;
+            }
+
+        }
+        return null;
+    }
+
+    private Vendedor encontrarVendedorPorId(int vendedorId) {
+        for (Vendedor vendedor : vendedores){
+            if (vendedor.getId_vendedor() == vendedorId){
+                return vendedor;
+            }
+        }
+        return null; // retorna null se não encontrar o vendedor
+    }
+
+    @FXML
+    void abrirDashboard(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
+            Parent root = loader.load();
+
+            ControllerDashboard controllerNovaTela = loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            // fecha a tela atual
+            Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stageAtual.close();
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void abrirListLocacoes(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Locacoes.fxml"));
             Parent root = loader.load();
 
             ListViewController controllerNovaTela = loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            // fecha a tela atual
+            Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stageAtual.close();
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void sair(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+            Parent root = loader.load();
+
+            ControllerLogin controllerNovaTela = loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            // fecha a tela atual
+            Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stageAtual.close();
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void sairCadFornLogin(ActionEvent event) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+            Parent root = loader.load();
+
+            ControllerLogin controllerNovaTela = loader.getController();
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -271,34 +468,6 @@ public class ControllerCadastroLocacao {
             Parent root = loader.load();
 
             ControllerDashboard controllerNovaTela = loader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            // fecha a tela atual
-            Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stageAtual.close();
-
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void cadastrarLocacao(ActionEvent event) {
-
-    }
-
-    @FXML
-    void sair(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
-            Parent root = loader.load();
-
-            ControllerLogin controllerNovaTela = loader.getController();
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
