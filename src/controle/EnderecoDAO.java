@@ -13,15 +13,15 @@ public class EnderecoDAO {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO endereco (cep, id, rua, bairro, cidade, estado) VALUES (?, ?, ?, ?, ?, ?);";
+		String query = "INSERT INTO endereco (cep,  rua, bairro, cidade, estado) VALUES (?, ?, ?, ?, ?);";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, e.getRua());
-			ps.setString(2, e.getBairro());
-			ps.setString(3, e.getCidade());
-			ps.setString(4, e.getEstado());
-			ps.setString(5, Long.toString(e.getCep()));
+			ps.setString(1,  Long.toString(e.getCep()));
+			ps.setString(2, e.getRua());
+			ps.setString(3, e.getBairro());
+			ps.setString(4, e.getCidade());
+			ps.setString(5, e.getEstado());
 
 			ps.executeUpdate();
 
@@ -36,7 +36,7 @@ public class EnderecoDAO {
 	}
 
 	public ArrayList<Endereco> listar() {
-		
+
 	    ArrayList<Endereco> enderecos = new ArrayList<>();
 
 		Conexao c = Conexao.getInstancia();
@@ -67,7 +67,7 @@ public class EnderecoDAO {
 				e.setCidade(cidade);
 				e.setEstado(estado);
 				e.setCep(cep);
-				
+
 				enderecos.add(e);
 			}
 		} catch (SQLException e) {
@@ -78,7 +78,30 @@ public class EnderecoDAO {
 
 		return enderecos; // Retorna null se não encontrar o endereço
 	}
-	
 
+	public boolean excluir(int enderecoId) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM endereco WHERE id = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, enderecoId);
+
+			int linhasAfetadas = ps.executeUpdate();
+
+			if (linhasAfetadas > 0) {
+				c.fecharConexao();
+				return true; // Indica que o endereço foi excluído com sucesso
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return false; // Indica que a exclusão falhou
+	}
 
 }

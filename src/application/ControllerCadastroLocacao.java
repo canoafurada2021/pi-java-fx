@@ -7,6 +7,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class ControllerCadastroLocacao {
+public class ControllerCadastroLocacao implements Initializable {
 
     @FXML
     private StackPane StackPanePerfil;
@@ -145,12 +146,12 @@ public class ControllerCadastroLocacao {
     @FXML
     private TextField txtValor;
 
-    private VendedorDAO dao = new VendedorDAO();
-    private ArrayList<Vendedor> vendedores = dao.listar();
 
-    private LocadorDAO daoL = new LocadorDAO();
-    private ArrayList<Locador> locadores = (ArrayList<Locador>) daoL.listar();
+    private final VendedorDAO vendedorDAO = new VendedorDAO();
+    private final LocadorDAO locadorDAO = new LocadorDAO();
 
+    private ArrayList<Vendedor> vendedores = vendedorDAO.listar();
+    private ArrayList<Locador> locadores = locadorDAO.listar();
 
     @FXML
     void cadastrarLocacao(ActionEvent event) {
@@ -167,24 +168,22 @@ public class ControllerCadastroLocacao {
         String valorF = txtValor.getText();
         Double valor = Double.parseDouble(valorF);
 
-        //vendedor selecionado
-        String selectedVendedor = comboIdVendedor.getValue();
-        int vendedorId = Integer.parseInt(selectedVendedor.split(" - ")[0]);
-        Vendedor vendedorSelecionado = encontrarVendedorPorId(vendedorId);
+String selectedVendedorInfo = comboIdVendedor.getValue();
+String selectedLocadorInfo = comboCpfLocador.getValue();
 
-        // locador selecionado
-        String selectedLocador = comboCpfLocador.getValue();
-        Locador locadorSelecionado = encontrarLocadorPorCpf(selectedLocador);
+int vendedorId = Integer.parseInt(selectedVendedorInfo.split(" - ")[0]);
 
-        AluguelRegistro a = new AluguelRegistro();
+int locadorId = Integer.parseInt(selectedLocadorInfo.split(" - ")[0]);
+Vendedor vendedorSelecionado = encontrarVendedorSelecionado(vendedorId);
+Locador locadorSelecionado = encontrarLocadorSelecionado(String.valueOf(locadorId));
+AluguelRegistro a = new AluguelRegistro();
 
         a.setFormaPagamento(formaPagamento);
         a.setDataInicio(dataInicio);
         a.setQuantDias(quantDias);
         a.setValor(valor);
-        a.setIdVendedor(vendedorSelecionado);
-        a.setPessoas_cpf(locadorSelecionado);
-
+a.setVendedor(vendedorSelecionado);
+a.setLocador(locadorSelecionado);
         try {
             boolean insercaoSucesso = daoAluguelRegistro.inserir(a);
 
@@ -204,21 +203,11 @@ public class ControllerCadastroLocacao {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        preencherComboBox();
+
+
+        preencherComboVendedor();
+        preencherComboLocador();
     }
-
-    private void preencherComboBox() {
-        for (Vendedor vendedor : vendedores){
-            String vendedorInfo = vendedor.getId_vendedor()+ " - "+ vendedor.getNome();
-            comboIdVendedor.getItems().add(vendedorInfo);
-        }
-
-        for (Locador locador : locadores){
-            String locadorInfo = locador.getPessoas_cpf()+" - "+locador.getNome();
-            comboCpfLocador.getItems().add(locadorInfo);
-        }
-    }
-
     private void limpaCampos() {
         txtFormaPagamento.setText(null);
         txtValor.setText(null);
@@ -226,23 +215,48 @@ public class ControllerCadastroLocacao {
         dateDataInicio.setValue(null);
     }
 
-    private Locador encontrarLocadorPorCpf(String selectedLocador) {
-        for (Locador locador : locadores){
-            if (locador.getPessoas_cpf().equals(selectedLocador)){
-                return locador;
-            }
 
+
+    private void preencherComboVendedor(){
+        for(Vendedor vendedor: vendedores){
+String vendedorInfo = vendedor.getId_vendedor() + " - " + vendedor.getNome();
+            comboIdVendedor.getItems().add(vendedorInfo);
         }
-        return null;
     }
 
-    private Vendedor encontrarVendedorPorId(int vendedorId) {
-        for (Vendedor vendedor : vendedores){
-            if (vendedor.getId_vendedor() == vendedorId){
-                return vendedor;
+
+
+
+    private void preencherComboLocador(){
+        for(Locador locador: locadores){
+            String locadorInfo = locador.getPessoas_cpf() + " - " + locador.getNome();
+            comboCpfLocador.getItems().add(locadorInfo);
+        }
+
+    }
+
+
+
+private Vendedor encontrarVendedorSelecionado(int vendedorId){
+
+    for(Vendedor vendedor: vendedores){
+        if(vendedor.getId_vendedor() == vendedorId){
+            return vendedor;
+        }
+    }
+    return null;
+
+}
+
+    private Locador encontrarLocadorSelecionado(String locadorId){
+
+        for(Locador locador: locadores){
+            if(locador.getPessoas_cpf().equals(locadorId)){
+                return locador;
             }
         }
-        return null; // retorna null se não encontrar o vendedor
+        return null;
+
     }
 
     @FXML

@@ -32,12 +32,11 @@ public class VendedorDAO {
 				double salario = rs.getDouble("salario");
 
 				// Recupere o valor do cargo do enum
-				String cargoString = rs.getString("TipoAcessoLogin");
-				TipoAcessoLogin tipoAcesso = TipoAcessoLogin.getById(Integer.parseInt(cargoString));
+				int tipoAcessoId = rs.getInt("TipoAcessoLogin");
+				TipoAcessoLogin tipoAcesso = TipoAcessoLogin.getById(tipoAcessoId);
 
 				Vendedor v = new Vendedor();
 				v.setIdVendedor(idVendedor);
-
 				v.setNome(nome);
 				v.setSobrenome(sobrenome);
 				v.setSalario(salario);
@@ -46,7 +45,6 @@ public class VendedorDAO {
 				v.setTipoAcesso(tipoAcesso);
 
 				vendedores.add(v);
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -58,14 +56,10 @@ public class VendedorDAO {
 	}
 
 	public boolean inserir(Vendedor v) {
-
 		Conexao c = Conexao.getInstancia();
-
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO vendedor " + "(" + " salario, " + "nome," + "sobrenome," + "cpf, "+ "senha, " 
-
-				+ " TipoAcessoLogin)" + " VALUES ( ?, ?, ?, ?,?,?)";
+		String query = "INSERT INTO vendedor (salario, nome, sobrenome, cpf, senha, TipoAcessoLogin) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -75,84 +69,66 @@ public class VendedorDAO {
 			ps.setString(3, v.getSobrenome());
 			ps.setLong(4, v.getCpf());
 			ps.setString(5, v.getSenha());
-			// Defina o cargo diretamente usando o valor do enum
-			ps.setInt(6, TipoAcessoLogin.FUNCIONARIO.getId());
+			ps.setInt(6, v.getTipoAcesso().getId());
 
-			// Consolidar a execução do comando no banco
-			ps.executeUpdate();
+			int rowsInserted = ps.executeUpdate();
 
-			// Fecha a conexão com o banco
 			c.fecharConexao();
 
+			return rowsInserted > 0;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-			return false; // Retorna false em caso de falha na inserção
+			return false;
 		}
-
-		return true; // Retorna true se a inserção for bem-sucedida
 	}
-	
-	
-	
-	public boolean excluir(Vendedor v) { //metodo de exclusao
+
+	public boolean excluir(Vendedor v) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
-		
+
 		String query = "DELETE FROM vendedor WHERE id_vendedor = ?";
-		
+
 		try {
-			PreparedStatement ps = con.prepareStatement(query); //prepara consulta sql
+			PreparedStatement ps = con.prepareStatement(query);
 			ps.setLong(1, v.getId_vendedor());
-			
+
 			int rowsAffected = ps.executeUpdate();
-			
-			if(rowsAffected > 0) {
-				c.fecharConexao();
-				return true; //se exclusao bem-sucessida
-			}
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
+
 			c.fecharConexao();
+
+			return rowsAffected > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		return false;// retorna false se falha na exclusao
-		
+
+		return false;
 	}
-	
-	
+
 	public boolean atualizar(Vendedor v) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
-		
-		//acho q o cargo n pode atualizar 
-		String query = "UPDATE vendedor SET  salario = ?, nome = ?, sobrenome = ? WHERE id_vendedor = ? ";
-		
+
+		String query = "UPDATE vendedor SET salario = ?, nome = ?, sobrenome = ?, cpf = ?, senha = ?, TipoAcessoLogin = ? WHERE id_vendedor = ?";
+
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(query);
+
 			preparedStatement.setDouble(1, v.getSalario());
 			preparedStatement.setString(2, v.getNome());
 			preparedStatement.setString(3, v.getSobrenome());
-			preparedStatement.setLong(4, v.getId_vendedor());
-			preparedStatement.setLong(5, v.getCpf());
-			preparedStatement.setString(6, v.getSenha());
-			int rowsUpdate = preparedStatement.executeUpdate();
-			
-			if(rowsUpdate >0 ) {
-				//dados atualizados com sucesso
-				return true;
-			}else {
-				//nenhum registro atualizado (id pode n existir)
-				return false;
-			}
-		}catch (SQLException e) {
+			preparedStatement.setLong(4, v.getCpf());
+			preparedStatement.setString(5, v.getSenha());
+			preparedStatement.setInt(6, v.getTipoAcesso().getId());
+			preparedStatement.setLong(7, v.getId_vendedor());
+
+			int rowsUpdated = preparedStatement.executeUpdate();
+
+			c.fecharConexao();
+
+			return rowsUpdated > 0;
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
-		}finally {
-			c.fecharConexao();
 		}
-		
 	}
-	
-	
-	
 }
