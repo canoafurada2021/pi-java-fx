@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerListClientes">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerListClientes">
    <children>
       <SplitPane fx:id="SlipPaneConfigurações" layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
          <items>
@@ -41,16 +41,21 @@
                         </TableView>
                      </children>
                   </Pane>
-                  <TextField fx:id="txtPesquisa" layoutX="16.0" layoutY="24.0" prefHeight="44.0" prefWidth="1185.0" style="-fx-background-radius: 10;" text="Pesquisar">
+                  <Button fx:id="bntCadastrar" layoutX="1051.0" layoutY="23.0" mnemonicParsing="false" onAction="#abrirTelaCadastroLocacao" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="txtPesquisa" layoutX="16.0" layoutY="24.0" prefHeight="44.0" prefWidth="1022.0" style="-fx-background-radius: 10;" text="Pesquisar">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="btnPesquisar" layoutX="1113.0" layoutY="26.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: white;">
+                  <Button fx:id="btnPesquisar" layoutX="955.0" layoutY="26.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: white;">
                      <graphic>
-                        <ImageView fx:id="btnPesquisa" fitHeight="33.0" fitWidth="33.0">
+                        <ImageView fx:id="btnPesquisa" fitHeight="29.0" fitWidth="29.0">
                            <image>
-                              <Image url="@../imgs/IconePesquisa.png" />
+                              <Image url="@../imgs/Default_pesquisar.png" />
                            </image>
                         </ImageView>
                      </graphic>

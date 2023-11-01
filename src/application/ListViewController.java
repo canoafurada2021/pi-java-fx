@@ -313,28 +313,6 @@ public class ListViewController implements Initializable {
 		}
 	}
 
-	@FXML
-	void abrirListCategorias(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Categorias.fxml"));
-			Parent root = loader.load();
-
-			ListViewController controllerNovaTela = loader.getController();
-
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-
-			// fecha a tela atual
-			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			stageAtual.close();
-
-			stage.setScene(scene);
-			stage.show();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	@FXML
 	void abrirCadastroCategoria(ActionEvent event) {

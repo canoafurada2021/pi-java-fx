@@ -30,6 +30,8 @@ import utilities.ExibePopUpErro;
 import utilities.ExibePopUpSucesso;
 
 
+
+
 public class ControllerCadastroCategoria implements Initializable {
 
 	@FXML
@@ -242,15 +244,6 @@ public class ControllerCadastroCategoria implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	@FXML
-		void abrirConfiguracao(Action event) {
-			try{
-
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Configuracao.fxml"))
-
-			}
 	}
 
 
