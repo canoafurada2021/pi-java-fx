@@ -41,11 +41,6 @@
                         </TableView>
                      </children>
                   </Pane>
-                  <Button fx:id="bntCadastrar" layoutX="1051.0" layoutY="23.0" mnemonicParsing="false" onAction="#abrirTelaCadastroLocacao" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Cadastrar" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
                   <TextField fx:id="txtPesquisa" layoutX="16.0" layoutY="24.0" prefHeight="44.0" prefWidth="1022.0" style="-fx-background-radius: 10;" text="Pesquisar">
                      <font>
                         <Font size="20.0" />

@@ -34,6 +34,8 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import modelo.Locador;
+import utilities.CpfFormatter;
+import utilities.TelefoneFormatter;
 
 public class ControllerListClientes implements Initializable {
 
@@ -158,8 +160,10 @@ public class ControllerListClientes implements Initializable {
 		LocadorDAO dao = new LocadorDAO();
 		tableClientes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-		columnCPF.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPessoas_cpf()));
-		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+
+
+
+		columnCPF.setCellValueFactory(cellData -> new SimpleObjectProperty<>(CpfFormatter.formatCpf(cellData.getValue().getPessoas_cpf())));		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnIdCarteira.setCellValueFactory(
 				cellData -> new SimpleObjectProperty<>(cellData.getValue().getNumIdentificacaoCarteira()));
 		columnTelefone
@@ -198,7 +202,7 @@ public class ControllerListClientes implements Initializable {
 							try {
 								// PRECISA MUDAR PRO CONTROLLER CLIENTES !!!!! - ANDRI
 								FXMLLoader loader = new FXMLLoader(
-										getClass().getResource("/visao/Edicao_fornecedores.fxml"));
+										getClass().getResource("/visao/Edicao_locador.fxml"));
 								Parent root = loader.load();
 								ControllerEdicaoClientes controllerNovaTela = loader.getController();
 
@@ -402,7 +406,7 @@ public class ControllerListClientes implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Configuracoes.fxml"));
 			Parent root = loader.load();
 
-			ControllerConfiguracoes controllerNovaTela = loader.getController();
+			//ControllerConfiguracoes controllerNovaTela = loader.getController();
 
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
