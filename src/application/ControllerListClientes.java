@@ -2,8 +2,6 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -35,7 +33,6 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import modelo.Locador;
 import utilities.CpfFormatter;
-import utilities.TelefoneFormatter;
 
 public class ControllerListClientes implements Initializable {
 
@@ -178,7 +175,7 @@ public class ControllerListClientes implements Initializable {
 		columnValidadeCarteira.setCellValueFactory(
 				cellData -> new SimpleStringProperty(cellData.getValue().getValidadeCarteira()));
 
-		columnCargo.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getCargo()));
+		columnCargo.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getTipoAcesso()));
 		columnAcoes.setCellFactory(new Callback<TableColumn<Locador, String>, TableCell<Locador, String>>() {
 			@Override
 			public TableCell<Locador, String> call(TableColumn<Locador, String> param) {

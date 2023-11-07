@@ -1,7 +1,5 @@
 package modelo;
 
-import java.util.Date;
-
 public class Locador {
 	private String nome;
 	private String sobrenome;
@@ -91,7 +89,7 @@ public class Locador {
 		this.img_Base64 = img_Base64;
 	}
 
-	public TipoAcessoLogin getCargo() {
+	public TipoAcessoLogin getTipoAcesso() {
 		return cargo;
 	}
 

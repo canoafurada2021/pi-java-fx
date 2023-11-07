@@ -1,12 +1,10 @@
 package controle;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import modelo.TipoAcessoLogin;
 import modelo.Locador;
@@ -74,7 +72,7 @@ public class LocadorDAO {
 			ps.setString(7, l.getValidadeCarteira());
 
 			ps.setLong(8, l.getNumIdentificacaoCarteira());
-			ps.setInt(9, l.getCargo().getId()); // Converte o Enum para o valor correspondente no banco
+			ps.setInt(9, l.getTipoAcesso().getId()); // Converte o Enum para o valor correspondente no banco
 
 			int rowsInserted = ps.executeUpdate();
 
@@ -110,7 +108,7 @@ public class LocadorDAO {
 			ps.setString(6, l.getValidadeCarteira());
 
 			ps.setLong(7, l.getNumIdentificacaoCarteira());
-			ps.setInt(8, l.getCargo().getId());
+			ps.setInt(8, l.getTipoAcesso().getId());
 
 
 
