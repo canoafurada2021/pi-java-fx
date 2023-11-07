@@ -105,25 +105,23 @@ public class CategoriaDAO implements ICategoriaDAO {
 		Connection con = c.conectar();
 
 		String query = "UPDATE categoria SET categoria = ? WHERE id_categoria = ?";
+
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(query);
-			preparedStatement.setString(1, ca.getCategoria()); // Alterada a ordem aqui
-	        preparedStatement.setLong(2, ca.getIdCategoria()); // Alterada a ordem aqui
+			preparedStatement.setString(1, ca.getCategoria());
+			preparedStatement.setLong(2, ca.getIdCategoria());
 
-			int rowsUpdate = preparedStatement.executeUpdate();
-			
-			if(rowsUpdate>0) {
-				return true;
-			}else {
-				return false;
-			}
+			int rowsUpdated = preparedStatement.executeUpdate();
+
+			return rowsUpdated > 0; // Retorna verdadeiro se a atualização foi bem-sucedida
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
-		}finally {
-			c.fecharConexao();
+			return false; // Retorna falso em caso de falha na atualização
+		} finally {
+			c.fecharConexao(); // Garante que a conexão será fechada
 		}
-
 	}
+
+
 
 }
