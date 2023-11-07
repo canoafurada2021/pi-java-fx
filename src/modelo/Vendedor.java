@@ -31,7 +31,7 @@ public class Vendedor extends PessoaFisica {
 		this.id_vendedor = id_vendedor;
 	}
 
-	public void setIdVendedor(Long id_vendedor) {
+	public void setIdVendedor(long id_vendedor) {
 		this.id_vendedor = id_vendedor;
 	}
 

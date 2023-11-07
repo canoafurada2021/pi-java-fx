@@ -4,6 +4,7 @@ import java.util.List;
 
 import controle.VeiculoDAO;
 import modelo.Categoria;
+import modelo.Fornecedor;
 import modelo.Veiculo;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class VeiculoDAOTest {
     private VeiculoDAO daoVeiculo;
+
+    private Fornecedor fornecedor;
+    public void setFornecedor(Fornecedor fornecedor){
+        this.fornecedor = fornecedor;
+    }
 
 
     @Test
@@ -33,9 +39,13 @@ public class VeiculoDAOTest {
 
         Categoria categoria = new Categoria();
         categoria.setIdCategoria(1L);
-        categoria.setCategoria("Sport");
 
         v.setIdCategoria(categoria);
+
+        Fornecedor f = new Fornecedor();
+        f.setCnpj(82l);
+
+        v.setCnpj(f);
 
         VeiculoDAO dao = new VeiculoDAO();
         boolean passou = dao.inserir(v);
@@ -84,6 +94,13 @@ public class VeiculoDAOTest {
         v.setPreco_por_dia((long) 200.00);
         v.setUnidade_em_estoque(100);
 
+        Categoria categoria = new Categoria();
+        categoria.setIdCategoria(1L);
+        v.setIdCategoria(categoria);
+
+        Fornecedor f = new Fornecedor();
+        f.setCnpj(12345678901234l);
+        v.setCnpj(f);
 
         VeiculoDAO dao = new VeiculoDAO();
         boolean atualizado = dao.atualizar(v);
@@ -107,6 +124,9 @@ public class VeiculoDAOTest {
         v.setNota_avaliacao((int) 5.0);
         v.setPreco_por_dia((long) 200.00);
         v.setUnidade_em_estoque(100);
+
+        Fornecedor f = new Fornecedor();
+        f.setCnpj(12345678901234l);
 
         VeiculoDAO dao = new VeiculoDAO();
         boolean deletou = dao.excluir(v.getId_veiculo());
