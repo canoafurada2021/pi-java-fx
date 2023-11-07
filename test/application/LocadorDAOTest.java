@@ -7,9 +7,13 @@ import modelo.TipoAcessoLogin;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LocadorDAOTest {
     private static LocadorDAO daoLocador;
@@ -58,7 +62,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf(null);
         l.setSobrenome("Wietcowski");
         l.setTel_contato((long) 992783476);
-        l.setValidadeCarteira(String.valueOf(data));
+        l.setValidadeCarteira(data);
 
         LocadorDAO dao = new LocadorDAO();
         if (l.getCnh() != null) {
@@ -81,10 +85,10 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("12345698723");
         l.setSobrenome("Wietcowski");
         l.setTel_contato((long) 992783476);
-        l.setValidadeCarteira(String.valueOf(data));
+        l.setValidadeCarteira(data);
 
         LocadorDAO dao = new LocadorDAO();
-        List<Locador> listouok = dao.listar();
+        ArrayList<Locador> listouok = dao.listar();
     }
 
     @Order(4)
@@ -99,10 +103,10 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("12345698723");
         l.setSobrenome(null);
         l.setTel_contato((long) 992783476);
-        l.setValidadeCarteira(String.valueOf(data));
+        l.setValidadeCarteira(data);
 
         LocadorDAO dao = new LocadorDAO();
-        List<Locador> listouerrado = dao.listar();
+        ArrayList<Locador> listouerrado = dao.listar();
     }
 
 
@@ -118,8 +122,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("654789321");
         l.setSobrenome("Wietcowski");
         l.setTel_contato(992783476l);
-        l.setValidadeCarteira(String.valueOf(data));
-        l.setCargo(TipoAcessoLogin.CLIENTE);
+        l.setValidadeCarteira(data);
 
         LocadorDAO dao = new LocadorDAO();
         boolean alterouok = dao.atualizar(l);
@@ -163,7 +166,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("4444444444");
         l.setSobrenome("Wietcowski");
         l.setTel_contato((long) 992783476);
-        l.setValidadeCarteira(String.valueOf(data));
+        l.setValidadeCarteira(data);
 
         LocadorDAO dao = new LocadorDAO();
         boolean excluiuok = dao.excluir(l);
@@ -182,7 +185,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("866565533");
         l.setSobrenome("Wietcowski");
         l.setTel_contato(null);
-        l.setValidadeCarteira(String.valueOf(data));
+        l.setValidadeCarteira(data);
 
         LocadorDAO dao = new LocadorDAO();
         boolean excluiuerrado = dao.excluir(l);

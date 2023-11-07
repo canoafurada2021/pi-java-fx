@@ -4,7 +4,36 @@ public class Empresa extends PessoaJuridica {
 
 	private String razao_social;
 	private String porte_empresa;
+
+	public void setId_empresa(Long id_empresa) {
+		this.id_empresa = id_empresa;
+	}
+
+	@Override
+	public Long getCnpj() {
+		return cnpj;
+	}
+
+	@Override
+	public void setCnpj(Long cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	@Override
+	public Long getTelefone() {
+		return telefone;
+	}
+
+	@Override
+	public void setTelefone(Long telefone) {
+		this.telefone = telefone;
+	}
+
 	private String nome_fantasia;
+	private Long id_empresa;
+	private Long cnpj;
+	private Long telefone;
+
 	public String getRazao_social() {
 		return razao_social;
 	}
@@ -23,7 +52,4 @@ public class Empresa extends PessoaJuridica {
 	public void setNome_fantasia(String nome_fantasia) {
 		this.nome_fantasia = nome_fantasia;
 	}
-
-	
-
 }

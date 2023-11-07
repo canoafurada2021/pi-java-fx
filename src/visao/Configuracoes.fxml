@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerConfiguracoes">
    <children>
       <SplitPane fx:id="SlipPaneConfigurações" layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
         <items>
@@ -66,7 +66,7 @@
                         <TextField fx:id="txtId" layoutX="616.0" layoutY="448.0" prefHeight="39.0" prefWidth="424.0" />
                         <TextField fx:id="txtCnpj" layoutX="616.0" layoutY="578.0" prefHeight="39.0" prefWidth="424.0" />
                         <TextField fx:id="txtTelefone" layoutX="616.0" layoutY="713.0" prefHeight="39.0" prefWidth="424.0" />
-                        <Button fx:id="bntSalvarAlteraoes" layoutX="374.0" layoutY="816.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="56.0" prefWidth="344.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Salvar Alterações" textFill="WHITE">
+                        <Button fx:id="bntEdicaoEmpresa" layoutX="374.0" layoutY="816.0" mnemonicParsing="false" onAction="#irParaEdicaoConfiguracoes" prefHeight="56.0" prefWidth="344.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Alterar" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>

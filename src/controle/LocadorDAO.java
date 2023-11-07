@@ -72,7 +72,8 @@ public class LocadorDAO {
 			ps.setString(7, l.getValidadeCarteira());
 
 			ps.setLong(8, l.getNumIdentificacaoCarteira());
-			ps.setInt(9, l.getTipoAcesso().getId()); // Converte o Enum para o valor correspondente no banco
+			ps.setInt(9, l.getCargo().getId()); // Converte o Enum para o valor correspondente no banco
+			//ps.setString(10, l.getImg_Base64());
 
 			int rowsInserted = ps.executeUpdate();
 
