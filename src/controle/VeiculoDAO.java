@@ -168,7 +168,7 @@ public class VeiculoDAO {
 		String query = "UPDATE veiculo SET "
 				+ "quant_assento = ?, tipo_cambio = ?, quant_portas = ?, espaco_porta_malas = ?, "
 				+ "marca = ?, nome = ?, cor = ?, ano = ?, nota_avaliacao = ?, preco_por_dia = ?, "
-				+ "unidade_em_estoque = ?, idCategoria = ?, fornecedor_cnpj = ? "
+				+ "unidade_em_estoque = ?, categoria_id_categoria = ?, fornecedor_cnpj = ? "
 				+ "WHERE id_veiculo = ?";
 
 		try {
@@ -185,13 +185,13 @@ public class VeiculoDAO {
 			ps.setInt(8, veiculo.getAno());
 			ps.setInt(9, veiculo.getNota_avaliacao());
 			ps.setLong(10, veiculo.getPreco_por_dia());
-			ps.setInt(12, veiculo.getUnidade_em_estoque());
-			ps.setLong(13, veiculo.getIdCategoria().getIdCategoria());
-			ps.setLong(14, veiculo.getCnpj().getCnpj());
+			ps.setInt(11, veiculo.getUnidade_em_estoque());
+			ps.setLong(12, veiculo.getIdCategoria().getIdCategoria());
+			ps.setLong(13, veiculo.getCnpj().getCnpj());
 
 			// Defina o valor do último parâmetro como o ID do veículo que você deseja
 			// atualizar
-			ps.setInt(15, veiculo.getId_veiculo());
+			ps.setInt(14, veiculo.getId_veiculo());
 
 			int rowsAffected = ps.executeUpdate();
 

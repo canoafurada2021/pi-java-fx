@@ -103,7 +103,11 @@ public class ControllerListClientes implements Initializable {
 	private TableColumn<Locador, Long> columnTelefone;
 
 	@FXML
-	private TableColumn<Locador, Date> columnValidadeCarteira;
+	private TableColumn<Locador, String> columnValidadeCarteira;
+
+	@FXML
+	private TableColumn<Locador, String> columnCargo;
+
 
 	@FXML
 	private ImageView imgDefaultConfiguracoes;
@@ -172,8 +176,9 @@ public class ControllerListClientes implements Initializable {
 				.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPaisResidencia()));
 		columnCNH.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnh()));
 		columnValidadeCarteira.setCellValueFactory(
-				cellData -> new SimpleObjectProperty<Date>((Date) cellData.getValue().getValidadeCarteira()));
+				cellData -> new SimpleStringProperty(cellData.getValue().getValidadeCarteira()));
 
+		columnCargo.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getCargo()));
 		columnAcoes.setCellFactory(new Callback<TableColumn<Locador, String>, TableCell<Locador, String>>() {
 			@Override
 			public TableCell<Locador, String> call(TableColumn<Locador, String> param) {

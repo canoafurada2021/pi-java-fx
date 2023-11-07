@@ -33,10 +33,8 @@ public class LocadorDAO {
 				l.setTel_contato(rs.getLong("tel_contato"));
 				l.setPaisResidencia(rs.getString("pais_residencia"));
 				l.setCnh(rs.getLong("cnh"));
-				l.setValidadeCarteira(rs.getDate("validade_carteira"));
+				l.setValidadeCarteira(rs.getString("validade_carteira"));
 
-				Date validadeCarteira = rs.getDate("validade_carteira");
-				l.setValidadeCarteira(validadeCarteira);
 
 				l.setNumIdentificacaoCarteira(rs.getLong("num_identificacao_carteira"));
 				l.setImg_Base64(rs.getString("img_Base64Locador"));
@@ -73,8 +71,7 @@ public class LocadorDAO {
 			ps.setString(5, l.getPaisResidencia());
 			ps.setLong(6, l.getCnh());
 
-			Date validadeCarteira = new Date(l.getValidadeCarteira().getTime());
-			ps.setDate(7, validadeCarteira);
+			ps.setString(7, l.getValidadeCarteira());
 
 			ps.setLong(8, l.getNumIdentificacaoCarteira());
 			ps.setInt(9, l.getCargo().getId()); // Converte o Enum para o valor correspondente no banco
@@ -99,7 +96,7 @@ public class LocadorDAO {
 		Connection con = c.conectar();
 
 		String query = "UPDATE locador SET " +
-				"nome = ?, sobrenome = ?, tel_contato = ?, pais_residencia = ?, cnh = ?, validade_carteira = ?, num_identificacao_carteira = ?, TipoAcessoLogin = ? " +
+				"nome = ?, sobrenome = ?, tel_contato = ?, pais_residencia = ?, cnh = ?, validade_carteira = ?, num_identificacao_carteira = ? " +
 				"WHERE pessoas_cpf = ?";
 
 		try {
@@ -110,12 +107,11 @@ public class LocadorDAO {
 			ps.setString(4, l.getPaisResidencia());
 			ps.setLong(5, l.getCnh());
 
-			Date validadeCarteira = new Date(l.getValidadeCarteira().getTime());
-			ps.setDate(6, validadeCarteira);
+			ps.setString(6, l.getValidadeCarteira());
 
 			ps.setLong(7, l.getNumIdentificacaoCarteira());
-			ps.setInt(8, l.getCargo().getId());
-			ps.setString(9, l.getPessoas_cpf());
+//			ps.setInt(8, l.getCargo().getId());
+			ps.setString(8, l.getPessoas_cpf());
 
 			int rowsUpdated = ps.executeUpdate();
 

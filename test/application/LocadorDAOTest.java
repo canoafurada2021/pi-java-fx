@@ -37,7 +37,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("4444444444");
         l.setSobrenome("Wietcowski");
         l.setTel_contato(992783476L); // Adicione "L" para indicar que é um long literal
-        l.setValidadeCarteira(data);
+        l.setValidadeCarteira(String.valueOf(data));
         l.setCargo(TipoAcessoLogin.CLIENTE);
 
         LocadorDAO dao = new LocadorDAO();
@@ -58,7 +58,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf(null);
         l.setSobrenome("Wietcowski");
         l.setTel_contato((long) 992783476);
-        l.setValidadeCarteira(data);
+        l.setValidadeCarteira(String.valueOf(data));
 
         LocadorDAO dao = new LocadorDAO();
         if (l.getCnh() != null) {
@@ -81,7 +81,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("12345698723");
         l.setSobrenome("Wietcowski");
         l.setTel_contato((long) 992783476);
-        l.setValidadeCarteira(data);
+        l.setValidadeCarteira(String.valueOf(data));
 
         LocadorDAO dao = new LocadorDAO();
         List<Locador> listouok = dao.listar();
@@ -99,7 +99,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("12345698723");
         l.setSobrenome(null);
         l.setTel_contato((long) 992783476);
-        l.setValidadeCarteira(data);
+        l.setValidadeCarteira(String.valueOf(data));
 
         LocadorDAO dao = new LocadorDAO();
         List<Locador> listouerrado = dao.listar();
@@ -118,7 +118,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("654789321");
         l.setSobrenome("Wietcowski");
         l.setTel_contato(992783476l);
-        l.setValidadeCarteira(data);
+        l.setValidadeCarteira(String.valueOf(data));
         l.setCargo(TipoAcessoLogin.CLIENTE);
 
         LocadorDAO dao = new LocadorDAO();
@@ -137,7 +137,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("565675687686");
         l.setSobrenome("Wietcowski");
         l.setTel_contato(992783476L);
-        l.setValidadeCarteira(null);
+        l.setValidadeCarteira((String) null);
         l.setCargo(TipoAcessoLogin.CLIENTE);
 
         if (l.getCnh() != null) {
@@ -163,7 +163,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("4444444444");
         l.setSobrenome("Wietcowski");
         l.setTel_contato((long) 992783476);
-        l.setValidadeCarteira(data);
+        l.setValidadeCarteira(String.valueOf(data));
 
         LocadorDAO dao = new LocadorDAO();
         boolean excluiuok = dao.excluir(l);
@@ -182,7 +182,7 @@ public class LocadorDAOTest {
         l.setPessoas_cpf("866565533");
         l.setSobrenome("Wietcowski");
         l.setTel_contato(null);
-        l.setValidadeCarteira(data);
+        l.setValidadeCarteira(String.valueOf(data));
 
         LocadorDAO dao = new LocadorDAO();
         boolean excluiuerrado = dao.excluir(l);
