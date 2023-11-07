@@ -96,7 +96,7 @@ public class LocadorDAO {
 		Connection con = c.conectar();
 
 		String query = "UPDATE locador SET " +
-				"nome = ?, sobrenome = ?, tel_contato = ?, pais_residencia = ?, cnh = ?, validade_carteira = ?, num_identificacao_carteira = ? " +
+				"nome = ?, sobrenome = ?, tel_contato = ?, pais_residencia = ?, cnh = ?, validade_carteira = ?, num_identificacao_carteira = ?, TipoAcessoLogin = ? " +
 				"WHERE pessoas_cpf = ?";
 
 		try {
@@ -110,8 +110,11 @@ public class LocadorDAO {
 			ps.setString(6, l.getValidadeCarteira());
 
 			ps.setLong(7, l.getNumIdentificacaoCarteira());
-//			ps.setInt(8, l.getCargo().getId());
-			ps.setString(8, l.getPessoas_cpf());
+			ps.setInt(8, l.getCargo().getId());
+
+
+
+			ps.setString(9, l.getPessoas_cpf());
 
 			int rowsUpdated = ps.executeUpdate();
 
