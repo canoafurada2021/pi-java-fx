@@ -147,7 +147,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnUsuarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" onAction="#abrirListUsuarios" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Usuários" textFill="WHITE">
+            <Button fx:id="btnUsuarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" onAction="#abrirListUsuarios" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Clientes" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -172,7 +172,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnCategorias" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#abrirListCategorias" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Categorias" textFill="WHITE">
+            <Button fx:id="btnCategorias" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#abrirListCategorias" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #0348CE; -fx-border-color: white; -fx-border-radius: 10;" text="Categorias" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

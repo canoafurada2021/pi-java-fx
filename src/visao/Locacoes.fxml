@@ -29,14 +29,8 @@
                         </Label>
                         <TableView fx:id="tableLocacoes" layoutX="14.0" layoutY="57.0" prefHeight="864.0" prefWidth="1160.0" style="-fx-background-radius: 10;">
                           <columns>
-                            <TableColumn fx:id="columnId" prefWidth="72.0" text="ID" />
-                            <TableColumn fx:id="columnFormaPag" prefWidth="149.0" text="Forma de pagamento" />
-                              <TableColumn fx:id="columnDataInicio" prefWidth="120.0" text="Data de início" />
-                              <TableColumn fx:id="columnQuantDias" prefWidth="101.0" text="Número de dias" />
-                              <TableColumn fx:id="columnValor" prefWidth="132.0" text="Valor" />
-                              <TableColumn fx:id="columnIdVendedor" prefWidth="222.0" text="Vendedor" />
-                              <TableColumn fx:id="columnLocador" prefWidth="220.0" text="Cliente" />
-                              <TableColumn fx:id="columnAcoes" minWidth="0.0" prefWidth="145.0" />
+                            <TableColumn fx:id="columnId" minWidth="500.0" prefWidth="72.0" text="ID da Locação" />
+                              <TableColumn fx:id="columnAcoes" minWidth="660.0" prefWidth="145.0" text="Informações da Locação" />
                           </columns>
                         </TableView>
                      </children>
@@ -72,7 +66,7 @@
                         <Image url="@../imgs/logo.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnPerfil" alignment="TOP_LEFT" layoutY="150.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-radius: 10;" textFill="WHITE">
+                  <Button fx:id="btnPerfil" alignment="TOP_LEFT" layoutY="150.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="306.0" style="-fx-background-color: #001C52; -fx-border-radius: 10;" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -126,7 +120,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnLocacao" alignment="TOP_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Locação" textFill="WHITE">
+            <Button fx:id="btnLocacao" alignment="TOP_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #0348CE; -fx-border-color: white; -fx-border-radius: 10;" text="Locação" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -152,7 +146,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnUsuarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" onAction="#abrirListClientes" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Usuários" textFill="WHITE">
+            <Button fx:id="btnUsuarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="250.0" mnemonicParsing="false" onAction="#abrirListClientes" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Clientes" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
