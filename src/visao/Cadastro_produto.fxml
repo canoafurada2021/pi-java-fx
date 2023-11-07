@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerCadastroProduto">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerCadastroProduto">
    <children>
       <SplitPane layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
         <items>
@@ -174,7 +174,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnProdutos" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Produtos" textFill="WHITE">
+            <Button fx:id="btnProdutos" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#abrirTelaListagemProduto" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Produtos" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

@@ -181,6 +181,7 @@ public class ControllerEdicaoProduto implements Initializable {
 		veiculo.setUnidade_em_estoque(unidadeEstoque);
 		veiculo.setQuant_portas(quantPortas);
 		veiculo.setTipo_cambio(cambio);
+		veiculo.setCor(corVeiculo);
 		
 		// Define o Fornecedor no veiculo
 		veiculo.setCnpj(fornecedorSelecionado);

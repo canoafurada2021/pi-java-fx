@@ -9,7 +9,16 @@ public class Locador {
 	private Long tel_contato;
 	private String pais_residencia;
 	private Long cnh;
-	private Date validadeCarteira;
+
+	public void setValidadeCarteira(String validadeCarteira) {
+		this.validadeCarteira = validadeCarteira;
+	}
+
+	public String getValidadeCarteira() {
+		return validadeCarteira;
+	}
+
+	private String validadeCarteira;
 	private Long num_identificacao_carteira;
 	private TipoAcessoLogin cargo;
 	private String img_Base64;
@@ -64,13 +73,7 @@ public class Locador {
 	}
 
 
-	public Date getValidadeCarteira() {
-		return validadeCarteira;
-	}
 
-	public void setValidadeCarteira(Date validadeCarteira) {
-		this.validadeCarteira = validadeCarteira;
-	}
 
 	public Long getNumIdentificacaoCarteira() {
 		return num_identificacao_carteira;
