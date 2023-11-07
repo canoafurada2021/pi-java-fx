@@ -83,27 +83,6 @@ public class ControllerEdicaoLocacoes implements Initializable {
 
     AluguelRegistroDAO daoAluguelRegistro = new AluguelRegistroDAO();
 
-    @FXML
-    void abrirDashboard(ActionEvent event) {
-
-    }
-
-    @FXML
-    void abrirListaLocacoes(ActionEvent event) {
-
-
-    }
-
-    @FXML
-    void abrirListaFornecedores(ActionEvent event) {
-
-    }
-
-    @FXML
-    void abrirListaFuncionarios(ActionEvent event) {
-
-    }
-
     public void alterarLocacao(ActionEvent event) {
 
         //capture as alteracoes dos campos do fomulário

@@ -141,22 +141,6 @@ public class ControllerEdicaoFornecedores implements Initializable{
 	
 	FornecedorDAO daoFornecedor = new FornecedorDAO();
 
-	
-	@FXML
-	void abrirDashboard(ActionEvent event) {
-
-	}
-
-	@FXML
-	void abrirListaFornecedores(ActionEvent event) {
-
-	}
-
-	@FXML
-	void abrirListaFuncionarios(ActionEvent event) {
-
-	}
-
 	@FXML
 	void alterarFornecedor(ActionEvent event) {
 		
@@ -199,10 +183,6 @@ public class ControllerEdicaoFornecedores implements Initializable{
 	    }
 	}
 
-	
-
-	
-	
 	@FXML
 	void cancelarAlteracaoFornecedor(ActionEvent event) {
 		   // Obtém o Node (geralmente um botão) que acionou o evento
