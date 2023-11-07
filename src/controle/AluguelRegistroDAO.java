@@ -5,18 +5,15 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import modelo.AluguelRegistro;
-import modelo.Categoria;
 import modelo.EnumPagamento;
 import modelo.Fornecedor;
 import modelo.Locador;
 import modelo.Vendedor;
 
-public class AluguelRegistroDAO implements IAluguelRegistroDAO{
-
+public class AluguelRegistroDAO implements IAluguelRegistroDAO {
 
 	public ArrayList<AluguelRegistro> listar() {
 		Conexao c = Conexao.getInstancia();
@@ -27,6 +24,7 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 				+ "FROM aluguelRegistro ar "
 				+ "INNER JOIN locador l ON ar.locador_pessoas_cpf = l.pessoas_cpf "
 				+ "INNER JOIN vendedor v ON ar.vendedor_id_vendedor = v.id_vendedor";
+
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -40,30 +38,27 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 				Date dataInicio = rs.getDate("data_inicio");
 				int quantDias = rs.getInt("quant_dias");
 				Double valor = rs.getDouble("valor");
-				Long idVendedor = rs.getLong("id_vendedor");
+				Long idVendedor = rs.getLong("v.id_vendedor");
 				String cpfLocador = rs.getString("locador_cpf");
 
-				// Configurar o ID do aluguel
 				aluguel.setIdVenda(idRegistro.intValue());
-
-
-				// Configurar os outros atributos
 				aluguel.setFormaPagamento(formaPagamento);
 				aluguel.setDataInicio(dataInicio);
 				aluguel.setQuantDias(quantDias);
 				aluguel.setValor(valor);
 
-				// Criar um objeto vendedor e configurar o ID do vendedor
 				Vendedor vendedor = new Vendedor();
 				vendedor.setId_vendedor(idVendedor);
 				aluguel.setVendedor(vendedor);
 
-				// Criar um objeto locador e configurar o CPF
+				System.out.println(vendedor);
+
 				Locador locador = new Locador();
 				locador.setPessoas_cpf(cpfLocador);
 				aluguel.setLocador(locador);
+				System.out.println(locador);
 
-				// Adicionar o AluguelRegistro à lista
+
 				alugueis.add(aluguel);
 			}
 		} catch (SQLException e) {
@@ -75,42 +70,31 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 		return alugueis;
 	}
 
-
 	public boolean inserir(AluguelRegistro ar) {
-		// instancia a classe
 		Conexao a = Conexao.getInstancia();
-		// ABRE conexao com banco
 		Connection con = a.conectar();
 
-		String query = "INSERT INTO aluguelRegistro (forma_pagamento, data_inicio, quant_dias, valor, vendedor_id_vendedor, locador_pessoas_cpf)"
-				+ "VALUES (?, ?, ?, ?, ?, ?);";
-	   
-		boolean insercaoSucesso = false; // Inicializa com false
+		String query = "INSERT INTO aluguelRegistro (forma_pagamento, data_inicio, quant_dias, valor, vendedor_id_vendedor, locador_pessoas_cpf, fornecedor_cnpj) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
+		boolean insercaoSucesso = false;
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			
-			ps.setString(1, ar.getFormaPagamento());
-			//conversão do date
 
+			ps.setString(1, ar.getFormaPagamento());
 			ps.setDate(2, ar.getDataInicio());
 			ps.setInt(3, ar.getQuantDias());
-			ps.setDouble(4,ar.getValor());
+			ps.setDouble(4, ar.getValor());
 			ps.setLong(5, ar.getIdVendedor().getId_vendedor());
 			ps.setString(6, ar.getPessoas_cpf().getPessoas_cpf());
+			ps.setLong(7, ar.getFornecedor().getCnpj());
 
-		
-			
-			
-			// Chave estrangeira para fornecedor, locador e vendedor
+			int linhasAfetadas = ps.executeUpdate();
 
-	        int linhasAfetadas = ps.executeUpdate();
-	        
-
-	        if (linhasAfetadas > 0) {
-	            insercaoSucesso = true; // Define como true se pelo menos uma linha foi afetada
-	        }
+			if (linhasAfetadas > 0) {
+				insercaoSucesso = true;
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -118,10 +102,8 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 			a.fecharConexao();
 		}
 
-	    return insercaoSucesso; // Retorna o resultado da inserção
+		return insercaoSucesso;
 	}
-
-	
 
 	public boolean excluir(AluguelRegistro ar) {
 		Conexao c = Conexao.getInstancia();
@@ -137,14 +119,14 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 
 			if (rowsAffected > 0) {
 				c.fecharConexao();
-				return true; // se bem sucedida
+				return true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			c.fecharConexao();
 		}
-		return false; // se bem falha na exclusao
+		return false;
 	}
 
 	public boolean atualizar(AluguelRegistro ar) {
@@ -152,36 +134,32 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO{
 		Connection con = c.conectar();
 
 		String query = "UPDATE aluguelRegistro SET forma_pagamento = ?, data_inicio = ?, quant_dias = ?,"
-				+ " valor = ?,  vendedor_id_vendedor = ?, locador_pessoas_cpf= ?"
-				+ " WHERE id_venda = ?";
+				+ " valor = ?, vendedor_id_vendedor = ?, locador_pessoas_cpf = ?, fornecedor_cnpj = ? "
+				+ "WHERE id_venda = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			
-			ps.setString(1, ar.getFormaPagamento());
-			//conversão do date
 
+			ps.setString(1, ar.getFormaPagamento());
 			ps.setDate(2, ar.getDataInicio());
 			ps.setInt(3, ar.getQuantDias());
-			ps.setDouble(4,ar.getValor());
+			ps.setDouble(4, ar.getValor());
 			ps.setLong(5, ar.getIdVendedor().getId_vendedor());
 			ps.setString(6, ar.getPessoas_cpf().getPessoas_cpf());
 			ps.setLong(7, ar.getFornecedor().getCnpj());
-			
+			ps.setInt(8, ar.getIdVenda());
 
-			int rowsUpdate = ps.executeUpdate();
-			
-			if(rowsUpdate>0) {
-				return true; //se alter bem sucedido
-			}else {
+			int rowsUpdated = ps.executeUpdate();
+
+			if (rowsUpdated > 0) {
+				return true;
+			} else {
 				return false;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
-		}finally {
+		} finally {
 			c.fecharConexao();
 		}
-
 	}
-
 }

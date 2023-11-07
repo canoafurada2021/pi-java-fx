@@ -2,6 +2,7 @@ package application;
 
 import controle.AluguelRegistroDAO;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -95,10 +96,10 @@ public class ControllerListLocacoes implements Initializable {
     private TableColumn<AluguelRegistro, Integer> columnId;
 
     @FXML
-    private TableColumn<AluguelRegistro, Vendedor> columnIdVendedor;
+    private TableColumn<AluguelRegistro, String> columnIdVendedor;
 
     @FXML
-    private TableColumn<AluguelRegistro, Locador> columnLocador;
+    private TableColumn<AluguelRegistro, String> columnLocador;
 
     @FXML
     private TableColumn<AluguelRegistro, Integer> columnQuantDias;
@@ -168,8 +169,15 @@ public class ControllerListLocacoes implements Initializable {
         columnDataInicio.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDataInicio()));
         columnQuantDias.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getQuantDias()));
         columnValor.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getValor()));
-        columnIdVendedor.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getIdVendedor()));
-        columnLocador.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPessoas_cpf()));
+        columnIdVendedor.setCellValueFactory(cellData -> {
+            AluguelRegistro a = cellData.getValue();
+            String nome = "";
+            if (a.getIdVendedor() != null) {
+                nome = a.getIdVendedor().getNome();
+            }
+            return new SimpleStringProperty(nome);
+        });
+
 
     }
 
@@ -347,7 +355,7 @@ public class ControllerListLocacoes implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Configuracoes.fxml"));
             Parent root = loader.load();
 
-            ControllerConfiguracoes controllerNovaTela = loader.getController();
+         //   ControllerConfiguracoes controllerNovaTela = loader.getController();
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -415,6 +423,11 @@ public class ControllerListLocacoes implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         AluguelRegistroDAO dao = new AluguelRegistroDAO();
+
+        AluguelRegistro aluguel = new AluguelRegistro();
+
+       System.out.println(aluguel.getIdVendedor());
+
         tableLocacoes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         columnId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getIdVenda()));
@@ -422,8 +435,15 @@ public class ControllerListLocacoes implements Initializable {
         columnDataInicio.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDataInicio()));
         columnQuantDias.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getQuantDias()));
         columnValor.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getValor()));
-        columnIdVendedor.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getIdVendedor()));
-        columnLocador.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPessoas_cpf()));
+        columnIdVendedor.setCellValueFactory(cellData -> {
+            AluguelRegistro a = cellData.getValue();
+            String nome = "";
+            if (a.getIdVendedor() != null) {
+                nome = a.getIdVendedor().getNome();
+            }
+            return new SimpleStringProperty(nome);
+        });
+        columnLocador.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPessoas_cpf()).asString());
 
         columnAcoes.setCellFactory(param -> new TableCell<AluguelRegistro, String>() {
             private final Button viewButton = new Button();
