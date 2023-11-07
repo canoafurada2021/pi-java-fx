@@ -191,7 +191,7 @@ public class VeiculoDAO {
 
 			// Defina o valor do último parâmetro como o ID do veículo que você deseja
 			// atualizar
-			ps.setInt(15, veiculo.getId_veiculo());
+
 
 			int rowsAffected = ps.executeUpdate();
 

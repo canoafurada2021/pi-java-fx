@@ -26,4 +26,5 @@ public enum TipoAcessoLogin {
 		return null;
 
 	}
+
 }
