@@ -3,12 +3,10 @@ package application;
 import controle.AluguelRegistroDAO;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,25 +14,31 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import javafx.util.Callback;
 import modelo.AluguelRegistro;
-import modelo.Fornecedor;
-import modelo.Locador;
-import modelo.Vendedor;
-
-import java.io.FilterInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType0Font;
+import com.dansoftware.pdfdisplayer.PDFDisplayer;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
 
 public class ControllerListLocacoes implements Initializable {
 
@@ -158,11 +162,11 @@ public class ControllerListLocacoes implements Initializable {
     @FXML
     private TextField txtPesquisa;
 
-    private ObservableList<AluguelRegistro>obsAluguelRegistro;
+    private ObservableList<AluguelRegistro> obsAluguelRegistro;
 
     AluguelRegistroDAO daoFor = new AluguelRegistroDAO();
 
-    public void tblViewAluguelRegistroSearch(){
+    public void tblViewAluguelRegistroSearch() {
         tableLocacoes.getItems().clear();
         columnId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getIdVenda()));
         columnFormaPag.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getFormaPagamento()));
@@ -183,7 +187,7 @@ public class ControllerListLocacoes implements Initializable {
 
     AluguelRegistroDAO dao = new AluguelRegistroDAO();
 
-    public void filtroPesquisa(){
+    public void filtroPesquisa() {
 
         AluguelRegistroDAO dao = new AluguelRegistroDAO();
 
@@ -355,7 +359,7 @@ public class ControllerListLocacoes implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Configuracoes.fxml"));
             Parent root = loader.load();
 
-         //   ControllerConfiguracoes controllerNovaTela = loader.getController();
+            //   ControllerConfiguracoes controllerNovaTela = loader.getController();
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -426,7 +430,7 @@ public class ControllerListLocacoes implements Initializable {
 
         AluguelRegistro aluguel = new AluguelRegistro();
 
-       System.out.println(aluguel.getIdVendedor());
+        System.out.println(aluguel.getIdVendedor());
 
         tableLocacoes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -455,38 +459,117 @@ public class ControllerListLocacoes implements Initializable {
 
                 // Estilização dos botões
                 ImageView viewImage = new ImageView(new Image(getClass().getResourceAsStream("/imgs/editar.png")));
-                viewImage.setFitHeight(16);
-                viewImage.setFitWidth(16);
+                viewImage.setFitHeight(15);
+                viewImage.setFitWidth(15);
                 viewButton.setGraphic(viewImage);
                 viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
 
                 viewButton.setOnAction(event -> {
-                    AluguelRegistro aluguelRegistro = getTableView().getItems().get(getIndex());
-                    String formaPagamento = aluguelRegistro.getFormaPagamento().toString();
+                    try (PDDocument document = new PDDocument()) {
+                        PDPage page = new PDPage(PDRectangle.A4);
+                        document.addPage(page);
 
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Edicao_locacao.fxml"));
-                        Parent root = loader.load();
-                        ControllerEdicaoLocacoes controllerNovaTela = loader.getController();
+                        File fontFile = new File("src/resources/fonts/Helvetica.ttf");
+                        if (fontFile != null) {
+                            PDType0Font customFont = PDType0Font.load(document, fontFile);
 
-                        // Passando os dados da locação selecionada de uma tela para outra
-                        controllerNovaTela.setAluguelRegistro(aluguelRegistro);
+                            if (customFont != null) {
+                                try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                                    File logoFile = new File("src/imgs/logo_azul.png");
+                                    PDImageXObject logo = PDImageXObject.createFromFile(String.valueOf(logoFile), document);
 
-                        // Configurar a nova janela e mostrá-la
-                        Scene scene = new Scene(root);
+                                    float pageWidth = page.getMediaBox().getWidth();
+                                    float pageHeight = page.getMediaBox().getHeight();
+
+                                    float logoX = (pageWidth - logo.getWidth()) / 2;
+                                    float logoY = pageHeight - logo.getHeight() - 20;
+                                    contentStream.drawImage(logo, logoX, logoY, logo.getWidth(), logo.getHeight());
+
+                                    contentStream.setFont(customFont, 12);
+
+                                    String nomeDoProjeto = "REGISTRO DE COMPRA";
+                                    float nomeX = (pageWidth - customFont.getStringWidth(nomeDoProjeto) / 1000 * 12) / 2;
+                                    float nomeY = logoY - 20;
+                                    contentStream.beginText();
+                                    contentStream.newLineAtOffset(nomeX, nomeY);
+                                    contentStream.showText(nomeDoProjeto);
+                                    contentStream.endText();
+
+                                    AluguelRegistroDAO dao = new AluguelRegistroDAO();
+                                    ArrayList<AluguelRegistro> alugueis = dao.listar();
+
+                                    float tableY = nomeY - 40; // Adjust the distance between the name and the table
+                                    float margin = 50; // Left margin for the table
+                                    int rows = alugueis.size();
+                                    int cols = 5; // Number of columns in the table
+
+                                    float tableWidth = pageWidth - 2 * margin;
+                                    float tableHeight = 20f * (rows + 1); // Add 1 for the header row
+                                    float rowHeight = 20f;
+                                    float tableX = margin;
+
+                                    contentStream.setLineWidth(1f);
+                                    contentStream.moveTo(tableX, tableY);
+                                    contentStream.lineTo(tableX + tableWidth, tableY);
+                                    contentStream.moveTo(tableX, tableY - rowHeight);
+                                    contentStream.lineTo(tableX + tableWidth, tableY - rowHeight);
+                                    contentStream.stroke();
+
+                                    for (int i = 0; i <= cols; i++) {
+                                        float x = tableX + (tableWidth / cols) * i;
+                                        contentStream.moveTo(x, tableY);
+                                        contentStream.lineTo(x, tableY - tableHeight);
+                                        contentStream.stroke();
+                                    }
+
+                                    // Set text properties for the table
+                                    contentStream.setFont(customFont, 12);
+                                    contentStream.setLeading(12.0f);
+                                    float yPosition = tableY - 15;
+
+                                    // Draw table header text
+                                    float xPosition = tableX;
+                                    for (int i = 0; i < cols; i++) {
+                                        contentStream.beginText();
+                                        contentStream.newLineAtOffset(xPosition, yPosition);
+                                        contentStream.showText(getTableHeader(i));
+                                        contentStream.endText();
+                                        xPosition += tableWidth / cols;
+                                    }
+
+                                    // Draw table data
+                                    yPosition = tableY - rowHeight - 15;
+                                    for (AluguelRegistro aluguel : alugueis) {
+                                        xPosition = tableX;
+                                        for (int i = 0; i < cols; i++) {
+                                            contentStream.beginText();
+                                            contentStream.newLineAtOffset(xPosition, yPosition);
+                                            contentStream.showText(getTableData(aluguel, i));
+                                            contentStream.endText();
+                                            xPosition += tableWidth / cols;
+                                        }
+                                        yPosition -= rowHeight;
+                                    }
+                                }
+                            }
+                        }
+
+                        String fileName = "seu-arquivo.pdf";
+
+                        // Salve o PDF em um arquivo
+                        document.save(fileName);
+
+                        PDFDisplayer displayer = new PDFDisplayer();
+
                         Stage stage = new Stage();
-                        stage.setScene(scene);
-
-                        stage.setOnCloseRequest(event1 -> tblViewAluguelRegistroSearch());
+                        stage.setScene(new Scene(displayer.toNode()));
                         stage.show();
 
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
+                        displayer.loadPDF(new File(fileName));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
                     }
-                    System.out.println("Edição da forma de pagamento: " + formaPagamento);
-                    System.out.println("Botão de edição clicado");
                 });
-
                 ImageView editImage = new ImageView(new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
                 editImage.setFitWidth(16);
                 editImage.setFitHeight(16);
@@ -510,7 +593,41 @@ public class ControllerListLocacoes implements Initializable {
                     System.out.println("Botão de excluir clicado");
                 });
             }
+            // Helper method to get table header text based on the column index
+            private String getTableHeader(int columnIndex) {
+                switch (columnIndex) {
+                    case 0:
+                        return "ID da Venda";
+                    case 1:
+                        return "Forma de Pagamento";
+                    case 2:
+                        return "Data de Início";
+                    case 3:
+                        return "Quantidade de Dias";
+                    case 4:
+                        return "Valor";
+                    default:
+                        return "";
+                }
+            }
 
+            // Helper method to get table data based on the column index
+            private String getTableData(AluguelRegistro aluguel, int columnIndex) {
+                switch (columnIndex) {
+                    case 0:
+                        return String.valueOf(aluguel.getIdVenda());
+                    case 1:
+                        return aluguel.getFormaPagamento();
+                    case 2:
+                        return aluguel.getDataInicio().toString();
+                    case 3:
+                        return String.valueOf(aluguel.getQuantDias());
+                    case 4:
+                        return String.valueOf(aluguel.getValor());
+                    default:
+                        return "";
+                }
+            }
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
@@ -527,7 +644,7 @@ public class ControllerListLocacoes implements Initializable {
         columnLocador.setCellValueFactory(cellData -> {
             AluguelRegistro aluguelRegistro = cellData.getValue();
             String nome = "";
-            if (aluguelRegistro.getPessoas_cpf() != null){
+            if (aluguelRegistro.getPessoas_cpf() != null) {
                 nome = aluguelRegistro.getPessoas_cpf().getNome();
             }
             return new SimpleObjectProperty(nome);
@@ -536,17 +653,17 @@ public class ControllerListLocacoes implements Initializable {
         columnIdVendedor.setCellValueFactory(cellData -> {
             AluguelRegistro aluguelRegistro = cellData.getValue();
             String nomeV = "";
-            if (aluguelRegistro.getIdVendedor().getNome() != null){
-                nomeV=aluguelRegistro.getIdVendedor().getNome();
+            if (aluguelRegistro.getIdVendedor().getNome() != null) {
+                nomeV = aluguelRegistro.getIdVendedor().getNome();
             }
             return new SimpleObjectProperty(nomeV);
         });
 
         txtPesquisa.textProperty().addListener((observable, oldValue, newValue) -> {
 
-            FilteredList<AluguelRegistro>listaFiltrada = new FilteredList<>(obsAluguelRegistro, p -> true);
+            FilteredList<AluguelRegistro> listaFiltrada = new FilteredList<>(obsAluguelRegistro, p -> true);
 
-            if (newValue != null && !newValue.isEmpty()){
+            if (newValue != null && !newValue.isEmpty()) {
                 String termoBusca = newValue.toLowerCase();
                 listaFiltrada.setPredicate(aluguelRegistro -> {
 
