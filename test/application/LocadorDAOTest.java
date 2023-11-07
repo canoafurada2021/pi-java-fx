@@ -1,8 +1,10 @@
 package application;
 
 import controle.LocadorDAO;
+import modelo.Categoria;
 import modelo.Locador;
 import modelo.TipoAcessoLogin;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import java.sql.Date;
@@ -10,27 +12,39 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LocadorDAOTest {
-    private LocadorDAO daoLocador;
+    private static LocadorDAO daoLocador;
+    private static Locador locadorTeste;
+
+    @BeforeAll
+    public static void setUpDatabase() {
+        daoLocador = new LocadorDAO();
+        locadorTeste = new Locador();
+        locadorTeste.setNome("josiane");
+
+    }
 
     @Order(1)
     @Test
     public void TestInserirLocador() {
-        Date data = new Date(2025-02-02);
-        Locador l = new Locador();
-        l.setCnh(657333l);
-        l.setNome("Josiane");
-        l.setNumIdentificacaoCarteira((long) 3);
-        l.setPaisResidencia("Brasil");
-        l.setPessoas_cpf("88777777");
-        l.setSobrenome("Wietcowski");
-        l.setTel_contato((long) 992783476);
-        l.setValidadeCarteira(data);
+        // Corrija a criação da data passando o valor em milissegundos
+        Date data = new Date(2025 - 1900, 1, 2); // Ano - 1900, Mês (0 a 11), Dia
 
+        Locador l = new Locador();
+        l.setCnh(657333L); // Adicione "L" para indicar que é um long literal
+        l.setNome("Josiane");
+        l.setNumIdentificacaoCarteira(3L); // Adicione "L" para indicar que é um long literal
+        l.setPaisResidencia("Brasil");
+        l.setPessoas_cpf("4444444444");
+        l.setSobrenome("Wietcowski");
+        l.setTel_contato(992783476L); // Adicione "L" para indicar que é um long literal
+        l.setValidadeCarteira(data);
+        l.setCargo(TipoAcessoLogin.CLIENTE);
 
         LocadorDAO dao = new LocadorDAO();
         boolean inseriuok = dao.inserir(l);
         assertTrue(inseriuok);
     }
+
 
     @Order(2)
     @Test
@@ -101,11 +115,11 @@ public class LocadorDAOTest {
         l.setNome("Josiane");
         l.setNumIdentificacaoCarteira((long) 3);
         l.setPaisResidencia("Brasil");
-        l.setPessoas_cpf("33777777");
+        l.setPessoas_cpf("654789321");
         l.setSobrenome("Wietcowski");
         l.setTel_contato(992783476l);
         l.setValidadeCarteira(data);
-
+        l.setCargo(TipoAcessoLogin.CLIENTE);
 
         LocadorDAO dao = new LocadorDAO();
         boolean alterouok = dao.atualizar(l);
@@ -146,7 +160,7 @@ public class LocadorDAOTest {
         l.setNome("Josiane");
         l.setNumIdentificacaoCarteira((long) 3);
         l.setPaisResidencia("Brasil");
-        l.setPessoas_cpf("88777777");
+        l.setPessoas_cpf("4444444444");
         l.setSobrenome("Wietcowski");
         l.setTel_contato((long) 992783476);
         l.setValidadeCarteira(data);
