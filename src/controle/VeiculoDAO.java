@@ -193,6 +193,7 @@ public class VeiculoDAO {
 			// atualizar
 			ps.setInt(14, veiculo.getId_veiculo());
 
+
 			int rowsAffected = ps.executeUpdate();
 
 			if (rowsAffected > 0) {
