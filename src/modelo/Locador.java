@@ -18,7 +18,7 @@ public class Locador {
 
 	private String validadeCarteira;
 	private Long num_identificacao_carteira;
-	private TipoAcessoLogin cargo;
+	private TipoAcessoLogin tipoAcesso;
 	private String img_Base64;
 
 	public String getNome() {
@@ -90,10 +90,10 @@ public class Locador {
 	}
 
 	public TipoAcessoLogin getTipoAcesso() {
-		return cargo;
+		return tipoAcesso;
 	}
 
-	public void setCargo(TipoAcessoLogin cargo) {
-		this.cargo = cargo;
+	public void setTipoAcesso(TipoAcessoLogin tipoAcesso) {
+		this.tipoAcesso = tipoAcesso;
 	}
 }

@@ -133,11 +133,11 @@ public class ControllerEdicaoClientes implements Initializable{
 	    @FXML
 	    void cancelarAlteracaoLocador(ActionEvent event) {
 
-			// Obtém o Stage (janela) atual com base no Node
-			Stage stage = (Stage) source.getScene().getWindow();
-
-			// Fecha o Stage atual
-			stage.close();
+//			// Obtém o Stage (janela) atual com base no Node
+//			Stage stage = (Stage)             source.getScene().getWindow();
+//
+//			// Fecha o Stage atual
+//			stage.close();
 	    }
 	    
 	    Locador locador = new Locador();

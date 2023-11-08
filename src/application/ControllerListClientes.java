@@ -32,6 +32,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import modelo.Locador;
+import modelo.TipoAcessoLogin;
 import utilities.CpfFormatter;
 
 public class ControllerListClientes implements Initializable {
@@ -175,7 +176,7 @@ public class ControllerListClientes implements Initializable {
 		columnValidadeCarteira.setCellValueFactory(
 				cellData -> new SimpleStringProperty(cellData.getValue().getValidadeCarteira()));
 
-		columnCargo.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getTipoAcesso()));
+
 		columnAcoes.setCellFactory(new Callback<TableColumn<Locador, String>, TableCell<Locador, String>>() {
 			@Override
 			public TableCell<Locador, String> call(TableColumn<Locador, String> param) {

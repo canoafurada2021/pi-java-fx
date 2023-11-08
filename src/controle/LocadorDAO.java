@@ -37,10 +37,13 @@ public class LocadorDAO {
 				l.setNumIdentificacaoCarteira(rs.getLong("num_identificacao_carteira"));
 				l.setImg_Base64(rs.getString("img_Base64Locador"));
 
-				Integer cargoFromDatabase = rs.getInt("TipoAcessoLogin");
-				TipoAcessoLogin cargoEnum = TipoAcessoLogin.getById(cargoFromDatabase);
+				System.out.println("locador"+ l.getTipoAcesso());
 
-				l.setCargo(cargoEnum);
+				int tipoAcessoId = rs.getInt("TipoAcessoLogin");
+				TipoAcessoLogin tipoAcesso = TipoAcessoLogin.getById(tipoAcessoId);
+
+				l.setTipoAcesso(tipoAcesso);
+
 				locadores.add(l);
 			}
 		} catch (SQLException e) {
@@ -72,8 +75,10 @@ public class LocadorDAO {
 			ps.setString(7, l.getValidadeCarteira());
 
 			ps.setLong(8, l.getNumIdentificacaoCarteira());
-			ps.setInt(9, l.getCargo().getId()); // Converte o Enum para o valor correspondente no banco
-			//ps.setString(10, l.getImg_Base64());
+
+
+
+			ps.setInt(9, l.getTipoAcesso().getId()); // Converte o Enum para o valor correspondente no banco
 
 			int rowsInserted = ps.executeUpdate();
 
@@ -95,7 +100,7 @@ public class LocadorDAO {
 		Connection con = c.conectar();
 
 		String query = "UPDATE locador SET " +
-				"nome = ?, sobrenome = ?, tel_contato = ?, pais_residencia = ?, cnh = ?, validade_carteira = ?, num_identificacao_carteira = ?, TipoAcessoLogin = ? " +
+				"nome = ?, sobrenome = ?, tel_contato = ?, pais_residencia = ?, cnh = ?, validade_carteira = ?, num_identificacao_carteira = ? " +
 				"WHERE pessoas_cpf = ?";
 
 		try {
@@ -105,15 +110,9 @@ public class LocadorDAO {
 			ps.setLong(3, l.getTel_contato());
 			ps.setString(4, l.getPaisResidencia());
 			ps.setLong(5, l.getCnh());
-
 			ps.setString(6, l.getValidadeCarteira());
-
 			ps.setLong(7, l.getNumIdentificacaoCarteira());
-			ps.setInt(8, l.getTipoAcesso().getId());
-
-
-
-			ps.setString(9, l.getPessoas_cpf());
+			ps.setString(8, l.getPessoas_cpf());
 
 			int rowsUpdated = ps.executeUpdate();
 
@@ -131,6 +130,7 @@ public class LocadorDAO {
 			c.fecharConexao();
 		}
 	}
+
 	public boolean excluir (Locador l ){
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
