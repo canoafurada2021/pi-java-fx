@@ -42,6 +42,31 @@ public class VendedorDAOTest {
 
     @Test
     @Order(2)
+    public void TesteAtualizarVendedor() {
+        Vendedor v = new Vendedor();
+
+        v.setNome("Emily");
+        v.setSobrenome("Snow");
+        v.setSalario(15000.0);
+        v.setCpf(11011011010l);
+        v.setSenha("Senha1234567");
+
+        TipoAcessoLogin tipoAcessoLogin =  TipoAcessoLogin.getById(1);
+        v.setTipoAcesso(tipoAcessoLogin);
+
+        Vendedor vend = new Vendedor();
+        vend.setIdVendedor(1L);
+
+        v.setId_vendedor(vend.getId_vendedor());
+
+        VendedorDAO dao = new VendedorDAO();
+        boolean atualizado = dao.atualizar(v);
+        assertTrue (true, String.valueOf(atualizado));
+
+    }
+
+    @Test
+    @Order(3)
     public void TesteExcluirVendedor() {
         Vendedor v = new Vendedor();
 
@@ -54,36 +79,19 @@ public class VendedorDAOTest {
         TipoAcessoLogin tipoAcessoLogin =  TipoAcessoLogin.getById(1);
         v.setTipoAcesso(tipoAcessoLogin);
 
+        Vendedor vend = new Vendedor();
+        vend.setIdVendedor(1L);
+
+        v.setId_vendedor(vend.getId_vendedor());
+
+
         VendedorDAO dao = new VendedorDAO();
-        dao.inserir(v);
 
         boolean deletou = dao.excluir(v);
         assertTrue (true, String.valueOf(deletou));
 
     }
 
-    @Test
-    @Order(3)
-    public void TesteAtualizarVendedor() {
-        Vendedor v = new Vendedor();
 
-        v.setNome("Emily");
-        v.setSobrenome("Snow");
-        v.setSalario(15000.0);
-        v.setCpf(11011011010l);
-        v.setSenha("Senha1234567");
-        TipoAcessoLogin tipoAcessoLogin =  TipoAcessoLogin.getById(1);
-        v.setTipoAcesso(tipoAcessoLogin);
-
-        Vendedor ve = new Vendedor();
-        ve.setIdVendedor(1l);
-
-        v.setId_vendedor(ve);
-
-        VendedorDAO dao = new VendedorDAO();
-        boolean atualizado = dao.atualizar(v);
-        assertTrue (true, String.valueOf(atualizado));
-
-    }
 
 }
