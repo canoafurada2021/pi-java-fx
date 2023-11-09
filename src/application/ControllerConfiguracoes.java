@@ -226,7 +226,7 @@ public class ControllerConfiguracoes implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
 			Parent root = loader.load();
 
-			ControllerTableViewFuncionarios controllerNovaTela = loader.getController();
+			ControllerDashboard controllerNovaTela = loader.getController();
 
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
