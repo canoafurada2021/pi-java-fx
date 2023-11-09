@@ -81,6 +81,7 @@ Este repositório contém o código-fonte base para o desenvolvimento do projeto
   <p>Para estabelecer uma sincronização entre o sistema e o banco de dados, deve-se usar um mapeamento do Diagrama de Classes para o Diagrama Entidade-Relacionamento, conforme mostrado abaixo:</p>
   <img src="https://github.com/canoafurada2021/pi-java-fx/blob/master/DiagramaDeClasses.png?raw=true" alt="Diagrama de Classes">
 </div>
+![listagem](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/2f114135-b1e7-4832-9014-320e6af9b014)
 
 <div style="text-align: center;">
   <h3>Diagrama de Entidade e Relacionamento</h3>
