@@ -30,6 +30,22 @@ Este repositório contém o código-fonte base para o desenvolvimento do projeto
 8. **Filtros de Pesquisa**: Facilitar a busca e listagem dos produtos disponíveis em estoque.
 
 
+### 🖱️ Telas do Projeto
+1. **Tela de Login**:
+https://keep.google.com/u/0/media/v2/1pTXnKh9QjXgFHnPKhCX_sINuOib5BCfhufrR6at-J01-FVmPuCrT8Jqp5shAKFM/1L6tSBGqF3rD-JLz8IseSNEeDr-L6_CeFd0LD5hKSmX4ehZuDkdnmZJwuXCsqpA?sz=512&accept=image%2Fgif%2Cimage%2Fjpeg%2Cimage%2Fjpg%2Cimage%2Fpng%2Cimage%2Fwebp
+
+2. **Tela de Dashboard**:
+https://keep.google.com/u/0/media/v2/1cDJTHRgQ3LtWB6-CVG_gg5PBPzjzpRnFvW1KdrmenO4o7HouwUpFJVNmPecbrA/1eb4v0zEmAkhaQbIa5okI8d5P-XLGZL0DIK2JzXgk_9-GUXh31aI3OMX_wjyrkQ?sz=512&accept=image%2Fgif%2Cimage%2Fjpeg%2Cimage%2Fjpg%2Cimage%2Fpng%2Cimage%2Fwebp
+
+3. **Tela de Listagem de Fornecedores**:
+https://keep.google.com/u/0/media/v2/1uQa7CEz_Rf9x2Exnu3oJccIJ-_n1ylEqAjavmRctWIuxu7uBsEcxWFSj4p5Rrg/1VE_KAQc126G0Dhs5YQUF-NV3CghjGoWcCS37XiDnTigxZVWFKWUHR3EHyWD60Q?sz=512&accept=image%2Fgif%2Cimage%2Fjpeg%2Cimage%2Fjpg%2Cimage%2Fpng%2Cimage%2Fwebp
+
+4. **Tela de Cadastro de Fornecedores**:
+https://keep.google.com/u/0/media/v2/1w6J07S_NlcBiYQNiHKYM8uKfmUkIgcex5tFjNbP_Ux9SXHBNJLy1uS4Px8Y--pE/1Mzn3pqLbKneLdw7YmdsbANidQ5_c4w0cvQHPM4eMhI99680SghvWHBkKLMhcLw?sz=512&accept=image%2Fgif%2Cimage%2Fjpeg%2Cimage%2Fjpg%2Cimage%2Fpng%2Cimage%2Fwebp
+
+5. **Tela de Edição de Fornecedores**:
+https://keep.google.com/u/0/media/v2/1UfYqSY6InauVYx0GlhMCebzoMZH89Z78m44NiADMvdWPph6ANaRlfWOguIqUJg/1eGfQe7ed6NjLBzCL_QujNDYOuYYZ_zVYVTwPm665dJAT5nsjKbqhtxjUUeDO0-s?sz=512&accept=image%2Fgif%2Cimage%2Fjpeg%2Cimage%2Fjpg%2Cimage%2Fpng%2Cimage%2Fwebp
+
 
 ## 🚗 Casos de Uso
 | **Número** | **Caso de Uso**                                | **Descrição**                                        |
