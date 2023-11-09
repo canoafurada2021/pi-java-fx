@@ -30,6 +30,23 @@ Este repositório contém o código-fonte base para o desenvolvimento do projeto
 8. **Filtros de Pesquisa**: Facilitar a busca e listagem dos produtos disponíveis em estoque.
 
 
+### 🖱️ Telas do Projeto
+
+1. **Tela de Login**:
+<img src="https://lh3.googleusercontent.com/keep-bbsk/AG3SVnC6WRysDu-N94NHHAYaRBuKKrXZn06EeIbvDHP3oivyxUxvh7jVc-LqHDCwEKHXY_o2UUS9qUmwDNi1j53qj-e4SYwxTXyGgDsyFJiDN--JXVxf=s947" alt="Tela de Login">
+
+2. **Tela de Dashboard**:
+<img src="https://lh3.googleusercontent.com/keep-bbsk/AG3SVnBa9Sk8zMYSCCwRFnAz1sMNh75bXJhmP5b9PYFSKYz3onD6oE32-sx8Nk6OsW_kZwjcRZPI07tlYrN4Wc8irGwg6Qg0kJTNnyli4eFiLNawCzDG=s1334" alt="Tela de Dashboard">
+
+4. **Tela de Listagem de Fornecedores**:
+<img src="https://lh3.googleusercontent.com/keep-bbsk/AG3SVnBqGosliVw8CLu5QcYsv_HKU-ROilGtKZSU0divfSjfEWBca_5n9DXBMhbGPkfoifeblX6_XHZ7h_2dVyPNqnywrPTOGgCtv0JbF4EzRAfKIoAz=s1516" alt="Tela de Listagem de Fornecedores">
+
+5. **Tela de Cadastro de Fornecedores**:
+<img src="https://lh3.googleusercontent.com/keep-bbsk/AG3SVnAKmGyExqu0s-AJ61wKk7CEEjlvgHrqROD-Hlx4TgMowpTI0nf0t6kcwa9CMaHDDA2SDLxaxpZUyNSl1cGfkdRwwvM6Y0i3mD1hVXCGtlcmp6om=s1515" alt="Tela de Cadastro de Fornecedores">
+
+6. **PopUp de Edição de Fornecedores**:
+<img src="https://lh3.googleusercontent.com/keep-bbsk/AG3SVnAGuVVUYvZ4cv2AOcgz0j30G_P6MJkDdlandBCGz4sOd90kXr0W1SB2-iY5qnfipx2cxByWimozw0P2MQ0whZUWwLQLAOzLc6XufuPOJl_4-5yX=s711" alt="PopUp de Edição de Forneceores">
+
 
 ## 🚗 Casos de Uso
 | **Número** | **Caso de Uso**                                | **Descrição**                                        |
