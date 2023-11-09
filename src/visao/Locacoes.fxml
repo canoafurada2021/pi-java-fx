@@ -17,8 +17,8 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerListLocacoes">
    <children>
       <SplitPane fx:id="SlipPaneConfigurações" layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
-        <items>
-          <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="1343.0" style="-fx-background-color: #AEB2BF;">
+         <items>
+            <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="1343.0" style="-fx-background-color: #AEB2BF;">
                <children>
                   <Pane fx:id="panelFornecedores" layoutX="17.0" layoutY="79.0" prefHeight="928.0" prefWidth="1185.0" style="-fx-background-color: white; -fx-background-radius: 10;">
                      <children>
@@ -28,16 +28,10 @@
                            </font>
                         </Label>
                         <TableView fx:id="tableLocacoes" layoutX="14.0" layoutY="57.0" prefHeight="864.0" prefWidth="1160.0" style="-fx-background-radius: 10;">
-                          <columns>
-                            <TableColumn fx:id="columnId" prefWidth="72.0" text="ID" />
-                            <TableColumn fx:id="columnFormaPag" prefWidth="149.0" text="Forma de pagamento" />
-                              <TableColumn fx:id="columnDataInicio" prefWidth="120.0" text="Data de início" />
-                              <TableColumn fx:id="columnQuantDias" prefWidth="101.0" text="Número de dias" />
-                              <TableColumn fx:id="columnValor" prefWidth="132.0" text="Valor" />
-                              <TableColumn fx:id="columnIdVendedor" prefWidth="222.0" text="Vendedor" />
-                              <TableColumn fx:id="columnLocador" prefWidth="220.0" text="Cliente" />
-                              <TableColumn fx:id="columnAcoes" minWidth="0.0" prefWidth="145.0" />
-                          </columns>
+                           <columns>
+                              <TableColumn fx:id="columnId" prefWidth="500.0" text="ID" />
+                              <TableColumn fx:id="columnAcoes" minWidth="0.0" prefWidth="660.0" text="Gerar PDF" />
+                           </columns>
                         </TableView>
                      </children>
                   </Pane>
@@ -61,7 +55,7 @@
                      </graphic>
                   </Button>
                </children></AnchorPane>
-        </items>
+         </items>
       </SplitPane>
       <VBox prefHeight="1018.0" prefWidth="307.0" style="-fx-background-color: #001C52;">
          <children>

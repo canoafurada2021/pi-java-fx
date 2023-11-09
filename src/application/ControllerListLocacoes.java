@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -88,28 +89,10 @@ public class ControllerListLocacoes implements Initializable {
     private Button btnUsuarios;
 
     @FXML
-    private TableColumn<AluguelRegistro, Date> columnDataInicio;
-
-    @FXML
     private TableColumn<AluguelRegistro, String> columnAcoes;
 
     @FXML
-    private TableColumn<AluguelRegistro, String> columnFormaPag;
-
-    @FXML
     private TableColumn<AluguelRegistro, Integer> columnId;
-
-    @FXML
-    private TableColumn<AluguelRegistro, String> columnIdVendedor;
-
-    @FXML
-    private TableColumn<AluguelRegistro, String> columnLocador;
-
-    @FXML
-    private TableColumn<AluguelRegistro, Integer> columnQuantDias;
-
-    @FXML
-    private TableColumn<AluguelRegistro, Double> columnValor;
 
     @FXML
     private ImageView imgDefaultConfiguracoes;
@@ -169,18 +152,6 @@ public class ControllerListLocacoes implements Initializable {
     public void tblViewAluguelRegistroSearch() {
         tableLocacoes.getItems().clear();
         columnId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getIdVenda()));
-        columnFormaPag.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getFormaPagamento()));
-        columnDataInicio.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDataInicio()));
-        columnQuantDias.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getQuantDias()));
-        columnValor.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getValor()));
-        columnIdVendedor.setCellValueFactory(cellData -> {
-            AluguelRegistro a = cellData.getValue();
-            String nome = "";
-            if (a.getIdVendedor() != null) {
-                nome = a.getIdVendedor().getNome();
-            }
-            return new SimpleStringProperty(nome);
-        });
 
 
     }
@@ -435,19 +406,6 @@ public class ControllerListLocacoes implements Initializable {
         tableLocacoes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         columnId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getIdVenda()));
-        columnFormaPag.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getFormaPagamento()));
-        columnDataInicio.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDataInicio()));
-        columnQuantDias.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getQuantDias()));
-        columnValor.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getValor()));
-        columnIdVendedor.setCellValueFactory(cellData -> {
-            AluguelRegistro a = cellData.getValue();
-            String nome = "";
-            if (a.getIdVendedor() != null) {
-                nome = a.getIdVendedor().getNome();
-            }
-            return new SimpleStringProperty(nome);
-        });
-        columnLocador.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPessoas_cpf()).asString());
 
         columnAcoes.setCellFactory(param -> new TableCell<AluguelRegistro, String>() {
             private final Button viewButton = new Button();
@@ -508,6 +466,9 @@ public class ControllerListLocacoes implements Initializable {
                                     float rowHeight = 20f;
                                     float tableX = margin;
 
+                                    // Calcular a largura de cada coluna
+                                    float columnWidth = tableWidth / cols;
+
                                     contentStream.setLineWidth(1f);
                                     contentStream.moveTo(tableX, tableY);
                                     contentStream.lineTo(tableX + tableWidth, tableY);
@@ -516,15 +477,15 @@ public class ControllerListLocacoes implements Initializable {
                                     contentStream.stroke();
 
                                     for (int i = 0; i <= cols; i++) {
-                                        float x = tableX + (tableWidth / cols) * i;
+                                        float x = tableX + columnWidth * i;
                                         contentStream.moveTo(x, tableY);
                                         contentStream.lineTo(x, tableY - tableHeight);
                                         contentStream.stroke();
                                     }
 
                                     // Set text properties for the table
-                                    contentStream.setFont(customFont, 12);
-                                    contentStream.setLeading(12.0f);
+                                    contentStream.setFont(customFont, 10);
+                                    contentStream.setLeading(20.0f);
                                     float yPosition = tableY - 15;
 
                                     // Draw table header text
@@ -543,12 +504,37 @@ public class ControllerListLocacoes implements Initializable {
                                         xPosition = tableX;
                                         for (int i = 0; i < cols; i++) {
                                             contentStream.beginText();
-                                            contentStream.newLineAtOffset(xPosition, yPosition);
-                                            contentStream.showText(getTableData(aluguel, i));
+                                            String texto = getTableData(aluguel, i);
+                                            int comprimentoMaximoLinha = 20; // Ajuste conforme necessário
+                                            List<String> linhas = new ArrayList<>();
+                                            for (int j = 0; j < texto.length(); j += comprimentoMaximoLinha) {
+                                                int endIndex = Math.min(j + comprimentoMaximoLinha, texto.length());
+                                                linhas.add(texto.substring(j, endIndex));
+                                            }
+
+                                            // Exiba as linhas na tabela
+                                            for (int j = 0; j < linhas.size(); j++) {
+                                                contentStream.newLineAtOffset(xPosition, yPosition - j * 15); // Ajuste conforme necessário
+                                                contentStream.showText(linhas.get(j));
+                                            }
+
                                             contentStream.endText();
+
+                                            // Adicione uma linha divisória entre as linhas
+                                            contentStream.setLineWidth(0.5f); // Ajuste conforme necessário
+                                            contentStream.moveTo(xPosition, yPosition);
+                                            contentStream.lineTo(xPosition + columnWidth, yPosition);
+                                            contentStream.stroke();
+
                                             xPosition += tableWidth / cols;
                                         }
                                         yPosition -= rowHeight;
+
+                                        // Adicione uma linha divisória entre as linhas
+                                        contentStream.setLineWidth(1f); // Restaure a largura da linha para o valor original
+                                        contentStream.moveTo(tableX, yPosition);
+                                        contentStream.lineTo(tableX + tableWidth, yPosition);
+                                        contentStream.stroke();
                                     }
                                 }
                             }
@@ -639,25 +625,7 @@ public class ControllerListLocacoes implements Initializable {
                 }
             }
         });
-
-
-        columnLocador.setCellValueFactory(cellData -> {
-            AluguelRegistro aluguelRegistro = cellData.getValue();
-            String nome = "";
-            if (aluguelRegistro.getPessoas_cpf() != null) {
-                nome = aluguelRegistro.getPessoas_cpf().getNome();
-            }
-            return new SimpleObjectProperty(nome);
-        });
-
-        columnIdVendedor.setCellValueFactory(cellData -> {
-            AluguelRegistro aluguelRegistro = cellData.getValue();
-            String nomeV = "";
-            if (aluguelRegistro.getIdVendedor().getNome() != null) {
-                nomeV = aluguelRegistro.getIdVendedor().getNome();
-            }
-            return new SimpleObjectProperty(nomeV);
-        });
+        
 
         txtPesquisa.textProperty().addListener((observable, oldValue, newValue) -> {
 
