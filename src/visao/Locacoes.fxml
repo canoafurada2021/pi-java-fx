@@ -72,12 +72,12 @@
                         <Image url="@../imgs/logo.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnPerfil" alignment="TOP_LEFT" layoutY="150.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-radius: 10;" textFill="WHITE">
+                  <Button fx:id="btnPerfil" alignment="TOP_LEFT" layoutY="150.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="306.0" style="-fx-background-color: #001C52; -fx-border-radius: 10;" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
                      <graphic>
-                        <StackPane fx:id="StackPanePerfil" prefHeight="80.0" prefWidth="282.0">
+                        <StackPane fx:id="StackPanePerfil" prefHeight="80.0" prefWidth="278.0">
                            <children>
                               <ImageView fx:id="imgFotoPerfil" fitHeight="50.0" fitWidth="50.0" StackPane.alignment="TOP_LEFT">
                                  <image>
@@ -126,7 +126,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnLocacao" alignment="TOP_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Locação" textFill="WHITE">
+            <Button fx:id="btnLocacao" alignment="TOP_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #0348CE; -fx-border-color: white; -fx-border-radius: 10;" text="Locação" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

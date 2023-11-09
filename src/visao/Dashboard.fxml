@@ -83,7 +83,7 @@
                   </Button>
                </children>
             </Pane>
-            <Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #001C52; -fx-border-color: white; -fx-border-radius: 10;" text="Dashboard" textFill="WHITE">
+            <Button fx:id="btnDashboard" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #0348CE; -fx-border-color: white; -fx-border-radius: 10;" text="Dashboard" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

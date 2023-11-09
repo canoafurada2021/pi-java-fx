@@ -60,7 +60,7 @@ public class CategoriaDAOTest {
     @Test
     void testExcluirCategoria() {
         Categoria categoria = new Categoria();
-        categoria.setIdCategoria(7l);
+        categoria.setIdCategoria(6l);
 
        // boolean inseriuOk = categoriaDAO.inserir(categoria); // Insere a categoria com ID 35
 
