@@ -33,19 +33,19 @@ Este repositório contém o código-fonte base para o desenvolvimento do projeto
 ### 🖱️ Telas do Projeto
 
 1. **Tela de Login**:
-<img src="https://keep.google.com/u/0/media/v2/1pTXnKh9QjXgFHnPKhCX_sINuOib5BCfhufrR6at-J01-FVmPuCrT8Jqp5shAKFM/1L6tSBGqF3rD-JLz8IseSNEeDr-L6_CeFd0LD5hKSmX4ehZuDkdnmZJwuXCsqpA?sz=512&accept=image%2Fgif%2Cimage%2Fjpeg%2Cimage%2Fjpg%2Cimage%2Fpng%2Cimage%2Fwebp" alt="Tela de Login">
+<img src="https://lh3.googleusercontent.com/keep-bbsk/AG3SVnC6WRysDu-N94NHHAYaRBuKKrXZn06EeIbvDHP3oivyxUxvh7jVc-LqHDCwEKHXY_o2UUS9qUmwDNi1j53qj-e4SYwxTXyGgDsyFJiDN--JXVxf=s947" alt="Tela de Login">
 
 2. **Tela de Dashboard**:
-<img src="https://keep.google.com/u/0/media/v2/1cDJTHRgQ3LtWB6-CVG_gg5PBPzjzpRnFvW1KdrmenO4o7HouwUpFJVNmPecbrA/1eb4v0zEmAkhaQbIa5okI8d5P-XLGZL0DIK2JzXgk_9-GUXh31aI3OMX_wjyrkQ?sz=512&accept=image%2Fgif%2Cimage%2Fjpeg%2Cimage%2Fjpg%2Cimage%2Fpng%2Cimage%2Fwebp" alt="Tela de Dashboard">
+<img src="https://lh3.googleusercontent.com/keep-bbsk/AG3SVnBa9Sk8zMYSCCwRFnAz1sMNh75bXJhmP5b9PYFSKYz3onD6oE32-sx8Nk6OsW_kZwjcRZPI07tlYrN4Wc8irGwg6Qg0kJTNnyli4eFiLNawCzDG=s1334" alt="Tela de Dashboard">
 
 4. **Tela de Listagem de Fornecedores**:
-<img src="https://keep.google.com/u/0/media/v2/1uQa7CEz_Rf9x2Exnu3oJccIJ-_n1ylEqAjavmRctWIuxu7uBsEcxWFSj4p5Rrg/1VE_KAQc126G0Dhs5YQUF-NV3CghjGoWcCS37XiDnTigxZVWFKWUHR3EHyWD60Q?sz=512&accept=image%2Fgif%2Cimage%2Fjpeg%2Cimage%2Fjpg%2Cimage%2Fpng%2Cimage%2Fwebp" alt="Tela de Listagem de Fornecedores">
+<img src="https://lh3.googleusercontent.com/keep-bbsk/AG3SVnBqGosliVw8CLu5QcYsv_HKU-ROilGtKZSU0divfSjfEWBca_5n9DXBMhbGPkfoifeblX6_XHZ7h_2dVyPNqnywrPTOGgCtv0JbF4EzRAfKIoAz=s1516" alt="Tela de Listagem de Fornecedores">
 
 5. **Tela de Cadastro de Fornecedores**:
-<img src="https://keep.google.com/u/0/media/v2/1w6J07S_NlcBiYQNiHKYM8uKfmUkIgcex5tFjNbP_Ux9SXHBNJLy1uS4Px8Y--pE/1Mzn3pqLbKneLdw7YmdsbANidQ5_c4w0cvQHPM4eMhI99680SghvWHBkKLMhcLw?sz=512&accept=image%2Fgif%2Cimage%2Fjpeg%2Cimage%2Fjpg%2Cimage%2Fpng%2Cimage%2Fwebp" alt="Tela e Cadastro de Fornecedores">
+<img src="https://lh3.googleusercontent.com/keep-bbsk/AG3SVnAKmGyExqu0s-AJ61wKk7CEEjlvgHrqROD-Hlx4TgMowpTI0nf0t6kcwa9CMaHDDA2SDLxaxpZUyNSl1cGfkdRwwvM6Y0i3mD1hVXCGtlcmp6om=s1515" alt="Tela de Cadastro de Fornecedores">
 
 6. **PopUp de Edição de Fornecedores**:
-<img src="https://keep.google.com/u/0/media/v2/1UfYqSY6InauVYx0GlhMCebzoMZH89Z78m44NiADMvdWPph6ANaRlfWOguIqUJg/1eGfQe7ed6NjLBzCL_QujNDYOuYYZ_zVYVTwPm665dJAT5nsjKbqhtxjUUeDO0-s?sz=512&accept=image%2Fgif%2Cimage%2Fjpeg%2Cimage%2Fjpg%2Cimage%2Fpng%2Cimage%2Fwebp" alt="PopUp de Edição de Forneceores">
+<img src="https://lh3.googleusercontent.com/keep-bbsk/AG3SVnAGuVVUYvZ4cv2AOcgz0j30G_P6MJkDdlandBCGz4sOd90kXr0W1SB2-iY5qnfipx2cxByWimozw0P2MQ0whZUWwLQLAOzLc6XufuPOJl_4-5yX=s711" alt="PopUp de Edição de Forneceores">
 
 
 ## 🚗 Casos de Uso
@@ -81,7 +81,6 @@ Este repositório contém o código-fonte base para o desenvolvimento do projeto
   <p>Para estabelecer uma sincronização entre o sistema e o banco de dados, deve-se usar um mapeamento do Diagrama de Classes para o Diagrama Entidade-Relacionamento, conforme mostrado abaixo:</p>
   <img src="https://github.com/canoafurada2021/pi-java-fx/blob/master/DiagramaDeClasses.png?raw=true" alt="Diagrama de Classes">
 </div>
-![listagem](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/2f114135-b1e7-4832-9014-320e6af9b014)
 
 <div style="text-align: center;">
   <h3>Diagrama de Entidade e Relacionamento</h3>
