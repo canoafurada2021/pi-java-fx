@@ -8,7 +8,7 @@ public class Endereco {
 	private long cep;
 	private Long id;
 	
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 	public void setId(Long id) {
