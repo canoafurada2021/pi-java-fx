@@ -29,8 +29,8 @@ public class CategoriaDAOTest {
         categoria.setIdCategoria(35l);
         categoria.setCategoria("Nova Categoria");
 
-        boolean inseriuOk = categoriaDAO.inserir(categoria);
-        assertTrue(inseriuOk);
+        Long inseriuOk = categoriaDAO.inserir(categoria);
+        assertTrue(inseriuOk > 0);
     }
 
     @Order(2)
@@ -47,8 +47,11 @@ public class CategoriaDAOTest {
         // Insere a categoria a ser atualizada
         Categoria categoria = new Categoria();
         categoria.setCategoria("Categoria da patricia linda");
-        categoria.setIdCategoria(6l);
+        CategoriaDAO cDAO = new CategoriaDAO();
+        Long idCategoria = cDAO.inserir(categoria);
 
+        categoria.setIdCategoria(idCategoria);
+        categoria.setCategoria("Nova categoria teste");
 
         // Em seguida, atualiza a categoria
         boolean atualizouOk = categoriaDAO.atualizar(categoria);
@@ -60,11 +63,11 @@ public class CategoriaDAOTest {
     @Test
     void testExcluirCategoria() {
         Categoria categoria = new Categoria();
-        categoria.setIdCategoria(6l);
+        categoria.setCategoria("Teste Andrieli");
 
-       // boolean inseriuOk = categoriaDAO.inserir(categoria); // Insere a categoria com ID 35
-
-       // assertTrue(inseriuOk); // Verifica se a inserção foi bem-sucedida
+        CategoriaDAO cDAO = new CategoriaDAO();
+        Long idCategoria = cDAO.inserir(categoria);
+        categoria.setIdCategoria(idCategoria);
 
         // Em seguida, tente excluir a categoria
         boolean excluiuOk = categoriaDAO.excluir(categoria);

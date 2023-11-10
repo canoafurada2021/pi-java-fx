@@ -71,35 +71,36 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO {
 	}
 
 	public boolean inserir(AluguelRegistro ar) {
-		Conexao a = Conexao.getInstancia();
-		Connection con = a.conectar();
-
-		String query = "INSERT INTO aluguelRegistro (forma_pagamento, data_inicio, quant_dias, valor, vendedor_id_vendedor, locador_pessoas_cpf, fornecedor_cnpj) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
 		boolean insercaoSucesso = false;
+		if(ar!=null) {
+			Conexao a = Conexao.getInstancia();
+			Connection con = a.conectar();
 
-		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			String query = "INSERT INTO aluguelRegistro (forma_pagamento, data_inicio, quant_dias, valor, vendedor_id_vendedor, locador_pessoas_cpf, fornecedor_cnpj) "
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
-			ps.setString(1, ar.getFormaPagamento());
-			ps.setDate(2, ar.getDataInicio());
-			ps.setInt(3, ar.getQuantDias());
-			ps.setDouble(4, ar.getValor());
-			ps.setLong(5, ar.getIdVendedor().getId_vendedor());
-			ps.setString(6, ar.getPessoas_cpf().getPessoas_cpf());
-			ps.setLong(7, ar.getFornecedor().getCnpj());
+			try {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setString(1, ar.getFormaPagamento());
+				ps.setDate(2, ar.getDataInicio());
+				ps.setInt(3, ar.getQuantDias());
+				ps.setDouble(4, ar.getValor());
+				ps.setLong(5, ar.getIdVendedor().getId_vendedor());
+				ps.setString(6, ar.getPessoas_cpf().getPessoas_cpf());
+				ps.setLong(7, ar.getFornecedor().getCnpj());
 
-			int linhasAfetadas = ps.executeUpdate();
+				int linhasAfetadas = ps.executeUpdate();
 
-			if (linhasAfetadas > 0) {
-				insercaoSucesso = true;
+				if (linhasAfetadas > 0) {
+					insercaoSucesso = true;
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				a.fecharConexao();
 			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			a.fecharConexao();
 		}
 
 		return insercaoSucesso;

@@ -134,11 +134,11 @@ public class ControllerCadastroCategoria implements Initializable {
 		// utilities)
 		try {
 
-			boolean insercaoSucesso = daoCategoria.inserir(c);
+			Long insercaoSucesso = daoCategoria.inserir(c);
 		
 			limpaCampos();
 
-			if (insercaoSucesso) {
+			if (insercaoSucesso > 0) {
 				ExibirPopUpSucesso();
 			} else {
 				ExibirPopUpErro();

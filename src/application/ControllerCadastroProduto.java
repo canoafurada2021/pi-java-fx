@@ -174,7 +174,7 @@ public class ControllerCadastroProduto implements Initializable {
 		v.setPreco_por_dia(precoPorDia);
 		v.setUnidade_em_estoque(unidadeEmEstoque);
 
-		v.setIdCategoria(categoriaSelecionada);
+		v.setCategoria(categoriaSelecionada);
 		v.setCnpj(fornecedorSelecionado);
 
 		try {
@@ -190,7 +190,7 @@ public class ControllerCadastroProduto implements Initializable {
 			} else {
 				ExibePopUpErro.ExibirPopUpErro();
 				System.out.println("n deu bom");
-				System.out.println(v.getIdCategoria());
+				System.out.println(v.getCategoria());
 			}
 
 		} catch (Exception e) {

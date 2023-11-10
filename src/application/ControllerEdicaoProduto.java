@@ -185,7 +185,7 @@ public class ControllerEdicaoProduto implements Initializable {
 		
 		// Define o Fornecedor no veiculo
 		veiculo.setCnpj(fornecedorSelecionado);
-		veiculo.setIdCategoria(categoriaSelecionada);
+		veiculo.setCategoria(categoriaSelecionada);
 
 		if(dao.atualizar(veiculo)) {
 			ExibePopUpSucesso.ExibirPopUpSucesso();
@@ -220,8 +220,8 @@ public class ControllerEdicaoProduto implements Initializable {
 		txtTipoCambio.setText(v.getTipo_cambio());
 		txtUnidadeEmEstoque.setText(String.valueOf(v.getUnidade_em_estoque()));
 		
-		if (v.getIdCategoria() != null && v.getIdCategoria().getIdCategoria() != null) {
-		    long categoriaId = v.getIdCategoria().getIdCategoria();  // Supondo que getIdCategoria() retorna um long
+		if (v.getCategoria() != null) {
+		    long categoriaId = v.getCategoria().getIdCategoria();  // Supondo que getIdCategoria() retorna um long
 		    int categoriaIndex = encontrarIndiceCategoria(categoriaId);
 		    String categoriaText = String.valueOf(categoriaId);
 

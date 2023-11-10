@@ -2,6 +2,7 @@ package application;
 
 import java.util.List;
 
+import controle.CategoriaDAO;
 import controle.VeiculoDAO;
 import modelo.Categoria;
 import modelo.Veiculo;
@@ -32,10 +33,11 @@ public class VeiculoDAOTest {
         v.setUnidade_em_estoque(100);
 
         Categoria categoria = new Categoria();
-        categoria.setIdCategoria(1L);
         categoria.setCategoria("Sport");
-
-        v.setIdCategoria(categoria);
+        CategoriaDAO cDAO = new CategoriaDAO();
+        Long idCategoria = cDAO.inserir(categoria);
+        categoria.setIdCategoria(idCategoria);
+        v.setCategoria(categoria);
 
         VeiculoDAO dao = new VeiculoDAO();
         boolean passou = dao.inserir(v);

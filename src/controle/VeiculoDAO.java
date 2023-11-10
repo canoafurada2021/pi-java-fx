@@ -63,7 +63,7 @@ public class VeiculoDAO {
 				Categoria cat = new Categoria();
 				cat.setCategoria(categoria);
 
-				v.setIdCategoria(cat);
+				v.setCategoria(cat);
 
 				// Definindo o id do fornecedor
 				Fornecedor f = new Fornecedor();
@@ -109,7 +109,7 @@ public class VeiculoDAO {
 			ps.setInt(9,veiculo.getNota_avaliacao());
 			ps.setLong(10,veiculo.getPreco_por_dia());
 			ps.setInt(11,veiculo.getUnidade_em_estoque());
-			ps.setLong(12,veiculo.getIdCategoria().getIdCategoria());
+			ps.setLong(12,veiculo.getCategoria().getIdCategoria());
 			ps.setLong(13,veiculo.getCnpj().getCnpj());
 
 	
@@ -186,7 +186,7 @@ public class VeiculoDAO {
 			ps.setInt(9, veiculo.getNota_avaliacao());
 			ps.setLong(10, veiculo.getPreco_por_dia());
 			ps.setInt(11, veiculo.getUnidade_em_estoque());
-			ps.setLong(12, veiculo.getIdCategoria().getIdCategoria());
+			ps.setLong(12, veiculo.getCategoria().getIdCategoria());
 			ps.setLong(13, veiculo.getCnpj().getCnpj());
 
 			// Defina o valor do último parâmetro como o ID do veículo que você deseja

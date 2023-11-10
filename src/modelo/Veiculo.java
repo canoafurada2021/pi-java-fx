@@ -14,7 +14,7 @@ public class Veiculo {
 	private int nota_avaliacao;
 	private Long preco_por_dia;
 	private int unidade_em_estoque;
-	private Categoria idCategoria;
+	private Categoria categoria;
 	private Fornecedor cnpj;
 	
 	public int getId_veiculo() {
@@ -84,11 +84,11 @@ public class Veiculo {
 	public void setUnidade_em_estoque(int unidade_em_estoque) {
 		this.unidade_em_estoque = unidade_em_estoque;
 	}
-	public Categoria getIdCategoria() {
-		return idCategoria;
+	public Categoria getCategoria() {
+		return categoria;
 	}
-	public void setIdCategoria(Categoria idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 	public Fornecedor getCnpj() {
 		return cnpj;

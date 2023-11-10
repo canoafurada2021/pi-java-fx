@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +19,15 @@ public class LocadorDAOTest {
     @BeforeAll
     public static void setUpDatabase() {
         daoLocador = new LocadorDAO();
+    }
+
+    public static String geraCpfAleatorio() {
+
+        Random r = new Random();
+        long numbers = r.nextInt(1_000_000_000) // Last 9 digits
+                + (r.nextInt(90) + 10) * 1_000_000_000L;
+
+        return String.valueOf(numbers);
     }
 
     // Método auxiliar para criar objetos de teste de forma dinâmica
@@ -40,9 +50,22 @@ public class LocadorDAOTest {
     @Test
     @Order(1)
     public void testInserirLocador() {
-        Locador l = createTestLocador();
-        boolean inseriuOk = daoLocador.inserir(l);
-        assertTrue(inseriuOk);
+        Locador locador = new Locador();
+        locador.setPessoas_cpf(geraCpfAleatorio()); // Substitua por um CPF real
+        locador.setNome("NomeAleatorio"); // Substitua por um nome real
+        locador.setCnh(987654321L); // Substitua por um número de CNH real
+        locador.setValidadeCarteira("2025-02-02"); // Substitua por uma data real
+        locador.setPaisResidencia("brasil");
+        locador.setSobrenome("sobrenome aleatorio");
+        locador.setNumIdentificacaoCarteira(243L);
+        locador.setImg_Base64("aaa");
+        locador.setTipoAcesso(TipoAcessoLogin.CLIENTE);
+        locador.setTel_contato(343243L);
+
+        boolean inserido = daoLocador.inserir(locador);
+        assertTrue(inserido);
+
+
     }
 
     @Test

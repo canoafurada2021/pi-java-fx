@@ -33,11 +33,14 @@ import org.junit.jupiter.api.*;
                 enderecoExistente.setCep(23434);
                 enderecoExistente.setEstado("puta que pariu");
                 enderecoExistente.setCidade("rjqowrkjqw");
+
                 // Outros atributos do endereço, se necessário
 
                 // Insira o endereço no banco de dados
-                boolean enderecoInserido = enderecoDAO.inserir(enderecoExistente);
-                assertTrue(enderecoInserido, "Falha ao inserir o endereço");
+                Long idEnderco = enderecoDAO.inserir(enderecoExistente);
+                assertTrue(idEnderco > 0, "Falha ao inserir o endereço");
+
+                enderecoExistente.setId(idEnderco);
 
                 // 2. Crie um objeto de fornecedor e associe-o ao endereço pelo ID
                 Fornecedor fornecedor = new Fornecedor();

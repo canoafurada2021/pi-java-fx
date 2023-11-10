@@ -1,9 +1,6 @@
 package controle;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import modelo.Categoria;
@@ -44,7 +41,7 @@ public class CategoriaDAO implements ICategoriaDAO {
 
 	}
 
-	public boolean inserir(Categoria c) {
+	public Long inserir(Categoria c) {
 
 		// instancia a classe
 		Conexao a = Conexao.getInstancia();
@@ -55,26 +52,33 @@ public class CategoriaDAO implements ICategoriaDAO {
 		String query = "INSERT INTO categoria( categoria) VALUES( ?); ";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, c.getCategoria());
 
 			// consolida a execução do comando no banco
 			ps.executeUpdate();
 
 			// fecha a conexão com banco
+			try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+				if (generatedKeys.next()) {
+					return generatedKeys.getLong(1); // retorna o id se conseguir inserir
+				} else {
+					throw new SQLException("Creating user failed, no ID obtained.");
+				}
+			}
 
-			a.fecharConexao();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-			return false; // retorna falso caso falha na inserção
+		} finally {
+			a.fecharConexao();
 		}
-		return true; // retorna true se insercao bem sucedida
+		return 0l; // retorna zero se nao conseguir inserir
 	}
 
 	public boolean excluir(Categoria ca) {
-		if (ca.getIdCategoria() == null) {
-			return false; // Não é possível excluir uma categoria com id nulo
-		}
+		//if (ca.getIdCategoria() == null) {
+		//	return false; // Não é possível excluir uma categoria com id nulo
+		//}
 
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
