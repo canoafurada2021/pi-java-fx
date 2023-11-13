@@ -6,12 +6,12 @@ public class Endereco {
 	private String cidade;
 	private String estado;
 	private long cep;
-	private Long id;
+	private int id;
 	
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getRua() {

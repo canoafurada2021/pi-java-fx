@@ -84,7 +84,7 @@ public class FornecedorDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 
 			ps.setLong(1, f.getCnpj());
-			ps.setLong(2, f.getEnderecoId().getId());
+			ps.setInt(2, f.getEnderecoId().getId());
 			ps.setString(3, f.getNome());
 			ps.setString(4, f.getAtividades());
 			ps.setLong(5, f.getTelefone());

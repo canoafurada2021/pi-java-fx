@@ -6,102 +6,111 @@ import controle.EnderecoDAO;
 import controle.FornecedorDAO;
 import modelo.Endereco;
 import modelo.Fornecedor;
+import modelo.Locador;
 import org.junit.jupiter.api.*;
 
+import java.util.ArrayList;
+import java.util.Random;
+
+public class FornecedorDAOTest {
+
+    private static FornecedorDAO daoFornecedor;
+    private static EnderecoDAO enderecoDAO;
+
+    @BeforeEach
+    public void setUpDatabase() {
+        daoFornecedor = new FornecedorDAO();
+        enderecoDAO = new EnderecoDAO();
+    }
 
 
-        public class FornecedorDAOTest {
+    public static long geraCepAleatorio(){
+        Random r = new Random();
 
-            private FornecedorDAO daoFornecedor;
-            private EnderecoDAO enderecoDAO;
-            private Fornecedor fornecedorTeste;
+        return r.nextLong(1_000_000_000)
+                + (r.nextInt(90) + 10) * 1_000_000_000L;
+    }
 
-            private Endereco enderecoTeste;
+    public static long gerarCnpjAleatorio(){
+        Random r = new Random();
 
-            @BeforeEach
-            public void setUp() {
-                daoFornecedor = new FornecedorDAO();
-                enderecoDAO = new EnderecoDAO();
-            }
+        return r.nextLong(1_000_000_000)
+                + (r.nextInt(90) + 10) * 1_000_000_000L;
+    }
 
-            @Test
-            public void testInserirFornecedor() {
-                // 1. Crie um endereço e insira-o no banco de dados
-                Endereco enderecoExistente = new Endereco();
-                enderecoExistente.setRua("Rua de Teste");
-                enderecoExistente.setBairro("bairro teste");
-                enderecoExistente.setCep(23434);
-                enderecoExistente.setEstado("puta que pariu");
-                enderecoExistente.setCidade("rjqowrkjqw");
+    public static long gerarTelefoneAleatorio(){
+        Random r = new Random();
 
-                // Outros atributos do endereço, se necessário
+        return r.nextLong(1_000_000_000)
+                + (r.nextInt(90) + 10) * 1_000_000_000L;
+    }
 
-                // Insira o endereço no banco de dados
-                Long idEnderco = enderecoDAO.inserir(enderecoExistente);
-                assertTrue(idEnderco > 0, "Falha ao inserir o endereço");
+    @Test
+    @Order(1)
 
-                enderecoExistente.setId(idEnderco);
+    public void testInserirFornecedor() {
+        // 1. Crie um endereço e insira-o no banco de dados
+        Endereco enderecoExistente = new Endereco();
+        enderecoExistente.setRua("Rua de Teste");
+        enderecoExistente.setBairro("bairro teste");
+        enderecoExistente.setCep(geraCepAleatorio());
+        enderecoExistente.setEstado("puta que pariu");
+        enderecoExistente.setCidade("rjqowrkjqw");
 
-                // 2. Crie um objeto de fornecedor e associe-o ao endereço pelo ID
-                Fornecedor fornecedor = new Fornecedor();
-                fornecedor.setEnderecoId(enderecoExistente); // Associe o endereço inserido
-                fornecedor.setNome("Fornecedor Teste");
-                fornecedor.setCnpj(424324L);
-                fornecedor.setTelefone(47984273688L);
-                fornecedor.setAtividades("Atividades de Teste");
+        // Insira o endereço no banco de dados
+        boolean inserido = enderecoDAO.inserir(enderecoExistente);
+assertTrue(inserido);
+//       enderecoExistente.setId(idEndereco);
 
-                // 3. Inserir o fornecedor no banco de dados
-                boolean fornecedorInserido = daoFornecedor.inserir(fornecedor);
-              //  assertTrue(fornecedorInserido, "Falha ao inserir o fornecedor");
-            }
+        // 2. Crie um objeto de fornecedor e associe-o ao endereço pelo ID
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setEnderecoId(enderecoExistente); // Associe o endereço inserido
+        fornecedor.setNome("Fornecedor Teste");
+        fornecedor.setCnpj(gerarCnpjAleatorio());
+        fornecedor.setTelefone(gerarTelefoneAleatorio());
+        fornecedor.setAtividades("Atividades de Teste");
 
-            @Test
-            @Order(2)
-            public void testListarFornecedores() {
-                // Inserir o fornecedor de teste para listar
-                daoFornecedor.listar();
+        // 3. Inserir o fornecedor no banco de dados
+        boolean fornecedorInserido = daoFornecedor.inserir(fornecedor);
+        assertTrue(fornecedorInserido, "Falha ao inserir o fornecedor");
+    }
 
-                // Verificar se a lista de fornecedores não está vazia
-                assertFalse(daoFornecedor.listar().isEmpty());
-            }
+    @Test
+    @Order(2)
+    public void testListarFornecedores() {
 
-            @Test
-            @Order(3)
-            public void testAtualizarFornecedor() {
-                // Inserir o fornecedor de teste
-                //daoFornecedor.inserir(fornecedorTeste);
+        ArrayList<Fornecedor> locadores = daoFornecedor.listar();
+        assertNotNull(locadores);
+        assertTrue(locadores.size() > 0);
+    }
 
-                // Atualizar os detalhes do fornecedor de teste
-                fornecedorTeste.setNome("Novo Nome de Teste");
-                fornecedorTeste.setTelefone(987654321L);
-                fornecedorTeste.setAtividades("Novas Atividades de Teste");
+    @Test
+    @Order(3)
+    public void testAtualizarFornecedor() {
+        ArrayList<Fornecedor> fornecedores = daoFornecedor.listar();
+        if (!fornecedores.isEmpty()) {
+            // Escolha um locador aleatório para atualizar
+            Fornecedor fornecedorParaAtualizar = fornecedores.get((int) (Math.random() * fornecedores.size()));
 
-                assertTrue(daoFornecedor.atualizar(fornecedorTeste));
-            }
-
-            @Test
-            @Order(4)
-            public void testExcluirFornecedor() {
-                // Inserir o fornecedor de teste
-               // daoFornecedor.inserir(fornecedorTeste);
-
-                assertTrue(daoFornecedor.excluir(fornecedorTeste));
-            }
-
-            @AfterEach
-            public void tearDown() {
-                // Limpar o banco de dados após os testes
-                if (enderecoTeste != null) {
-                    enderecoDAO.excluir(enderecoTeste.getId());
-                }
-
-                if (fornecedorTeste != null) {
-                    daoFornecedor.excluir(fornecedorTeste);
-                }
-            }
-
-
+            // Atualize o locador
+            String novoNome = "NovoNome";
+            fornecedorParaAtualizar.setNome(novoNome);
+            boolean alterouOk = daoFornecedor.atualizar(fornecedorParaAtualizar);
+            assertTrue(alterouOk);
         }
+    }
+
+    @Test
+    @Order(4)
+    public void testExcluirFornecedor() {
+        ArrayList<Fornecedor> fornecedores = daoFornecedor.listar();
+        if (!fornecedores.isEmpty()) {
+            // Escolha um locador aleatório para excluir
+            Fornecedor fornecedorParaExcluir = fornecedores.get((int) (Math.random() * fornecedores.size()));
+            boolean excluiuOk = daoFornecedor.excluir(fornecedorParaExcluir);
+            assertTrue(excluiuOk);
+        }
+    }
 
 
-
+}

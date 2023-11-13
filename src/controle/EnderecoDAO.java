@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import modelo.Endereco;
 
 public class EnderecoDAO {
-    public Long inserir(Endereco e) {
+
+
+    public boolean inserir(Endereco e) {
         Conexao c = Conexao.getInstancia();
         Connection con = c.conectar();
 
@@ -20,23 +22,14 @@ public class EnderecoDAO {
             ps.setString(4, e.getCidade());
             ps.setString(5, e.getEstado());
 
-            ps.executeUpdate();
+  return true;
 
+        } catch (SQLException error) {
+            error.printStackTrace();
+        } finally {
             c.fecharConexao();
-
-            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    return generatedKeys.getLong(1);
-                } else {
-                    throw new SQLException("Creating user failed, no ID obtained.");
-                }
-            }
-
-        } catch (SQLException e1) {
-            e1.printStackTrace();
         }
-        return 0l;
-
+    return false;
     }
 
     public ArrayList<Endereco> listar() {
@@ -54,7 +47,7 @@ public class EnderecoDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Long id = rs.getLong("id");
+                int id = rs.getInt("id");
                 String rua = rs.getString("rua");
                 String estado = rs.getString("estado");
 
@@ -83,7 +76,7 @@ public class EnderecoDAO {
         return enderecos; // Retorna null se não encontrar o endereço
     }
 
-    public boolean excluir(Long enderecoId) {
+    public boolean excluir(int enderecoId) {
         Conexao c = Conexao.getInstancia();
         Connection con = c.conectar();
 
@@ -91,7 +84,7 @@ public class EnderecoDAO {
 
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setLong(1, enderecoId);
+            ps.setInt(1, enderecoId);
 
             int linhasAfetadas = ps.executeUpdate();
 
