@@ -83,7 +83,7 @@ public class EnderecoDAO {
         return enderecos; // Retorna null se não encontrar o endereço
     }
 
-    public boolean excluir(int enderecoId) {
+    public boolean excluir(Long enderecoId) {
         Conexao c = Conexao.getInstancia();
         Connection con = c.conectar();
 
@@ -91,7 +91,7 @@ public class EnderecoDAO {
 
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, enderecoId);
+            ps.setLong(1, enderecoId);
 
             int linhasAfetadas = ps.executeUpdate();
 
