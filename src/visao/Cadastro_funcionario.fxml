@@ -152,7 +152,7 @@
                </graphic>
             </Button>
             <Pane prefHeight="8.0" prefWidth="310.0" />
-            <Button fx:id="btnFuncionarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #0348CE; -fx-border-color: white; -fx-border-radius: 10;" text="Funcionários" textFill="WHITE">
+            <Button fx:id="btnFuncionarios" alignment="TOP_LEFT" layoutX="10.0" layoutY="170.0" mnemonicParsing="false" onAction="#abrirListFuncionarios" prefHeight="70.0" prefWidth="310.0" style="-fx-background-color: #0348CE; -fx-border-color: white; -fx-border-radius: 10;" text="Funcionários" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
