@@ -67,7 +67,11 @@ public class VeiculoDAOTest {
             v.setUnidade_em_estoque(100);
             v.setCnpj(fornecedor);
 
-            v.setCategoria(categoria);
+            Categoria novaCat = new Categoria();
+            novaCat.setCategoria("1");
+            boolean catInserida = daoCategoria.inserir(novaCat);
+            assertTrue(catInserida);
+
             boolean passou = daoVeiculo.inserir(v);
             assertTrue(passou);
 
