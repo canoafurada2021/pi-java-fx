@@ -1,11 +1,14 @@
 package application;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import controle.CategoriaDAO;
-import controle.VeiculoDAO;
+import controle.*;
 import modelo.Categoria;
+import modelo.Endereco;
+import modelo.Fornecedor;
 import modelo.Veiculo;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
@@ -13,36 +16,62 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class VeiculoDAOTest {
     private VeiculoDAO daoVeiculo;
+    private FornecedorDAO daoFornecedor;
 
+    private CategoriaDAO daoCategoria;
+    private EnderecoDAO daoEndereco;
+
+
+    @BeforeEach
+    public void setUpDatabase(){
+        daoVeiculo = new VeiculoDAO();
+        daoFornecedor = new FornecedorDAO();
+        daoCategoria = new CategoriaDAO();
+        daoEndereco = new EnderecoDAO();
+    }
 
     @Test
     @Order(1)
     public void TestInserirVeiculo() {
-        Veiculo v = new Veiculo();
+        ArrayList<Endereco> enderecos = daoEndereco.listar();
+        Endereco endereco = null;
+        if (!enderecos.isEmpty()){
+             endereco = enderecos.get((int) (Math.random() * enderecos.size()));
+        }
 
-        v.setQuant_assento(5);
-        v.setTipo_cambio("Automático");
-        v.setQuant_portas(4);
-        v.setEspaco_porta_malas(400);
-        v.setMarca("Mercedes");
-        v.setNome("EQB SUV");
-        v.setCor("Preto");
-        v.setAno(2020);
-        v.setNota_avaliacao((int) 5.0);
-        v.setPreco_por_dia((long) 200.00);
-        v.setUnidade_em_estoque(100);
+        ArrayList<Fornecedor> fornecedores = daoFornecedor.listar();
+        Fornecedor fornecedor = null;
+        if (!fornecedores.isEmpty()){
+            fornecedor = fornecedores.get((int) (Math.random() * fornecedores.size()));
+        }
 
-        Categoria categoria = new Categoria();
-        categoria.setCategoria("Sport");
-        CategoriaDAO cDAO = new CategoriaDAO();
-        Long idCategoria = cDAO.inserir(categoria);
-        categoria.setIdCategoria(idCategoria);
-        v.setCategoria(categoria);
+        ArrayList<Categoria> categorias = daoCategoria.listar();
+        Categoria categoria = null;
+        if (!categorias.isEmpty()){
+             categoria = categorias.get((int) (Math.random() * categorias.size()));
+        }
 
-        VeiculoDAO dao = new VeiculoDAO();
-        boolean passou = dao.inserir(v);
-        assertTrue(passou);
+        if (categoria != null && fornecedor != null && categoria != null){
+            Veiculo v = new Veiculo();
 
+            v.setQuant_assento(5);
+            v.setTipo_cambio("Automático");
+            v.setQuant_portas(4);
+            v.setEspaco_porta_malas(400);
+            v.setMarca("Mercedes");
+            v.setNome("EQB SUV");
+            v.setCor("Preto");
+            v.setAno(2020);
+            v.setNota_avaliacao((int) 5.0);
+            v.setPreco_por_dia((long) 200.00);
+            v.setUnidade_em_estoque(100);
+            v.setCnpj(fornecedor);
+
+            v.setCategoria(categoria);
+            boolean passou = daoVeiculo.inserir(v);
+            assertTrue(passou);
+
+        }
     }
 
 
@@ -72,24 +101,14 @@ public class VeiculoDAOTest {
     @Test
     @Order(3)
     public void TestAtualizarVeiculo() {
-        Veiculo v = new Veiculo();
+        ArrayList<Veiculo> veiculos = daoVeiculo.listar();
+        if (!veiculos.isEmpty()){
+           Veiculo veiculo = veiculos.get((int) (Math.random() * veiculos.size()));
 
-        v.setQuant_assento(5);
-        v.setTipo_cambio("Automático");
-        v.setQuant_portas(4);
-        v.setEspaco_porta_malas(400);
-        v.setMarca("Mercedes");
-        v.setNome("EQB SUV");
-        v.setCor("Preto");
-        v.setAno(2020);
-        v.setNota_avaliacao((int) 5.0);
-        v.setPreco_por_dia((long) 200.00);
-        v.setUnidade_em_estoque(100);
-
-
-        VeiculoDAO dao = new VeiculoDAO();
-        boolean atualizado = dao.atualizar(v);
-        assertTrue (true, String.valueOf(atualizado));
+           veiculo.setNome("Novo Nome");
+           boolean atualizou = daoVeiculo.atualizar(veiculo);
+           assertTrue(atualizou);
+        }
 
     }
 
@@ -109,6 +128,9 @@ public class VeiculoDAOTest {
         v.setNota_avaliacao((int) 5.0);
         v.setPreco_por_dia((long) 200.00);
         v.setUnidade_em_estoque(100);
+
+        Fornecedor f = new Fornecedor();
+        f.setCnpj(12345678901234l);
 
         VeiculoDAO dao = new VeiculoDAO();
         boolean deletou = dao.excluir(v.getId_veiculo());
