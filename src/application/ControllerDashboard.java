@@ -30,6 +30,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import modelo.Empresa;
 import modelo.Locador;
 
 public class ControllerDashboard implements Initializable {
@@ -253,8 +254,7 @@ public class ControllerDashboard implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Configuracoes.fxml"));
 			Parent root = loader.load();
 
-			//ControllerConfiguracoes controllerNovaTela = loader.getController();
-
+			ControllerConfiguracoes controllerNovaTela = loader.getController();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
 

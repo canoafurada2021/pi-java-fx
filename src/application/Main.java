@@ -14,11 +14,11 @@ public class Main extends Application {
     	//primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/imgs/favicon.png")));
 
     	
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Locacoes.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
         Parent root = loader.load();
-		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		// root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
-		ControllerListLocacoes controller = loader.getController(); // Obtém uma referência ao controlador
+		ControllerDashboard controller = loader.getController(); // Obtém uma referência ao controlador
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
@@ -29,4 +29,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-

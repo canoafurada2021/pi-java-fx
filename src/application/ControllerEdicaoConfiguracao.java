@@ -20,6 +20,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import modelo.Empresa;
 import utilities.ExibePopUpErro;
 import utilities.ExibePopUpSucesso;
 
@@ -28,7 +29,6 @@ public class ControllerEdicaoConfiguracao implements Initializable {
 
 
 
-	public class PleaseProvideControllerClassName {
 
 		@FXML
 		private Button btnCancelar;
@@ -75,8 +75,6 @@ public class ControllerEdicaoConfiguracao implements Initializable {
 		@FXML
 		private TextField txtTelefone;
 
-	}
-
 	@FXML
 	public void cancelarAlteracaoEmpresa(ActionEvent actionEvent) {
 		// Obtém o Node (geralmente um botão) que acionou o evento
@@ -88,6 +86,17 @@ public class ControllerEdicaoConfiguracao implements Initializable {
 		// Fecha o Stage atual
 		stage.close();
 	}
+
+	public void setEmpresa(Empresa e){
+		txtNomeFantasia.setText(e.getNome_fantasia());
+		txtCnpj.setText(e.getCnpj().toString());
+		txtIdEmpresa.setText(e.getIdEmpresa().toString());
+		txtTelefone.setText(e.getTelefone().toString());
+		txtPorteEmpresa.setText(e.getPorte_empresa());
+		txtRazaoSocial.setText(e.getRazao_social());
+	}
+
+
 
 	@FXML
 	public void alterarEmpresa(ActionEvent actionEvent) {
@@ -135,19 +144,8 @@ public class ControllerEdicaoConfiguracao implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
-	//PRECISA ARRUMAR - CRIAR O MODELO E DAO
-//	public void setConfiguracoes (Configuracoes c) {
-//		txtNomeFantasia.setText(c.getNomeFantasia());
-//		txtRazaoSocial.setText(c.getRazaoSocial());
-//		txtPorteEmpresa.setText(c.getPorteEmpresa());
-//		txtId.setText(valueOf(c.getId()));
-//		txtCnpj.setText(valueOf(c.getCNPJ()));
-//		txtTelefone.setText(valueOf(c.getTelefone()));
-//
-//	}
 
 }

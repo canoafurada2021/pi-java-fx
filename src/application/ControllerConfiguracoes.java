@@ -189,11 +189,34 @@ public class ControllerConfiguracoes implements Initializable {
 		}
     }
 
-		@Override
-		public void initialize(URL location, ResourceBundle resources) {
-			//txtNomeFantasia.setText();
-
+	public void setEmpresa(Empresa e){
+		if (e!=null) {
+			System.out.println("teste bomba configuracao");
+			txtNomeFantasia.setText(e.getNome_fantasia());
+			txtCnpj.setText(String.valueOf(e.getCnpj()));
+			txtId.setText(String.valueOf(e.getIdEmpresa()));
+			txtTelefone.setText(String.valueOf(e.getTelefone()));
+			txtPorteEmpresa.setText(e.getPorte_empresa());
+			txtRazaoSocial.setText(e.getRazao_social());
+		} else {
+			System.out.println("Obj de empresa esta nulo");
 		}
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		EmpresaDAO dao = new EmpresaDAO();
+		Empresa empresa = dao.listar();
+		setEmpresa(empresa);
+
+		txtRazaoSocial.setDisable(true);
+		txtPorteEmpresa.setDisable(true);
+		txtTelefone.setDisable(true);
+		txtId.setDisable(true);
+		txtNomeFantasia.setDisable(true);
+		txtCnpj.setDisable(true);
+	}
 
 	@FXML
 	void abrirListProdutos(ActionEvent event) {
