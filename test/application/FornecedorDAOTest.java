@@ -49,22 +49,18 @@ public class FornecedorDAOTest {
     @Order(1)
 
     public void testInserirFornecedor() {
-        // 1. Crie um endereço e insira-o no banco de dados
-        Endereco enderecoExistente = new Endereco();
-        enderecoExistente.setRua("Rua de Teste");
-        enderecoExistente.setBairro("bairro teste");
-        enderecoExistente.setCep(geraCepAleatorio());
-        enderecoExistente.setEstado("puta que pariu");
-        enderecoExistente.setCidade("rjqowrkjqw");
 
-        // Insira o endereço no banco de dados
-        boolean inserido = enderecoDAO.inserir(enderecoExistente);
-assertTrue(inserido);
-//       enderecoExistente.setId(idEndereco);
+        ArrayList<Endereco> enderecos = enderecoDAO.listar();
+        Endereco endereco = null;
+
+        if(!enderecos.isEmpty()){
+            endereco = enderecos.get((int) (Math.random() * enderecos.size()));
+
+        }
 
         // 2. Crie um objeto de fornecedor e associe-o ao endereço pelo ID
         Fornecedor fornecedor = new Fornecedor();
-        fornecedor.setEnderecoId(enderecoExistente); // Associe o endereço inserido
+        fornecedor.setEnderecoId(endereco); // Associe o endereço inserido
         fornecedor.setNome("Fornecedor Teste");
         fornecedor.setCnpj(gerarCnpjAleatorio());
         fornecedor.setTelefone(gerarTelefoneAleatorio());
@@ -104,10 +100,16 @@ assertTrue(inserido);
     @Order(4)
     public void testExcluirFornecedor() {
         ArrayList<Fornecedor> fornecedores = daoFornecedor.listar();
+
+        ArrayList<Endereco> enderecos = enderecoDAO.listar();
+
+
+
         if (!fornecedores.isEmpty()) {
             // Escolha um locador aleatório para excluir
             Fornecedor fornecedorParaExcluir = fornecedores.get((int) (Math.random() * fornecedores.size()));
             boolean excluiuOk = daoFornecedor.excluir(fornecedorParaExcluir);
+
             assertTrue(excluiuOk);
         }
     }
