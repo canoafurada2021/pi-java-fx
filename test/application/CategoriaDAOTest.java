@@ -26,10 +26,10 @@ public class CategoriaDAOTest {
     @Test
     void testInserirCategoria() {
         Categoria categoria = new Categoria();
-        categoria.setIdCategoria(35l);
+        categoria.setIdCategoria(35);
         categoria.setCategoria("Nova Categoria");
 
-        Long inseriuOk = categoriaDAO.inserir(categoria);
+        Integer inseriuOk = categoriaDAO.inserir(categoria);
         assertTrue(inseriuOk > 0);
     }
 
@@ -48,7 +48,7 @@ public class CategoriaDAOTest {
         Categoria categoria = new Categoria();
         categoria.setCategoria("Categoria da patricia linda");
         CategoriaDAO cDAO = new CategoriaDAO();
-        Long idCategoria = cDAO.inserir(categoria);
+        Integer idCategoria = cDAO.inserir(categoria);
 
         categoria.setIdCategoria(idCategoria);
         categoria.setCategoria("Nova categoria teste");
@@ -66,7 +66,7 @@ public class CategoriaDAOTest {
         categoria.setCategoria("Teste Andrieli");
 
         CategoriaDAO cDAO = new CategoriaDAO();
-        Long idCategoria = cDAO.inserir(categoria);
+        Integer idCategoria = cDAO.inserir(categoria);
         categoria.setIdCategoria(idCategoria);
 
         // Em seguida, tente excluir a categoria

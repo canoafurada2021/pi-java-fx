@@ -270,8 +270,8 @@ public class ControllerEdicaoProduto implements Initializable {
 	
 	private void preencherComboCategoria() {
 		for (Categoria categoria : categorias) {
-			Long categoriaInfo = categoria.getIdCategoria();
-			comboCategoria.getItems().add(categoriaInfo);
+			Integer categoriaInfo = categoria.getIdCategoria();
+			comboCategoria.getItems().add(Long.valueOf(categoriaInfo));
 		}
 	}
 	

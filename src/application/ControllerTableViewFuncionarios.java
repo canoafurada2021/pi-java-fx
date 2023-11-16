@@ -435,7 +435,7 @@ public class ControllerTableViewFuncionarios implements Initializable {
 						viewButton.setGraphic(viewImage);
 						viewButton.setOnAction(event -> {
 							Vendedor vendedor = getTableView().getItems().get(getIndex());
-							String idVende = vendedor.getId_vendedor().toString();
+							String idVende = String.valueOf(vendedor.getId_vendedor());
 
 							try {
 								FXMLLoader loader = new FXMLLoader(

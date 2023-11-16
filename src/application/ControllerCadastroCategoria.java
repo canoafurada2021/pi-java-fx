@@ -134,7 +134,7 @@ public class ControllerCadastroCategoria implements Initializable {
 		// utilities)
 		try {
 
-			Long insercaoSucesso = daoCategoria.inserir(c);
+			Integer insercaoSucesso = daoCategoria.inserir(c);
 		
 			limpaCampos();
 

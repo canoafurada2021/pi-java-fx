@@ -24,7 +24,7 @@ public class VendedorDAO implements IVendedorDAO{
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Long idVendedor = rs.getLong("id_vendedor");
+				Integer idVendedor = rs.getInt("id_vendedor");
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				Long cpf = rs.getLong("cpf");
@@ -90,7 +90,7 @@ public class VendedorDAO implements IVendedorDAO{
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setLong(1, v.getId_vendedor());
+			ps.setInt(1, v.getId_vendedor());
 
 			int rowsAffected = ps.executeUpdate();
 
@@ -119,7 +119,7 @@ public class VendedorDAO implements IVendedorDAO{
 			preparedStatement.setLong(4, v.getCpf());
 			preparedStatement.setString(5, v.getSenha());
 			preparedStatement.setInt(6, v.getTipoAcesso().getId());
-			preparedStatement.setLong(7, v.getId_vendedor());
+			preparedStatement.setInt(7, v.getId_vendedor());
 
 			int rowsUpdated = preparedStatement.executeUpdate();
 

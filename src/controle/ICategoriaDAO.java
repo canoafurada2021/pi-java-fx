@@ -7,7 +7,7 @@ import modelo.Categoria;
 public interface ICategoriaDAO {
 
 	public ArrayList<Categoria> listar();
-	public Long inserir(Categoria c);
+	public int inserir(Categoria c);
 	public boolean excluir (Categoria ca);
 
 	public boolean atualizar(Categoria ca);

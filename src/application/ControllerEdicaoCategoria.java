@@ -29,7 +29,7 @@ public class ControllerEdicaoCategoria implements Initializable{
 	    private Button btnSalvar;
 
 	    @FXML
-	    private ComboBox<Long> comboIdCategoria;
+	    private ComboBox<Integer> comboIdCategoria;
 
 	    @FXML
 	    private Label lblIdCategoria;
@@ -98,13 +98,13 @@ public class ControllerEdicaoCategoria implements Initializable{
 	public void setCategoria(Categoria ca) {
 		txtNomeCategoria.setText(ca.getCategoria());
 		
-		Long idCategoria = ca.getIdCategoria();
+		Integer idCategoria = ca.getIdCategoria();
 
 		// Corrija a comparação usando um valor que represente "não definido" 
 		//tava dando erro a comparacao com null aqui:
 		if (idCategoria != -1) {
 			int categoriaIndex = encontrarIndexPorCategoria(ca.getIdCategoria());
-			String categoriaText = ca.getIdCategoria().toString();
+			String categoriaText = String.valueOf(ca.getIdCategoria());
 			
 			comboIdCategoria.getEditor().setText(categoriaText);
 			
@@ -135,7 +135,7 @@ public class ControllerEdicaoCategoria implements Initializable{
 	
 	private void preencherComboBoxCategoriaAlter() {
 		for (Categoria categoria : categorias) {
-			Long infoCategoria = categoria.getIdCategoria();
+			int infoCategoria = categoria.getIdCategoria();
 			comboIdCategoria.getItems().add(infoCategoria);
 		}
 	}

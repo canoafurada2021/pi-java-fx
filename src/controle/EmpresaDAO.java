@@ -27,7 +27,7 @@ public class EmpresaDAO implements IEmpresaDAO {
 				String nome_fantasia = rs.getString("nome_fantasia");
 				String razao_social = rs.getString("razao_social");
 				String porte_empresa = rs.getString("porte_empresa");
-				Long id_empresa = rs.getLong("id_empresa");
+				Integer id_empresa = rs.getInt("id_empresa");
 				Long cnpj = rs.getLong("cnpj");
 				Long telefone = rs.getLong("telefone");
 

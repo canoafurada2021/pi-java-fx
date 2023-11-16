@@ -33,15 +33,15 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO {
 			while (rs.next()) {
 				AluguelRegistro aluguel = new AluguelRegistro();
 
-				Long idRegistro = rs.getLong("id_venda");
+				Integer idRegistro = rs.getInt("id_venda");
 				String formaPagamento = rs.getString("forma_pagamento");
 				Date dataInicio = rs.getDate("data_inicio");
 				int quantDias = rs.getInt("quant_dias");
 				Double valor = rs.getDouble("valor");
-				Long idVendedor = rs.getLong("v.id_vendedor");
+				Integer idVendedor = rs.getInt("v.id_vendedor");
 				String cpfLocador = rs.getString("locador_cpf");
 
-				aluguel.setIdVenda(idRegistro.intValue());
+				aluguel.setIdVenda(idRegistro);
 				aluguel.setFormaPagamento(formaPagamento);
 				aluguel.setDataInicio(dataInicio);
 				aluguel.setQuantDias(quantDias);

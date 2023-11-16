@@ -4,8 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import modelo.Categoria;
-import modelo.TipoAcessoLogin;
-import modelo.Vendedor;
 
 public class CategoriaDAO implements ICategoriaDAO {
 
@@ -23,7 +21,7 @@ public class CategoriaDAO implements ICategoriaDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Long idCategoria = rs.getLong("id_categoria");
+				Integer idCategoria = rs.getInt("id_categoria");
 				String nome = rs.getString("categoria");
 
 				Categoria cat = new Categoria();
@@ -41,7 +39,7 @@ public class CategoriaDAO implements ICategoriaDAO {
 
 	}
 
-	public Long inserir(Categoria c) {
+	public int inserir(Categoria c) {
 
 		// instancia a classe
 		Conexao a = Conexao.getInstancia();
@@ -61,7 +59,7 @@ public class CategoriaDAO implements ICategoriaDAO {
 			// fecha a conexão com banco
 			try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
 				if (generatedKeys.next()) {
-					return generatedKeys.getLong(1); // retorna o id se conseguir inserir
+					return generatedKeys.getInt(1); // retorna o id se conseguir inserir
 				} else {
 					throw new SQLException("Creating user failed, no ID obtained.");
 				}
@@ -72,7 +70,7 @@ public class CategoriaDAO implements ICategoriaDAO {
 		} finally {
 			a.fecharConexao();
 		}
-		return 0l; // retorna zero se nao conseguir inserir
+		return 0; // retorna zero se nao conseguir inserir
 	}
 
 	public boolean excluir(Categoria ca) {
@@ -87,7 +85,7 @@ public class CategoriaDAO implements ICategoriaDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setLong(1, ca.getIdCategoria());
+			ps.setInt(1, ca.getIdCategoria());
 
 			int rowsAffected = ps.executeUpdate();
 
@@ -113,7 +111,7 @@ public class CategoriaDAO implements ICategoriaDAO {
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(query);
 			preparedStatement.setString(1, ca.getCategoria());
-			preparedStatement.setLong(2, ca.getIdCategoria());
+			preparedStatement.setInt(2, ca.getIdCategoria());
 
 			int rowsUpdated = preparedStatement.executeUpdate();
 
