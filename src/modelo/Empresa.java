@@ -5,7 +5,7 @@ public class Empresa extends PessoaJuridica {
 	private String razao_social;
 	private String porte_empresa;
 
-	public void setId_empresa(Long id_empresa) {
+	public void setId_empresa(Integer id_empresa) {
 		this.id_empresa = id_empresa;
 	}
 
@@ -30,7 +30,7 @@ public class Empresa extends PessoaJuridica {
 	}
 
 	private String nome_fantasia;
-	private Long id_empresa;
+	private Integer id_empresa;
 	private Long cnpj;
 	private Long telefone;
 

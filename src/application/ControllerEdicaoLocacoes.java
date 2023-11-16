@@ -8,9 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import modelo.AluguelRegistro;
@@ -188,15 +186,16 @@ public class ControllerEdicaoLocacoes implements Initializable {
         }
     }
 
-    private int encontrarIndiceIdVendedor(Long idVendedor) {
+    private int encontrarIndiceIdVendedor(int idVendedor) {
         for (int i=0; i<vendedores.size();i++){
-            if (vendedores.get(i).getId_vendedor().equals(idVendedor)){
+            if (vendedores.get(i).getId_vendedor()==idVendedor){
                 System.out.println("indice"+ i);
                 return i;
             }
         }
         return -1; // Retornar -1 se o ID do vendedor não for encontrado (trate isso adequadamente)
     }
+
 
     private int encontrarIndiceCpfLocador(String pessoasCpf) {
         for (int i=0; i<locadores.size();i++){

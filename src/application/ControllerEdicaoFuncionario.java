@@ -29,7 +29,7 @@ public class ControllerEdicaoFuncionario implements Initializable {
 	private Button btnSalvar;
 
 	@FXML
-	private ComboBox<Long> comboIdFuncionario;
+	private ComboBox<Integer> comboIdFuncionario;
 
 	@FXML
 	private Label lblIdFuncionario;
@@ -112,11 +112,11 @@ public class ControllerEdicaoFuncionario implements Initializable {
 		txtSobrenome.setText(v.getSobrenome());
 		txtSalario.setText(String.valueOf(v.getSalario()));
 
-		Long idVendedor = v.getId_vendedor();
+		Integer idVendedor = v.getId_vendedor();
 
 		if (idVendedor != null) {
 			int vendedorIndex = encontrarIndexVendedor(v.getId_vendedor());
-			String vendedorText = v.getId_vendedor().toString();
+			String vendedorText = String.valueOf(v.getId_vendedor());
 
 			comboIdFuncionario.getEditor().setText(vendedorText);
 
@@ -141,14 +141,13 @@ public class ControllerEdicaoFuncionario implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
 		preencherComboBoxVendedorAlter();
 		comboIdFuncionario.setDisable(true);
 	}
 
 	private void preencherComboBoxVendedorAlter() {
 		for (Vendedor vendedor : vendedores) {
-			Long infoVendedor = vendedor.getId_vendedor();
+			int infoVendedor = vendedor.getId_vendedor();
 			comboIdFuncionario.getItems().add(infoVendedor);
 		}
 	}

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import modelo.TipoAcessoLogin;
 import modelo.Locador;
 
-public class LocadorDAO {
+public class LocadorDAO implements ILocadorDAO{
 
 
     public ArrayList<Locador> listar() {

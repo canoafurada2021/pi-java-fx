@@ -2,12 +2,12 @@ package modelo;
 
 public class Vendedor extends PessoaFisica {
 
-	private Long id_vendedor;
+	private Integer id_vendedor;
 	private Double salario;
 	private Long cpf;
 	private String senha;
 
-	public Long getId_vendedor() {
+	public int getId_vendedor() {
 		return id_vendedor;
 	}
 
@@ -27,11 +27,11 @@ public class Vendedor extends PessoaFisica {
 		this.senha = senha;
 	}
 
-	public void setId_vendedor(Long id_vendedor) {
+	public void setId_vendedor(Integer id_vendedor) {
 		this.id_vendedor = id_vendedor;
 	}
 
-	public void setIdVendedor(Long id_vendedor) {
+	public void setIdVendedor(Integer id_vendedor) {
 		this.id_vendedor = id_vendedor;
 	}
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import modelo.TipoAcessoLogin;
 import modelo.Vendedor;
 
-public class VendedorDAO {
+public class VendedorDAO implements IVendedorDAO{
 
 	public ArrayList<Vendedor> listar() {
 		Conexao c = Conexao.getInstancia();
@@ -24,7 +24,7 @@ public class VendedorDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Long idVendedor = rs.getLong("id_vendedor");
+				Integer idVendedor = rs.getInt("id_vendedor");
 				String nome = rs.getString("nome");
 				String sobrenome = rs.getString("sobrenome");
 				Long cpf = rs.getLong("cpf");
@@ -90,7 +90,7 @@ public class VendedorDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setLong(1, v.getId_vendedor());
+			ps.setInt(1, v.getId_vendedor());
 
 			int rowsAffected = ps.executeUpdate();
 
@@ -119,7 +119,7 @@ public class VendedorDAO {
 			preparedStatement.setLong(4, v.getCpf());
 			preparedStatement.setString(5, v.getSenha());
 			preparedStatement.setInt(6, v.getTipoAcesso().getId());
-			preparedStatement.setLong(7, v.getId_vendedor());
+			preparedStatement.setInt(7, v.getId_vendedor());
 
 			int rowsUpdated = preparedStatement.executeUpdate();
 
