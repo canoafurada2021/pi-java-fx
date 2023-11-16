@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import modelo.Endereco;
 
-public class EnderecoDAO {
+public class EnderecoDAO implements  IEnderecoDAO{
 
 
     public boolean inserir(Endereco e) {

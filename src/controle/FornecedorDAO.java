@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import modelo.Endereco;
 import modelo.Fornecedor;
 
-public class FornecedorDAO {
+public class FornecedorDAO implements IFornecedorDAO {
 
 	public ArrayList<Fornecedor> listar() {
 		Conexao c = Conexao.getInstancia();

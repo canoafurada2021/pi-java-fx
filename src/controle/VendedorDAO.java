@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import modelo.TipoAcessoLogin;
 import modelo.Vendedor;
 
-public class VendedorDAO {
+public class VendedorDAO implements IVendedorDAO{
 
 	public ArrayList<Vendedor> listar() {
 		Conexao c = Conexao.getInstancia();

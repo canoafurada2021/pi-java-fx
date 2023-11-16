@@ -10,7 +10,7 @@ import modelo.Categoria;
 import modelo.Fornecedor;
 import modelo.Veiculo;
 
-public class VeiculoDAO {
+public class VeiculoDAO implements IVeiculoDAO{
 
 	public ArrayList<Veiculo> listar() {
 		Conexao c = Conexao.getInstancia();
