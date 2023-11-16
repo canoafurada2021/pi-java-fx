@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerListClientes">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerListClientes">
    <children>
       <SplitPane fx:id="SlipPaneConfigurações" layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
          <items>
@@ -29,15 +29,14 @@
                         </Label>
                         <TableView fx:id="tableClientes" layoutX="14.0" layoutY="57.0" prefHeight="800.0" prefWidth="1160.0" style="-fx-background-radius: 10;">
                            <columns>
-                              <TableColumn fx:id="columnCPF" prefWidth="140.0" text="CPF" />
-                              <TableColumn fx:id="columnNome" prefWidth="160.0" text="Nome" />
-                              <TableColumn fx:id="columnIdCarteira" prefWidth="81.0" text="ID Carteira" />
-                              <TableColumn fx:id="columnTelefone" prefWidth="152.0" text="Telefone" />
-                              <TableColumn fx:id="columnPaisResidencia" prefWidth="126.0" text="País" />
-                              <TableColumn fx:id="columnCNH" prefWidth="144.0" text="CNH" />
-                              <TableColumn fx:id="columnValidadeCarteira" prefWidth="127.0" text="Validade Carteira" />
-                              <TableColumn fx:id="columnCargo" prefWidth="113.0" text="Cargo" />
-                              <TableColumn fx:id="columnAcoes" prefWidth="116.0" text="Ações" />
+                              <TableColumn fx:id="columnCPF" prefWidth="145.0" text="CPF" />
+                              <TableColumn fx:id="columnNome" prefWidth="145.0" text="Nome" />
+                              <TableColumn fx:id="columnIdCarteira" prefWidth="145.0" text="ID Carteira" />
+                              <TableColumn fx:id="columnTelefone" prefWidth="145.0" text="Telefone" />
+                              <TableColumn fx:id="columnPaisResidencia" prefWidth="145.0" text="País" />
+                              <TableColumn fx:id="columnCNH" prefWidth="145.0" text="CNH" />
+                              <TableColumn fx:id="columnValidadeCarteira" prefWidth="145.0" text="Validade Carteira" />
+                              <TableColumn fx:id="columnAcoes" prefWidth="145.0" text="Ações" />
                            </columns>
                         </TableView>
                      </children>
