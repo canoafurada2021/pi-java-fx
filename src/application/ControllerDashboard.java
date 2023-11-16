@@ -5,11 +5,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import controle.AluguelRegistroDAO;
 import controle.LocadorDAO;
+import controle.VeiculoDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,6 +35,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modelo.Empresa;
 import modelo.Locador;
+import modelo.Veiculo;
 
 public class ControllerDashboard implements Initializable {
 
@@ -287,7 +291,7 @@ public class ControllerDashboard implements Initializable {
 				Image image = new Image(is);
 				imgFotoPerfil.setImage(image);
 			} catch (IllegalArgumentException e) {
-				
+
 				System.err.println(e.toString());
 
 				// verificar porque na hora de transformar a rota em uma imagem ela só aceita o
@@ -319,17 +323,40 @@ public class ControllerDashboard implements Initializable {
 
 		/// Cores do gráfico de barra (baseadas no método getColorCode que também pe
 		/// utilizado pelo gráfico de pizza
+
+
+		AluguelRegistroDAO aluguelRegistroDAO = new AluguelRegistroDAO();
+		ArrayList<AluguelRegistro> alugueis = aluguelRegistroDAO.listar();
+
+
+
 		XYChart.Series<String, Number> vendaSeries = new XYChart.Series<>();
-		vendaSeries.getData().add(new XYChart.Data<>("Janeiro", 1000)); // Janeiro
+
+for(AluguelRegistro aluguelRegistro: alugueis){
+    vendaSeries.getData().add(new XYChart.Data<>("Janeiro", alugueis.size()));
+
+}
+
+		//vendaSeries.getData().add(new XYChart.Data<>("Janeiro", 1000)); // Janeiro
 		vendaSeries.getData().add(new XYChart.Data<>("Fevereiro", 1200)); // Fevereiro
 		vendaSeries.getData().add(new XYChart.Data<>("Março", 1500)); // Março
 
 		vendaSeries.setName("Vendas");
 
+
+
+
 		BarChart<String, Number> barChart = new BarChart<>(new CategoryAxis(), new NumberAxis());
 		graphicVendas.getData().add(vendaSeries);
 
+
+
 		// Inicializar gráfico de Marcas (PieChart)
+
+
+        VeiculoDAO veiculoDAO = new VeiculoDAO();
+        ArrayList<Veiculo> veiculos = veiculoDAO.listar();
+
 		ObservableList<Data> marcaData = FXCollections.observableArrayList(new PieChart.Data("Marca A", 30),
 				new PieChart.Data("Marca B", 25), new PieChart.Data("Marca C", 45));
 
