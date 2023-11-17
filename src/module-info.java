@@ -9,8 +9,8 @@ module MavanJFxProject {
     requires PDFViewerFX;
     // requires org.junit.jupiter.api;
     requires javafx.web;
-
-
+    requires camel.digitalocean;
+    requires minio;
     opens application to javafx.graphics, javafx.fxml;
     opens modelo to javafx.base;
     

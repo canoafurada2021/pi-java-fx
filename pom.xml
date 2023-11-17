@@ -70,7 +70,25 @@
 			<version>20.0.2</version> <!-- Substitua pela versão do JavaFX que você está usando -->
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.apache.camel/camel-digitalocean -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-digitalocean</artifactId>
+			<version>4.2.0</version>
+		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.myjeeva.digitalocean/digitalocean-api-client -->
+		<dependency>
+			<groupId>com.myjeeva.digitalocean</groupId>
+			<artifactId>digitalocean-api-client</artifactId>
+			<version>2.17</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.minio</groupId>
+			<artifactId>minio</artifactId>
+			<version>8.1.0</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>

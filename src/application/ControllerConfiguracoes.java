@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.ResourceBundle;
 import controle.Conexao;
-import controle.EmpresaDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -206,9 +205,9 @@ public class ControllerConfiguracoes implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		EmpresaDAO dao = new EmpresaDAO();
-		Empresa empresa = dao.listar();
-		setEmpresa(empresa);
+		//EmpresaDAO dao = new EmpresaDAO();
+		//Empresa empresa = dao.listar();
+		//setEmpresa(empresa);
 
 		txtRazaoSocial.setDisable(true);
 		txtPorteEmpresa.setDisable(true);

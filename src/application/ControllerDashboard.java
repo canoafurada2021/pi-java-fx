@@ -33,6 +33,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import modelo.AluguelRegistro;
 import modelo.Empresa;
 import modelo.Locador;
 import modelo.Veiculo;
