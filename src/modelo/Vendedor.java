@@ -7,8 +7,12 @@ public class Vendedor extends PessoaFisica {
 	private Long cpf;
 	private String senha;
 
-	public int getId_vendedor() {
+	public Integer getId_vendedor() {
 		return id_vendedor;
+	}
+
+	public void setId_vendedor(Integer id_vendedor) {
+		this.id_vendedor = id_vendedor;
 	}
 
 	public Long getCpf() {
@@ -27,14 +31,6 @@ public class Vendedor extends PessoaFisica {
 		this.senha = senha;
 	}
 
-	public void setId_vendedor(Integer id_vendedor) {
-		this.id_vendedor = id_vendedor;
-	}
-
-	public void setIdVendedor(Integer id_vendedor) {
-		this.id_vendedor = id_vendedor;
-	}
-
 	public Double getSalario() {
 		return salario;
 	}
@@ -42,5 +38,4 @@ public class Vendedor extends PessoaFisica {
 	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
-
 }

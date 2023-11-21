@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="panelProsseguirExclusao" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="panelProsseguirExclusao" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerModalExclusao">
    <children>
-      <Pane fx:id="panelMessageImage" layoutX="51.0" layoutY="14.0">
+      <Pane fx:id="panelMessageImage" layoutX="51.0" layoutY="8.0">
          <children>
-            <Label fx:id="lblMensagem" alignment="CENTER" layoutY="50.0" prefHeight="30.0" prefWidth="200.0" text="Prosseguir com a exclusão?" textAlignment="CENTER">
+            <Label fx:id="lblMensagem" alignment="CENTER" layoutY="50.0" prefHeight="30.0" prefWidth="200.0" text="Prosseguir com a exclusão? aaaaa" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
@@ -25,12 +25,12 @@
       </Pane>
       <Pane fx:id="panelBotoes" layoutX="1.0" layoutY="101.0" prefHeight="37.0" prefWidth="302.0">
          <children>
-            <Button fx:id="btnProsseguir" layoutX="160.0" layoutY="3.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #0348CE; -fx-background-radius: 4;" text="Prosseguir" textFill="WHITE">
+            <Button fx:id="btnProsseguir" layoutX="160.0" layoutY="3.0" mnemonicParsing="false" onAction="#confirmarExclusao" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #0348CE; -fx-background-radius: 4;" text="Prosseguir" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btnCancelar" layoutX="23.0" layoutY="3.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" style="-fx-border-color: #D70034; -fx-background-color: #FFFFFF; -fx-border-radius: 4;" text="Cancelar" textFill="#d70034">
+            <Button fx:id="btnCancelar" layoutX="23.0" layoutY="3.0" mnemonicParsing="false" onAction="#cancelarExclusao" prefHeight="30.0" prefWidth="120.0" style="-fx-border-color: #D70034; -fx-background-color: #FFFFFF; -fx-border-radius: 4;" text="Cancelar" textFill="#d70034">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
