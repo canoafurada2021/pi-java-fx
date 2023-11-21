@@ -417,8 +417,9 @@ public class ControllerListProdutos implements Initializable {
 					//declaracao variaveis dos botoes
 					private final Button viewButton = new Button();
 					private final Button editButton = new Button();
+					private final Button vizuButton = new Button();
 					
-					private final HBox buttonContainer = new HBox (viewButton, editButton);
+					private final HBox buttonContainer = new HBox (viewButton, editButton, vizuButton);
 					{
 						buttonContainer.setSpacing(10);
 						ImageView viewImage = new ImageView(
@@ -461,7 +462,7 @@ public class ControllerListProdutos implements Initializable {
 						editImage.setFitHeight(16);
 						editImage.setFitWidth(16);
 						editButton.setGraphic(editImage);
-						editButton.setStyle("-fx-background-color: red;");
+						editButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
 						editButton.setOnAction(event -> {
 							Veiculo veiculo = getTableView().getItems().get(getIndex());
 							 int idVeiculo = veiculo.getId_veiculo();
@@ -473,6 +474,38 @@ public class ControllerListProdutos implements Initializable {
 								System.out.println("erro ao exlucir o veiculo");
 							}
 							System.out.println("botao de excluir clicado");
+						});
+
+						ImageView visuVeic = new ImageView(
+								new Image(getClass().getResourceAsStream("/imgs/Default_visualizar.png")));
+
+						visuVeic.setFitHeight(16);
+						visuVeic.setFitWidth(16);
+						vizuButton.setGraphic(visuVeic);
+						vizuButton.setStyle("-fx-background-color: #0348CE; -fx-text-fill: white;");
+						vizuButton.setOnAction(event -> {
+							//passar inform pr TL DE VIZU
+//							Veiculo veiculo = getTableView().getItems().get(getIndex());
+//							int idVeic = veiculo.getId_veiculo();
+							try {
+								FXMLLoader loader = new FXMLLoader(
+										getClass().getResource("/visao/PopUpVisualizacao.fxml"));
+								Parent root = loader.load();
+								ControllerPopUpVisuProduto controllerNovaTela = loader.getController();
+
+								Scene scene = new Scene(root);
+								Stage stage = new Stage();
+								stage.setScene(scene);
+
+								stage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
+									public void handle(WindowEvent we) {
+										tblViewVeiculoSearch();// Esse método eu populo o tableView (ver acima)
+									}
+								});
+								stage.show();
+							}catch (IOException e) {
+								e.printStackTrace();
+							}
 						});
 
 					}

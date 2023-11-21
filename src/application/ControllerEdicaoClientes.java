@@ -133,10 +133,10 @@ public class ControllerEdicaoClientes implements Initializable{
 	    @FXML
 	    void cancelarAlteracaoLocador(ActionEvent event) {
 
-//			// Obtém o Stage (janela) atual com base no Node
-//			Stage stage = (Stage)             source.getScene().getWindow();
+////			// Obtém o Stage (janela) atual com base no Node
+//			Stage stage = (Stage) source.getScene().getWindow();
 //
-//			// Fecha o Stage atual
+////			// Fecha o Stage atual
 //			stage.close();
 	    }
 	    
@@ -150,14 +150,13 @@ public class ControllerEdicaoClientes implements Initializable{
 		txtPais.setText(l.getPaisResidencia());
 		txtSobrenome.setText(l.getSobrenome());
 		txtValidadeCateira.setText(l.getValidadeCarteira());
-
-
 	}
 
 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		setLocador(locador);
 		txtCpf.setDisable(true);
 	}
 

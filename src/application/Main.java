@@ -12,11 +12,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
     	
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Produtos.fxml"));
         Parent root = loader.load();
         root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
-		ControllerLogin controller = loader.getController(); // Obtém uma referência ao controlador
+		ControllerListProdutos controller = loader.getController(); // Obtém uma referência ao controlador
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
