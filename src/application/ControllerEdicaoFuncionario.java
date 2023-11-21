@@ -55,6 +55,9 @@ public class ControllerEdicaoFuncionario implements Initializable {
 	@FXML
 	private TextField txtSobrenome;
 
+
+	@FXML
+	private TextField txtSenha;
 	private VendedorDAO dao = new VendedorDAO();
 	private ArrayList<Vendedor> vendedores = dao.listar();
 
@@ -63,13 +66,15 @@ public class ControllerEdicaoFuncionario implements Initializable {
 		String nomeNovo = txtNome.getText();
 		Double salarioNovo = Double.parseDouble(txtSalario.getText());
 		String sobrenomeNovo = txtSobrenome.getText();
-
+		String senhaNova = txtSenha.getText();
 		Vendedor vendedor = new Vendedor();
 
 		vendedor.setId_vendedor(comboIdFuncionario.getValue());
 		vendedor.setNome(nomeNovo);
 		vendedor.setSalario(salarioNovo);
 		vendedor.setSobrenome(sobrenomeNovo);
+vendedor.setSenha(senhaNova);
+
 
 		if (dao.atualizar(vendedor)) {
 			ExibePopUpSucesso.ExibirPopUpSucesso();
@@ -81,7 +86,6 @@ public class ControllerEdicaoFuncionario implements Initializable {
 
 			System.out.println("deu bomba " + stage);
 
-			// Verifica se onCloseRequest é nulo antes de chamar handle
 
 			stage.close();
 		} else {
@@ -111,7 +115,7 @@ public class ControllerEdicaoFuncionario implements Initializable {
 		txtNome.setText(v.getNome());
 		txtSobrenome.setText(v.getSobrenome());
 		txtSalario.setText(String.valueOf(v.getSalario()));
-
+txtSenha.setText(v.getSenha());
 		Integer idVendedor = v.getId_vendedor();
 
 		if (idVendedor != null) {
@@ -152,16 +156,5 @@ public class ControllerEdicaoFuncionario implements Initializable {
 		}
 	}
 
-	// metodo p combobox 
-	
-	//achoq  repeteiu
-	private Vendedor encontrarVendedorPeloId(int idVendedor) {
-		for (Vendedor vendedor : vendedores) {
-			if (vendedor.getId_vendedor() == idVendedor) {
-				return vendedor;
-			}
-		}
-		return null;
-	}
 
 }

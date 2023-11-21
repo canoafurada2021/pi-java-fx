@@ -173,13 +173,10 @@ public class ControllerCadastroFornecedores implements Initializable {
 	}
 
 	private void preencherComboBox() {
-
-
 		for (Endereco endereco : enderecos) {
 			String enderecoInfo = endereco.getId() + " - " + endereco.getRua();
 			comboEnderecoIds.getItems().add(enderecoInfo);
 		}
-
 	}
 
 	private void limpaCampos() {

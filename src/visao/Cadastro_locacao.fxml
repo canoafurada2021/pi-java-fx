@@ -61,7 +61,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtData" layoutX="30.0" layoutY="151.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
+                        <TextField fx:id="txtData" layoutX="32.0" layoutY="151.0" prefHeight="38.0" prefWidth="619.0" style="-fx-border-color: #AEB2BF;" />
                      </children>
                   </Pane>
                   <Pane layoutX="266.0" layoutY="10.0" prefHeight="287.0" prefWidth="688.0">

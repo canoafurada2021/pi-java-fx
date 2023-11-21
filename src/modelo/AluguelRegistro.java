@@ -1,7 +1,5 @@
 package modelo;
 
-import java.util.Date;
-
 public class AluguelRegistro {
 	private int idVenda;
 	private String formaPagamento;
@@ -18,7 +16,7 @@ public class AluguelRegistro {
 	private int quantDias;
 	private Double valor;
 	private Vendedor idVendedor;
-	private Locador pessoas_cpf;
+	private Locador locador;
 	private EnumPagamento tipoPagamento;
 	private Fornecedor fornecedor;
 
@@ -71,12 +69,12 @@ public class AluguelRegistro {
 		this.idVendedor = idVendedor;
 	}
 
-	public Locador getPessoas_cpf() {
-		return pessoas_cpf;
+	public Locador getLocador() {
+		return locador;
 	}
 
-	public void setPessoas_cpf(Locador pessoas_cpf) {
-		this.pessoas_cpf = pessoas_cpf;
+	public void setLocador(Locador locadorr) {
+		this.locador = locadorr;
 	}
 
 	public EnumPagamento getTipoPagamento() {
@@ -91,9 +89,7 @@ public class AluguelRegistro {
 		public void setVendedor(Vendedor vendedor) {
 			this.idVendedor = vendedor;
 		}
-	public void setLocador(Locador locador) {
-		this.pessoas_cpf = locador;
-	}
+
 	}
 
 	// Se necessário, remova os métodos que não estão sendo usados

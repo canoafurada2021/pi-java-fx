@@ -43,20 +43,19 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="txtPesquisa" layoutX="16.0" layoutY="24.0" prefHeight="44.0" prefWidth="1022.0" style="-fx-background-radius: 10;" text="Pesquisar">
+                  <TextField fx:id="txtBusca" layoutX="16.0" layoutY="24.0" prefHeight="44.0" prefWidth="1022.0" style="-fx-background-radius: 10;">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </TextField>
                   <Button fx:id="btnPesquisar" layoutX="960.0" layoutY="26.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: white;">
                      <graphic>
-                        <ImageView fx:id="btnPesquisa" fitHeight="33.0" fitWidth="33.0">
+                        <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imgs/Default_pesquisar.png" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
+                     </graphic></Button>
                </children></AnchorPane>
         </items>
       </SplitPane>

@@ -18,7 +18,6 @@ import utilities.ExibePopUpErro;
 import utilities.ExibePopUpSucesso;
 
 import java.net.URL;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -157,9 +156,9 @@ public class ControllerEdicaoLocacoes implements Initializable {
         txtQuantDias.setText(String.valueOf(a.getQuantDias()));
         dateQuantDias.setValue(LocalDate.parse(String.valueOf(a.getDataInicio())));
 
-        if (a.getPessoas_cpf() != null){
-            int cpfLocadorIndex = encontrarIndiceCpfLocador(a.getPessoas_cpf().getPessoas_cpf());
-            String locadorText = a.getPessoas_cpf().getNome();
+        if (a.getLocador() != null){
+            int cpfLocadorIndex = encontrarIndiceCpfLocador(a.getLocador().getPessoas_cpf());
+            String locadorText = a.getLocador().getNome();
 
             comboxCpfLocador.getEditor().setText(locadorText);
 

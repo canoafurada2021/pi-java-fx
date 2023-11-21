@@ -110,7 +110,7 @@ public class VendedorDAO implements IVendedorDAO{
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "UPDATE vendedor SET salario = ?, nome = ?, sobrenome = ?, cpf = ?, senha = ?, TipoAcessoLogin = ? WHERE id_vendedor = ?";
+		String query = "UPDATE vendedor SET salario = ?, nome = ?, sobrenome = ?, senha = ? WHERE id_vendedor = ?";
 
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(query);
@@ -118,10 +118,8 @@ public class VendedorDAO implements IVendedorDAO{
 			preparedStatement.setDouble(1, v.getSalario());
 			preparedStatement.setString(2, v.getNome());
 			preparedStatement.setString(3, v.getSobrenome());
-			preparedStatement.setLong(4, v.getCpf());
-			preparedStatement.setString(5, v.getSenha());
-			preparedStatement.setInt(6, v.getTipoAcesso().getId());
-			preparedStatement.setInt(7, v.getId_vendedor());
+			preparedStatement.setString(4, v.getSenha());
+			preparedStatement.setInt(5, v.getId_vendedor());
 
 			int rowsUpdated = preparedStatement.executeUpdate();
 

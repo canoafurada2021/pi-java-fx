@@ -104,10 +104,7 @@ public class ControllerListFornecedores implements Initializable {
 	FornecedorDAO daoFor = new FornecedorDAO();
 
 	public void tblViewDivergenciaSearch() {
-		
-	
-		
-		
+
 		tableFornecedores.getItems().clear();
 		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
@@ -123,41 +120,11 @@ public class ControllerListFornecedores implements Initializable {
 		// Lógica para sair do aplicativo
 	}
 
-	FornecedorDAO dao = new FornecedorDAO();
 
-	public void filtroPesquisa() {
-
-		FornecedorDAO dao = new FornecedorDAO();
-
-		ArrayList<Fornecedor> fornecedores = dao.listar();
-
-		obsFornecedores = FXCollections.observableArrayList(fornecedores);
-		FilteredList<Fornecedor> listaFiltrada = new FilteredList<>(obsFornecedores, p -> true); // Inicialmente, não há
-																									// filtro
-
-		txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
-			listaFiltrada.setPredicate(seuObjeto -> {
-				// Verifique se o texto de busca está vazio; se estiver, mostre todos os itens
-				if (newValue == null || newValue.isEmpty()) {
-					return true;
-				}
-
-				// Transforme o texto de busca e o texto no objeto em minúsculas para realizar
-				// uma busca insensível a maiúsculas
-				String termoBusca = newValue.toLowerCase();
-
-				// Implemente a lógica de filtro com base nos campos do objeto
-				// Por exemplo, se você deseja filtrar pelo campo 'nome':
-				return seuObjeto.getNome().toLowerCase().contains(termoBusca);
-			});
-		});
-		tableFornecedores.setItems(listaFiltrada);
-
-	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+	//	filtroPesquisa();
 		FornecedorDAO dao = new FornecedorDAO();
 		tableFornecedores.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -223,9 +190,6 @@ public class ControllerListFornecedores implements Initializable {
 								e.printStackTrace();
 							}
 
-							System.out.println("edição com o cnpj" + cnpj);
-
-							System.out.println("botao de edição clicado");
 
 						});
 
