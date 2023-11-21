@@ -30,11 +30,10 @@
                         <TableView fx:id="tableFuncionario" layoutX="14.0" layoutY="57.0" prefHeight="800.0" prefWidth="1160.0" style="-fx-background-radius: 10;">
                           <columns>
                             <TableColumn fx:id="columnIdVendedor" prefWidth="130.0" text="ID Vendedor" />
-                            <TableColumn fx:id="columnNome" prefWidth="203.1999053955078" text="Nome" />
-                              <TableColumn fx:id="columnSobrenome" prefWidth="280.7999267578125" text="Sobrenome" />
-                              <TableColumn fx:id="columnSalario" prefWidth="171.20013427734375" text="Salário" />
-                              <TableColumn fx:id="columnCargo" prefWidth="152.800048828125" text="Cargo" />
-                              <TableColumn fx:id="columnAcoes" minWidth="0.0" prefWidth="219.20001220703125" text="Ações" />
+                            <TableColumn fx:id="columnNome" prefWidth="272.00001525878906" text="Nome" />
+                              <TableColumn fx:id="columnSobrenome" prefWidth="275.20001220703125" text="Sobrenome" />
+                              <TableColumn fx:id="columnSalario" prefWidth="384.7999267578125" text="Salário" />
+                              <TableColumn fx:id="columnAcoes" minWidth="0.0" prefWidth="96.800048828125" text="Ações" />
                           </columns>
                         </TableView>
                      </children>

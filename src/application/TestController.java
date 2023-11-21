@@ -24,6 +24,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import modelo.Vendedor;
+import utilities.ExibePopUpErro;
+import utilities.ExibePopUpSucesso;
 
 public class TestController implements Initializable {
 
@@ -114,80 +116,27 @@ public class TestController implements Initializable {
 		v.setSenha(senha);
 
 		try {
+		boolean insercaoSucesso = dao.inserir(v);
 
-			boolean insercaoSucesso = dao.inserir(v);
-
-			limpaCampos();
+		limpaCampos();
 
 			if (insercaoSucesso) {
-				ExibirPopUpSucesso();
+				System.out.println("inserção sucesso" + insercaoSucesso);
+				System.out.println("deu bom");
+				ExibePopUpSucesso.ExibirPopUpSucesso();
 			} else {
-				ExibirPopUpErro();
-			}
+				ExibePopUpErro.ExibirPopUpErro();
+				System.out.println("n deu bom");
 
+			}
 		} catch (Exception e) {
 
-			ExibirPopUpSucesso();
+		ExibePopUpSucesso.ExibirPopUpSucesso();
 
 		}
 
 	}
 
-	private void ExibirPopUpSucesso() {
-
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroSucesso.fxml"));
-			Parent popupRoot = fxmlLoader.load();
-
-			Stage popupStage = new Stage();
-			popupStage.initModality(Modality.APPLICATION_MODAL);
-			popupStage.setTitle("Success Popup");
-
-			Scene popupScene = new Scene(popupRoot);
-			popupStage.setScene(popupScene);
-			popupStage.show();
-
-			// Define the duration for displaying the popup (in milliseconds)
-			int popupDuration = 3000; // Change this value as needed
-
-			// Create a Timeline to close the popup after the specified duration
-			Timeline timeline = new Timeline(new KeyFrame(Duration.millis(popupDuration), event -> {
-				popupStage.close();
-			}));
-			timeline.setCycleCount(1);
-			timeline.play();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void ExibirPopUpErro() {
-
-		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/visao/PopUpCadastroErro.fxml"));
-			Parent popupRoot = fxmlLoader.load();
-
-			Stage popupStage = new Stage();
-			popupStage.initModality(Modality.APPLICATION_MODAL);
-			popupStage.setTitle("Error Popup");
-
-			Scene popupScene = new Scene(popupRoot);
-			popupStage.setScene(popupScene);
-			popupStage.show();
-
-			// Define the duration for displaying the popup (in milliseconds)
-			int popupDuration = 3000; // Change this value as needed
-
-			// Create a Timeline to close the popup after the specified duration
-			Timeline timeline = new Timeline(new KeyFrame(Duration.millis(popupDuration), event -> {
-				popupStage.close();
-			}));
-			timeline.setCycleCount(1);
-			timeline.play();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -225,13 +174,157 @@ public class TestController implements Initializable {
 	}
 
 	@FXML
-	void sairCadasFuncionario(ActionEvent event) {
+	void abriListFornecedores(ActionEvent event) {
 		try {
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Fornecedores.fxml"));
 			Parent root = loader.load();
 
-			ControllerLogin controllerNovaTela = loader.getController();
+			ControllerListFornecedores controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void abriListProd(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Produtos.fxml"));
+			Parent root = loader.load();
+
+			ControllerListProdutos controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void abriLocacao(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Locacoes.fxml"));
+			Parent root = loader.load();
+
+			ControllerListLocacoes controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void abrirClientes(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/ListClientes.fxml"));
+			Parent root = loader.load();
+
+			ControllerListClientes controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void abrirConfiguracao(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Configuracoes.fxml"));
+			Parent root = loader.load();
+
+			ControllerConfiguracoes controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void abrirDash(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
+			Parent root = loader.load();
+
+			ControllerDashboard controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void abrirListCategoria(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Categorias.fxml"));
+			Parent root = loader.load();
+
+			ListViewController controllerNovaTela = loader.getController();
 
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
@@ -271,4 +364,32 @@ public class TestController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
+
+	@FXML
+	void sairCadasFuncionario(ActionEvent event) {
+		try {
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
+			Parent root = loader.load();
+
+			ControllerLogin controllerNovaTela = loader.getController();
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+
+			// fecha a tela atual
+			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stageAtual.close();
+
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
 }
