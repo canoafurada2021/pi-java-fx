@@ -5,7 +5,16 @@ import java.util.Date;
 public class AluguelRegistro {
 	private int idVenda;
 	private String formaPagamento;
-	private Date dataInicio; // Alterado para Date ao invés de Timestamp
+
+	public String getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(String dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	private String dataInicio; // Alterado para Date ao invés de Timestamp
 	private int quantDias;
 	private Double valor;
 	private Vendedor idVendedor;
@@ -37,18 +46,6 @@ public class AluguelRegistro {
 		this.formaPagamento = formaPagamento;
 	}
 
-	public java.sql.Date getDataInicio() {
-		if (dataInicio != null) {
-			return new java.sql.Date(dataInicio.getTime());
-		} else {
-			return null; // Ou defina um comportamento apropriado quando dataInicio for nula
-		}
-	}
-
-
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
-	}
 
 	public int getQuantDias() {
 		return quantDias;

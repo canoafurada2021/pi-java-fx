@@ -35,7 +35,7 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO {
 
 				Integer idRegistro = rs.getInt("id_venda");
 				String formaPagamento = rs.getString("forma_pagamento");
-				Date dataInicio = rs.getDate("data_inicio");
+				String dataInicio = rs.getString("data_inicio");
 				int quantDias = rs.getInt("quant_dias");
 				Double valor = rs.getDouble("valor");
 				Integer idVendedor = rs.getInt("v.id_vendedor");
@@ -83,7 +83,7 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO {
 			try {
 				PreparedStatement ps = con.prepareStatement(query);
 				ps.setString(1, ar.getFormaPagamento());
-				ps.setDate(2, ar.getDataInicio());
+				ps.setString(2, ar.getDataInicio());
 				ps.setInt(3, ar.getQuantDias());
 				ps.setDouble(4, ar.getValor());
 				ps.setLong(5, ar.getIdVendedor().getId_vendedor());
@@ -141,7 +141,7 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO {
 			PreparedStatement ps = con.prepareStatement(query);
 
 			ps.setString(1, ar.getFormaPagamento());
-			ps.setDate(2, ar.getDataInicio());
+			ps.setString(2, ar.getDataInicio());
 			ps.setInt(3, ar.getQuantDias());
 			ps.setDouble(4, ar.getValor());
 			ps.setLong(5, ar.getIdVendedor().getId_vendedor());

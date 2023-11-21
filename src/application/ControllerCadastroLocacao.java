@@ -78,9 +78,6 @@ public class ControllerCadastroLocacao implements Initializable {
     private ComboBox<String> comboIdVendedor;
 
     @FXML
-    private DatePicker dateDataInicio;
-
-    @FXML
     private ImageView imgDefaultConfiguracoes;
 
     @FXML
@@ -145,7 +142,8 @@ public class ControllerCadastroLocacao implements Initializable {
 
     @FXML
     private TextField txtValor;
-
+    @FXML
+    private TextField txtData;
 
     private final VendedorDAO vendedorDAO = new VendedorDAO();
     private final LocadorDAO locadorDAO = new LocadorDAO();
@@ -158,8 +156,7 @@ public class ControllerCadastroLocacao implements Initializable {
         AluguelRegistroDAO daoAluguelRegistro = new AluguelRegistroDAO();
 
         String formaPagamento = txtFormaPagamento.getText();
-        LocalDate localDate = dateDataInicio.getValue();
-        Date dataInicio = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        String dataInicio = txtData.getText();
 
 
         String quantDiasF = txtQuantDias.getText();
@@ -212,7 +209,7 @@ a.setLocador(locadorSelecionado);
         txtFormaPagamento.setText(null);
         txtValor.setText(null);
         txtQuantDias.setText(null);
-        dateDataInicio.setValue(null);
+        txtData.setText(null);
     }
 
 
