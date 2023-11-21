@@ -103,9 +103,6 @@ public class ControllerListClientes implements Initializable {
 	@FXML
 	private TableColumn<Locador, String> columnValidadeCarteira;
 
-	@FXML
-	private TableColumn<Locador, String> columnCargo;
-
 
 	@FXML
 	private ImageView imgDefaultConfiguracoes;

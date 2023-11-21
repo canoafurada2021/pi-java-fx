@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" style="-fx-background-color: #001C52;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerLogin">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" style="-fx-background-color: #001C52;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerLogin">
    <children>
       <SplitPane fx:id="splitPaneLogin" layoutX="1.0" layoutY="-1.0" prefHeight="1016.0" prefWidth="1516.0" style="-fx-background-color: #001C52;">
         <items>
@@ -36,6 +36,24 @@
                         </Label>
                         <PasswordField fx:id="txtSenha" layoutX="73.0" layoutY="227.0" prefHeight="45.0" prefWidth="405.0" />
                         <TextField fx:id="txtCpf" layoutX="73.0" layoutY="99.0" prefHeight="45.0" prefWidth="405.0" />
+                        <Button fx:id="btnViewOpen" layoutX="424.0" layoutY="232.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="49.0" style="-fx-background-color: #ffffff;" textFill="WHITE">
+                           <graphic>
+                              <ImageView fx:id="imgEyeOpen" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/imgs/EyesOpen.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnViewClosed" layoutX="424.0" layoutY="232.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="49.0" style="-fx-background-color: #ffffff;" textFill="WHITE">
+                           <graphic>
+                              <ImageView fx:id="imgEyeClosed" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/imgs/EyesClosed.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </Pane>
                   <Pane fx:id="panelLogin2" layoutX="921.0" layoutY="203.0" prefHeight="113.0" prefWidth="550.0" />

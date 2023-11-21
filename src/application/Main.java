@@ -10,15 +10,13 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-    	
-    	//primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/imgs/favicon.png")));
 
     	
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Funcionarios.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Login.fxml"));
         Parent root = loader.load();
-		 root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
-		ControllerTableViewFuncionarios controller = loader.getController(); // Obtém uma referência ao controlador
+		ControllerLogin controller = loader.getController(); // Obtém uma referência ao controlador
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
