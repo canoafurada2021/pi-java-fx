@@ -66,7 +66,7 @@ public class ControllerEdicaoFuncionario implements Initializable {
 
 		Vendedor vendedor = new Vendedor();
 
-		vendedor.setIdVendedor(comboIdFuncionario.getValue());
+		vendedor.setId_vendedor(comboIdFuncionario.getValue());
 		vendedor.setNome(nomeNovo);
 		vendedor.setSalario(salarioNovo);
 		vendedor.setSobrenome(sobrenomeNovo);

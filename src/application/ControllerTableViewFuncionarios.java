@@ -38,6 +38,7 @@ import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import modelo.Vendedor;
+import utilities.ExibePopUpConfExclusao;
 
 public class ControllerTableViewFuncionarios implements Initializable {
 
@@ -455,7 +456,6 @@ public class ControllerTableViewFuncionarios implements Initializable {
 								e.printStackTrace();
 							}
 
-							System.out.println("botao de edição clicado");
 						});
 
 						ImageView editImage = new ImageView(
@@ -465,18 +465,24 @@ public class ControllerTableViewFuncionarios implements Initializable {
 						editButton.setGraphic(editImage);
 						editButton.setStyle("-fx-background-color: red;");
 						editButton.setOnAction(event -> {
-
 							Vendedor vendedor = getTableView().getItems().get(getIndex());
-							if (dao.excluir(vendedor)) {
 
-								// FALTA ADICIOANR POP UP DE CONFIRMAR EXLCUSAO
+							// Abre o pop-up de confirmação
+							boolean confirmacao = ExibePopUpConfExclusao.ExibirPopUpConfExclusao();
 
-								getTableView().getItems().remove(vendedor);
-								System.out.println("vendedor excluido c sucesso");
+							// Verifica se a exclusão foi confirmada antes de prosseguir
+							if (confirmacao) {
+								// Executa a exclusão
+								if (dao.excluir(vendedor)) {
+									// Lógica após a exclusão bem-sucedida
+									getTableView().getItems().remove(vendedor);
+									System.out.println("vendedor excluído com sucesso");
+								} else {
+									System.out.println("falha ao excluir vendedor");
+								}
 							} else {
-								System.out.println("falha ao excluir vendedor");
+								System.out.println("Exclusão cancelada pelo usuário");
 							}
-							System.out.println("botao de delete clicadoo");
 						});
 
 					}

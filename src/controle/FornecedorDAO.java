@@ -89,6 +89,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 			ps.setString(4, f.getAtividades());
 			ps.setLong(5, f.getTelefone());
 
+
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

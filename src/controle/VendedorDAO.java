@@ -1,9 +1,6 @@
 package controle;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import modelo.TipoAcessoLogin;
@@ -36,7 +33,7 @@ public class VendedorDAO implements IVendedorDAO{
 				TipoAcessoLogin tipoAcesso = TipoAcessoLogin.getById(tipoAcessoId);
 
 				Vendedor v = new Vendedor();
-				v.setIdVendedor(idVendedor);
+				v.setId_vendedor(idVendedor);
 				v.setNome(nome);
 				v.setSobrenome(sobrenome);
 				v.setSalario(salario);
@@ -62,14 +59,14 @@ public class VendedorDAO implements IVendedorDAO{
 		String query = "INSERT INTO vendedor (salario, nome, sobrenome, cpf, senha, TipoAcessoLogin) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
 			ps.setDouble(1, v.getSalario());
 			ps.setString(2, v.getNome());
 			ps.setString(3, v.getSobrenome());
 			ps.setLong(4, v.getCpf());
 			ps.setString(5, v.getSenha());
-			ps.setInt(6, v.getTipoAcesso().getId());
+			ps.setInt(6, TipoAcessoLogin.FUNCIONARIO.getId());
 
 			int rowsInserted = ps.executeUpdate();
 
@@ -89,14 +86,19 @@ public class VendedorDAO implements IVendedorDAO{
 		String query = "DELETE FROM vendedor WHERE id_vendedor = ?";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, v.getId_vendedor());
+			if (v.getId_vendedor() != null) { // Verifica se o ID não é nulo
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, v.getId_vendedor().intValue()); // Chama intValue() apenas se não for nulo
 
-			int rowsAffected = ps.executeUpdate();
+				int rowsAffected = ps.executeUpdate();
 
-			c.fecharConexao();
+				c.fecharConexao();
 
-			return rowsAffected > 0;
+				return rowsAffected > 0;
+			} else {
+				System.out.println("ID do vendedor é nulo. Não é possível excluir.");
+				return false;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
