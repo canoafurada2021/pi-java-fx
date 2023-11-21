@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `locador` (
 CREATE TABLE IF NOT EXISTS `aluguelRegistro` (
   `id_venda` INT NOT NULL  AUTO_INCREMENT,
   `forma_pagamento` VARCHAR(45) NOT NULL,
-  `data_inicio` DATETIME NOT NULL,
+  `data_inicio` VARCHAR(45) NOT NULL,
   `quant_dias` INT NOT NULL,
   `valor` DOUBLE NOT NULL,
   `vendedor_id_vendedor` INT NOT NULL,
@@ -147,13 +147,22 @@ CREATE TABLE IF NOT EXISTS `veiculo`(
 );
 
 
-
+DELIMITER $$
+CREATE TRIGGER criar_login_vendedor
+AFTER INSERT ON vendedor
+FOR EACH ROW
+BEGIN
+    INSERT INTO login (cpf, senha, TipoAcessoLogin)
+    VALUES (NEW.cpf, NEW.senha, NEW.TipoAcessoLogin);
+END;
+$$
+DELIMITER ;
 -- -----------------------------------------------------
 -- INSERTS
 -- -----------------------------------------------------
 
 -- insert EMPRESA (É UMA SÓ)
-insert into empresa (razao_social, telefone, cnpj, nome_fantasia, porte_empresa, TipoAcessoLogin) values ('O objetivo da empresa é deixar as pessoas felizes andando de gol', '+55 47 992178827', '12.345.678/0001-99', 'Pope Francis Master', 'grande', 1);
+insert into empresa (razao_social, telefone, cnpj, nome_fantasia, porte_empresa, TipoAcessoLogin) values ('O objetivo da empresa é deixar as pessoas felizes andando de gol', '+5547992178827', '12345678000199', 'Pope Francis Master', 'grande', 1);
 
 
 
@@ -169,9 +178,9 @@ insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_car
 '13093824923',
  47988989827,
  'BRASIL',
- 89111042, 
+ 89111042,
  '2023-08-20',
- 012344, 
+ 012344,
  'Carl',
  'Johnson',
  2,
@@ -208,8 +217,8 @@ insert into categoria ( categoria) values ( 'semper');
 
 
 -- inserts fornecedor
-insert into fornecedor (cnpj,  endereco_id, nome, atividades, telefone) values (82, 1, 'Emily Joanna Alves', 'HB20 all black', 47984273688); 
-insert into fornecedor (cnpj,  endereco_id, nome, atividades, telefone) values (83, 2, 'Maria Eduarda Mendes','Gol Bolinha 2014',  47997212305); 
+insert into fornecedor (cnpj,  endereco_id, nome, atividades, telefone) values (82, 1, 'Emily Joanna Alves', 'HB20 all black', 47984273688);
+insert into fornecedor (cnpj,  endereco_id, nome, atividades, telefone) values (83, 2, 'Maria Eduarda Mendes','Gol Bolinha 2014',  47997212305);
 
 
 -- inserts PRODUTOS
@@ -221,6 +230,8 @@ VALUES (5, 'Automático', 4, 400, 'Volkswagen', 'Golf', 'Prata', 2020, 4.5, 200.
 
 -- inserts aluguelRegistro
 insert into aluguelRegistro (id_venda, forma_pagamento, data_inicio, quant_dias, valor, vendedor_id_vendedor, locador_pessoas_cpf) values (12, 'Cartão de Crédito em 5 vezes', '2005-10-24', 3, 300, 1, 24102005);
+insert into aluguelRegistro (id_venda, forma_pagamento, data_inicio, quant_dias, valor, vendedor_id_vendedor, locador_pessoas_cpf) values (16, 'DINHEIRO', '2023-10-24', 5, 256, 2, 654789321);
+
 
 
 

@@ -130,8 +130,6 @@ public class ControllerTableViewFuncionarios implements Initializable {
 	@FXML
 	private TableView<Vendedor> tableFuncionario;
 
-	@FXML
-	private TableColumn<Vendedor, String> columnCargo;
 
 	@FXML
 	private TableColumn<Vendedor, Integer> columnIdVendedor;
@@ -156,8 +154,6 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 	public void tblViewDivergenciaSearchFunc() {
 		tableFuncionario.getItems().clear();
-		columnCargo.setCellValueFactory(
-				cellData -> new SimpleObjectProperty<>(cellData.getValue().getTipoAcesso().toString()));
 		columnIdVendedor
 				.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getId_vendedor()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
@@ -365,8 +361,6 @@ public class ControllerTableViewFuncionarios implements Initializable {
 				.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getId_vendedor()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnSobrenome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSobrenome()));
-		columnCargo.setCellValueFactory(
-				cellData -> new SimpleObjectProperty<>(cellData.getValue().getTipoAcesso().toString()));
 
 		// Configura a formatação da célula da coluna de salário
 		columnSalario.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSalario()));

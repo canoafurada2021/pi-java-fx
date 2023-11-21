@@ -219,21 +219,27 @@ public class ControllerEdicaoProduto implements Initializable {
 		txtQuantPortas.setText(String.valueOf(v.getQuant_portas()));
 		txtTipoCambio.setText(v.getTipo_cambio());
 		txtUnidadeEmEstoque.setText(String.valueOf(v.getUnidade_em_estoque()));
-		
+		System.out.println("Valor de this.id_categoria: " + categorias);
+
 		if (v.getCategoria() != null) {
-		    long categoriaId = v.getCategoria().getIdCategoria();  // Supondo que getIdCategoria() retorna um long
-		    int categoriaIndex = encontrarIndiceCategoria(categoriaId);
-		    String categoriaText = String.valueOf(categoriaId);
+			Integer categoriaId = v.getCategoria().getIdCategoria();  // Aqui está pegando o ID da categoria
 
-		    comboCategoria.getEditor().setText(categoriaText);
+			if (categoriaId != null) {
+				int categoriaIndex = encontrarIndiceCategoria(categoriaId);
+				String categoriaText = String.valueOf(categoriaId);
 
-		    if(categoriaText.equals("-1")) {
-		        // Definir o índice no ComboBox
-		        comboCategoria.getEditor().setText(categoriaText);
-		        comboCategoria.getSelectionModel().select(categoriaIndex);
-		    }
+				comboCategoria.getEditor().setText(categoriaText);
+
+				if (categoriaIndex != -1) {
+					// Definir o índice no ComboBox
+					comboCategoria.getSelectionModel().select(categoriaIndex);
+				}
+			} else {
+				System.out.println("O ID da categoria é nulo para o veículo.");
+			}
 		}
-		
+
+
 		if(v.getCnpj() !=  null) {
 			long cnpjFornecedor = v.getCnpj().getCnpj();
 			int cnpjIndex = encontrarIndiceFornecedor(cnpjFornecedor);

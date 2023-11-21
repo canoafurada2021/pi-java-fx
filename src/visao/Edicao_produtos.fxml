@@ -12,7 +12,7 @@
    <children>
       <Pane fx:id="pnlLocacaoEdicao" prefHeight="1000.0" prefWidth="966.0" style="-fx-background-color: #F9FAFF; -fx-background-radius: 20;">
          <children>
-            <Button fx:id="btnSalvar" layoutX="522.0" layoutY="917.0" mnemonicParsing="false" onAction="#salvarAlteracaoProduto" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Salvar" textFill="WHITE">
+            <Button fx:id="btnSalvar" layoutX="522.0" layoutY="918.0" mnemonicParsing="false" onAction="#salvarAlteracaoProduto" prefHeight="44.0" prefWidth="224.0" style="-fx-background-color: #0044A9; -fx-background-radius: 10;" text="Salvar" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

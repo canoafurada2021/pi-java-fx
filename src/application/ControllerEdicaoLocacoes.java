@@ -94,7 +94,7 @@ public class ControllerEdicaoLocacoes implements Initializable {
         //Atualize o objeto Locacao cm as alterações
         AluguelRegistro aluguelRegistro = new AluguelRegistro();
         aluguelRegistro.setFormaPagamento(novoFormaPagamento);
-        aluguelRegistro.setDataInicio(Timestamp.valueOf(novoDataInicio));
+        aluguelRegistro.setDataInicio(novoDataInicio);
         aluguelRegistro.setQuantDias(novoQuantDias);
         aluguelRegistro.setValor(Double.valueOf(novoValor));
 
