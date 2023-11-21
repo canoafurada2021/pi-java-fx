@@ -41,6 +41,7 @@ public class EmpresaDAO implements IEmpresaDAO {
                 empresa.setId_empresa(Math.toIntExact(id_empresa));
                 empresa.setCnpj(cnpj);
                 empresa.setTelefone(telefone);
+                empresa.setTipoAcesso(tipoAcesso);
                 return empresa;
             }
 

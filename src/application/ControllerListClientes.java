@@ -31,6 +31,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import modelo.Fornecedor;
 import modelo.Locador;
 import modelo.TipoAcessoLogin;
 import utilities.CpfFormatter;
@@ -165,13 +166,49 @@ public class ControllerListClientes implements Initializable {
 		columnCPF.setCellValueFactory(cellData -> new SimpleObjectProperty<>(CpfFormatter.formatCpf(cellData.getValue().getPessoas_cpf())));		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnIdCarteira.setCellValueFactory(
 				cellData -> new SimpleObjectProperty<>(cellData.getValue().getNumIdentificacaoCarteira()));
-		columnTelefone
-				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTel_contato()));
 		columnPaisResidencia
 				.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPaisResidencia()));
 		columnCNH.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnh()));
 		columnValidadeCarteira.setCellValueFactory(
 				cellData -> new SimpleStringProperty(cellData.getValue().getValidadeCarteira()));
+
+
+		columnTelefone
+				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTel_contato()));
+
+	columnTelefone.setCellFactory(tc -> new TableCell<Locador, Long>(){
+
+		// máscara responsável pela formatação de número de telefone com base no modelo
+		// (99) 99999-9999
+		@Override
+		protected void updateItem(Long telefone, boolean empty) {
+
+			super.updateItem(telefone, empty);
+
+			// caso o numero venha vazio a mascara não será aplicada
+			if (telefone == null || empty) {
+				setText(null);
+				// faz a formatação com base na quantidade de caracteres dentro do atributo
+				// 'Telefone'da classe 'Fornecedores'
+				// padrão de número de telefone com 11 dígitos no modelo Brasileiro (padrões do
+				// tipo EUA não irão funcionar)
+			} else {
+				String telefoneStr = String.valueOf(telefone);
+				if (telefoneStr.length() == 10) {
+					setText("(" + telefoneStr.substring(0, 2) + ") " + telefoneStr.substring(2, 6) + "-"
+							+ telefoneStr.substring(6));
+				} else if (telefoneStr.length() == 11) {
+					setText("(" + telefoneStr.substring(0, 2) + ") " + telefoneStr.substring(2, 7) + "-"
+							+ telefoneStr.substring(7));
+				} else {
+					setText(telefoneStr);
+				}
+			}
+		}
+	});
+
+
+
 
 
 		columnAcoes.setCellFactory(new Callback<TableColumn<Locador, String>, TableCell<Locador, String>>() {
