@@ -11,7 +11,7 @@
    <children>
       <Pane fx:id="panelMessageImage" layoutX="51.0" layoutY="8.0">
          <children>
-            <Label fx:id="lblMensagem" alignment="CENTER" layoutY="50.0" prefHeight="30.0" prefWidth="200.0" text="Prosseguir com a exclusão? aaaaa" textAlignment="CENTER">
+            <Label fx:id="lblMensagem" alignment="CENTER" layoutY="50.0" prefHeight="30.0" prefWidth="200.0" text="Prosseguir com a exclusão? " textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>

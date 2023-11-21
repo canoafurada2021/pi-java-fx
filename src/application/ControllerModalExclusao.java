@@ -1,6 +1,7 @@
 package application;
 
 import controle.VendedorDAO;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +11,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import modelo.Vendedor;
+import utilities.ExibePopUpConfExclusao;
+
+import javafx.scene.control.TableView; // Correção aqui
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,7 +40,18 @@ public class ControllerModalExclusao implements Initializable {
     @FXML
     private Pane panelProsseguirExclusao;
 
-    // Método chamado quando o botão "Cancelar" é clicado
+    private ObservableList<Vendedor> obsVendedores;
+    private TableView<Vendedor> tableFuncionario;
+
+    private Vendedor vendedor;  // Altere o tipo para Vendedor
+    public void setTableFuncionario(TableView<Vendedor> tableFuncionario, ObservableList<Vendedor> obsVendedores) {
+        this.tableFuncionario = tableFuncionario;
+        this.obsVendedores = obsVendedores;
+    }
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
     @FXML
     void cancelarExclusao(ActionEvent event) {
         // Coloque aqui a lógica para a ação de "Cancelar"
@@ -46,21 +61,29 @@ public class ControllerModalExclusao implements Initializable {
         closeStage();
     }
 
-    // Método chamado quando o botão "Prosseguir" é clicado
     @FXML
     void confirmarExclusao(ActionEvent event) {
         VendedorDAO dao = new VendedorDAO();
 
-        Vendedor vendedor = new Vendedor();
+        if (vendedor != null) {
+            boolean confirmacao = ExibePopUpConfExclusao.ExibirPopUpConfExclusao();
 
-        System.out.println("Ação de Prosseguir");
-        // Executa a exclusão
-        if (dao.excluir(vendedor)) {
-            System.out.println("Vendedor excluído com sucesso");
+            if (confirmacao) {
+                if (dao.excluir(vendedor)) {
+                    // Lógica após a exclusão bem-sucedida
+                    obsVendedores.remove(vendedor);
+                    System.out.println("Vendedor excluído com sucesso");
+                } else {
+                    System.out.println("Falha ao excluir vendedor");
+                }
+            } else {
+                System.out.println("vendedor esta nulo");
+            }
         } else {
-            System.out.println("Falha ao excluir vendedor");
+            System.out.println("Nenhum vendedor fornecido para exclusão.");
         }
-        // Fechar o palco (Stage) ao concluir a ação
+
+        // Fecha o palco (Stage) ao concluir a ação
         closeStage();
     }
 
