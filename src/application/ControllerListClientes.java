@@ -5,12 +5,14 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import controle.FornecedorDAO;
 import controle.LocadorDAO;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,10 +32,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import modelo.Fornecedor;
 import modelo.Locador;
-import modelo.TipoAcessoLogin;
 import utilities.CpfFormatter;
 
 public class ControllerListClientes implements Initializable {
@@ -155,6 +157,29 @@ public class ControllerListClientes implements Initializable {
 
 	private ObservableList<Locador> obsLocadores;
 
+	LocadorDAO daoFor = new LocadorDAO();
+
+	public void tblViewDivergenciaSearch() {
+
+		tableClientes.getItems().clear();
+		columnCPF.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPessoas_cpf()));
+		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+		columnIdCarteira.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getNumIdentificacaoCarteira()));
+		columnTelefone.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTelefone()));
+		columnPaisResidencia.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPaisResidencia()));
+		columnCNH.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnh()));
+		columnValidadeCarteira.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValidadeCarteira()));
+
+		ObservableList<Locador> obsLocadores = FXCollections.observableArrayList(daoFor.listar());
+		tableClientes.setItems(obsLocadores);
+		;
+
+	}
+
+
+
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		LocadorDAO dao = new LocadorDAO();
@@ -174,7 +199,7 @@ public class ControllerListClientes implements Initializable {
 
 
 		columnTelefone
-				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTel_contato()));
+				.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTelefone()));
 
 	columnTelefone.setCellFactory(tc -> new TableCell<Locador, Long>(){
 
@@ -245,11 +270,17 @@ public class ControllerListClientes implements Initializable {
 
 								// Passando os dados do fornecedor selecionado de uma tela para outra
 								controllerNovaTela.setLocador(locador);
-
 								// Configurar a nova janela e mostrá-la
 								Scene scene = new Scene(root);
 								Stage stage = new Stage();
 								stage.setScene(scene);
+
+								stage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {
+									public void handle(WindowEvent we) {
+										tblViewDivergenciaSearch();// Esse método eu populo o tableView (ver acima)
+									}
+								});
+
 								stage.show();
 							} catch (IOException e) {
 								e.printStackTrace();

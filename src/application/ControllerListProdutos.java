@@ -30,7 +30,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import modelo.Veiculo;
@@ -346,7 +348,8 @@ public class ControllerListProdutos implements Initializable {
 			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			stageAtual.close();
 
-			stage.setScene(scene);
+
+
 			stage.show();
 
 		} catch (IOException e) {
@@ -442,6 +445,11 @@ public class ControllerListProdutos implements Initializable {
 
 								Scene scene = new Scene(root);
 								Stage stage = new Stage();
+								stage.initStyle(StageStyle.UNDECORATED);
+
+
+
+
 								stage.setScene(scene);
 								
 								stage.setOnCloseRequest((EventHandler<WindowEvent>) new EventHandler<WindowEvent>() {

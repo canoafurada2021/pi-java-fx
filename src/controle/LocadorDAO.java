@@ -26,26 +26,24 @@ public class LocadorDAO implements ILocadorDAO{
                 l.setPessoas_cpf(rs.getString("pessoas_cpf"));
                 l.setNome(rs.getString("nome"));
                 l.setSobrenome(rs.getString("sobrenome"));
-                l.setTel_contato(rs.getLong("tel_contato"));
+                l.setTelefone(rs.getLong("telefone"));
                 l.setPaisResidencia(rs.getString("pais_residencia"));
                 l.setCnh(rs.getLong("cnh"));
                 l.setValidadeCarteira(rs.getString("validade_carteira"));
 
 
                 l.setNumIdentificacaoCarteira(rs.getLong("num_identificacao_carteira"));
-                l.setImg_Base64(rs.getString("img_Base64Locador"));
 
                 System.out.println("locador" + l.getTipoAcesso());
 
-                int tipoAcessoId = rs.getInt("TipoAcessoLogin");
-                TipoAcessoLogin tipoAcesso = TipoAcessoLogin.getById(tipoAcessoId);
 
-                l.setTipoAcesso(tipoAcesso);
 
                 locadores.add(l);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("SQL Exception: " + e.getMessage());
+
         } finally {
             c.fecharConexao();
         }
@@ -57,7 +55,7 @@ public class LocadorDAO implements ILocadorDAO{
         Connection con = c.conectar();
 
         String query = "INSERT INTO locador " +
-                "(pessoas_cpf, nome, sobrenome, tel_contato, pais_residencia, cnh, validade_carteira, num_identificacao_carteira, TipoAcessoLogin) " +
+                "(pessoas_cpf, nome, sobrenome, telefone, pais_residencia, cnh, validade_carteira, num_identificacao_carteira, TipoAcessoLogin) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
@@ -66,13 +64,12 @@ public class LocadorDAO implements ILocadorDAO{
             ps.setString(1, l.getPessoas_cpf());
             ps.setString(2, l.getNome());
             ps.setString(3, l.getSobrenome());
-            ps.setLong(4, l.getTel_contato());
+            ps.setLong(4, l.getTelefone());
             ps.setString(5, l.getPaisResidencia());
             ps.setLong(6, l.getCnh());
             ps.setString(7, l.getValidadeCarteira());
             ps.setLong(8, l.getNumIdentificacaoCarteira());
-            ps.setInt(9, l.getTipoAcesso().getId()); // Converte o Enum para o valor correspondente no banco
-
+            ps.setInt(6, TipoAcessoLogin.CLIENTE.getId());
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,21 +85,32 @@ public class LocadorDAO implements ILocadorDAO{
         Connection con = c.conectar();
 
         String query = "UPDATE locador SET " +
-                "nome = ?, sobrenome = ?, tel_contato = ?, pais_residencia = ?, cnh = ?, validade_carteira = ?, num_identificacao_carteira = ? " +
+                "nome = ?, sobrenome = ?, telefone = ?, pais_residencia = ?, cnh = ?, validade_carteira = ?, num_identificacao_carteira = ? " +
                 "WHERE pessoas_cpf = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, l.getNome());
             ps.setString(2, l.getSobrenome());
-            ps.setLong(3, l.getTel_contato());
-            ps.setString(4, l.getPaisResidencia());
+                ps.setLong(3, l.getTelefone());
+              ps.setString(4, l.getPaisResidencia());
             ps.setLong(5, l.getCnh());
             ps.setString(6, l.getValidadeCarteira());
             ps.setLong(7, l.getNumIdentificacaoCarteira());
             ps.setString(8, l.getPessoas_cpf());
 
             int rowsUpdated = ps.executeUpdate();
+
+            System.out.println("Query parametros: ");
+
+            System.out.println("nome: " + l.getNome());
+            System.out.println("sobrenome: " + l.getSobrenome());
+            System.out.println("telefone: " + l.getTelefone());
+            System.out.println("pais: " + l.getPaisResidencia());
+            System.out.println("cnh: " + l.getCnh());
+            System.out.println("validade carteira: " + l.getValidadeCarteira());
+            System.out.println("identificacao carteira: " + l.getNumIdentificacaoCarteira());
+
 
             if (rowsUpdated > 0) {
                 // Os dados foram atualizados com sucesso

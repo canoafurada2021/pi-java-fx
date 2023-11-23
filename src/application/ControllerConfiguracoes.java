@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import controle.Conexao;
 import controle.EmpresaDAO;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,10 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -31,6 +29,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import modelo.Empresa;
 import modelo.Locador;
+import utilities.CnpjFormatter;
 
 public class ControllerConfiguracoes implements Initializable {
 
@@ -191,13 +190,14 @@ public class ControllerConfiguracoes implements Initializable {
 
 	public void setEmpresa(Empresa e){
 		if (e!=null) {
-			System.out.println("teste bomba configuracao");
 			txtNomeFantasia.setText(e.getNome_fantasia());
 			txtCnpj.setText(String.valueOf(e.getCnpj()));
 			txtId.setText(String.valueOf(e.getIdEmpresa()));
 			txtTelefone.setText(String.valueOf(e.getTelefone()));
 			txtPorteEmpresa.setText(e.getPorte_empresa());
 			txtRazaoSocial.setText(e.getRazao_social());
+
+
 		} else {
 			System.out.println("Obj de empresa esta nulo");
 		}
@@ -217,6 +217,13 @@ public class ControllerConfiguracoes implements Initializable {
 		txtId.setDisable(true);
 		txtNomeFantasia.setDisable(true);
 		txtCnpj.setDisable(true);
+
+//		txtCnpj.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
+//			if (newValue != null && !newValue.isEmpty()) {
+//				txtCnpj.setText(CnpjFormatter.formatCnpj(newValue));
+//			}
+//		});
+
 	}
 
 	@FXML

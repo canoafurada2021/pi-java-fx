@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -42,7 +41,7 @@ public class LocadorDAOTest {
         locador.setNumIdentificacaoCarteira(243L);
         locador.setImg_Base64("aaa");
         locador.setTipoAcesso(TipoAcessoLogin.CLIENTE);
-        locador.setTel_contato(343243L);
+        locador.setTelefone(343243L);
         // Defina outras propriedades conforme necessário
         return locador;
     }
@@ -60,7 +59,7 @@ public class LocadorDAOTest {
         locador.setNumIdentificacaoCarteira(243L);
         locador.setImg_Base64("aaa");
         locador.setTipoAcesso(TipoAcessoLogin.CLIENTE);
-        locador.setTel_contato(343243L);
+        locador.setTelefone(343243L);
 
         boolean inserido = daoLocador.inserir(locador);
         assertTrue(inserido);

@@ -4,7 +4,7 @@ public class Locador {
 	private String nome;
 	private String sobrenome;
 	private String pessoas_cpf;
-	private Long tel_contato;
+	private Long telefone;
 	private String pais_residencia;
 	private Long cnh;
 
@@ -45,12 +45,12 @@ public class Locador {
 		this.pessoas_cpf = pessoas_cpf;
 	}
 
-	public Long getTel_contato() {
-		return tel_contato;
+	public Long getTelefone() {
+		return telefone;
 	}
 
-	public void setTel_contato(Long tel_contato) {
-		this.tel_contato = tel_contato;
+	public void setTelefone(Long telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getPaisResidencia() {
