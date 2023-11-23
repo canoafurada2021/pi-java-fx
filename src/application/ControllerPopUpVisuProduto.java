@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -16,6 +17,9 @@ public class ControllerPopUpVisuProduto implements Initializable {
     private AnchorPane Panel;
 
     @FXML
+    private ImageView imgVeiculo;
+
+    @FXML
     private Label lblAno;
 
     @FXML
@@ -25,19 +29,13 @@ public class ControllerPopUpVisuProduto implements Initializable {
     private Label lblCor;
 
     @FXML
-    private Label lblFornecedor;
+    private Label lblEspacoPortaMalas;
 
     @FXML
-    private Label lblIProduto;
+    private Label lblFornec;
 
     @FXML
-    private Label lblIdProduto11;
-
-    @FXML
-    private Label lblIdProduto111;
-
-    @FXML
-    private Label lblIdProduto2;
+    private Label lblId;
 
     @FXML
     private Label lblMarca;
@@ -46,16 +44,22 @@ public class ControllerPopUpVisuProduto implements Initializable {
     private Label lblNome;
 
     @FXML
-    private Label lblNome11;
+    private Label lblNotaAvaliacao;
 
     @FXML
-    private Label lblNome2;
-
-    @FXML
-    private Label lblNome21;
+    private Label lblPrecoPorDia;
 
     @FXML
     private Label lblQuantAssentos;
+
+    @FXML
+    private Label lblQuantPortas;
+
+    @FXML
+    private Label lblTipoCambio;
+
+    @FXML
+    private Label lblUnidadeEmEstoque;
 
     @FXML
     private Pane panelButtons;
@@ -73,19 +77,13 @@ public class ControllerPopUpVisuProduto implements Initializable {
     private TextField txtCor;
 
     @FXML
+    private TextField txtEspacoPortaMalas;
+
+    @FXML
     private TextField txtFornecedor;
 
     @FXML
-    private TextField txtIdProduto;
-
-    @FXML
-    private TextField txtIdProduto11;
-
-    @FXML
-    private TextField txtIdProduto111;
-
-    @FXML
-    private TextField txtIdProduto2;
+    private TextField txtId;
 
     @FXML
     private TextField txtMarca;
@@ -94,16 +92,23 @@ public class ControllerPopUpVisuProduto implements Initializable {
     private TextField txtNome;
 
     @FXML
-    private TextField txtNome11;
+    private TextField txtNotaAvaliacao;
 
     @FXML
-    private TextField txtNome2;
-
-    @FXML
-    private TextField txtNome21;
+    private TextField txtPrecoPorDia;
 
     @FXML
     private TextField txtQuantAssentos;
+
+    @FXML
+    private TextField txtQuantPortas;
+
+    @FXML
+    private TextField txtTipoCambio;
+
+    @FXML
+    private TextField txtUnidadeEmEstoque;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
