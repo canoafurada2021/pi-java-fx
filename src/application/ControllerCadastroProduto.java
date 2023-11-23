@@ -29,6 +29,7 @@ import utilities.ExibePopUpSucesso;
 
 public class ControllerCadastroProduto implements Initializable {
 
+
 	@FXML
 	private Label lblQuantAssentos;
 

@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.converter.CurrencyStringConverter;
 import modelo.AluguelRegistro;
 import modelo.Locador;
 import modelo.Vendedor;
@@ -159,8 +160,10 @@ public class ControllerCadastroLocacao implements Initializable {
         String selectedLocadorInfo = comboCpfLocador.getValue();
         String locadorId = selectedLocadorInfo.split(" - ")[0];
         Locador locadorSelecionado = encontrarLocadorSelecionado(locadorId);
+        // Define o formato da máscara de dinheiro
 
 
+// Agora, você pode usar o valor formatado como um Double
         AluguelRegistro a = new AluguelRegistro();
 
         a.setFormaPagamento(formaPagamento);
@@ -190,7 +193,23 @@ public class ControllerCadastroLocacao implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         preencherComboVendedor();
         preencherComboLocador();
+
+//        TextFormatter<String> valueFormatter = new TextFormatter<Double>(
+//                new CurrencyStringConverter(), // Usando um conversor de moeda para formatar o texto
+//                0.0, // Valor padrão
+//                change -> {
+//                    if (change.getControlNewText().matches("\\d*\\.?\\d*")) {
+//                        return change;
+//                    } else {
+//                        return null;
+//                    }
+//                }
+//        );
+//
+//        // Associe o TextFormatter ao TextField
+//        txtValor.setTextFormatter(valueFormatter);
     }
+
 
     private void limpaCampos() {
         txtFormaPagamento.setText(null);

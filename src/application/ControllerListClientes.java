@@ -11,6 +11,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -232,7 +233,29 @@ public class ControllerListClientes implements Initializable {
 		}
 	});
 
+		txtPesquisa.textProperty().addListener((observable, oldValue, newValue) -> {
 
+			FilteredList<Locador> listaFiltrada = new FilteredList<>(obsLocadores, p -> true);
+
+			if (newValue != null && !newValue.isEmpty()) {
+				String termoBusca = newValue.toLowerCase();
+				listaFiltrada.setPredicate(locador -> {
+
+
+					String nome = locador.getNome().toLowerCase();
+					String sobrenome = locador.getSobrenome().toLowerCase();
+					String cnh = String.valueOf(locador.getCnh());
+
+
+
+					return nome.contains(termoBusca) || sobrenome.contains(termoBusca) || cnh.contains(termoBusca);
+
+					// Implemente a lógica de filtro com base nos campos do objeto
+				});
+			}
+
+			tableClientes.setItems(listaFiltrada);
+		});
 
 
 
