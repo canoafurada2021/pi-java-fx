@@ -498,44 +498,50 @@ public class ControllerListLocacoes implements Initializable {
                                         xPosition += tableWidth / cols;
                                     }
 
+
+
                                     // Draw table data
                                     yPosition = tableY - rowHeight - 15;
-                                    for (AluguelRegistro aluguel : alugueis) {
-                                        xPosition = tableX;
-                                        for (int i = 0; i < cols; i++) {
-                                            contentStream.beginText();
-                                            String texto = getTableData(aluguel, i);
-                                            int comprimentoMaximoLinha = 20; // Ajuste conforme necessário
-                                            List<String> linhas = new ArrayList<>();
-                                            for (int j = 0; j < texto.length(); j += comprimentoMaximoLinha) {
-                                                int endIndex = Math.min(j + comprimentoMaximoLinha, texto.length());
-                                                linhas.add(texto.substring(j, endIndex));
-                                            }
 
-                                            // Exiba as linhas na tabela
-                                            for (int j = 0; j < linhas.size(); j++) {
-                                                contentStream.newLineAtOffset(xPosition, yPosition - j * 15); // Ajuste conforme necessário
-                                                contentStream.showText(linhas.get(j));
-                                            }
+                                    // Obtém a AluguelRegistro específica da linha do botão
+                                    AluguelRegistro aluguelL = getTableView().getItems().get(getIndex());
 
-                                            contentStream.endText();
-
-                                            // Adicione uma linha divisória entre as linhas
-                                            contentStream.setLineWidth(0.5f); // Ajuste conforme necessário
-                                            contentStream.moveTo(xPosition, yPosition);
-                                            contentStream.lineTo(xPosition + columnWidth, yPosition);
-                                            contentStream.stroke();
-
-                                            xPosition += tableWidth / cols;
+                                    xPosition = tableX;
+                                    for (int i = 0; i < cols; i++) {
+                                        contentStream.beginText();
+                                        // Adapte o método getTableData para aceitar a AluguelRegistro específica
+                                        String texto = getTableData(aluguelL, i);
+                                        int comprimentoMaximoLinha = 20; // Ajuste conforme necessário
+                                        List<String> linhas = new ArrayList<>();
+                                        for (int j = 0; j < texto.length(); j += comprimentoMaximoLinha) {
+                                            int endIndex = Math.min(j + comprimentoMaximoLinha, texto.length());
+                                            linhas.add(texto.substring(j, endIndex));
                                         }
-                                        yPosition -= rowHeight;
+
+                                        // Exiba as linhas na tabela
+                                        for (int j = 0; j < linhas.size(); j++) {
+                                            contentStream.newLineAtOffset(xPosition, yPosition - j * 15); // Ajuste conforme necessário
+                                            contentStream.showText(linhas.get(j));
+                                        }
+
+                                        contentStream.endText();
 
                                         // Adicione uma linha divisória entre as linhas
-                                        contentStream.setLineWidth(1f); // Restaure a largura da linha para o valor original
-                                        contentStream.moveTo(tableX, yPosition);
-                                        contentStream.lineTo(tableX + tableWidth, yPosition);
+                                        contentStream.setLineWidth(0.5f); // Ajuste conforme necessário
+                                        contentStream.moveTo(xPosition, yPosition);
+                                        contentStream.lineTo(xPosition + columnWidth, yPosition);
                                         contentStream.stroke();
+
+                                        xPosition += tableWidth / cols;
                                     }
+
+                                    yPosition -= rowHeight;
+
+                                    // Adicione uma linha divisória entre as linhas
+                                    contentStream.setLineWidth(1f); // Restaure a largura da linha para o valor original
+                                    contentStream.moveTo(tableX, yPosition);
+                                    contentStream.lineTo(tableX + tableWidth, yPosition);
+                                    contentStream.stroke();
                                 }
                             }
                         }
@@ -625,7 +631,7 @@ public class ControllerListLocacoes implements Initializable {
                 }
             }
         });
-        
+
 
         txtPesquisa.textProperty().addListener((observable, oldValue, newValue) -> {
 
