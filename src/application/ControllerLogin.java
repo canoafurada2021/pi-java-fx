@@ -18,10 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -48,7 +45,7 @@ public class ControllerLogin implements Initializable {
 	private Label lblSenha;
 
 	@FXML
-	private PasswordField txtSenha;
+	private TextField txtSenha;
 
 	@FXML
 	private TextField txtCpf;
@@ -115,45 +112,31 @@ public class ControllerLogin implements Initializable {
 
 
 	private boolean senhaVisivel = false;
-
 	@FXML
 	void toggleView(ActionEvent event) {
-
 		senhaVisivel = !senhaVisivel;
 
-		Image showImageOpen = new Image(getClass().getResourceAsStream("/imgs/EyesOpen.png"));
-		Image showImageClosed = new Image(getClass().getResourceAsStream("/imgs/EyesClosed.png"));
-
 		if (senhaVisivel) {
-			// Se a senha não estiver visível, torna-a visível e altera a imagem do botão
-			txtSenha.setManaged(true);
-			imgEyeClosed.setManaged(false);
-			imgEyeOpen.setManaged(true);
-			imgEyeOpen.setImage(showImageOpen);
-			btnViewOpen.setGraphic(new ImageView(showImageOpen));
+			txtSenha.setStyle("-fx-text-fill: black;");
+			txtSenha.setText(txtSenha.getText());
 		} else {
-			// Se a senha estiver visível, oculta-a e altera a imagem do botão
-			txtSenha.setManaged(false);
-			imgEyeClosed.setManaged(true);
-			imgEyeOpen.setManaged(false);
-			imgEyeOpen.setImage(showImageClosed);
-			btnViewClosed.setGraphic(new ImageView(showImageClosed));
+			String mascara = "*".repeat(txtSenha.getText().length());
+			txtSenha.setStyle("-fx-text-fill: transparent;");
+			txtSenha.setText(mascara);
 		}
+
+		// Alternar entre os botões "abrir olho" e "fechar olho"
+		btnViewOpen.setVisible(!senhaVisivel);
+		btnViewClosed.setVisible(senhaVisivel);
 	}
-
-
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// Inicializa com senha visível (caracteres ocultos) e ícone do olho fechado
-		senhaVisivel = false;
 		txtSenha.setManaged(true);
-		imgEyeClosed.setManaged(true);
-		imgEyeOpen.setManaged(false);
-		// Configuração do evento do botão
+		txtSenha.setText(" ");
+
+		btnViewOpen.setOnAction(this::toggleView);
 		btnViewClosed.setOnAction(this::toggleView);
-		// Alteração da visibilidade após o clique
-		imgEyeClosed.setOnMouseClicked(event -> toggleView(new ActionEvent()));
 	}
 
 }
