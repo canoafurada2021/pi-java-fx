@@ -12,6 +12,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -441,10 +442,26 @@ public class ListViewController implements Initializable {
 				};
 			}
 		});
-			
-		
-		
-		
+
+
+
+		txtPesquisa.textProperty().addListener((observable, oldValue, newValue )-> {
+
+			FilteredList<Categoria> listaFiltrada = new FilteredList<>(obsCategoria);
+
+			if(newValue != null && !newValue.isEmpty()){
+				String termoBusca = newValue.toLowerCase();
+				listaFiltrada.setPredicate(categoria -> {
+					String categoriaNome = categoria.getCategoria().toLowerCase();
+
+					return categoriaNome.contains(termoBusca);
+				});
+			}
+			tabela.setItems(listaFiltrada);
+		});
+
+
+
 		// método para tirar a coluna extra vazia criada como padrão no table column
 		tabela.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		carregarCategorias();

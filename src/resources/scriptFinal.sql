@@ -162,7 +162,7 @@ DELIMITER ;
 -- -----------------------------------------------------
 
 -- insert EMPRESA (É UMA SÓ)
-insert into empresa (razao_social, telefone, cnpj, nome_fantasia, porte_empresa, TipoAcessoLogin) values ('O objetivo da empresa é deixar as pessoas felizes andando de gol', '5547992178827', '12345678000199', 'Pope Francis Master', 'grande', 1);
+insert into empresa (razao_social, telefone, cnpj, nome_fantasia, porte_empresa, TipoAcessoLogin) values ('O objetivo da empresa é deixar as pessoas felizes andando de gol', '+5547992178827', '12345678000199', 'Pope Francis Master', 'grande', 1);
 
 
 

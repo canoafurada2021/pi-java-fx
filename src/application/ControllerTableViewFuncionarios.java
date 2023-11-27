@@ -13,6 +13,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -85,7 +86,7 @@ public class ControllerTableViewFuncionarios implements Initializable {
 	private Button btnUsuarios;
 
 	@FXML
-	private TextField txtPesquisa;
+	private TextField txtBusca;
 	@FXML
 	private ImageView imgDefaultConfiguracoes;
 
@@ -153,6 +154,7 @@ public class ControllerTableViewFuncionarios implements Initializable {
 
 	VendedorDAO forDao = new VendedorDAO();
 
+	private FilteredList<Vendedor> listaFiltrada; // Declare como campo
 
 	public void tblViewDivergenciaSearchFunc() {
 		tableFuncionario.getItems().clear();
@@ -162,9 +164,15 @@ public class ControllerTableViewFuncionarios implements Initializable {
 		columnSobrenome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSobrenome()));
 		columnSalario.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSalario()));
 
+
 		ObservableList<Vendedor> obsVendedore = FXCollections.observableArrayList(forDao.listar());
+
+
+
 		tableFuncionario.setItems(obsVendedore);
 		;
+
+
 	}
 
 
@@ -359,6 +367,23 @@ public class ControllerTableViewFuncionarios implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
+
+			FilteredList<Vendedor> listaFiltrada = new FilteredList<>(obsVendedores, p -> true);
+
+			if(newValue != null && !newValue.isEmpty()){
+				String termoBusca = newValue.toLowerCase();
+				listaFiltrada.setPredicate(vendedor ->{
+
+					String nome = vendedor.getNome().toLowerCase();
+					String sobrenome = vendedor.getSobrenome().toLowerCase();
+
+
+					return nome.contains(termoBusca) || sobrenome.contains(termoBusca);
+				});
+			}
+			tableFuncionario.setItems(listaFiltrada);
+		});
 		columnIdVendedor
 				.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getId_vendedor()));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
@@ -487,6 +512,8 @@ public class ControllerTableViewFuncionarios implements Initializable {
 				};
 			}
 		});
+
+
 
 		carregarVendedores();
 	}

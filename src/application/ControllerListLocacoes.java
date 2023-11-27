@@ -158,34 +158,6 @@ public class ControllerListLocacoes implements Initializable {
 
     AluguelRegistroDAO dao = new AluguelRegistroDAO();
 
-    public void filtroPesquisa() {
-
-        AluguelRegistroDAO dao = new AluguelRegistroDAO();
-
-        ArrayList<AluguelRegistro> aluguelRegistros = dao.listar();
-
-        obsAluguelRegistro = FXCollections.observableArrayList(aluguelRegistros);
-        FilteredList<AluguelRegistro> listaFiltrada = new FilteredList<>(obsAluguelRegistro, p -> true);
-
-        txtPesquisa.textProperty().addListener((observable, oldValue, newValue) -> {
-            listaFiltrada.setPredicate(seuObjeto -> {
-                // Verifique se o texto de busca está vazio; se estiver, mostre todos os itens
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                // Transforme o texto de busca e o texto no objeto em minúsculas para realizar
-                // uma busca insensível a maiúsculas
-                String termoBusca = newValue.toLowerCase();
-
-                // Implemente a lógica de filtro com base nos campos do objeto
-                // Por exemplo, se você deseja filtrar pelo campo 'nome':
-                return seuObjeto.getFormaPagamento().toLowerCase().contains(termoBusca);
-            });
-        });
-        tableLocacoes.setItems(listaFiltrada);
-    }
-
     @FXML
     void abrirListCategorias(ActionEvent event) {
         try {
@@ -641,9 +613,10 @@ public class ControllerListLocacoes implements Initializable {
                 String termoBusca = newValue.toLowerCase();
                 listaFiltrada.setPredicate(aluguelRegistro -> {
 
-                    String formaPagamento = aluguelRegistro.getFormaPagamento().toLowerCase();
-                    String valor = aluguelRegistro.getValor().toString();
-                    return formaPagamento.contains(termoBusca) || valor.contains(termoBusca);
+                    Integer idLocacao = aluguelRegistro.getIdVenda();
+                    String idLocacaoString = String.valueOf(idLocacao);
+
+                    return idLocacaoString.contains(termoBusca);
                 });
             }
             tableLocacoes.setItems(listaFiltrada);
