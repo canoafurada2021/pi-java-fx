@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `locador` (
   `pessoas_cpf` VARCHAR(45),
-  `tel_contato` LONG NOT NULL,
+  `telefone` LONG NOT NULL,
   `pais_residencia` VARCHAR(45) NOT NULL,
   `cnh` LONG NOT NULL,
   `validade_carteira` DATE NOT NULL,
@@ -162,7 +162,7 @@ DELIMITER ;
 -- -----------------------------------------------------
 
 -- insert EMPRESA (É UMA SÓ)
-insert into empresa (razao_social, telefone, cnpj, nome_fantasia, porte_empresa, TipoAcessoLogin) values ('O objetivo da empresa é deixar as pessoas felizes andando de gol', '+5547992178827', '12345678000199', 'Pope Francis Master', 'grande', 1);
+insert into empresa (razao_social, telefone, cnpj, nome_fantasia, porte_empresa, TipoAcessoLogin) values ('O objetivo da empresa é deixar as pessoas felizes andando de gol', '5547992178827', '12345678000199', 'Pope Francis Master', 'grande', 1);
 
 
 
@@ -174,7 +174,7 @@ insert into empresa (razao_social, telefone, cnpj, nome_fantasia, porte_empresa,
 
 
 -- inserts CLIENTES
-insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values (
+insert into locador (pessoas_cpf, telefone, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values (
 '13093824923',
  47988989827,
  'BRASIL',
@@ -188,12 +188,12 @@ insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_car
 8BC49EA76D9B42E3ED38CC0C7BA30297DBF135C95DBCD5583B8F20E223E618EECC4FEC36F3ED5BFD71F63EC0C1922079594306A367EBB7D2FE7F9F9C4ACDC60D58B277FA7FBE3DC7D8248239835E3F63EDFB6088E1E506ABB0DE3E63E7F4DF1EE3EC750E65CF523C1BB0BDFCAD7E86B1F63EC7D8228152A27FFD9
 ");
 
-insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('24102005', 47992117973, 'BRASIL', 32165498, '2025-08-30', 987654, 'Frank', 'Tenpenny', 3, 'https://static.wikia.nocookie.net/gta/images/0/02/GTASA_Tenpenny.jpg/revision/latest?cb=20090630163333&path-prefix=pt');
-insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('321654987', 47991853907, 'BRASIL', 12457869, '2024-11-24', 457869, 'Salvatore', 'Leone', 3, 'https://static.wikia.nocookie.net/gta/images/6/6f/LeoneGTASA.jpg/revision/latest?cb=20091207011919&path-prefix=pt');
-insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('987654321', 47991737302, 'BRASIL', 32659847, '2025-09-19', 124578, 'Mike', 'Toreno', 3, 'https://static.wikia.nocookie.net/gta/images/9/90/Mike.jpg/revision/latest?cb=20100517210533&path-prefix=pt');
-insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('123789456', 47992178827, 'BRASIL', 98653214, '2026-09-27', 362514, 'Catalina', 'Farrel', 3, 'https://static.wikia.nocookie.net/gta/images/8/8a/Catalina1992.jpg/revision/latest?cb=20200416151431&path-prefix=pt');
-insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('321987654', 47984241802, 'BRASIL', 14253678, '2030-12-03', 142532, 'Madd', 'Dogg', 3, 'https://static.wikia.nocookie.net/gta/images/a/a4/MaddDogg.jpg/revision/latest?cb=20110131231921&path-prefix=pt');
-insert into locador (pessoas_cpf, tel_contato, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('654789321', 47995687402, 'BRASIL', 36251498, '2035-06-08', 321654, 'Ken', 'Rosenberg', 3, 'https://static.wikia.nocookie.net/gta/images/f/fe/KenEmSa.jpg/revision/latest?cb=20091129221320&path-prefix=pt');
+insert into locador (pessoas_cpf, telefone, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('24102005', 47992117973, 'BRASIL', 32165498, '2025-08-30', 987654, 'Frank', 'Tenpenny', 3, 'https://static.wikia.nocookie.net/gta/images/0/02/GTASA_Tenpenny.jpg/revision/latest?cb=20090630163333&path-prefix=pt');
+insert into locador (pessoas_cpf, telefone, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('321654987', 47991853907, 'BRASIL', 12457869, '2024-11-24', 457869, 'Salvatore', 'Leone', 3, 'https://static.wikia.nocookie.net/gta/images/6/6f/LeoneGTASA.jpg/revision/latest?cb=20091207011919&path-prefix=pt');
+insert into locador (pessoas_cpf, telefone, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('987654321', 47991737302, 'BRASIL', 32659847, '2025-09-19', 124578, 'Mike', 'Toreno', 3, 'https://static.wikia.nocookie.net/gta/images/9/90/Mike.jpg/revision/latest?cb=20100517210533&path-prefix=pt');
+insert into locador (pessoas_cpf, telefone, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('123789456', 47992178827, 'BRASIL', 98653214, '2026-09-27', 362514, 'Catalina', 'Farrel', 3, 'https://static.wikia.nocookie.net/gta/images/8/8a/Catalina1992.jpg/revision/latest?cb=20200416151431&path-prefix=pt');
+insert into locador (pessoas_cpf, telefone, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('321987654', 47984241802, 'BRASIL', 14253678, '2030-12-03', 142532, 'Madd', 'Dogg', 3, 'https://static.wikia.nocookie.net/gta/images/a/a4/MaddDogg.jpg/revision/latest?cb=20110131231921&path-prefix=pt');
+insert into locador (pessoas_cpf, telefone, pais_residencia, cnh,validade_carteira, num_identificacao_carteira, nome, sobrenome, TipoAcessoLogin, img_Base64Locador) values ('654789321', 47995687402, 'BRASIL', 36251498, '2035-06-08', 321654, 'Ken', 'Rosenberg', 3, 'https://static.wikia.nocookie.net/gta/images/f/fe/KenEmSa.jpg/revision/latest?cb=20091129221320&path-prefix=pt');
 
 
 -- inserts endereco
