@@ -230,6 +230,18 @@ public class ControllerListClientes implements Initializable {
 		}
 	});
 
+		txtPesquisa.focusedProperty().addListener((observable, oldValue, newValue) -> {
+			if (newValue) {
+				if (txtPesquisa.getText().equals("pesquisar")) {
+					txtPesquisa.clear();
+				}
+			} else {
+				if (txtPesquisa.getText().isEmpty()) {
+					txtPesquisa.setText("pesquisar");
+				}
+			}
+		});
+
 		txtPesquisa.textProperty().addListener((observable, oldValue, newValue) -> {
 
 			FilteredList<Locador> listaFiltrada = new FilteredList<>(obsLocadores, p -> true);
@@ -252,6 +264,12 @@ public class ControllerListClientes implements Initializable {
 			}
 
 			tableClientes.setItems(listaFiltrada);
+		});
+
+		txtPesquisa.setOnMouseClicked(event -> {
+			if (txtPesquisa.getText().equals("pesquisar")) {
+				txtPesquisa.setText("");
+			}
 		});
 
 

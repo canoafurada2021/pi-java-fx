@@ -444,12 +444,23 @@ public class ListViewController implements Initializable {
 		});
 
 
+		txtPesquisa.focusedProperty().addListener((observable, oldValue, newValue) -> {
+			if (newValue) {
+				if (txtPesquisa.getText().equals("pesquisar")) {
+					txtPesquisa.clear();
+				}
+			} else {
+				if (txtPesquisa.getText().isEmpty()) {
+					txtPesquisa.setText("pesquisar");
+				}
+			}
+		});
 
 		txtPesquisa.textProperty().addListener((observable, oldValue, newValue )-> {
 
 			FilteredList<Categoria> listaFiltrada = new FilteredList<>(obsCategoria);
 
-			if(newValue != null && !newValue.isEmpty()){
+			if(newValue != null && !newValue.isEmpty()  && !newValue.equals("pesquisar")){
 				String termoBusca = newValue.toLowerCase();
 				listaFiltrada.setPredicate(categoria -> {
 					String categoriaNome = categoria.getCategoria().toLowerCase();
@@ -460,7 +471,11 @@ public class ListViewController implements Initializable {
 			tabela.setItems(listaFiltrada);
 		});
 
-
+		txtPesquisa.setOnMouseClicked(event -> {
+			if (txtPesquisa.getText().equals("pesquisar")) {
+				txtPesquisa.setText("");
+			}
+		});
 
 		// método para tirar a coluna extra vazia criada como padrão no table column
 		tabela.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

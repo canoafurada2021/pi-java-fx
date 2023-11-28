@@ -115,10 +115,6 @@ public class ControllerListFornecedores implements Initializable {
 
 	}
 
-	@FXML
-	public void sair(ActionEvent event) {
-		// Lógica para sair do aplicativo
-	}
 
 
 
@@ -286,6 +282,18 @@ public class ControllerListFornecedores implements Initializable {
 			}
 		});
 
+		txtBusca.focusedProperty().addListener((observable, oldValue, newValue) -> {
+			if (newValue) {
+				if (txtBusca.getText().equals("pesquisar")) {
+					txtBusca.clear();
+				}
+			} else {
+				if (txtBusca.getText().isEmpty()) {
+					txtBusca.setText("pesquisar");
+				}
+			}
+		});
+
 		// Configuração do filtro de pesquisa
 		txtBusca.textProperty().addListener((observable, oldValue, newValue) -> {
 			// Lista filtrada de fornecedores que inicializa todos os fornecedores na lista
@@ -305,6 +313,12 @@ public class ControllerListFornecedores implements Initializable {
 			}
 
 			tableFornecedores.setItems(listaFiltrada);
+		});
+
+		txtBusca.setOnMouseClicked(event -> {
+			if (txtBusca.getText().equals("pesquisar")) {
+				txtBusca.setText("");
+			}
 		});
 
 		carregarFornecedores();

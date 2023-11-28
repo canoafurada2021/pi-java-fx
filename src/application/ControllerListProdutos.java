@@ -412,12 +412,23 @@ public class ControllerListProdutos implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        txtPesquisa.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                if (txtPesquisa.getText().equals("pesquisar")) {
+                    txtPesquisa.clear();
+                }
+            } else {
+                if (txtPesquisa.getText().isEmpty()) {
+                    txtPesquisa.setText("pesquisar");
+                }
+            }
+        });
 
         txtPesquisa.textProperty().addListener((observable, oldValue, newValue) -> {
 
             FilteredList<Veiculo> listaFiltrada = new FilteredList<>(obsVeiculos, p -> true);
 
-            if (newValue != null && !newValue.isEmpty()) {
+            if (newValue != null && !newValue.isEmpty() && !newValue.equals("pesquisar")) {
                 String termoBusca = newValue.toLowerCase();
                 listaFiltrada.setPredicate(veiculo -> {
 
@@ -437,6 +448,12 @@ public class ControllerListProdutos implements Initializable {
             }
 
             tableProdutos.setItems(listaFiltrada);
+        });
+
+        txtPesquisa.setOnMouseClicked(event -> {
+            if (txtPesquisa.getText().equals("pesquisar")) {
+                txtPesquisa.setText("");
+            }
         });
 
 
@@ -514,8 +531,8 @@ public class ControllerListProdutos implements Initializable {
                         ImageView viewImage = new ImageView(
                                 new Image(getClass().getResourceAsStream("/imgs/editar.png")));
 
-                        viewImage.setFitHeight(16);
-                        viewImage.setFitWidth(16);
+                        viewImage.setFitHeight(10);
+                        viewImage.setFitWidth(10);
                         viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
                         viewButton.setGraphic(viewImage);
                         viewButton.setOnAction(event -> {
@@ -551,8 +568,8 @@ public class ControllerListProdutos implements Initializable {
 
                         ImageView editImage = new ImageView(
                                 new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
-                        editImage.setFitHeight(16);
-                        editImage.setFitWidth(16);
+                        editImage.setFitHeight(10);
+                        editImage.setFitWidth(10);
                         editButton.setGraphic(editImage);
                         editButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
                         editButton.setOnAction(event -> {
@@ -571,8 +588,8 @@ public class ControllerListProdutos implements Initializable {
                         ImageView visuVeic = new ImageView(
                                 new Image(getClass().getResourceAsStream("/imgs/Default_visualizar.png")));
 
-                        visuVeic.setFitHeight(16);
-                        visuVeic.setFitWidth(16);
+                        visuVeic.setFitHeight(10);
+                        visuVeic.setFitWidth(10);
                         vizuButton.setGraphic(visuVeic);
                         vizuButton.setStyle("-fx-background-color: #0348CE; -fx-text-fill: white;");
                         vizuButton.setOnAction(event -> {
