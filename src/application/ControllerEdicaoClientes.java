@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import modelo.Locador;
 import utilities.ExibePopUpErro;
 import utilities.ExibePopUpSucesso;
@@ -115,6 +116,7 @@ public class ControllerEdicaoClientes implements Initializable{
 				ExibePopUpSucesso.ExibirPopUpSucesso();
 				Node source = (Node) event.getSource();
 				Stage stage = (Stage) source.getScene().getWindow();
+				stage.getOnCloseRequest().handle(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
 				stage.close();
 			} else {
 				ExibePopUpErro.ExibirPopUpErro();
@@ -130,12 +132,13 @@ public class ControllerEdicaoClientes implements Initializable{
 
 	    @FXML
 	    void cancelarAlteracaoLocador(ActionEvent event) {
+			Node source = (Node) event.getSource();
 
-////			// Obtém o Stage (janela) atual com base no Node
-//			Stage stage = (Stage) source.getScene().getWindow();
-//
-////			// Fecha o Stage atual
-//			stage.close();
+			// Obtém o Stage (janela) atual com base no Node
+			Stage stage = (Stage) source.getScene().getWindow();
+
+			// Fecha o Stage atual
+			stage.close();
 	    }
 	    
 	    Locador locador = new Locador();

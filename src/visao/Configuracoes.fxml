@@ -18,7 +18,7 @@
         <items>
           <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="398.0" prefWidth="489.0" style="-fx-background-color: #AEB2BF;">
                <children>
-                  <Pane fx:id="panelConfiguracoes" layoutX="20.0" layoutY="53.0" prefHeight="924.0" prefWidth="1168.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+                  <Pane fx:id="panelConfiguracoes" layoutX="20.0" layoutY="90.0" prefHeight="816.0" prefWidth="1168.0" style="-fx-background-color: white; -fx-background-radius: 20;">
                      <children>
                         <ImageView fx:id="imgConfiguracoes" fitHeight="317.0" fitWidth="1168.0" layoutY="-14.0">
                            <image>
@@ -66,11 +66,6 @@
                         <TextField fx:id="txtId" layoutX="616.0" layoutY="448.0" prefHeight="39.0" prefWidth="424.0" />
                         <TextField fx:id="txtCnpj" layoutX="616.0" layoutY="578.0" prefHeight="39.0" prefWidth="424.0" />
                         <TextField fx:id="txtTelefone" layoutX="616.0" layoutY="713.0" prefHeight="39.0" prefWidth="424.0" />
-                        <Button fx:id="bntEdicaoEmpresa" layoutX="374.0" layoutY="816.0" mnemonicParsing="false" onAction="#irParaEdicaoConfiguracoes" prefHeight="56.0" prefWidth="344.0" style="-fx-background-color: #0348ce; -fx-background-radius: 10;" text="Alterar" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
                      </children>
                   </Pane>
                </children></AnchorPane>

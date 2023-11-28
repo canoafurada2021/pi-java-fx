@@ -2,7 +2,9 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import controle.VeiculoDAO;
@@ -36,6 +38,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 import modelo.Fornecedor;
 import modelo.Veiculo;
 import modelo.Vendedor;
@@ -409,12 +412,23 @@ public class ControllerListProdutos implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        txtPesquisa.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                if (txtPesquisa.getText().equals("pesquisar")) {
+                    txtPesquisa.clear();
+                }
+            } else {
+                if (txtPesquisa.getText().isEmpty()) {
+                    txtPesquisa.setText("pesquisar");
+                }
+            }
+        });
 
         txtPesquisa.textProperty().addListener((observable, oldValue, newValue) -> {
 
             FilteredList<Veiculo> listaFiltrada = new FilteredList<>(obsVeiculos, p -> true);
 
-            if (newValue != null && !newValue.isEmpty()) {
+            if (newValue != null && !newValue.isEmpty() && !newValue.equals("pesquisar")) {
                 String termoBusca = newValue.toLowerCase();
                 listaFiltrada.setPredicate(veiculo -> {
 
@@ -436,12 +450,69 @@ public class ControllerListProdutos implements Initializable {
             tableProdutos.setItems(listaFiltrada);
         });
 
+        txtPesquisa.setOnMouseClicked(event -> {
+            if (txtPesquisa.getText().equals("pesquisar")) {
+                txtPesquisa.setText("");
+            }
+        });
+
 
         columnIdProduto.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getId_veiculo()));
         columnMarca.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMarca()));
         columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
         columnAno.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getAno()));
         columnPreco.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getPreco_por_dia()));
+
+        // Configura a formatação da célula da coluna de salário
+        columnPreco.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPreco_por_dia()));
+
+        // Usa um StringConverter (Classe do FXML responsável por facilitar na conversão
+        // de tipos Long e Double pra String)
+        // para formatar o valor do salário como moeda
+
+        StringConverter<Long> currencyConverter = new StringConverter<>() {
+            private final NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+
+            @Override
+            public String toString(Long value) {
+                if (value == null) {
+                    return "";
+                }
+
+                return currencyFormat.format(value);
+            }
+
+
+            @Override
+            public Long fromString(String string) {
+                return null;
+            }
+
+        };
+
+        // Definição e criação das células na coluna
+        // Expressão lambda para simplificar a criação de células
+        columnPreco.setCellFactory(tc -> new TableCell<Veiculo, Long>() {
+            @Override
+            protected void updateItem(Long salario, boolean empty) {
+                super.updateItem(salario, empty);
+                // Validação caso a coluna de salário esteja vazia, a cédula é setada como nullo
+                // ou " "
+                if (empty || salario == null) {
+
+                    setText("");
+                } else {
+                    // Trecho do código que faz a formatação do valor dentro da cédula
+                    setText(currencyConverter.toString(salario));
+                }
+            }
+
+        });
+
+
+
+
+
         columnUnidade.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getUnidade_em_estoque()));
         columnAcoes.setCellFactory(new Callback<TableColumn<Veiculo, String>, TableCell<Veiculo, String>>() {
             @Override
@@ -460,8 +531,8 @@ public class ControllerListProdutos implements Initializable {
                         ImageView viewImage = new ImageView(
                                 new Image(getClass().getResourceAsStream("/imgs/editar.png")));
 
-                        viewImage.setFitHeight(16);
-                        viewImage.setFitWidth(16);
+                        viewImage.setFitHeight(10);
+                        viewImage.setFitWidth(10);
                         viewButton.setStyle("-fx-background-color:  #001C52; -fx-text-fill: white;");
                         viewButton.setGraphic(viewImage);
                         viewButton.setOnAction(event -> {
@@ -497,8 +568,8 @@ public class ControllerListProdutos implements Initializable {
 
                         ImageView editImage = new ImageView(
                                 new Image(getClass().getResourceAsStream("/imgs/excluir.png")));
-                        editImage.setFitHeight(16);
-                        editImage.setFitWidth(16);
+                        editImage.setFitHeight(10);
+                        editImage.setFitWidth(10);
                         editButton.setGraphic(editImage);
                         editButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
                         editButton.setOnAction(event -> {
@@ -517,19 +588,21 @@ public class ControllerListProdutos implements Initializable {
                         ImageView visuVeic = new ImageView(
                                 new Image(getClass().getResourceAsStream("/imgs/Default_visualizar.png")));
 
-                        visuVeic.setFitHeight(16);
-                        visuVeic.setFitWidth(16);
+                        visuVeic.setFitHeight(10);
+                        visuVeic.setFitWidth(10);
                         vizuButton.setGraphic(visuVeic);
                         vizuButton.setStyle("-fx-background-color: #0348CE; -fx-text-fill: white;");
                         vizuButton.setOnAction(event -> {
                             //passar inform pr TL DE VIZU
-//							Veiculo veiculo = getTableView().getItems().get(getIndex());
+                        	Veiculo veiculo = getTableView().getItems().get(getIndex());
 //							int idVeic = veiculo.getId_veiculo();
                             try {
                                 FXMLLoader loader = new FXMLLoader(
                                         getClass().getResource("/visao/PopUpVisualizacao.fxml"));
                                 Parent root = loader.load();
                                 ControllerPopUpVisuProduto controllerNovaTela = loader.getController();
+
+                                controllerNovaTela.setVeiculoVizu(veiculo);
 
                                 Scene scene = new Scene(root);
                                 Stage stage = new Stage();
@@ -573,5 +646,6 @@ public class ControllerListProdutos implements Initializable {
     }
 
 }
-				
+
+
 				

@@ -165,16 +165,10 @@ public class ControllerEdicaoFornecedores implements Initializable{
 
 	    	//    telaTabelaController.atualizarTabela(daoFornecedor.listar());
 
-			   // Obtém o Node (geralmente um botão) que acionou o evento
 		    Node source = (Node) event.getSource();
-		    
-		    // Obtém o Stage (janela) atual com base no Node
-		    Stage stage = (Stage) source.getScene().getWindow();
-		   
+			Stage stage = (Stage) source.getScene().getWindow();
 		    stage.getOnCloseRequest().handle(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
-		    
-		    // Fecha o Stage atual
-		    stage.close();
+			stage.close();
 	
 	    } else {
 			ExibePopUpErro.ExibirPopUpErro();
