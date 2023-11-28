@@ -217,6 +217,7 @@ public class ControllerEdicaoProduto implements Initializable {
 		txtNome.setText(v.getNome());
 		txtNotaAvaliacao.setText(String.valueOf(v.getNota_avaliacao()));
 		txtPrecoPorDia.setText(String.valueOf(v.getPreco_por_dia()));
+
 		txtQuantAssentos.setText(String.valueOf(v.getQuant_assento()));
 		txtAno.setText(String.valueOf(v.getAno()));
 		txtQuantPortas.setText(String.valueOf(v.getQuant_portas()));

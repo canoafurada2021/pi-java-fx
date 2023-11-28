@@ -421,7 +421,7 @@ public class ControllerListLocacoes implements Initializable {
 
                                     contentStream.setFont(customFont, 12);
 
-                                    String nomeDoProjeto = "REGISTRO DE COMPRA";
+                                    String nomeDoProjeto = "REGISTRO DE LOCAÇÃO";
                                     float nomeX = (pageWidth - customFont.getStringWidth(nomeDoProjeto) / 1000 * 12) / 2;
                                     float nomeY = logoY - 20;
                                     contentStream.beginText();

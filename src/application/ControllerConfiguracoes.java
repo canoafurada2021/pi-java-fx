@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import modelo.Empresa;
 import utilities.CnpjFormatter;
+import utilities.TelefoneFormatter;
 
 public class ControllerConfiguracoes implements Initializable {
 
@@ -184,7 +185,9 @@ public class ControllerConfiguracoes implements Initializable {
 			txtNomeFantasia.setText(e.getNome_fantasia());
 			txtCnpj.setText(CnpjFormatter.formatCnpj(String.valueOf(e.getCnpj())));
 			txtId.setText(String.valueOf(e.getIdEmpresa()));
-			txtTelefone.setText(String.valueOf(e.getTelefone()));
+
+			txtTelefone.setText("+55 (47) 99217-8827");
+
 			txtPorteEmpresa.setText(e.getPorte_empresa());
 			txtRazaoSocial.setText(e.getRazao_social());
 
@@ -193,7 +196,6 @@ public class ControllerConfiguracoes implements Initializable {
 			System.out.println("Obj de empresa esta nulo");
 		}
 	}
-
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -209,11 +211,7 @@ public class ControllerConfiguracoes implements Initializable {
 		txtNomeFantasia.setDisable(true);
 		txtCnpj.setDisable(true);
 
-//		txtCnpj.textProperty().addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
-//			if (newValue != null && !newValue.isEmpty()) {
-//				txtCnpj.setText(CnpjFormatter.formatCnpj(newValue));
-//			}
-//		});
+
 
 	}
 

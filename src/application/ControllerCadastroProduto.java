@@ -1,9 +1,16 @@
 package application;
 
+import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
 import controle.CategoriaDAO;
 import controle.FornecedorDAO;
 import controle.VeiculoDAO;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,14 +28,11 @@ import modelo.Fornecedor;
 import modelo.Veiculo;
 import utilities.ExibePopUpErro;
 import utilities.ExibePopUpSucesso;
+import utilities.FormattMoeda;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class ControllerCadastroProduto implements Initializable {
 
@@ -140,6 +144,7 @@ public class ControllerCadastroProduto implements Initializable {
 	VeiculoDAO daoVeiculo = new VeiculoDAO();
 
 	private byte[] bytesDaImagemSelecionada;
+
 	@FXML
 	private void selecionarImagem() {
 		FileChooser fileChooser = new FileChooser();
@@ -177,6 +182,9 @@ public class ControllerCadastroProduto implements Initializable {
 		int ano = Integer.parseInt(txtAno.getText());
 		int notaAvaliacao = Integer.parseInt(txtNotaAvaliacao.getText());
 		Long precoPorDia = Long.parseLong(txtPrecoPorDia.getText());
+
+
+
 		int unidadeEmEstoque = Integer.parseInt(txtUnidadeEmEstoque.getText());
 
 		String selectedCategoriaInfo = comboCategoriaIds.getValue();
@@ -235,6 +243,14 @@ public class ControllerCadastroProduto implements Initializable {
 
 		System.out.println(categorias);
 		System.out.println(fornecedores);
+
+		txtPrecoPorDia.textProperty()
+				.addListener((ChangeListener<? super String>) (observableValue, oldValue, newValue) -> {
+					if (newValue != null && !newValue.isEmpty()) {
+						txtPrecoPorDia.setText(FormattMoeda.formatarMoeda(Long.valueOf(newValue)));
+					}
+				});
+
 
 		preencherComboCategoria();
 		preencherComboFornecedores();

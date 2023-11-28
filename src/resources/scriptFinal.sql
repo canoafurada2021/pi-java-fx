@@ -168,7 +168,7 @@ AFTER INSERT ON empresa
 FOR EACH ROW
 BEGIN
     INSERT INTO login (cpf, senha, TipoAcessoLogin)
-    VALUES (NEW.cnpj, 'admin', '22222222');
+    VALUES ('12399', 'admin', '2');
 END;
 
 $$
