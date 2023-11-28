@@ -1,15 +1,9 @@
 package application;
 
-import javafx.event.ActionEvent;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
 import controle.CategoriaDAO;
 import controle.FornecedorDAO;
 import controle.VeiculoDAO;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,12 +14,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import modelo.Categoria;
 import modelo.Fornecedor;
 import modelo.Veiculo;
 import utilities.ExibePopUpErro;
 import utilities.ExibePopUpSucesso;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class ControllerCadastroProduto implements Initializable {
 
@@ -116,10 +119,10 @@ public class ControllerCadastroProduto implements Initializable {
 
 	@FXML
 	private Label lblCNPJFornecedor;
-//
-//	@FXML
-//	private TextField txtImgBase64;
 
+
+	@FXML
+	private Label lblCaminhoImagem;
 	@FXML
 	private ComboBox<String> comboCategoriaIds;
 
@@ -136,9 +139,34 @@ public class ControllerCadastroProduto implements Initializable {
 	private ArrayList<Fornecedor> fornecedores = daoFornecedor.listar();
 	VeiculoDAO daoVeiculo = new VeiculoDAO();
 
+	private byte[] bytesDaImagemSelecionada;
+	@FXML
+	private void selecionarImagem() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Selecionar Imagem");
+		Stage stage = new Stage();
+		File selectedFile = fileChooser.showOpenDialog(stage);
+
+		if (selectedFile != null) {
+			String caminhoImagem = selectedFile.getAbsolutePath();
+			System.out.println("Arquivo selecionado: " + caminhoImagem);
+			lblCaminhoImagem.setText("Caminho da Imagem: " + caminhoImagem);
+
+			// Carregue os bytes da imagem e armazene na variável de instância
+			try {
+				this.bytesDaImagemSelecionada = Files.readAllBytes(Path.of(selectedFile.getAbsolutePath()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	@FXML
 	void cadastrarVeiculo(ActionEvent event) {
-
+		if (bytesDaImagemSelecionada == null) {
+			System.out.println("Nenhuma imagem selecionada.");
+			// Adote a lógica apropriada para o seu caso
+			return;
+		}
 		int quantAssento = Integer.parseInt(txtQuantAssentos.getText());
 		String tipoCambio = txtTipoCambio.getText();
 		int quantPortas = Integer.parseInt(txtQuantPortas.getText());
@@ -180,7 +208,7 @@ public class ControllerCadastroProduto implements Initializable {
 
 		try {
 
-			boolean insercaoSucesso = daoVeiculo.inserir(v);
+			boolean insercaoSucesso = daoVeiculo.inserir(v, bytesDaImagemSelecionada);
 
 			limpaCampos();
 

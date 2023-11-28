@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerCadastroProduto">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1016.0" prefWidth="1516.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerCadastroProduto">
    <children>
       <SplitPane layoutX="307.0" layoutY="-1.0" prefHeight="1018.0" prefWidth="1211.0">
         <items>
@@ -42,6 +42,9 @@
                               <Font size="20.0" />
                            </font>
                         </Button>
+                        <Button layoutX="550.0" layoutY="555.0" onAction="#selecionarImagem" prefHeight="44.0" prefWidth="450.0" text="Selecionar Imagem" />
+                        <Label fx:id="lblCaminhoImagem" layoutX="553.0" layoutY="600.0" text="Caminho da Imagem: " />
+
                         <TextField fx:id="txtQuantPortas" layoutX="30.0" layoutY="310.0" prefHeight="40.0" prefWidth="450.0" style="-fx-border-color: #AEB2BF;" />
                         <Label fx:id="lblEspacoPortaMalas" layoutX="30.0" layoutY="355.0" text="Espaço Porta Malas">
                            <font>

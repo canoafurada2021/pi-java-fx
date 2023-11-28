@@ -14,10 +14,11 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO {
         Connection con = c.conectar();
         ArrayList<AluguelRegistro> alugueis = new ArrayList<>();
 
-        String query = "SELECT ar.id_venda, ar.forma_pagamento, ar.data_inicio, ar.quant_dias, ar.valor, v.id_vendedor, l.pessoas_cpf as locador_cpf "
+        String query = "SELECT ar.id_venda, ar.forma_pagamento, ar.data_inicio, ar.quant_dias, ar.valor, v.id_vendedor, l.pessoas_cpf as locador_cpf, ar.data_inicio as mes "
                 + "FROM aluguelRegistro ar "
                 + "INNER JOIN locador l ON ar.locador_pessoas_cpf = l.pessoas_cpf "
                 + "INNER JOIN vendedor v ON ar.vendedor_id_vendedor = v.id_vendedor";
+
 
 
         try {
@@ -34,13 +35,12 @@ public class AluguelRegistroDAO implements IAluguelRegistroDAO {
                 Double valor = rs.getDouble("valor");
                 Integer idVendedor = rs.getInt("v.id_vendedor");
                 String cpfLocador = rs.getString("locador_cpf");
-
+String mes = rs.getString("data_inicio");
                 aluguel.setIdVenda(idRegistro);
                 aluguel.setFormaPagamento(formaPagamento);
                 aluguel.setDataInicio(dataInicio);
                 aluguel.setQuantDias(quantDias);
                 aluguel.setValor(valor);
-
                 Vendedor vendedor = new Vendedor();
                 vendedor.setId_vendedor(idVendedor);
                 aluguel.setVendedor(vendedor);

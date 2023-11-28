@@ -1,14 +1,14 @@
 package controle;
 
+import modelo.Categoria;
+import modelo.Fornecedor;
+import modelo.Veiculo;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import modelo.Categoria;
-import modelo.Fornecedor;
-import modelo.Veiculo;
 
 public class VeiculoDAO implements IVeiculoDAO{
 
@@ -43,6 +43,7 @@ public class VeiculoDAO implements IVeiculoDAO{
 				int unidadeEmEstoque = rs.getInt("unidade_em_estoque");
 				String categoria = rs.getString("categoria_nome"); // Correção aqui
 				Long fornecedorCnpj = rs.getLong("fornecedor_cnpj");
+				byte[] imgBytes = rs.getBytes("img");
 
 
 				System.out.println("fornecedor cnjp"+ fornecedorCnpj);
@@ -60,6 +61,7 @@ public class VeiculoDAO implements IVeiculoDAO{
 				v.setNota_avaliacao(notaAvaliacao);
 				v.setPreco_por_dia(precoPorDia);
 				v.setUnidade_em_estoque(unidadeEmEstoque);
+v.setImg(imgBytes);
 
 				// Definindo o id da categoria
 				Categoria cat = new Categoria();
@@ -86,16 +88,16 @@ public class VeiculoDAO implements IVeiculoDAO{
 
 	}
 
-	public boolean inserir(Veiculo veiculo) {
+	public boolean inserir(Veiculo veiculo, byte[] imagemBytes) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO veiculo " + "(quant_assento," + " tipo_cambio, " + "quant_portas,"
-				+ " espaco_porta_malas," + " marca," + " nome," + " cor," + " ano," + " nota_avaliacao,"
-				+ " preco_por_dia,"  + "unidade_em_estoque," + " categoria_id_categoria,"
-				+ " fornecedor_cnpj" + ") " + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO veiculo " +
+				"(quant_assento, tipo_cambio, quant_portas, espaco_porta_malas, marca, nome, cor, ano, " +
+				"nota_avaliacao, preco_por_dia, unidade_em_estoque, categoria_id_categoria, fornecedor_cnpj, img) " +
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-	    boolean insercaoSucesso = false; // Inicializa com false
+		boolean insercaoSucesso = false;
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -104,25 +106,22 @@ public class VeiculoDAO implements IVeiculoDAO{
 			ps.setString(2, veiculo.getTipo_cambio());
 			ps.setInt(3, veiculo.getQuant_portas());
 			ps.setInt(4, veiculo.getEspaco_porta_malas());
-			ps.setString(5,veiculo.getMarca());
-			ps.setString(6,veiculo.getNome());
-			ps.setString(7,veiculo.getCor());
-			ps.setInt(8,veiculo.getAno());
-			ps.setInt(9,veiculo.getNota_avaliacao());
-			ps.setLong(10,veiculo.getPreco_por_dia());
-			ps.setInt(11,veiculo.getUnidade_em_estoque());
-			ps.setLong(12,veiculo.getCategoria().getIdCategoria());
-			ps.setLong(13,veiculo.getFornecedor().getCnpj());
+			ps.setString(5, veiculo.getMarca());
+			ps.setString(6, veiculo.getNome());
+			ps.setString(7, veiculo.getCor());
+			ps.setInt(8, veiculo.getAno());
+			ps.setInt(9, veiculo.getNota_avaliacao());
+			ps.setLong(10, veiculo.getPreco_por_dia());
+			ps.setInt(11, veiculo.getUnidade_em_estoque());
+			ps.setLong(12, veiculo.getCategoria().getIdCategoria());
+			ps.setLong(13, veiculo.getFornecedor().getCnpj());
+			ps.setBytes(14, imagemBytes);
 
-	
-			// Chave estrangeira para fornecedores
+			int linhasAfetadas = ps.executeUpdate();
 
-	        int linhasAfetadas = ps.executeUpdate();
-	        
-
-	        if (linhasAfetadas > 0) {
-	            insercaoSucesso = true; // Define como true se pelo menos uma linha foi afetada
-	        }
+			if (linhasAfetadas > 0) {
+				insercaoSucesso = true;
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,9 +129,8 @@ public class VeiculoDAO implements IVeiculoDAO{
 			c.fecharConexao();
 		}
 
-	    return insercaoSucesso; // Retorna o resultado da inserção
+		return insercaoSucesso;
 	}
-
 	
 	
 	

@@ -8,7 +8,7 @@ public interface IVeiculoDAO {
 
     public ArrayList<Veiculo> listar();
 
-    public boolean inserir(Veiculo veiculo);
+    public boolean inserir(Veiculo veiculo, byte[] imagemBytes);
 
     public boolean excluir(int idVeiculo);
 

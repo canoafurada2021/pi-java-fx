@@ -9,6 +9,7 @@ module MavanJFxProject {
     requires PDFViewerFX;
     // requires org.junit.jupiter.api;
     requires javafx.web;
+    requires java.sql.rowset;
 
 
     opens application to javafx.graphics, javafx.fxml;

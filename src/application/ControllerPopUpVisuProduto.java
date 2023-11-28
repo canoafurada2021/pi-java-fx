@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -14,6 +15,7 @@ import modelo.Categoria;
 import modelo.Fornecedor;
 import modelo.Veiculo;
 
+import java.io.ByteArrayInputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -116,6 +118,7 @@ public class ControllerPopUpVisuProduto implements Initializable {
     @FXML
     private TextField txtUnidadeEmEstoque;
 
+
     private VeiculoDAO dao = new VeiculoDAO();
     private ArrayList<Veiculo> veiculos = dao.listar();
     private CategoriaDAO daoCat = new CategoriaDAO();
@@ -127,13 +130,25 @@ public class ControllerPopUpVisuProduto implements Initializable {
     private ArrayList<Fornecedor> fornecedores = daoFor.listar();
 
     public void setVeiculoVizu(Veiculo v){
+
+        byte[] imgBytes = v.getImg(); // Substitua pelo método correto em seu DAO
+
+
+if(imgBytes != null){
+    Image img = new Image(new ByteArrayInputStream(imgBytes));
+
+    imgVeiculo.setImage( img);
+} else{
+    Image imagemPadrao = new Image("@../imgs/FotoVehicle.png");
+    imgVeiculo.setImage(imagemPadrao);
+}
+
         txtAno.setText(String.valueOf(v.getAno()));
         txtCategoria.setText(v.getCategoria().getCategoria());
         txtCor.setText(v.getCor());
         txtId.setText(String.valueOf(v.getId_veiculo()));
         txtMarca.setText(v.getMarca());
         txtEspacoPortaMalas.setText(String.valueOf(v.getEspaco_porta_malas()));
-//        txtFornecedor.setText(v.getCnpj().getNome());
         txtNome.setText(v.getNome());
         txtNotaAvaliacao.setText(String.valueOf(v.getNota_avaliacao()));
         txtPrecoPorDia.setText(v.getPreco_por_dia().toString());

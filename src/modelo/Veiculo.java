@@ -16,7 +16,19 @@ public class Veiculo {
 	private int unidade_em_estoque;
 	private Categoria categoria;
 	private Fornecedor fornecedor;
-	
+
+	private byte[] img;
+
+
+
+	public byte[] getImg() {
+		return img;
+	}
+
+	public void setImg(byte[] img) {
+		this.img = img;
+	}
+
 	public int getId_veiculo() {
 		return id_veiculo;
 	}
