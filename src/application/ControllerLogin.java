@@ -72,71 +72,87 @@ public class ControllerLogin implements Initializable {
 	private Label lblLogin2;
 
 	private LoginDAO dao = new LoginDAO();
-	
+
 	@FXML
 	void login(ActionEvent event) {
-		
-		  String cpf = txtCpf.getText();
-	        String senha = txtSenha.getText();
 
-	        // metodo de login atribuido a uma variável do tipo boolean
-	        boolean loginSucesso = dao.fazerLogin(cpf, senha);
-		
-		
-	        if(loginSucesso){
-	        	try {
-	    			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
-	    			Parent root = loader.load();
+		String cpf = txtCpf.getText();
+		String senha = txtSenha.getText();
 
-	    			ControllerDashboard controllerNovaTela = loader.getController();
+		// metodo de login atribuido a uma variável do tipo boolean
+		boolean loginSucesso = dao.fazerLogin(cpf, senha);
 
-	    			Scene scene = new Scene(root);
-	    			Stage stage = new Stage();
 
-	    			// fecha a tela atual
-	    			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-	    			stageAtual.close(); 
-	    			stage.setScene(scene);
-	    			stage.show();
+		if (loginSucesso) {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
+				Parent root = loader.load();
 
-	    		} catch (IOException e) {
-	    			e.printStackTrace();
-	    		}        	
-	        } else {
-	        	ExibePopUpErro.ExibirPopUpErro();
-	        	
-	        }
+				ControllerDashboard controllerNovaTela = loader.getController();
+
+				Scene scene = new Scene(root);
+				Stage stage = new Stage();
+
+				// fecha a tela atual
+				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				stageAtual.close();
+				stage.setScene(scene);
+				stage.show();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			ExibePopUpErro.ExibirPopUpErro();
+
+		}
 
 	}
 
 
-
 	private boolean senhaVisivel = false;
+
+	private String oldValue = "";
+
 	@FXML
 	void toggleView(ActionEvent event) {
 		senhaVisivel = !senhaVisivel;
 
+		// Definir visibilidade dos botões
+		btnViewOpen.setVisible(senhaVisivel);
+		btnViewClosed.setVisible(!senhaVisivel);
+
 		if (senhaVisivel) {
+			// Mostrar a senha
 			txtSenha.setStyle("-fx-text-fill: black;");
-			txtSenha.setText(txtSenha.getText());
+			if (!(oldValue == "")) {
+				txtSenha.setText(oldValue);
+			} else {
+				txtSenha.setText(txtSenha.getText());
+			}
+//        txtSenha.setText(txtSenha.getText());
 		} else {
+			// Ocultar a senha com a máscara '*'
+			oldValue = txtSenha.getText();
 			String mascara = "*".repeat(txtSenha.getText().length());
-			txtSenha.setStyle("-fx-text-fill: transparent;");
+			txtSenha.setStyle("-fx-text-fill: black;");
 			txtSenha.setText(mascara);
 		}
-
-		// Alternar entre os botões "abrir olho" e "fechar olho"
-		btnViewOpen.setVisible(!senhaVisivel);
-		btnViewClosed.setVisible(senhaVisivel);
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		txtSenha.setManaged(true);
-		txtSenha.setText(" ");
+		txtSenha.setPromptText("");
+
+		// Inicialmente, esconda a senha e mostre btnViewClosed
+		btnViewOpen.setVisible(true);
+		btnViewClosed.setVisible(false);
 
 		btnViewOpen.setOnAction(this::toggleView);
 		btnViewClosed.setOnAction(this::toggleView);
+
+		oldValue = "";
 	}
 
 }
