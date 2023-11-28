@@ -493,8 +493,12 @@ public class ControllerTableViewFuncionarios implements Initializable {
 						editButton.setOnAction(event -> {
 							Vendedor vendedor = getTableView().getItems().get(getIndex());
 
-							// Abre o modal de exclusão
-							abrirModalExclusao(tableFuncionario.getSelectionModel().getSelectedItem());
+							if(dao.excluir(vendedor)){
+								getTableView().getItems().remove(vendedor);
+							}else{
+								System.out.println("deu pau na exclusao");
+							}
+
 						});
 
 					}

@@ -126,14 +126,14 @@ public class ControllerPopUpVisuProduto implements Initializable {
     private FornecedorDAO daoFor = new FornecedorDAO();
     private ArrayList<Fornecedor> fornecedores = daoFor.listar();
 
-    public void setVeiculo(Veiculo v){
+    public void setVeiculoVizu(Veiculo v){
         txtAno.setText(String.valueOf(v.getAno()));
         txtCategoria.setText(v.getCategoria().getCategoria());
         txtCor.setText(v.getCor());
         txtId.setText(String.valueOf(v.getId_veiculo()));
         txtMarca.setText(v.getMarca());
         txtEspacoPortaMalas.setText(String.valueOf(v.getEspaco_porta_malas()));
-        txtFornecedor.setText(v.getCnpj().getNome());
+//        txtFornecedor.setText(v.getCnpj().getNome());
         txtNome.setText(v.getNome());
         txtNotaAvaliacao.setText(String.valueOf(v.getNota_avaliacao()));
         txtPrecoPorDia.setText(v.getPreco_por_dia().toString());
@@ -141,12 +141,9 @@ public class ControllerPopUpVisuProduto implements Initializable {
         txtQuantPortas.setText(String.valueOf(v.getQuant_portas()));
         txtTipoCambio.setText(v.getTipo_cambio());
         txtUnidadeEmEstoque.setText(String.valueOf(v.getUnidade_em_estoque()));
+        txtFornecedor.setText(v.getCnpj().getNome().toString());
 
-        Integer idVeic = v.getId_veiculo();
-        if(idVeic != null){
-            int veiculoIndex = encontrarIndexVeiculo(v.getId_veiculo());
-            String veiculoText = String.valueOf(v.getId_veiculo());
-        }
+
     }
 
     private int encontrarIndexVeiculo(int idVeiculo) {
@@ -175,5 +172,19 @@ public class ControllerPopUpVisuProduto implements Initializable {
         txtQuantAssentos.setDisable(true);
         txtTipoCambio.setDisable(true);
         txtUnidadeEmEstoque.setDisable(true);
+    }
+
+
+    private Fornecedor encontrarFornecedor(Long cnpj) {
+        System.out.println(cnpj);
+
+        for (Fornecedor fornecedor : fornecedores) {
+            if (fornecedor.getCnpj().equals(cnpj)) {
+                return fornecedor;
+
+            }
+        }
+
+        return null;
     }
 }

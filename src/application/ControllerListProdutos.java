@@ -523,13 +523,15 @@ public class ControllerListProdutos implements Initializable {
                         vizuButton.setStyle("-fx-background-color: #0348CE; -fx-text-fill: white;");
                         vizuButton.setOnAction(event -> {
                             //passar inform pr TL DE VIZU
-//							Veiculo veiculo = getTableView().getItems().get(getIndex());
+                        	Veiculo veiculo = getTableView().getItems().get(getIndex());
 //							int idVeic = veiculo.getId_veiculo();
                             try {
                                 FXMLLoader loader = new FXMLLoader(
                                         getClass().getResource("/visao/PopUpVisualizacao.fxml"));
                                 Parent root = loader.load();
                                 ControllerPopUpVisuProduto controllerNovaTela = loader.getController();
+
+                                controllerNovaTela.setVeiculoVizu(veiculo);
 
                                 Scene scene = new Scene(root);
                                 Stage stage = new Stage();

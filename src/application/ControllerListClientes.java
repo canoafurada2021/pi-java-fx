@@ -171,13 +171,10 @@ public class ControllerListClientes implements Initializable {
 		columnCNH.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnh()));
 		columnValidadeCarteira.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getValidadeCarteira()));
 
-		ObservableList<Locador> obsLocadores = FXCollections.observableArrayList(daoFor.listar());
+		obsLocadores = FXCollections.observableArrayList(daoFor.listar());
 		tableClientes.setItems(obsLocadores);
-		;
 
 	}
-
-
 
 
 
