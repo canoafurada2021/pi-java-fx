@@ -176,7 +176,7 @@ public class ControllerCadastroProduto implements Initializable {
 		v.setUnidade_em_estoque(unidadeEmEstoque);
 
 		v.setCategoria(categoriaSelecionada);
-		v.setCnpj(fornecedorSelecionado);
+		v.setFornecedor(fornecedorSelecionado);
 
 		try {
 

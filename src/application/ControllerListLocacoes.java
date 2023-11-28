@@ -392,7 +392,7 @@ public class ControllerListLocacoes implements Initializable {
                 buttonContainer.setSpacing(10); // Definir o espaçamento entre os botões
 
                 // Estilização dos botões
-                ImageView viewImage = new ImageView(new Image(getClass().getResourceAsStream("/imgs/editar.png")));
+                ImageView viewImage = new ImageView(new Image(getClass().getResourceAsStream("/imgs/pdf.png")));
                 viewImage.setFitHeight(15);
                 viewImage.setFitWidth(15);
                 viewButton.setGraphic(viewImage);

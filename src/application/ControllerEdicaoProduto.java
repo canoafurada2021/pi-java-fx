@@ -33,10 +33,10 @@ public class ControllerEdicaoProduto implements Initializable {
 	private Button btnSalvar;
 
 	@FXML
-	private ComboBox<Long> comboCategoria;
+	private ComboBox<String > comboCategoria;
 
 	@FXML
-	private ComboBox<Long> comboFornecedor;
+	private ComboBox<String> comboFornecedor;
 
 	@FXML
 	private Label lblCor;
@@ -158,13 +158,16 @@ public class ControllerEdicaoProduto implements Initializable {
 		Integer unidadeEstoque = Integer.valueOf(txtUnidadeEmEstoque.getText());
 		
 		// Obtém o CNPJ selecionado do comboFornecedor
-		Long cnpjSelecionado = comboFornecedor.getValue();
+		String cnpjSelecionado = comboFornecedor.getValue();
+		Long fornecedorCnpj = Long.parseLong(cnpjSelecionado.split(" - ")[0]);
+
 		// Encontra o objeto Fornecedor correspondente ao CNPJ
-		Fornecedor fornecedorSelecionado = encontrarFornecedorPorCnpj(cnpjSelecionado);
+		Fornecedor fornecedorSelecionado = encontrarFornecedorPorCnpj(fornecedorCnpj);
 		//idem categoriaID
 		
-		Long idSelecionado = comboCategoria.getValue();
-		Categoria categoriaSelecionada = encontrarCategoria(idSelecionado);
+		String idSelecionado = comboCategoria.getValue();
+		Long categoriaid = Long.parseLong(idSelecionado.split(" - ")[0]);
+		Categoria categoriaSelecionada = encontrarCategoria(categoriaid);
 		
 		
 		Veiculo veiculo = new Veiculo();
@@ -184,7 +187,7 @@ public class ControllerEdicaoProduto implements Initializable {
 		veiculo.setCor(corVeiculo);
 		
 		// Define o Fornecedor no veiculo
-		veiculo.setCnpj(fornecedorSelecionado);
+		veiculo.setFornecedor(fornecedorSelecionado);
 		veiculo.setCategoria(categoriaSelecionada);
 
 		if(dao.atualizar(veiculo)) {
@@ -219,7 +222,6 @@ public class ControllerEdicaoProduto implements Initializable {
 		txtQuantPortas.setText(String.valueOf(v.getQuant_portas()));
 		txtTipoCambio.setText(v.getTipo_cambio());
 		txtUnidadeEmEstoque.setText(String.valueOf(v.getUnidade_em_estoque()));
-		System.out.println("Valor de this.id_categoria: " + categorias);
 
 		if (v.getCategoria() != null) {
 			Integer categoriaId = v.getCategoria().getIdCategoria();  // Aqui está pegando o ID da categoria
@@ -240,8 +242,8 @@ public class ControllerEdicaoProduto implements Initializable {
 		}
 
 
-		if(v.getCnpj() !=  null) {
-			long cnpjFornecedor = v.getCnpj().getCnpj();
+		if(v.getFornecedor() !=  null) {
+			long cnpjFornecedor = v.getFornecedor().getCnpj();
 			int cnpjIndex = encontrarIndiceFornecedor(cnpjFornecedor);
 			String cnpjText = String.valueOf(cnpjFornecedor);
 			
@@ -276,8 +278,8 @@ public class ControllerEdicaoProduto implements Initializable {
 	
 	private void preencherComboCategoria() {
 		for (Categoria categoria : categorias) {
-			Integer categoriaInfo = categoria.getIdCategoria();
-			comboCategoria.getItems().add(Long.valueOf(categoriaInfo));
+			String categoriaInfo = categoria.getIdCategoria() + " - " + categoria.getCategoria();
+			comboCategoria.getItems().add(categoriaInfo);
 		}
 	}
 	
@@ -294,7 +296,7 @@ public class ControllerEdicaoProduto implements Initializable {
 	//p combo box
 	private void preencherComboFornecedor() {
 		for (Fornecedor fornecedor : fornecedores) {
-			Long fornecedorInfo = fornecedor.getCnpj();
+			String fornecedorInfo = fornecedor.getCnpj() + " - " + fornecedor.getNome();
 			comboFornecedor.getItems().add(fornecedorInfo);
 		}
 	}

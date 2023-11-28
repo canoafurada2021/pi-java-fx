@@ -141,9 +141,9 @@ public class ControllerPopUpVisuProduto implements Initializable {
         txtQuantPortas.setText(String.valueOf(v.getQuant_portas()));
         txtTipoCambio.setText(v.getTipo_cambio());
         txtUnidadeEmEstoque.setText(String.valueOf(v.getUnidade_em_estoque()));
-        txtFornecedor.setText(v.getCnpj().getNome());
+        txtFornecedor.setText(String.valueOf(v.getFornecedor().getCnpj()));
 
-
+System.out.println( v.getFornecedor().getCnpj());
     }
 
     private int encontrarIndexVeiculo(int idVeiculo) {
