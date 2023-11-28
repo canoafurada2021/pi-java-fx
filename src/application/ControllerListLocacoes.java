@@ -630,7 +630,7 @@ public class ControllerListLocacoes implements Initializable {
 
             FilteredList<AluguelRegistro> listaFiltrada = new FilteredList<>(obsAluguelRegistro, p -> true);
 
-            if (newValue != null && !newValue.isEmpty()) {
+            if (newValue != null && !newValue.isEmpty() && !newValue.equals("pesquisar")) {
                 String termoBusca = newValue.toLowerCase();
                 listaFiltrada.setPredicate(aluguelRegistro -> {
 

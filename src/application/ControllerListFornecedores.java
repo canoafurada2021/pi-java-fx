@@ -305,7 +305,7 @@ public class ControllerListFornecedores implements Initializable {
 			// 'obgsFornecedores'
 			FilteredList<Fornecedor> listaFiltrada = new FilteredList<>(obsFornecedores, p -> true);
 
-			if (newValue != null && !newValue.isEmpty()) {
+			if (newValue != null && !newValue.isEmpty() && !newValue.equals("pesquisar")) {
 				String termoBusca = newValue.toLowerCase();
 				listaFiltrada.setPredicate(fornecedor -> {
 					// O filtro permite a busca pelos campos de tipo nome e cnpj do fornecedor
