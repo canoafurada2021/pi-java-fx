@@ -346,6 +346,8 @@ public class ListViewController implements Initializable {
 //    List<Categoria> categorias = new ArrayList<>(
 //            Arrays.asList(new Categoria(1, "coisinha"), new Categoria(2, "coisona")));
 
+	boolean campoClicado = false;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		columnIdCategoria.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getIdCategoria()));
@@ -445,13 +447,18 @@ public class ListViewController implements Initializable {
 
 
 		txtPesquisa.focusedProperty().addListener((observable, oldValue, newValue) -> {
+
 			if (newValue) {
-				if (txtPesquisa.getText().equals("pesquisar")) {
+
+				if (!campoClicado) {
 					txtPesquisa.clear();
+					campoClicado = true;
 				}
 			} else {
+
 				if (txtPesquisa.getText().isEmpty()) {
 					txtPesquisa.setText("pesquisar");
+					campoClicado = false;
 				}
 			}
 		});

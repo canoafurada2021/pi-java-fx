@@ -115,7 +115,7 @@ public class ControllerListFornecedores implements Initializable {
 
 	}
 
-
+	boolean campoClicado = false;
 
 
 	@Override
@@ -283,13 +283,18 @@ public class ControllerListFornecedores implements Initializable {
 		});
 
 		txtBusca.focusedProperty().addListener((observable, oldValue, newValue) -> {
+
 			if (newValue) {
-				if (txtBusca.getText().equals("pesquisar")) {
+
+				if (!campoClicado) {
 					txtBusca.clear();
+					campoClicado = true;
 				}
 			} else {
+
 				if (txtBusca.getText().isEmpty()) {
 					txtBusca.setText("pesquisar");
+					campoClicado = false;
 				}
 			}
 		});

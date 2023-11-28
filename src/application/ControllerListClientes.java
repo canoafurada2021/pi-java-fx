@@ -177,6 +177,7 @@ public class ControllerListClientes implements Initializable {
 	}
 
 
+	boolean campoClicado = false;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -231,13 +232,18 @@ public class ControllerListClientes implements Initializable {
 	});
 
 		txtPesquisa.focusedProperty().addListener((observable, oldValue, newValue) -> {
+
 			if (newValue) {
-				if (txtPesquisa.getText().equals("pesquisar")) {
+
+				if (!campoClicado) {
 					txtPesquisa.clear();
+					campoClicado = true;
 				}
 			} else {
+
 				if (txtPesquisa.getText().isEmpty()) {
 					txtPesquisa.setText("pesquisar");
+					campoClicado = false;
 				}
 			}
 		});
