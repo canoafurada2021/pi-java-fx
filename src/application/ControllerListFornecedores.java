@@ -37,6 +37,7 @@ import modelo.Fornecedor;
 import javafx.scene.image.Image;
 
 import javafx.scene.control.TextField;
+import utilities.CnpjFormatter;
 
 public class ControllerListFornecedores implements Initializable {
 
@@ -76,7 +77,7 @@ public class ControllerListFornecedores implements Initializable {
 	private TableView<Fornecedor> tableFornecedores;
 
 	@FXML
-	private TableColumn<Fornecedor, Long> columnCnpj;
+	private TableColumn<Fornecedor, String> columnCnpj;
 
 	@FXML
 	private TableColumn<Fornecedor, String> columnNome;
@@ -106,7 +107,7 @@ public class ControllerListFornecedores implements Initializable {
 	public void tblViewDivergenciaSearch() {
 
 		tableFornecedores.getItems().clear();
-		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
+		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(CnpjFormatter.formatCnpj(String.valueOf(cellData.getValue().getCnpj()))));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnAtividade.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAtividades()));
 		ObservableList<Fornecedor> obsFornecedores = FXCollections.observableArrayList(daoFor.listar());
@@ -124,7 +125,7 @@ public class ControllerListFornecedores implements Initializable {
 		FornecedorDAO dao = new FornecedorDAO();
 		tableFornecedores.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCnpj()));
+		columnCnpj.setCellValueFactory(cellData -> new SimpleObjectProperty<>(CnpjFormatter.formatCnpj(String.valueOf(cellData.getValue().getCnpj()))));
 		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnAtividade.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAtividades()));
 

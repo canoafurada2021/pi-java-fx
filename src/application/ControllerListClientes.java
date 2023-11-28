@@ -187,7 +187,8 @@ public class ControllerListClientes implements Initializable {
 
 
 
-		columnCPF.setCellValueFactory(cellData -> new SimpleObjectProperty<>(CpfFormatter.formatCpf(cellData.getValue().getPessoas_cpf())));		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+		columnCPF.setCellValueFactory(cellData -> new SimpleObjectProperty<>(CpfFormatter.formatCpf(cellData.getValue().getPessoas_cpf())));
+		columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
 		columnIdCarteira.setCellValueFactory(
 				cellData -> new SimpleObjectProperty<>(cellData.getValue().getNumIdentificacaoCarteira()));
 		columnPaisResidencia
