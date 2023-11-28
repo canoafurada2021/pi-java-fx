@@ -5,10 +5,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Base64;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
+import controle.AluguelRegistroDAO;
 import controle.LocadorDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,6 +29,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import modelo.AluguelRegistro;
 import modelo.Empresa;
 import modelo.Locador;
 
@@ -107,6 +107,7 @@ public class ControllerDashboard implements Initializable {
 	private ImageView imgFotoPerfil;
 
 	private LocadorDAO dao = new LocadorDAO();
+	Map<String, Integer> contagemPorMes = new HashMap<>();
 
 	@FXML
 	void abrirListFornecedores(ActionEvent event) {
@@ -319,31 +320,52 @@ public class ControllerDashboard implements Initializable {
 
 		/// Cores do gráfico de barra (baseadas no método getColorCode que também pe
 		/// utilizado pelo gráfico de pizza
+
+
+		AluguelRegistroDAO aluguelRegistroDAO = new AluguelRegistroDAO();
+		ArrayList<AluguelRegistro> alugueis = aluguelRegistroDAO.listar();
+
+
+
 		XYChart.Series<String, Number> vendaSeries = new XYChart.Series<>();
-		vendaSeries.getData().add(new XYChart.Data<>("Janeiro", 1000)); // Janeiro
+
+		for(AluguelRegistro aluguelRegistro: alugueis){
+			vendaSeries.getData().add(new XYChart.Data<>("Janeiro", alugueis.size()));
+
+		}
+
+		//vendaSeries.getData().add(new XYChart.Data<>("Janeiro", 1000)); // Janeiro
 		vendaSeries.getData().add(new XYChart.Data<>("Fevereiro", 1200)); // Fevereiro
 		vendaSeries.getData().add(new XYChart.Data<>("Março", 1500)); // Março
 
 		vendaSeries.setName("Vendas");
 
+
+
+
 		BarChart<String, Number> barChart = new BarChart<>(new CategoryAxis(), new NumberAxis());
 		graphicVendas.getData().add(vendaSeries);
 
-		// Inicializar gráfico de Marcas (PieChart)
-		ObservableList<Data> marcaData = FXCollections.observableArrayList(new PieChart.Data("Marca A", 30),
-				new PieChart.Data("Marca B", 25), new PieChart.Data("Marca C", 45));
 
-		graphicMarcas.setData(marcaData);
 
-		for (int i = 0; i < marcaData.size(); i++) {
-			Node node = marcaData.get(i).getNode();
-			if (node != null) {
-				node.setStyle("-fx-pie-color: " + getColorCode(i) + ";");
-			}
-		}
+        // Inicializar gráfico de Marcas (PieChart)
+        ObservableList<Data> marcaData = FXCollections.observableArrayList(new PieChart.Data("Marca A", 30),
+                new PieChart.Data("Marca B", 25), new PieChart.Data("Marca C", 45));
 
+        graphicMarcas.setData(marcaData);
+
+        for (int i = 0; i < marcaData.size(); i++) {
+            Node node = marcaData.get(i).getNode();
+            if (node != null) {
+                node.setStyle("-fx-pie-color: " + getColorCode(i) + ";");
+            }
+        }
+
+    }
+	private String obterMesDaData(String dataInicio) {
+		// Extrai os dois primeiros caracteres (mês) da data
+		return dataInicio.substring(5, 7);
 	}
-
 	private String getColorCode(int index) {
 		String[] colors = { "#3747DE", // Orange
 				"#01AEF2", // Green

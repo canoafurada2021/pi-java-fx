@@ -65,7 +65,7 @@ public class VeiculoDAOTest {
             v.setNota_avaliacao((int) 5.0);
             v.setPreco_por_dia((long) 200.00);
             v.setUnidade_em_estoque(100);
-            v.setCnpj(fornecedor);
+            v.setFornecedor(fornecedor);
 
             v.setCategoria(categoria);
             boolean passou = daoVeiculo.inserir(v);

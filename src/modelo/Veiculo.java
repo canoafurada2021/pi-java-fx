@@ -15,7 +15,7 @@ public class Veiculo {
 	private Long preco_por_dia;
 	private int unidade_em_estoque;
 	private Categoria categoria;
-	private Fornecedor cnpj;
+	private Fornecedor fornecedor;
 	
 	public int getId_veiculo() {
 		return id_veiculo;
@@ -90,11 +90,11 @@ public class Veiculo {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	public Fornecedor getCnpj() {
-		return cnpj;
+	public Fornecedor getFornecedor() {
+		return fornecedor;
 	}
-	public void setCnpj(Fornecedor cnpj) {
-		this.cnpj = cnpj;
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 	public int getAno() {
 		return ano;

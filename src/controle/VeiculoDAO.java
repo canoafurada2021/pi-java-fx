@@ -44,6 +44,8 @@ public class VeiculoDAO implements IVeiculoDAO{
 				String categoria = rs.getString("categoria_nome"); // Correção aqui
 				Long fornecedorCnpj = rs.getLong("fornecedor_cnpj");
 
+
+				System.out.println("fornecedor cnjp"+ fornecedorCnpj);
 				Veiculo v = new Veiculo();
 
 				v.setId_veiculo(idVeiculo);
@@ -70,7 +72,7 @@ public class VeiculoDAO implements IVeiculoDAO{
 				
 				f.setCnpj(fornecedorCnpj);
 
-				v.setCnpj(f);
+				v.setFornecedor(f);
 				System.out.println("fornecedor"+ f);
 
 				veiculos.add(v);
@@ -110,7 +112,7 @@ public class VeiculoDAO implements IVeiculoDAO{
 			ps.setLong(10,veiculo.getPreco_por_dia());
 			ps.setInt(11,veiculo.getUnidade_em_estoque());
 			ps.setLong(12,veiculo.getCategoria().getIdCategoria());
-			ps.setLong(13,veiculo.getCnpj().getCnpj());
+			ps.setLong(13,veiculo.getFornecedor().getCnpj());
 
 	
 			// Chave estrangeira para fornecedores
@@ -187,7 +189,7 @@ public class VeiculoDAO implements IVeiculoDAO{
 			ps.setLong(10, veiculo.getPreco_por_dia());
 			ps.setInt(11, veiculo.getUnidade_em_estoque());
 			ps.setLong(12, veiculo.getCategoria().getIdCategoria());
-			ps.setLong(13, veiculo.getCnpj().getCnpj());
+			ps.setLong(13, veiculo.getFornecedor().getCnpj());
 
 			// Defina o valor do último parâmetro como o ID do veículo que você deseja
 			// atualizar
