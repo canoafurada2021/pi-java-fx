@@ -392,7 +392,7 @@ public class ControllerListLocacoes implements Initializable {
                 buttonContainer.setSpacing(10); // Definir o espaçamento entre os botões
 
                 // Estilização dos botões
-                ImageView viewImage = new ImageView(new Image(getClass().getResourceAsStream("/imgs/editar.png")));
+                ImageView viewImage = new ImageView(new Image(getClass().getResourceAsStream("/imgs/pdf.png")));
                 viewImage.setFitHeight(15);
                 viewImage.setFitWidth(15);
                 viewButton.setGraphic(viewImage);
@@ -630,7 +630,7 @@ public class ControllerListLocacoes implements Initializable {
 
             FilteredList<AluguelRegistro> listaFiltrada = new FilteredList<>(obsAluguelRegistro, p -> true);
 
-            if (newValue != null && !newValue.isEmpty()) {
+            if (newValue != null && !newValue.isEmpty() && !newValue.equals("pesquisar")) {
                 String termoBusca = newValue.toLowerCase();
                 listaFiltrada.setPredicate(aluguelRegistro -> {
 

@@ -4,6 +4,7 @@ public class AluguelRegistro {
 	private int idVenda;
 	private String formaPagamento;
 
+
 	public String getDataInicio() {
 		return dataInicio;
 	}
@@ -17,7 +18,6 @@ public class AluguelRegistro {
 	private Double valor;
 	private Vendedor idVendedor;
 	private Locador locador;
-	private EnumPagamento tipoPagamento;
 	private Fornecedor fornecedor;
 
 	public Fornecedor getFornecedor() {
@@ -75,14 +75,6 @@ public class AluguelRegistro {
 
 	public void setLocador(Locador locadorr) {
 		this.locador = locadorr;
-	}
-
-	public EnumPagamento getTipoPagamento() {
-		return tipoPagamento;
-	}
-
-	public void setTipoPagamento(EnumPagamento tipoPagamento) {
-		this.tipoPagamento = tipoPagamento;
 	}
 
 

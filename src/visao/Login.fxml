@@ -34,13 +34,13 @@
                               <Font name="System Bold" size="22.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="txtSenha" layoutX="73.0" layoutY="227.0" prefHeight="45.0" prefWidth="405.0" />
+                        <TextField fx:id="txtSenha" layoutX="73.0" layoutY="227.0" prefHeight="45.0" prefWidth="405.0" />
                         <TextField fx:id="txtCpf" layoutX="73.0" layoutY="99.0" prefHeight="45.0" prefWidth="405.0" />
                         <Button fx:id="btnViewOpen" layoutX="424.0" layoutY="232.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="49.0" style="-fx-background-color: #ffffff;" textFill="WHITE">
                            <graphic>
                               <ImageView fx:id="imgEyeOpen" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@/imgs/EyesOpen.png" />
+                                    <Image url="@../imgs/EyesOpen.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -49,7 +49,7 @@
                            <graphic>
                               <ImageView fx:id="imgEyeClosed" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@/imgs/EyesClosed.png" />
+                                    <Image url="@../imgs/EyesClosed.png" />
                                  </image>
                               </ImageView>
                            </graphic>

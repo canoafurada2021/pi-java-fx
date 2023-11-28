@@ -252,7 +252,7 @@ public class ControllerListClientes implements Initializable {
 
 			FilteredList<Locador> listaFiltrada = new FilteredList<>(obsLocadores, p -> true);
 
-			if (newValue != null && !newValue.isEmpty()) {
+			if (newValue != null && !newValue.isEmpty() && !newValue.equals("pesquisar")) {
 				String termoBusca = newValue.toLowerCase();
 				listaFiltrada.setPredicate(locador -> {
 
