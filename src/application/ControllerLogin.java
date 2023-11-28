@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import controle.LoginDAO;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,13 +27,43 @@ import utilities.ExibePopUpErro;
 public class ControllerLogin implements Initializable {
 
 	@FXML
+	private SplitPane splitPaneLogin;
+
+	@FXML
+	private AnchorPane panelLogin;
+
+	@FXML
+	private Pane panelLoginDados;
+
+	@FXML
 	private Button btnLogin;
 
 	@FXML
-	private ImageView imgLogin;
+	private Label lblCpf;
 
 	@FXML
-	private Label lblCpf;
+	private Label lblSenha;
+
+	@FXML
+	private TextField txtSenha;
+
+	@FXML
+	private TextField txtCpf;
+
+	@FXML
+	private Button btnViewOpen;
+
+	@FXML
+	private ImageView imgEyeOpen;
+
+	@FXML
+	private Button btnViewClosed;
+
+	@FXML
+	private ImageView imgEyeClosed;
+
+	@FXML
+	private Pane panelLogin2;
 
 	@FXML
 	private Label lblLogin;
@@ -40,74 +71,88 @@ public class ControllerLogin implements Initializable {
 	@FXML
 	private Label lblLogin2;
 
-	@FXML
-	private Label lblSenha;
-
-	@FXML
-	private AnchorPane panelLogin;
-
-	@FXML
-	private Pane panelLogin2;
-
-	@FXML
-	private Pane panelLoginDados;
-
-	@FXML
-	private SplitPane splitPaneLogin;
-
-	@FXML
-	private TextField txtCpf;
-
-	@FXML
-	private PasswordField txtSenha;
-
 	private LoginDAO dao = new LoginDAO();
-	
+
 	@FXML
 	void login(ActionEvent event) {
 
-		
-		
-		
-		
-		  String cpf = txtCpf.getText();
-	        String senha = txtSenha.getText();
+		String cpf = txtCpf.getText();
+		String senha = txtSenha.getText();
 
-	        // metodo de login atribuido a uma variável do tipo boolean
-	        boolean loginSucesso = dao.fazerLogin(cpf, senha);
-		
-		
-	        if(loginSucesso){
-	        	try {
-	    			FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
-	    			Parent root = loader.load();
+		// metodo de login atribuido a uma variável do tipo boolean
+		boolean loginSucesso = dao.fazerLogin(cpf, senha);
 
-	    			ControllerDashboard controllerNovaTela = loader.getController();
 
-	    			Scene scene = new Scene(root);
-	    			Stage stage = new Stage();
+		if(loginSucesso){
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/Dashboard.fxml"));
+				Parent root = loader.load();
 
-	    			// fecha a tela atual
-	    			Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
-	    			stageAtual.close(); 
-	    			stage.setScene(scene);
-	    			stage.show();
+				ControllerDashboard controllerNovaTela = loader.getController();
 
-	    		} catch (IOException e) {
-	    			e.printStackTrace();
-	    		}        	
-	        } else {
-	        	ExibePopUpErro.ExibirPopUpErro();
-	        	
-	        }
-	        
-	
+				Scene scene = new Scene(root);
+				Stage stage = new Stage();
 
+				// fecha a tela atual
+				Stage stageAtual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				stageAtual.close();
+				stage.setScene(scene);
+				stage.show();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			ExibePopUpErro.ExibirPopUpErro();
+
+		}
+
+	}
+
+
+	private boolean senhaVisivel = false;
+
+	private String oldValue = "";
+	@FXML
+	void toggleView(ActionEvent event) {
+		senhaVisivel = !senhaVisivel;
+
+		// Definir visibilidade dos botões
+		btnViewOpen.setVisible(senhaVisivel);
+		btnViewClosed.setVisible(!senhaVisivel);
+
+		if (senhaVisivel) {
+			// Mostrar a senha
+			txtSenha.setStyle("-fx-text-fill: black;");
+			if(!(oldValue =="")){
+				txtSenha.setText(oldValue);
+			} else {
+				txtSenha.setText(txtSenha.getText());
+			}
+//        txtSenha.setText(txtSenha.getText());
+		} else {
+			// Ocultar a senha com a máscara '*'
+			oldValue=txtSenha.getText();
+			String mascara = "*".repeat(txtSenha.getText().length());
+			txtSenha.setStyle("-fx-text-fill: black;");
+			txtSenha.setText(mascara);
+		}
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		txtSenha.setManaged(true);
+		txtSenha.setPromptText("");
 
+		// Inicialmente, esconda a senha e mostre btnViewClosed
+		btnViewOpen.setVisible(true);
+		btnViewClosed.setVisible(false);
+
+		btnViewOpen.setOnAction(this::toggleView);
+		btnViewClosed.setOnAction(this::toggleView);
+
+		oldValue="";
 	}
 
 }
+
