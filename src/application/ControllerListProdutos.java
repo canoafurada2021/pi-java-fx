@@ -2,7 +2,9 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import controle.VeiculoDAO;
@@ -36,6 +38,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 import modelo.Fornecedor;
 import modelo.Veiculo;
 import modelo.Vendedor;
@@ -442,6 +445,57 @@ public class ControllerListProdutos implements Initializable {
         columnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
         columnAno.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getAno()));
         columnPreco.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getPreco_por_dia()));
+
+        // Configura a formatação da célula da coluna de salário
+        columnPreco.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getPreco_por_dia()));
+
+        // Usa um StringConverter (Classe do FXML responsável por facilitar na conversão
+        // de tipos Long e Double pra String)
+        // para formatar o valor do salário como moeda
+
+        StringConverter<Long> currencyConverter = new StringConverter<>() {
+            private final NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+
+            @Override
+            public String toString(Long value) {
+                if (value == null) {
+                    return "";
+                }
+
+                return currencyFormat.format(value);
+            }
+
+
+            @Override
+            public Long fromString(String string) {
+                return null;
+            }
+
+        };
+
+        // Definição e criação das células na coluna
+        // Expressão lambda para simplificar a criação de células
+        columnPreco.setCellFactory(tc -> new TableCell<Veiculo, Long>() {
+            @Override
+            protected void updateItem(Long salario, boolean empty) {
+                super.updateItem(salario, empty);
+                // Validação caso a coluna de salário esteja vazia, a cédula é setada como nullo
+                // ou " "
+                if (empty || salario == null) {
+
+                    setText("");
+                } else {
+                    // Trecho do código que faz a formatação do valor dentro da cédula
+                    setText(currencyConverter.toString(salario));
+                }
+            }
+
+        });
+
+
+
+
+
         columnUnidade.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getUnidade_em_estoque()));
         columnAcoes.setCellFactory(new Callback<TableColumn<Veiculo, String>, TableCell<Veiculo, String>>() {
             @Override
@@ -575,5 +629,6 @@ public class ControllerListProdutos implements Initializable {
     }
 
 }
+
 
 				

@@ -476,13 +476,14 @@ public class ControllerListLocacoes implements Initializable {
                                     yPosition = tableY - rowHeight - 15;
 
                                     // Obtém a AluguelRegistro específica da linha do botão
-                                    AluguelRegistro aluguelL = getTableView().getItems().get(getIndex());
+                                    AluguelRegistro aluguel = getTableView().getItems().get(getIndex());
+
 
                                     xPosition = tableX;
                                     for (int i = 0; i < cols; i++) {
                                         contentStream.beginText();
                                         // Adapte o método getTableData para aceitar a AluguelRegistro específica
-                                        String texto = getTableData(aluguelL, i);
+                                        String texto = getTableData(aluguel, i);
                                         int comprimentoMaximoLinha = 20; // Ajuste conforme necessário
                                         List<String> linhas = new ArrayList<>();
                                         for (int j = 0; j < texto.length(); j += comprimentoMaximoLinha) {

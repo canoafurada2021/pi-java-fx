@@ -2,17 +2,9 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
 import java.util.ResourceBundle;
-import controle.Conexao;
+
 import controle.EmpresaDAO;
-import javafx.beans.value.ChangeListener;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,13 +20,12 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import modelo.Empresa;
-import modelo.Locador;
 import utilities.CnpjFormatter;
 
 public class ControllerConfiguracoes implements Initializable {
 
 	@FXML
-	private SplitPane SlipPaneConfigurações;
+	private SplitPane SlipPaneConfiguracoes;
 
 	@FXML
 	private Pane panelConfiguracoes;
@@ -191,7 +182,7 @@ public class ControllerConfiguracoes implements Initializable {
 	public void setEmpresa(Empresa e){
 		if (e!=null) {
 			txtNomeFantasia.setText(e.getNome_fantasia());
-			txtCnpj.setText(String.valueOf(e.getCnpj()));
+			txtCnpj.setText(CnpjFormatter.formatCnpj(String.valueOf(e.getCnpj())));
 			txtId.setText(String.valueOf(e.getIdEmpresa()));
 			txtTelefone.setText(String.valueOf(e.getTelefone()));
 			txtPorteEmpresa.setText(e.getPorte_empresa());
