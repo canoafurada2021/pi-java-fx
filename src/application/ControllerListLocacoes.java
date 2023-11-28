@@ -366,6 +366,8 @@ public class ControllerListLocacoes implements Initializable {
         }
     }
 
+    boolean campoClicado = false;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -379,9 +381,11 @@ public class ControllerListLocacoes implements Initializable {
 
         columnId.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getIdVenda()));
 
+
         columnAcoes.setCellFactory(param -> new TableCell<AluguelRegistro, String>() {
             private final Button viewButton = new Button();
             private final Button editButton = new Button();
+
             private final HBox buttonContainer = new HBox(viewButton, editButton);
 
             {
@@ -606,13 +610,18 @@ public class ControllerListLocacoes implements Initializable {
         });
 
         txtPesquisa.focusedProperty().addListener((observable, oldValue, newValue) -> {
+
             if (newValue) {
-                if (txtPesquisa.getText().equals("pesquisar")) {
+
+                if (!campoClicado) {
                     txtPesquisa.clear();
+                    campoClicado = true;
                 }
             } else {
+
                 if (txtPesquisa.getText().isEmpty()) {
                     txtPesquisa.setText("pesquisar");
+                    campoClicado = false;
                 }
             }
         });

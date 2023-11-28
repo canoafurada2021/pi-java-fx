@@ -409,17 +409,24 @@ public class ControllerListProdutos implements Initializable {
         }
     }
 
+    boolean campoClicado = false;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         txtPesquisa.focusedProperty().addListener((observable, oldValue, newValue) -> {
+
             if (newValue) {
-                if (txtPesquisa.getText().equals("pesquisar")) {
+
+                if (!campoClicado) {
                     txtPesquisa.clear();
+                    campoClicado = true;
                 }
             } else {
+
                 if (txtPesquisa.getText().isEmpty()) {
                     txtPesquisa.setText("pesquisar");
+                    campoClicado = false;
                 }
             }
         });
