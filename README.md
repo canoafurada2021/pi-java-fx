@@ -20,33 +20,35 @@ Este repositório contém o código-fonte base para o desenvolvimento do projeto
 
 ### 🎯 Objetivos do Projeto
 
-1. **Cadastro Completo**: Permitir o cadastro detalhado de produtos, clientes, funcionários e fornecedores.
-2. **Personalização da Empresa**: Facilitar a personalização dos dados da empresa.
-3. **Gestão de Usuários**: Permitir aos funcionários e clientes alterar suas informações pessoais.
-4. **Interfaces Distintas**: Oferecer diferentes interfaces de manuseio para funcionários e proprietário.
-5. **Controle de Estoque**: Manter um controle rigoroso do estoque de produtos, com atualizações em tempo real.
-6. **Reservas de Veículos**: Possibilitar o cadastro e gerenciamento de locações de veículos associadas a clientes específicos.
-7. **Análise de Desempenho**: Permitir ao proprietário visualizar informações sobre os melhores vendedores e os veículos mais locados.
-8. **Filtros de Pesquisa**: Facilitar a busca e listagem dos produtos disponíveis em estoque.
+1. **Cadastro Completo**: Permitir o cadastro detalhado de produtos, funcionários, categorias e fornecedores.
+2. **Interfaces Distintas**: Oferecer diferentes interfaces de manuseio para funcionários e proprietário.
+3. **Controle de Estoque**: Manter um controle rigoroso do estoque de produtos, com atualizações em tempo real.
+4. **Reservas de Veículos**: Possibilitar o cadastro e gerenciamento de locações de veículos associadas a clientes específicos.
+5. **Filtros de Pesquisa**: Facilitar a busca e listagem dos produtos disponíveis em estoque.
 
 
 ### 🖱️ Telas do Projeto
 
 1. **Tela de Login**:
-![login](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/b8038af9-bbba-4e9a-929a-00aab3b18253)
+![login](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/4600fce9-a6d2-4b14-a34e-792a1d28e54c)
 
 2. **Tela de Dashboard**:
-![dashboard](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/7f825d8a-e95a-4f82-83bb-144b553819ad)
+![dashboard](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/ee6dde26-48eb-4350-820b-609257d1e9c2)
 
 4. **Tela de Listagem de Fornecedores**:
-![listagem](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/60f207d7-69d1-4d38-9950-36738ffd35fa)
+![Captura de tela 2023-11-30 112045](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/5c43f1b8-8c9e-4461-9dc2-dd170698b4df)
 
 5. **Tela de Cadastro de Fornecedores**:
-![cadastro](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/c38d784a-95b0-4b3f-ba8b-7cb9839e6ab7)
+![Captura de tela 2023-11-30 112206](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/5722b6fe-93a9-4a72-a777-f148e5f34b7a)
 
 6. **PopUp de Edição de Fornecedores**:
 
-![edição](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/0fe7dcdc-c9c8-42ed-919c-fa3305137ed6)
+![Captura de tela 2023-11-30 112309](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/8eb39c7f-ff4a-48c1-954f-f9d5efe288da)
+
+7. **PDF de Relatório de Locação**:
+
+![Captura de tela 2023-11-30 112559](https://github.com/canoafurada2021/pi-java-fx/assets/88635006/60fdc584-076f-4130-905a-9f88f2a6b6c0)
+
 
 
 ## 🚗 Casos de Uso
@@ -65,7 +67,7 @@ Este repositório contém o código-fonte base para o desenvolvimento do projeto
 | 11     | Excluir um cliente - UC11                | Exclusão de um cliente dos registros do sistema, por vendedor e gerente |
 | 12     | Alterar um cliente - UC12                | Alteração dos dados de um cliente, por vendedor e gerente.|
 | 13     | Cadastrar uma locação - UC13             | Cadastro de uma nova locação no sistema, por vendedor e gerente. |
-| 14     | Alterar dados de uma locação - UC14      | Alteração dos dados de uma locação no sistema, por vendedor e gerente.|
+| 14     | Visualizar relatório de uma locação - UC14      | Visualização de relatório em PDF de uma locação no sistema, por vendedor e gerente.|
 | 15     | Remover uma locação - UC15               | Exclusão do registro de uma locação do sistema, por vendedor e gerente. |
 
 
@@ -74,7 +76,7 @@ Este repositório contém o código-fonte base para o desenvolvimento do projeto
 <div style="text-align: center;">
   <h3>Diagrama de casos de uso com atores identificados</h3>
   <p>A imagem abaixo mostra o diagrama de casos de uso gerais do sistema, o qual possui dois atores e os quinze casos de uso identificados com suas respectivas descrições:</p>
-  <img src="https://github.com/canoafurada2021/pi-java-fx/blob/master/DiagramaDeCasosDeUsoComAtoresIdentificados.jpg?raw=true" alt="Diagrama de Casos de Uso">
+  <img src="https://github.com/canoafurada2021/pi-java-fx/assets/88635006/ca0564e8-f293-42fa-933f-d9ee94086628" alt="Diagrama de Casos de Uso">
 </div>
 
 <div style="text-align: center;">
@@ -86,5 +88,5 @@ Este repositório contém o código-fonte base para o desenvolvimento do projeto
 <div style="text-align: center;">
   <h3>Diagrama de Entidade e Relacionamento</h3>
   <p>Para a aplicação do sistema de concessionária, foram desenvolvidas dez classes armazenadoras das informações necessárias para o funcionamento da aplicação. São elas, as classes Fornecedor, Endereco, Pessoa, Vendedor, Cliente, Produto, Categoria, Venda, EnumPagamento e AgendaVisita, abaixo:</p>
-  <img src="https://github.com/canoafurada2021/pi-java-fx/assets/95760996/299da800-d62c-4fea-9178-26340f579f12.png" alt="Diagrama de Entidade e Relacionamento">
+  <img src="https://github.com/canoafurada2021/pi-java-fx/assets/88635006/7575c8e9-2db3-46e8-89fc-c64d4b2fedaa" alt="Diagrama de Entidade e Relacionamento">
 </div>
